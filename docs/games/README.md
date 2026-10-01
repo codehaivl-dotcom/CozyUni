@@ -7,32 +7,34 @@ Status: **GAME-FIRST / FULL GDD v1**
 Implementation agents must read in this order:
 
 1. [`00_SHARED_GAME_EXPERIENCE_LOCK.md`](./00_SHARED_GAME_EXPERIENCE_LOCK.md) — shared Start Game flow, multiplayer setup, HUD hierarchy, tutorial behavior, Settings, disconnect, Final Results, rematch, accessibility and no-invention rule.
-2. The selected game's full GDD below.
-3. `../GAME_MODE_ROADMAP.md` for production order only.
-4. `../assets/00_RENDER_RULES_LOCKED.md` for AI→3D art production.
+2. [`00_SHARED_UI_LAYOUT_LOCK.md`](./00_SHARED_UI_LAYOUT_LOCK.md) — exact screen zones, HUD placement, modal hierarchy, touch-target and results-layout contract.
+3. The selected game's full GDD below.
+4. [`00_GDD_AUDIT_2026-10-01.md`](./00_GDD_AUDIT_2026-10-01.md) — audit record and gap-closure standard.
+5. `../GAME_MODE_ROADMAP.md` for production order only.
+6. `../assets/00_RENDER_RULES_LOCKED.md` for AI→3D art production.
 
 If lower-priority docs or old code/comments conflict with a locked GDD, the locked GDD wins.
 
-If a required behavior is not specified in the shared lock or the selected game GDD, **do not invent it; raise a design question**.
+If a required behavior is not specified in the shared locks or the selected game GDD, **do not invent it; raise a design question**.
 
 ## Current five games
 
 1. [`01_COZY_LUDO.md`](./01_COZY_LUDO.md) — 2–4P race, first production game
 2. [`02_COZY_CARO.md`](./02_COZY_CARO.md) — Tic-Tac-Toe 3×3 + Freestyle Five 15×15
-3. [`03_COZY_JOURNEY.md`](./03_COZY_JOURNEY.md) — 36-space Goose-family travel race
-4. [`04_COZY_CHESS.md`](./04_COZY_CHESS.md) — standard casual human-vs-human chess
-5. [`05_COZY_TYCOON.md`](./05_COZY_TYCOON.md) — original 12-round CozyUni economy board
+3. [`03_COZY_JOURNEY.md`](./03_COZY_JOURNEY.md) — fixed 36-space Goose-family travel race
+4. [`04_COZY_CHESS.md`](./04_COZY_CHESS.md) — locked human-vs-human standard casual chess
+5. [`05_COZY_TYCOON.md`](./05_COZY_TYCOON.md) — original fixed 28-node / 12-round CozyUni economy board
 
 Cozy Checkers is not in the active shortlist.
 
-## What a full GDD must define
+## Full-GDD completeness standard
 
 Each current game spec now locks:
 - product role
 - supported player count/device modes
-- exact canonical rules
+- exact canonical rules/constants
 - Start Game/setup flow
-- match summary
+- lobby/match summary
 - tutorial sequence
 - board/camera behavior
 - HUD contents and action priority
