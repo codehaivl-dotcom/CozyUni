@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "currency": {
+    "code": "CC",
+    "display_name": "Cozy Credits",
+    "purchased_currency_expires": false,
+    "global_spendable_currencies": 1,
+    "allow_gameplay_power_purchase": false,
+    "allow_match_currency_conversion": false,
+    "spend_priority": ["bonus_cc", "purchased_cc_fifo"]
+  },
+  "iap_credit_packs": [
+    {
+      "product_id": "com.cozyuni.credits.100",
+      "type": "consumable",
+      "credits": 100,
+      "planning_target_eur": 0.99,
+      "enabled": true
+    },
+    {
+      "product_id": "com.cozyuni.credits.550",
+      "type": "consumable",
+      "credits": 550,
+      "planning_target_eur": 4.99,
+      "enabled": true
+    },
+    {
+      "product_id": "com.cozyuni.credits.1200",
+      "type": "consumable",
+      "credits": 1200,
+      "planning_target_eur": 9.99,
+      "enabled": true
+    },
+    {
+      "product_id": "com.cozyuni.credits.2500",
+      "type": "consumable",
+      "credits": 2500,
+      "planning_target_eur": 19.99,
+      "enabled": true
+    }
+  ],
+  "catalog_price_bands_cc": {
+    "S": 80,
+    "A": 150,
+    "B": 250,
+    "C": 400,
+    "D": 650,
+    "E": 900
+  },
+  "allowed_catalog_types": [
+    "profile_frame",
+    "badge",
+    "emote",
+    "victory_pose",
+    "character_outfit",
+    "character_colorway",
+    "board_skin",
+    "table_theme",
+    "dice_skin",
+    "token_skin",
+    "seasonal_cosmetic_bundle"
+  ],
+  "forbidden_purchase_effects": [
+    "extra_roll",
+    "reroll",
+    "extra_turn",
+    "movement_boost",
+    "better_rng",
+    "tycoon_starting_coins",
+    "tycoon_income_boost",
+    "chess_hint",
+    "caro_hint",
+    "capture_immunity",
+    "ranking_boost"
+  ],
+  "simulation_defaults": {
+    "mau": 10000,
+    "monthly_payer_rate": 0.02,
+    "purchases_per_payer": 1.25,
+    "refund_rate": 0.02,
+    "commission_rate": 0.15,
+    "pack_mix": {
+      "com.cozyuni.credits.100": 0.35,
+      "com.cozyuni.credits.550": 0.40,
+      "com.cozyuni.credits.1200": 0.20,
+      "com.cozyuni.credits.2500": 0.05
+    }
+  },
+  "review_thresholds": {
+    "refund_rate_warn": 0.05,
+    "purchase_success_rate_min": 0.97,
+    "starting_slot_advantage_percentage_points": 3.0
+  }
+}
