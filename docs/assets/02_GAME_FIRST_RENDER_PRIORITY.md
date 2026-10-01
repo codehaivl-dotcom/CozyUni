@@ -1,290 +1,117 @@
-# CozyUni — Game-First Render Priority v0.1
+# CozyUni — Game-First Render Priority v0.2
 
 Status: **CURRENT PRODUCTION PRIORITY**
 
-This document supersedes the old broad asset checklist as the active render order.
+Principle: render only what the active game needs. The existing world library is preserved but world production is deferred.
 
-Principle: **do not render more world assets just because credits exist. Render assets when an active game needs them, or when the asset has very high reuse value in the Cozy World / Life Hub.**
+## 1. Current game order
 
----
+1. Cozy Ludo
+2. Cozy Caro
+3. Cozy Journey
+4. Cozy Chess
+5. Cozy Tycoon
 
-## 1. Existing world library — REUSE FIRST
+Cozy Checkers is not active.
 
-The project already has enough concept-rendered world content to start building a lively explorable hub.
+## 2. Existing world library
 
-### Characters
-Existing approved/candidate cast includes:
-- Rabbit
-- Poppy Bear
-- Milo Dog
-- Lumi Cat
-- Mayor Pip Hedgehog
-- Fox
-- Duck
-- Sheep
-- additional Dog
-- Koala
-- Panda
+Already-rendered characters, buildings, shops, transport, nature, food, infrastructure, parks and sports assets remain valuable.
 
-### Shared village props
-Examples already rendered:
-- wooden crate
-- barrel
-- hand/utility cart
-- parcel box
-- village lantern
-- bench
-- direction signpost
-- flower planter/bucket
-- produce basket
-- firefly jar
+Current use:
+- optional static board/diorama dressing
+- reusable miniatures in Journey/Tycoon where appropriate
+- future life-sim world inventory
 
-### Nature
-Existing families include:
-- multiple hero tree silhouettes
-- fruit/blossom trees
-- pine/willow/old tree variants
-- bushes and hedges
-- flowering bushes
-- berry bush
-- lavender/daisy/sunflower patches
-- mushrooms
-- reeds/cattails
+Do not render more generic world assets during current game-first milestone unless a locked game requires them.
 
-### Food / produce
-Existing concepts cover many useful world/game items:
-- bread/croissant
-- apples/strawberries/carrots/pumpkin
-- milk/cheese/honey
-- fish
-- eggs
-- meat/sausages/ham
-- cabbage/lettuce/bok choy/broccoli/cucumber/scallion
+## 3. Engine-first content — no AI render credit
 
-### Vehicles / transport
-Existing corrected Style-D concepts include:
-- bicycle
-- cargo bicycle/tricycle
-- scooter
-- small car
-- pickup
-- shuttle bus
-- delivery truck
-- small boat
-- cable car cabin
-- tourist train
-
-Additional reserve concepts exist for luxury/tourist transport and boats. They should only be produced when a real module/region needs them.
-
-### Buildings / shops
-The library already covers:
-- civic/landmark architecture
-- station/terminal/lighthouse/hotel/lodge/market/library/barn/café/marina directions
-- additional public/cultural/service buildings
-- daily-life village shops
-- service/town shops
-- specialty shop concepts
-
-Do not commission more generic houses/buildings until a world zone or game specifically requires them.
-
-### Infrastructure
-Existing concepts include:
-- stone and wooden bridges
-- bus stop
-- train platform
-- dock/pier
-- street lamp
-- direction sign
-- fountain
-- stairs
-- cable-car/funicular structures
-- road straight/curve/intersection
-- sidewalk/curb
-- rail straight/curve
-- railway crossing
-- tunnel
-- retaining wall
-- ferry gangway
-- urban service props
-- harbor/mountain infrastructure
-
-### Parks / recreation
-Existing concepts include:
-- gazebo/bandstand
-- playground tower
-- swings
-- picnic pavilion
-- pergola
-- outdoor café kiosk
-- garden footbridge
-- chess/game table
-- outdoor stage
-- skate ramp
-- basketball
-- mini soccer
-- tennis practice
-- volleyball
-- table tennis
-- archery
-- mini golf
-- climbing wall
-- calisthenics
-- batting cage
-
-**Conclusion:** the world backbone is already broad. The next production priority is game-specific interaction art, not more generic environment volume.
-
----
-
-# 2. World-use plan for the existing assets
-
-The current asset library should be assembled into a **Cozy World / Life Hub** with an Animal-Crossing-like atmosphere but a much smaller feature scope.
-
-Use existing assets to build:
-- Moonberry Village core
-- countryside/farm edge
-- park and recreation district
-- town/service street
-- station/transit district
-- harbor/seaside district
-- mountain/cable-car district
-
-World goals:
-- pleasant walking/exploration
-- recognizable destinations
-- game entrances/venues
-- ambient NPCs
-- transport transitions
-- photo-friendly scenes
-- light seasonal dressing later
-
-Do not wait for perfect interiors. Most buildings can initially function as exterior landmarks, portals or background destinations.
-
----
-
-# 3. ZERO-CREDIT / ENGINE-FIRST CONTENT
-
-Do not render these as monolithic 3D assets:
+Generate in engine/UI:
 - Ludo board/path
-- Checkers board
+- Caro/Tic-Tac-Toe grids
+- Journey path/space numbers
 - Chess board
-- Goose/Journey path board
-- Tycoon board
-- board text
+- Tycoon board/nodes
+- text and labels
 - card faces
-- money values
+- values/prices
 - ownership colors
-- movement arrows/highlights
-- special-space icons
+- highlights/selection markers
+- rule icons where 2D is sufficient
 
-These should be generated in engine/UI so rules and layout can change without re-rendering art.
+Do not AI-render whole boards as monolithic meshes.
 
----
+## 4. P0 — Shared board-game kit
 
-# 4. Priority P0 — Shared Board Game Kit
+High reuse:
+1. Cozy D6
+2. Winner Trophy
+3. optional universal turn marker only if UI-only marker is insufficient
+4. optional universal star/reward token only if a current game requires a 3D version
+5. Cozy Coin / coin stack for Tycoon later
 
-Render these before large game-specific packs because several games can reuse them.
+Do not render all five merely because listed. Mandatory active-game assets come first.
 
-### P0.1 — Cozy six-sided dice
-Use: Cozy Ludo, Cozy Journey, Cozy Tycoon, future dice games.
+## 5. P1 — Cozy Ludo
 
-Requirements:
-- chunky rounded cube
-- clear pips
-- no text/logo
-- Style D
-- easy physics/animation
+Current first production game.
 
-### P0.2 — Winner trophy
-Use: every game results screen / Life Hub display.
+Essential likely assets:
+1. `ludo_dice` / shared Cozy D6
+2. `ludo_finish_pavilion`
+3. `shared_winner_trophy`
 
-### P0.3 — First-player / turn marker
-Use: multiple tabletop games.
+Piece strategy:
+- first test simplified existing animal characters/tokens
+- if board readability fails, render/generate one simple generic pawn/medallion family and runtime recolor
 
-Possible design: simple berry/leaf/crown marker; one solid object.
+Do not render:
+- shortcut gate
+- Lucky Gift
+- extra board themes
 
-### P0.4 — Universal reward/star token
-Use: results, achievements, festival/life-hub rewards.
+Those mechanics are out of current Ludo v1.
 
-### P0.5 — Cozy coin / berry coin
-Use: Cozy Tycoon and optional world reward presentation.
+**Expected new 3D renders: 2–4.**
 
-**P0 total new renders: approximately 5.**
+## 6. P2 — Cozy Caro
 
-Do not force a 10-image pack.
+Preferred: zero bespoke AI→3D art.
 
----
+Use simple generated discs with:
+- Berry icon/material
+- Leaf icon/material
 
-# 5. Priority P1 — Cozy Ludo Asset Kit
+Only render bespoke Berry/Leaf tokens if procedural tokens look visually inadequate.
 
-Goal: first low-risk family prototype.
+Shared trophy reused.
 
-Reuse existing animal characters as player identity and, if rig/scale works well, as moving board pieces.
+**Expected new renders: 0–2.**
 
-### Render only if needed
-1. **Finish Pavilion / Home Goal** — one hero destination object.
-2. **Safe-Space Marker** — simple flower/berry pad or small shrine marker.
-3. **Shortcut Gate** — compact readable arch/gate.
-4. **Celebration Trophy** — reuse P0 trophy; no new render.
-5. **Lucky Gift Box** — reuse existing gift/parcel concept if suitable.
-6. **Fallback Pawn** — only render if full characters are too large/noisy for board readability.
+## 7. P3 — Cozy Journey
 
-Possible fallback pawn strategy:
-- one generic pawn shape
-- runtime recolor by player
-- animal icon appears in UI rather than requiring four unique models
-
-**Expected new renders after reuse: ~2–4.**
-
----
-
-# 6. Priority P2 — Cozy Journey / Goose-Family Kit
-
-This should reuse Ludo's Path Board Engine and the existing transport/world library.
-
-Existing world assets already cover much of the fantasy:
-- train
-- station/platform
-- boat/dock/ferry structures
-- cable car/funicular
+Reuse existing transport/world library heavily:
+- train/station
+- ferry/dock
+- cable car
 - bridges
-- roads
-- signposts
-- picnic/park structures
+- town/harbor/mountain buildings
+- nature
 
-### Potential new renders
-1. **Journey Destination Gate** — final festive/world-tour destination.
-2. **Travel Suitcase Token** — compact, reusable in world hub.
-3. **Rest/Picnic Marker** — only if existing picnic assets are too large.
-4. **Travel Trophy / Passport Stamp Object** — optional; preferably UI rather than 3D.
+Potential bespoke:
+1. Journey Start Arch
+2. Journey Finish Pavilion if Ludo pavilion cannot be reused
 
-Special spaces should mainly use icons + existing world props.
+Shared D6/trophy reused.
 
-**Expected new renders: ~2–3.**
+Special-space icons should be 2D/UI.
 
----
+**Expected new renders: 1–2.**
 
-# 7. Priority P3 — Cozy Checkers Kit
+## 8. P4 — Cozy Chess
 
-Board is procedural.
-
-### New renders
-1. **Checker Piece** — one strong round/chunky piece model.
-2. **King/Crown Topper** — optional separate topper or elevated variant.
-
-Player sides use runtime materials/colors.
-
-Optional:
-3. **Board-side decorative marker** — only if visual tests show the game feels too sterile.
-
-**Expected new renders: 2–3.**
-
----
-
-# 8. Priority P4 — Cozy Chess Kit
-
-Board is procedural.
-
-Render six unique piece archetypes only:
+Render exactly six core piece archetypes:
 1. King
 2. Queen
 3. Bishop
@@ -293,94 +120,61 @@ Render six unique piece archetypes only:
 6. Pawn
 
 Rules:
-- same material language across all six
-- strong silhouettes
-- no thin fragile ornaments
-- avoid over-detailed medieval sculpture
-- runtime recolor/material differentiates players
+- one mesh/archetype each
+- runtime material differentiates sides
+- standard silhouette recognition first
+- simple chunky geometry
+- no fragile ornaments
 
-Optional world reuse:
-- enlarged versions can decorate the Chess Garden / club exterior.
+Board generated in engine.
 
-**Expected new renders: exactly 6 core pieces.**
+**Expected new renders: exactly 6.**
 
----
+## 9. P5 — Cozy Tycoon
 
-# 9. Priority P5 — Cozy Tycoon Kit
+Do not render until economy prototype is ready for art.
 
-Do not begin until economy/gameplay research is approved.
+Reuse existing buildings for 12 properties and existing transport assets.
 
-Reuse existing buildings as property identities. Never render one new building per property.
+Potential bespoke/shared:
+1. Cozy Coin / coin stack
+2. ownership base/banner marker
+3. upgrade star marker
+4. Community Star token
+5. shared D6
+6. shared trophy
 
-### Candidate new 3D assets only after rules are locked
-1. Coin stack / coin bag
-2. Ownership/development marker
-3. Small shop-upgrade marker
-4. Major-development/landmark marker
-5. Auction gavel
-6. Bank/treasury chest
-7. Transport ticket/token
-8. Player token fallback if existing characters are not appropriate
+Cards/property info/score are UI/data.
 
-Cards, deeds, prices, rent tables and event text are UI/2D assets.
+**Expected new renders: ~3–5 after shared reuse.**
 
-**Expected new 3D renders: ~5–8, not dozens.**
+## 10. Render order right now
 
----
+1. Ludo D6
+2. Ludo Finish Pavilion
+3. Shared Winner Trophy
+4. test Ludo board with existing character representation
+5. only if needed: fallback Ludo pawn/medallion
+6. stop rendering and finish playable
+7. render next game's assets only when that game enters production
 
-# 10. Priority P6 — Life Hub enrichment only after first game prototype
-
-If the world feels empty after assembling the existing library, render only small high-reuse outdoor interaction assets.
-
-Candidate pack:
-- mailbox
-- birdhouse
-- birdbath
-- watering can
-- picnic blanket/basket variant
-- outdoor café table set
-- small public notice board
-- simple clothesline
-- dog/pet water bowl
-- small decorative rock cluster
-
-These are intentionally easy AI→3D objects and can make the hub feel lived-in without requiring interiors.
-
-Do not make this pack before checking the assembled world first.
-
----
-
-# 11. Recommended actual render order
-
-1. P0 shared dice
-2. P0 trophy
-3. P0 turn marker
-4. P0 reward/star token
-5. P0 cozy coin
-6. Cozy Ludo finish pavilion
-7. Cozy Ludo safe-space marker
-8. Cozy Ludo shortcut gate
-9. Test first Ludo prototype
-10. Only then produce the next game kit actually entering implementation
-
-Do not render Chess, Tycoon and Journey kits in advance merely because they are listed here.
-
----
-
-# 12. Asset ROI rule
-
-Before rendering any new asset, classify it:
+## 11. Asset ROI classes
 
 ### A — Mandatory gameplay
-The prototype cannot function/read correctly without it.
+Prototype cannot read/function correctly without it.
 
-### B — High-reuse world asset
-Useful across multiple games/regions and visibly improves the Life Hub.
+### B — High reuse
+Used by several active games.
 
 ### C — Cosmetic polish
-Nice but not necessary.
+Nice but not required.
 
-Render order is always:
-**A → B → C.**
+Render order: **A -> B -> C**.
 
-If an asset is C and the current game is not yet fun, do not render it.
+If current game is not fun/playable, do not spend credits on C.
+
+## 12. Future world
+
+No current render pack exists for the life-sim world.
+
+When world production restarts, it will use its own full GDD and asset priority. The old broad world checklist is not current production authority.
