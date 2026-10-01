@@ -1,32 +1,52 @@
 {
   "schema_version": 1,
   "simulation": {
-    "default_seed": 12345,
     "deterministic": true,
-    "store_raw_results": true
+    "seed_strategy": "sequential_from_1",
+    "store_raw_results": true,
+    "store_failed_seeds": true,
+    "duration_model": {
+      "status": "REQUIRES_PLAYTEST_CALIBRATION",
+      "human_decision_seconds": null,
+      "duration_gate_enabled": false,
+      "note": "Do not invent human decision time. Enable duration gates only after measured local playtest timing is versioned here."
+    }
   },
   "ludo": {
     "runs_per_configuration": 100000,
-    "player_counts": [2,3,4],
-    "duration_model": {
-      "seconds_per_turn": 8,
-      "seconds_per_animation": 2
-    },
+    "player_counts": [2, 3, 4],
+    "required_policies": ["LUDO_POLICY_V1", "LEGAL_RANDOM_V1"],
     "thresholds": {
-      "max_starting_slot_advantage_pp": 3,
-      "max_p95_minutes": 15
+      "max_starting_slot_advantage_pp": 3.0,
+      "max_p95_minutes_when_duration_gate_enabled": 15.0
     }
+  },
+  "caro": {
+    "tic_tac_toe_test_mode": "EXHAUSTIVE_RULE_STATES",
+    "five_in_a_row_test_mode": "PROPERTY_BASED_RULE_TESTS",
+    "balance_bot_required": false
   },
   "journey": {
     "runs_per_configuration": 100000,
-    "player_counts": [2,3,4]
+    "player_counts": [2, 3, 4],
+    "thresholds": {
+      "max_starting_slot_advantage_pp": 3.0,
+      "max_p95_minutes_when_duration_gate_enabled": 12.0
+    }
+  },
+  "chess": {
+    "balance_simulation_required": false,
+    "required_test_family": "PERFT_AND_RULE_REGRESSION"
   },
   "tycoon": {
     "runs_per_configuration": 100000,
-    "bots": ["conservative", "balanced", "aggressive"],
+    "player_counts": [2, 3, 4],
+    "bot_policies": ["CONSERVATIVE_V1", "BALANCED_V1", "AGGRESSIVE_V1"],
+    "opening_rounds_for_decision_metric": 2,
     "thresholds": {
-      "bankruptcy_rate_warning": 0.25,
-      "leader_gap_warning": 0.5
+      "max_starting_slot_advantage_pp": 3.0,
+      "max_single_event_share_of_average_final_prosperity_swing": 0.10,
+      "max_no_choice_turn_ratio_after_opening": 0.20
     }
   }
 }
