@@ -1,149 +1,165 @@
-# CozyUni — Game Mode Roadmap v0.3
+# CozyUni — Game Mode Roadmap v0.4
 
-Status: **GAME-FIRST / CURRENT DIRECTION**
+Status: **GAME-FIRST / LOCAL SINGLE-DEVICE FIRST**
 
 ## 1. Production decision
 
-CozyUni will focus on board games first. The persistent world is **deferred** until the games themselves are fun, polished and reusable systems are stable.
+CozyUni focuses on board games first.
 
 Current five-game shortlist:
+1. Cozy Ludo
+2. Cozy Caro — Tic-Tac-Toe + Five-in-a-Row
+3. Cozy Journey — Goose-family travel race
+4. Cozy Chess
+5. Cozy Tycoon — original CozyUni economy board game
 
-1. **Cozy Ludo**
-2. **Cozy Caro** — Tic-Tac-Toe + Five-in-a-Row/Caro family
-3. **Cozy Journey** — Goose-family path race
-4. **Cozy Chess**
-5. **Cozy Tycoon** — original CozyUni property/economy board game
+Cozy Checkers is not active.
 
-**Cozy Checkers is removed from the current shortlist.**
+The persistent world and multi-device networking are both deferred.
 
-The product should not attempt to build all five at once. One game is implemented, tested and polished before the next game becomes production work.
+## 2. Current multiplayer scope
 
-Detailed specs live under `docs/games/`.
+Current v1 is **multiple local players sharing one tablet/screen**.
 
-## 2. Shared multiplayer requirement
+Supported player counts:
+- Ludo: 2–4
+- Caro: 2
+- Journey: 2–4
+- Chess: 2
+- Tycoon: 2–4
 
-Every suitable game should support two presentation modes while sharing one authoritative rules engine.
+Current UI does not expose:
+- Create Room
+- Join Room
+- QR join
+- public matchmaking
+- separate-device play
 
-### One Device / Table Mode
-- 2–4 players share one tablet/device where the rules allow it.
-- Turn-based public-information games should feel like a physical tabletop game.
-- No account or second device should be required.
+Multi-device requires a later dedicated milestone and protocol design.
 
-### Room Mode
-- One player creates a room.
-- Other players join by code / QR / invite.
-- Each player uses a separate device.
-- The room shares one authoritative match state.
+## 3. Exact app flow
 
-Do not fork game logic for the two modes. Input and presentation may differ; rules must remain shared.
+Authority: `docs/games/00_APP_SHELL_FLOW_LOCK.md`.
 
-## 3. Reusable engine families
+```text
+APP LAUNCH
+ -> GAME LIBRARY
+ -> select game card
+ -> GAME START SCREEN
+ -> PLAY
+ -> LOCAL PLAYER SETUP
+ -> MATCH SUMMARY
+ -> TUTORIAL if needed
+ -> COUNTDOWN
+ -> MATCH
+ -> FINAL RESULTS
+```
+
+Results:
+- REMATCH
+- CHANGE PLAYERS
+- GAME LIBRARY
+
+## 4. Reusable engine families
 
 ### Path Board Engine
 Used by:
-- Cozy Ludo
-- Cozy Journey
+- Ludo
+- Journey
 
-Shared systems:
-- turn order
-- dice
-- path nodes
-- piece movement
-- safe/special nodes
-- jump/shortcut events
-- finish conditions
-- replay/rematch
+Shared primitives:
+- deterministic D6
+- path/node representation
+- token movement hooks
+- turn lifecycle
+- hit/highlight helpers
 
 ### Grid Strategy Engine
 Used by:
-- Cozy Caro
-- Cozy Chess
+- Caro
+- Chess
 
-Shared systems:
-- grid board
-- cell selection
-- legal action highlighting
-- move placement/movement
-- win-state detection
-- turn switching
-- move history
-- replay/rematch
+Shared primitives:
+- grid representation
+- board renderer
+- hit testing
+- selection/highlight
+- move/action history
 
 ### Economy Board Engine
 Used by:
-- Cozy Tycoon
+- Tycoon
 
-This is the highest-scope engine and should be built last.
+Shared primitives:
+- loop nodes
+- ownership display
+- coin transactions
+- event-card presentation
 
-## 4. Art / AI→3D production rule
+Game rules remain mode-local.
 
-CozyUni does not have a traditional 3D art team. Game design must respect the AI-render → image-to-3D pipeline.
+## 5. AI→3D rule
 
 Prefer:
-- few unique 3D objects per game
-- simple chunky silhouettes
-- board/grid/path generated in engine
-- runtime material/color variants
-- existing shared characters and world props
+- few unique objects/game
+- chunky isolated silhouettes
+- runtime recolors
+- existing shared assets
 
-Avoid:
-- rendering a whole board as one monolithic AI asset
-- unique 3D prop for every board tile
-- large bespoke environments before gameplay is validated
-- thin mechanical details and assets requiring manual sculpt cleanup
-
-Engine/UI should generate:
-- board grids and paths
-- labels/text
-- ownership color
+Generate in engine/UI:
+- board/grid/path
+- text
+- cards
+- values
 - highlights
-- cards and values
-- rule markers
+- ownership colors
 
-AI→3D should be reserved for:
+AI→3D for:
 - pieces/tokens
 - dice
-- hero landmarks
-- trophies/reward objects
-- a small number of reusable decorative props
+- hero landmark
+- trophy
+- limited reusable decor
 
-## 5. Current production order
+## 6. Production order
 
-Recommended order:
+1. **Cozy Ludo** — complete local product flow and Path Board foundation
+2. **Cozy Caro** — cheapest Grid Strategy validation
+3. **Cozy Journey** — reuse Ludo infrastructure
+4. **Cozy Chess** — deeper rules on stable grid framework
+5. **Cozy Tycoon** — highest design/economy scope, last
 
-1. **Cozy Ludo** — first complete prototype; tests Path Board Engine + family play.
-2. **Cozy Caro** — cheapest second game; tests Grid Strategy Engine quickly.
-3. **Cozy Journey** — reuses Path Board Engine and existing transport/world assets.
-4. **Cozy Chess** — evergreen strategy mode after grid framework is stable.
-5. **Cozy Tycoon** — only after the shared architecture and audience are proven.
+Do not parallel-build all five gameplay systems.
 
-This is a research/production order, not a promise that all five ship.
+## 7. Gate before next game
 
-## 6. Research gate before implementation
+Current game must have:
+- locked GDD
+- end-to-end local flow
+- deterministic rules tests
+- tutorial working without developer explanation
+- result/rematch stable
+- bounded AI→3D kit
+- playtest evidence that users want another match
 
-Every game must answer:
-- Can the goal be understood in roughly one minute?
-- Is it enjoyable for family/friends at the same table?
-- Is downtime acceptable?
-- Does One Device mode feel natural?
-- Does Room Mode add useful value?
-- Is the first playable possible with a very small bespoke art kit?
-- Can the required 3D assets be generated reliably by AI→3D?
-- Does the digital version add feedback, convenience or social value over a paper board?
-- After one match, do test players voluntarily want another?
+## 8. Future multi-device milestone
 
-If not, redesign before adding content.
+Only after local product is stable.
 
-## 7. IP rule
+Required before implementation:
+- UX flow
+- authority model
+- network transport choice
+- room lifecycle
+- action/revision schema
+- reconnect/host-loss rules
+- QR payload
+- security/privacy
 
-Use generic/public game mechanics as mechanical foundations, but create original CozyUni names, art, board layouts, wording, UI and presentation.
+Do not pre-build speculative networking.
 
-Do not copy branded board artwork, logos, distinctive commercial presentation or rulebook text.
+## 9. World status
 
-## 8. World status
+Explorable CozyUni world is not current production.
 
-The CozyUni world is intentionally **not being built now**.
-
-Existing buildings, transport, nature, props, food and infrastructure assets remain valuable and are reserved for a later real life-sim/world phase.
-
-When world production resumes, it should aim for a genuinely living social/life-sim experience rather than a decorative game-selection lobby. See `docs/COZYUNI_WORLD_BIBLE.md`.
+Existing world assets remain reserved for a future genuine life-sim phase. They may be reused now only as static board/diorama dressing when useful.
