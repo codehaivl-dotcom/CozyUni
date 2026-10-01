@@ -1,114 +1,133 @@
-# CozyUni — Product Strategy v0.1
+# CozyUni — Product Strategy v0.2
 
-## Decision
+Status: **CURRENT / GAME-FIRST**
 
-**Build one primary public app first: CozyUni.**
+## 1. Decision
 
-Do not launch many near-identical small apps that reuse the same characters/world with only minor gameplay differences. Instead, ship one polished app with a clear first game mode, then expand it with additional modes/events when they pass quality gates.
+Build one primary public app: **CozyUni**.
 
-## Why one app first
+Current product priority is the polished board-game collection, not the explorable world.
 
-### Advantages
-- one install funnel
-- one App Store listing to build ratings/reviews
-- one player profile and save
-- one identity/brand
-- one asset download/update pipeline
-- one analytics funnel
-- cross-mode retention: a player who tires of one mode can switch activities without leaving the product
-- cosmetics and progression have more value because they appear across multiple activities
-- marketing spend compounds into one product instead of being fragmented
+The active game set is:
+1. Cozy Ludo
+2. Cozy Caro
+3. Cozy Journey
+4. Cozy Chess
+5. Cozy Tycoon
 
-### Main risk
-An all-in-one app can become bloated, confusing, or expensive if every prototype is shipped into it.
+Detailed gameplay authority lives in `docs/games/`.
 
-Therefore CozyUni should **not** mean “put everything in one giant menu.” It means a shared platform with strict admission gates for modes.
+## 2. Product promise
 
-## Recommended product shape
+CozyUni should feel like a premium cute digital family game table:
+- easy to understand
+- pleasant for children and adults
+- One Device play like a physical board game
+- Room Mode when players use separate devices
+- consistent CozyUni art/characters
+- low-friction rematch
+- no disposable mini-game presentation
 
-### Layer 1 — CozyUni shell
-Shared:
-- account/profile
-- four core characters
-- cosmetics
-- home/hub
+## 3. Build one game at a time
+
+The five-game list is a roadmap, not a parallel-development plan.
+
+Production order:
+`Ludo -> Caro -> Journey -> Chess -> Tycoon`
+
+A later game does not enter full production until the current game reaches its design/QA gate.
+
+## 4. Current app layers
+
+### Layer A — Shared shell
+- game list
+- profile/name/avatar
 - settings/accessibility/localization
-- friends/lobby
-- achievements / collection
-- seasonal calendar
-- notifications (if later justified)
-- save + analytics
+- One Device setup
+- Create/Join Room
+- lobby/readiness
+- common tutorial hooks
+- common results/rematch
+- save/stats
 
-### Layer 2 — Play modes
-Examples:
-- Festival Board
-- Festival Rush
-- Firefly Catch
-- Delivery Dash
-- Shop Panic
+### Layer B — Board games
+Each game owns:
+- exact rules
+- board state
+- legal actions
+- HUD context
+- tutorial script
+- match result/ranking
+- game-specific stats
 
-Each mode owns its own gameplay loop, tutorial, scoring, telemetry, and balancing.
+### Layer C — Future world
+Deferred.
 
-### Layer 3 — Events
-Low-cost variants:
-- Halloween dressing
-- winter festival
-- spring flowers
-- night market
-- anniversary event
+Existing 3D buildings, transport, nature, food, leisure and infrastructure assets are reserved for a future genuine life-sim world.
 
-Events should reuse an existing mode whenever possible instead of becoming new permanent modes.
+Do not build a shallow decorative hub merely to consume those assets.
 
-## When to make a standalone app
+## 5. Art economics
 
-A mode should split into a separate app only if several of these become true:
-- different target audience
-- fundamentally different control scheme
-- much larger content/download footprint
-- incompatible monetization
-- different age rating or store positioning
-- different retention cadence
-- the mode becomes strong enough to support its own brand/search demand
+There is no traditional 3D art team.
 
-Until then: keep it in CozyUni.
+Therefore:
+- game boards/grids/paths are generated in engine
+- text/cards/numbers are UI/data
+- AI→3D is used for small isolated hero assets only
+- existing assets are reused as board dressing when helpful
+- no large bespoke art batch before gameplay is proven
 
-## Launch strategy
+## 6. What makes CozyUni different
 
-### V0 / soft launch
-Ship only:
-- shared shell
-- Moonberry Village
-- 4 characters
-- Festival Board as the flagship mode
-- one lightweight second mode only if it is already fun and stable
+The differentiation is not inventing unfamiliar board mechanics.
 
-Do not delay launch just to reach an arbitrary number of modes.
+It is the combination of:
+- familiar proven game families
+- cute CozyUni characters/art
+- polished tablet-first board presentation
+- shared-device family play
+- multi-device private room play
+- shared shell and identity
+- future world/life-sim expansion if product quality justifies it
 
-### V1 growth
-Add one proven quick-win mode, likely Festival Rush or Firefly Catch.
+## 7. Current success hierarchy
 
-### V2 retention
-Add seasonal events, cosmetics, achievements, collections, and a third mode based on telemetry.
+1. Start Game flow is frictionless.
+2. Rules are correct and understandable.
+3. HUD prioritizes the board/action correctly.
+4. Players complete matches reliably.
+5. Results/rematch feel satisfying.
+6. Testers voluntarily ask for another match.
+7. Multiple games add value only after the first game is strong.
+8. World/life-sim development comes later.
+9. Monetization comes after repeat-play value is demonstrated.
 
-## Product success hierarchy
+## 8. Mode admission gate
 
-1. The first session is understandable.
-2. The flagship mode is genuinely fun.
-3. The app runs reliably and loads quickly.
-4. Players have a reason to return.
-5. Shared identity/progression makes multiple modes more valuable together.
-6. Monetization comes after product value is demonstrated.
+A game does not enter production unless:
+- full locked GDD exists
+- Start -> tutorial -> match -> final result flow is specified
+- AI→3D asset requirement is bounded
+- rules contain no unresolved agent-choice ambiguity
+- acceptance tests exist
+- shared-engine reuse is documented
 
-## Mode admission gate
+## 9. Monetization position
 
-No mode enters production app unless it passes:
-- core loop understood without developer explanation
-- fun/playtest threshold defined in its design doc
-- stable performance on target devices
-- no regression to shared shell
-- session start/end clearly defined
-- mode-specific telemetry implemented
-- tutorial/onboarding cost justified
-- asset reuse documented
+No gameplay design document currently requires:
+- ads
+- subscriptions
+- energy
+- battle pass
+- pay-to-win
 
-A prototype may live in the repo without appearing in production navigation.
+Monetization requires its own later product decision and must not be invented during game implementation.
+
+## 10. World position
+
+Long-term ambition remains a real Animal-Crossing-like CozyUni life-sim/world layer.
+
+That future world must justify the large asset library through actual life-sim interaction, NPC/world behavior, discovery, progression and social presence.
+
+Until a full world GDD exists, world production stays deferred.
