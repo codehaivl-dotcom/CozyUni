@@ -1,4 +1,4 @@
-# CozyUni — Product Strategy v0.3
+# CozyUni — Product Strategy v0.4
 
 Status: **CURRENT / GAME-FIRST / SINGLE-DEVICE FIRST**
 
@@ -80,10 +80,21 @@ Each game owns:
 - match result/ranking
 - game-specific stats
 
-### Layer C — Future multi-device
+### Layer C — Commerce infrastructure
+Design is now locked but customer-facing enablement may remain feature-flagged.
+
+Includes:
+- Cozy Credits wallet
+- StoreKit credit packs
+- cosmetic catalog/entitlements
+- server-backed wallet ledger before paid CC ships
+
+Commerce rules live in `docs/ECONOMY_IAP_AND_STORE_LOCK.md`.
+
+### Layer D — Future multi-device
 Deferred until the local product is proven.
 
-### Layer D — Future world
+### Layer E — Future world
 Deferred.
 
 Existing 3D buildings, transport, nature, food, leisure and infrastructure assets are reserved for a future genuine life-sim world.
@@ -125,9 +136,10 @@ It is the combination of:
 7. Results/rematch feel satisfying.
 8. Testers voluntarily ask for another match.
 9. Second/third games add value only after the first game is strong.
-10. Multi-device comes later.
-11. World/life-sim comes later.
-12. Monetization comes after repeat-play value is demonstrated.
+10. Commerce infrastructure can be implemented behind feature flags.
+11. Paid monetization is enabled only after product/repeat-play gates are met.
+12. Multi-device comes later.
+13. World/life-sim comes later.
 
 ## 9. Mode admission gate
 
@@ -142,14 +154,19 @@ A game does not enter production unless:
 
 ## 10. Monetization position
 
-No gameplay GDD currently requires:
-- ads
-- subscriptions
-- energy
-- battle pass
-- pay-to-win
+The monetization architecture is now defined rather than left for agents to invent.
 
-Monetization requires a later product decision and must not be invented during implementation.
+Current locked position:
+- one global spendable premium currency: Cozy Credits (CC)
+- CC is separated from all match-local money/scores
+- cosmetics only for paid CC in current design
+- no ads
+- no subscription
+- no energy
+- no battle pass
+- no pay-to-win
+
+The Store may remain disabled until product metrics justify enabling it. Technical readiness and monetization pressure are separate decisions.
 
 ## 11. World position
 
