@@ -1,0 +1,366 @@
+# CozyUni — ALL-IN-ONE READY-GEN ASSET MASTER v3.2
+
+**Canonical generation source:** 20 characters + 296 base world/library assets + 15 unique five-game assets = **331 entries**.
+
+## HARD CONTRACT
+1. Attach `References/CozyUni_STYLE_LOCK.png` to EVERY render. Optional category refs: `CozyUni_CHARACTER_REF.png`, `CozyUni_BUILDING_REF.png`, `CozyUni_PROPS_VEHICLES_REF.png`.
+2. If image-reference input is unsupported: STOP; never text-only render.
+3. Exact final prompt = `T[code] + ITEM + STYLE_LOCK`. Literal concatenation only; no paraphrase, extra adjectives, scenery or invented details.
+4. `[x]` only after visual approval against reference. Wrong style = `RETRY`.
+
+## STYLE_LOCK
+```text
+Use attached CozyUni reference image as PRIMARY style authority. Match its proportions, silhouette language, edge sharpness, material response, saturation, color blocking and lighting. Premium cozy stylized 3D videogame art: compact readable proportions; soft-but-crisp rounded geometry; clean bevels; slightly exaggerated functional shapes; strong silhouettes; clear material separation; medium saturation; cream only as supporting neutral; sage, muted teal, dusty blue, terracotta, muted coral, honey yellow, olive and natural wood brown. Soft stylized PBR, matte-to-satin highlights, subtle hand-painted variation. Professionally modeled game asset, not handmade sculpture. NO clay, ceramic, porcelain, pottery, wax, chalk, resin figurine, monochrome beige, washed-out pastel, blobby/melted edges, toy-plastic gloss, photorealism or painterly illustration. Neutral bright studio light, medium contrast, clean contact shadow, no haze or cinematic DOF.
+```
+
+## TEMPLATES
+- `C` = ONE full-body stylized 3D animal character; approved character/style reference attached; neutral auto-rig T-pose; front-facing; arms horizontal; legs slightly apart; hands/paws and feet separated; full body visible; no props/bag/hat/eyewear/cape/scarf/dangling accessory/overlap; simple outfit; warm-gray studio background. 
+- `A` = ONE isolated game-ready stylized 3D asset; approved reference attached; centered; fully visible; clean 3/4 isometric view; warm-gray studio background; soft contact shadow; no scene/people/text/logo; preserve real material identity. 
+- `B` = ONE isolated stylized 3D building; approved building/style reference attached; centered; fully visible; 3/4 isometric; warm-gray studio background; unique silhouette/roof/massing/facade/entrance/window language; function readable without text; no same-house recolor; no people. 
+- `V` = ONE isolated stylized 3D vehicle; approved props/vehicles reference attached; centered; fully visible; 3/4 isometric; wheels/body/underside readable; painted metal/rubber/glass materials; chunky, simplified, no mechanical clutter. 
+- `N` = ONE isolated stylized 3D nature asset; approved style reference attached; centered; fully visible; trunk/base/ground contact visible; large readable foliage masses; no noisy leaf realism. 
+- `F` = ONE isolated stylized 3D food asset; approved style reference attached; centered; fully visible; appetizing simplified shape/material; no photoreal food, wax or clay. 
+- `M` = ONE isolated modular environment/infrastructure asset; approved reference attached; centered; fully visible; clear connection edges; stable construction; no merged scenery. 
+- `G` = ONE isolated functional tabletop/game component; approved reference attached; centered; fully visible; strong silhouette; stable footprint; readable at 100–150px; no decorative clutter. 
+
+## FIVE-GAME REUSE MAP
+Shared: Dice AST-251; Trophy AST-256; Turn AST-260; Coin GAM-297; Star AST-254; Pawn AST-252.
+Ludo: Finish AST-257; Safe AST-258; Yard GAM-298. Caro: Berry GAM-299; Leaf AST-253. Journey: Start GAM-300; Finish GAM-301; Suitcase GAM-302. Chess: GAM-303..308. Tycoon: Coin GAM-297; Ownership GAM-309; Star AST-254; Topper GAM-310; Pawn AST-252; Treasury GAM-311; Plaza AST-285.
+
+## READY-GEN LIST
+Format: `[ ] ID | Name | Category | T | ITEM`
+- [ ] CHR-001 | Miko Rabbit | Character / Avatar | C | cream rabbit with long ears, cheerful face, teal short-sleeve tunic over simple beige shorts, clean cuffs, simple shoes.
+- [ ] CHR-002 | Poppy Bear | Character / Avatar | C | warm brown teddy bear, friendly face, mustard shirt and forest-green overalls, simple shoes.
+- [ ] CHR-003 | Milo Dog | Character / Avatar | C | golden puppy with floppy ears, blue shirt and tan overalls, simple shoes.
+- [ ] CHR-004 | Lumi Cat | Character / Avatar | C | lavender cat with rounded cheeks, coral shirt and cream overalls, simple shoes.
+- [ ] CHR-005 | Finn Fox | Character / Avatar | C | orange fox with white muzzle and tail tip, moss-green shirt and brown shorts, simple shoes.
+- [ ] CHR-006 | Pip Hedgehog | Character / Avatar | C | cute hedgehog with soft brown spines, sage shirt and warm cream overalls, simple shoes.
+- [ ] CHR-007 | Nori Duck | Character / Avatar | C | yellow duck with orange beak, dusty-blue shirt and tan overalls, simple shoes.
+- [ ] CHR-008 | Clover Lamb | Character / Avatar | C | soft white lamb with fluffy head, leaf-green shirt and muted red shorts, simple shoes.
+- [ ] CHR-009 | Toby Puppy | Character / Avatar | C | cream-and-brown puppy with perked ears, tomato-red shirt and denim-blue overalls, simple shoes.
+- [ ] CHR-010 | Koko Koala | Character / Avatar | C | gray koala with round ears, eucalyptus-green shirt and oatmeal overalls, simple shoes.
+- [ ] CHR-011 | Bao Panda | Character / Avatar | C | black-and-white panda, olive shirt and warm beige overalls, simple shoes.
+- [ ] CHR-012 | Otti Otter | Character / Avatar | C | brown otter with pale belly, seafoam shirt and rust shorts, simple shoes.
+- [ ] CHR-013 | Hazel Deer | Character / Avatar | C | light brown deer with tiny antlers, berry-red shirt and cream shorts, simple shoes.
+- [ ] CHR-014 | Remy Raccoon | Character / Avatar | C | gray raccoon with striped tail, navy shirt and khaki overalls, simple shoes.
+- [ ] CHR-015 | Sora Squirrel | Character / Avatar | C | reddish squirrel with fluffy tail, sunflower-yellow shirt and green shorts, simple shoes.
+- [ ] CHR-016 | Bibi Frog | Character / Avatar | C | soft green frog with big eyes, dusty coral shirt and tan shorts, simple shoes.
+- [ ] CHR-017 | Runa Red Panda | Character / Avatar | C | red panda with ringed tail, teal shirt and cocoa-brown overalls, simple shoes.
+- [ ] CHR-018 | Mochi Mouse | Character / Avatar | C | small gray mouse with pink ears, lilac shirt and cream shorts, simple shoes.
+- [ ] CHR-019 | Peaches Piglet | Character / Avatar | C | pink piglet with tiny snout, mint shirt and terracotta overalls, simple shoes.
+- [ ] CHR-020 | Olive Owl | Character / Avatar | C | rounded owl character with soft olive feathers, cream shirt and sage shorts, simple shoes, anthropomorphic wings treated like simple arms for T-pose.
+- [ ] AST-001 | Wooden Crate | Shared Props | A | rustic wooden crate with rounded edges, readable plank construction, clean stylized proportions.
+- [ ] AST-002 | Wooden Barrel | Shared Props | A | cozy wooden barrel with metal bands simplified into friendly stylized shapes.
+- [ ] AST-003 | Garden Bench | Shared Props | A | simple outdoor wooden bench with curved supports and cozy park feel.
+- [ ] AST-004 | Produce Basket | Shared Props | A | wicker basket filled with mixed produce, readable and tidy composition.
+- [ ] AST-005 | Hand Cart | Shared Props | A | small rustic wooden hand cart with two wheels and pull handle.
+- [ ] AST-006 | Parcel Box | Shared Props | A | cute twine-tied parcel box suitable for delivery gameplay.
+- [ ] AST-007 | Firefly Jar | Shared Props | A | glass jar containing warm glowing fireflies and cork lid.
+- [ ] AST-008 | Village Signpost | Shared Props | A | wooden directional signpost with two blank sign arms.
+- [ ] AST-009 | Flower Planter | Shared Props | A | wooden planter box overflowing with simple colorful flowers.
+- [ ] AST-010 | Lantern Post | Shared Props | A | short wooden lantern post with cozy glowing lamp.
+- [ ] AST-011 | Oak Tree | Nature / Trees | N | broad leafy oak tree with chunky trunk and rounded crown.
+- [ ] AST-012 | Maple Tree | Nature / Trees | N | stylized maple tree with fuller layered canopy and soft autumn hint.
+- [ ] AST-013 | Pine Tree | Nature / Trees | N | layered conical pine tree with chunky branches.
+- [ ] AST-014 | Apple Tree | Nature / Trees | N | fruit tree with rounded canopy and a few visible red apples.
+- [ ] AST-015 | Pear Tree | Nature / Trees | N | pear tree with slightly upright form and a few visible pears.
+- [ ] AST-016 | Willow Tree | Nature / Trees | N | graceful weeping willow with hanging leafy strands.
+- [ ] AST-017 | Birch Tree | Nature / Trees | N | slender birch with pale trunk and light leafy crown.
+- [ ] AST-018 | Sakura Tree | Nature / Trees | N | pink blossom tree with elegant branching and rounded bloom masses.
+- [ ] AST-019 | Lantern Tree | Nature / Trees | N | festival tree with a few hanging lanterns integrated naturally into branches.
+- [ ] AST-020 | Twisted Old Tree | Nature / Trees | N | gnarled old tree with twisting trunk and storybook silhouette.
+- [ ] AST-021 | Flower Bush Cluster | Nature / Ground Cover | N | compact flowering bush cluster with rounded forms.
+- [ ] AST-022 | Hydrangea Bush | Nature / Ground Cover | N | bushy hydrangea with oversized readable blooms.
+- [ ] AST-023 | Rose Hedge | Nature / Ground Cover | N | short rose hedge with clean trimmed form and visible blossoms.
+- [ ] AST-024 | Lavender Patch | Nature / Ground Cover | N | low patch of lavender spikes in a neat clump.
+- [ ] AST-025 | Wildflower Ground Patch | Nature / Ground Cover | N | small ground patch covered in mixed meadow flowers.
+- [ ] AST-026 | Mushroom Cluster | Nature / Ground Cover | N | cute forest mushroom cluster with a little moss.
+- [ ] AST-027 | Reed & Cattail Clump | Nature / Ground Cover | N | waterside reeds and cattails in one clump.
+- [ ] AST-028 | Rock & Moss Cluster | Nature / Ground Cover | N | small decorative rock cluster with soft moss.
+- [ ] AST-029 | Grass Tuft Patch | Nature / Ground Cover | N | simple patch of layered grass tufts.
+- [ ] AST-030 | Lily Pond Edge Patch | Nature / Ground Cover | N | small waterside edge patch with lily leaves and tiny flowers.
+- [ ] AST-031 | Sourdough Loaf | Food / Market Goods | F | golden rustic sourdough loaf with gentle scoring.
+- [ ] AST-032 | Croissant Basket | Food / Market Goods | F | wicker basket filled with buttery croissants.
+- [ ] AST-033 | Apple Basket | Food / Market Goods | F | basket of shiny red and green apples.
+- [ ] AST-034 | Strawberry Basket | Food / Market Goods | F | basket of fresh strawberries with leaves visible.
+- [ ] AST-035 | Cheese Wheel | Food / Market Goods | F | large village cheese wheel with a small wedge cut.
+- [ ] AST-036 | Milk Bottle Trio | Food / Market Goods | F | group of three glass milk bottles in a small carrier.
+- [ ] AST-037 | Fish Basket | Food / Market Goods | F | wicker basket containing fresh stylized fish.
+- [ ] AST-038 | Carrot Bundle | Food / Market Goods | F | bundle of carrots tied together with leafy tops.
+- [ ] AST-039 | Honey Jar | Food / Market Goods | F | clear honey jar with warm amber honey and fabric lid.
+- [ ] AST-040 | Pumpkin | Food / Market Goods | F | single plump pumpkin with stem and soft color variation.
+- [ ] AST-041 | Egg Crate | Food / Protein & Greens | F | wooden or cardboard crate of farm eggs.
+- [ ] AST-042 | Raw Steak | Food / Protein & Greens | F | butcher-paper wrapped raw steak presented as a clean stylized asset.
+- [ ] AST-043 | Ham Shank | Food / Protein & Greens | F | smoked ham shank with bone end and simple garnish.
+- [ ] AST-044 | Sausage Bundle | Food / Protein & Greens | F | bundle of linked sausages tied with string.
+- [ ] AST-045 | Lettuce Head | Food / Protein & Greens | F | crisp green lettuce head with layered leaves.
+- [ ] AST-046 | Cabbage | Food / Protein & Greens | F | chunky cabbage with wrapped leaf structure.
+- [ ] AST-047 | Broccoli Cluster | Food / Protein & Greens | F | broccoli crown or cluster with thick stem.
+- [ ] AST-048 | Scallion Bundle | Food / Protein & Greens | F | bundle of scallions tied together.
+- [ ] AST-049 | Cucumber Basket | Food / Protein & Greens | F | small basket filled with cucumbers.
+- [ ] AST-050 | Bok Choy Bunch | Food / Protein & Greens | F | fresh bok choy bunch with readable leaf and stem shapes.
+- [ ] AST-051 | Cruiser Bicycle | Vehicles / Road | V | retro village bicycle with flower basket.
+- [ ] AST-052 | Cargo Tricycle | Vehicles / Road | V | small front-box cargo tricycle for deliveries.
+- [ ] AST-053 | Vintage Scooter | Vehicles / Road | V | cute retro scooter with simple rounded body.
+- [ ] AST-054 | Mini Pickup | Vehicles / Road | V | compact village pickup truck with friendly rounded shape.
+- [ ] AST-055 | Parcel Van | Vehicles / Road | V | small delivery van with parcel branding shapes but no text.
+- [ ] AST-056 | Microcar | Vehicles / Road | V | tiny two-door microcar with charming proportions.
+- [ ] AST-057 | Family Hatchback | Vehicles / Road | V | compact family hatchback, cozy and rounded.
+- [ ] AST-058 | Luxury Sedan | Vehicles / Road | V | stylized premium sedan, elegant but still cute and simplified.
+- [ ] AST-059 | Camper Van | Vehicles / Road | V | small adventure camper van with roof luggage box.
+- [ ] AST-060 | Farm Tractor | Vehicles / Road | V | friendly compact farm tractor with chunky tires.
+- [ ] AST-061 | Shuttle Bus | Vehicles / Mixed Transit | V | small shuttle bus with panoramic windows.
+- [ ] AST-062 | Tourist Tram Train | Vehicles / Mixed Transit | V | mini tourist road train with locomotive and one carriage.
+- [ ] AST-063 | Fishing Boat | Vehicles / Mixed Transit | V | small coastal fishing boat with cabin.
+- [ ] AST-064 | Sailboat | Vehicles / Mixed Transit | V | graceful small sailboat with single mast and furled sail.
+- [ ] AST-065 | Luxury Cruise Boat | Vehicles / Mixed Transit | V | compact luxury sightseeing cruiser.
+- [ ] AST-066 | Harbor Ferry | Vehicles / Mixed Transit | V | short-range ferry boat with passenger cabin.
+- [ ] AST-067 | River Paddle Boat | Vehicles / Mixed Transit | V | charming leisure paddle boat for lake tourism.
+- [ ] AST-068 | Funicular Cabin | Vehicles / Mixed Transit | V | mountain funicular rail cabin.
+- [ ] AST-069 | Gondola Cabin | Vehicles / Mixed Transit | V | mountain cable-car gondola cabin.
+- [ ] AST-070 | Sightseeing Coach | Vehicles / Mixed Transit | V | comfortable long-distance tourist coach bus.
+- [ ] AST-071 | Town Hall | Buildings / Civic | B | welcoming town hall with civic porch and central entrance.
+- [ ] AST-072 | Railway Station | Buildings / Civic | B | compact railway station with clear passenger entry and platform canopy.
+- [ ] AST-073 | Town Library | Buildings / Civic | B | quiet library building with readable scholarly silhouette.
+- [ ] AST-074 | Village Clinic | Buildings / Civic | B | small clinic building with clean caring design language.
+- [ ] AST-075 | Postal Depot | Buildings / Civic | B | postal depot building for sorting and dispatch.
+- [ ] AST-076 | Market Hall | Buildings / Civic | B | covered public market hall with open arch feel.
+- [ ] AST-077 | Museum Hall | Buildings / Civic | B | small museum building with memorable cultural silhouette.
+- [ ] AST-078 | Fire Station | Buildings / Civic | B | compact fire station with vehicle bay and bell tower hint.
+- [ ] AST-079 | Schoolhouse | Buildings / Civic | B | friendly small schoolhouse with clear front doorway.
+- [ ] AST-080 | Community Center | Buildings / Civic | B | multi-use community hall for local events.
+- [ ] AST-081 | Storybook Cottage | Buildings / Residential | B | small storybook cottage with charming chimney.
+- [ ] AST-082 | Tall Narrow Townhouse | Buildings / Residential | B | vertical townhouse with compact urban footprint.
+- [ ] AST-083 | Seaside Boathouse Home | Buildings / Residential | B | home integrated with a cozy waterside boathouse.
+- [ ] AST-084 | Hilltop A-Frame House | Buildings / Residential | B | triangular A-frame home with large front window.
+- [ ] AST-085 | Courtyard Patio House | Buildings / Residential | B | Mediterranean-inspired patio house massing.
+- [ ] AST-086 | Canal House | Buildings / Residential | B | slender canal-side house with distinct facade.
+- [ ] AST-087 | Farmhouse Residence | Buildings / Residential | B | classic farmhouse home with porch.
+- [ ] AST-088 | Alpine Chalet House | Buildings / Residential | B | mountain chalet residence with timber feel.
+- [ ] AST-089 | Garden Villa House | Buildings / Residential | B | compact garden villa with soft refined silhouette.
+- [ ] AST-090 | Windmill Home | Buildings / Residential | B | home integrated with a small decorative windmill structure.
+- [ ] AST-091 | Bakery Shop | Buildings / Shops | B | bakery with oven-house silhouette and bread display cues.
+- [ ] AST-092 | Produce Market Shop | Buildings / Shops | B | fresh produce shop with open-front market character.
+- [ ] AST-093 | Fish Market Shop | Buildings / Shops | B | fish market building with coastal vendor identity.
+- [ ] AST-094 | Flower Shop | Buildings / Shops | B | flower shop with greenhouse touch and floral display.
+- [ ] AST-095 | Butcher Shop | Buildings / Shops | B | butcher shop with strong readable storefront identity.
+- [ ] AST-096 | Tailor Shop | Buildings / Shops | B | tailor and cloth shop with fabric-inspired facade.
+- [ ] AST-097 | Bookshop | Buildings / Shops | B | bookshop cottage with cozy literary silhouette.
+- [ ] AST-098 | Apothecary Shop | Buildings / Shops | B | herbal apothecary with bottles-and-herbs personality.
+- [ ] AST-099 | General Store | Buildings / Shops | B | all-purpose general store with village service feel.
+- [ ] AST-100 | Blacksmith Shop | Buildings / Shops | B | blacksmith forge with chimney and smithing canopy.
+- [ ] AST-101 | Toy Shop | Buildings / Shops | B | playful toy shop with whimsical but readable silhouette.
+- [ ] AST-102 | Pet Shop | Buildings / Shops | B | pet supply shop with welcoming storefront.
+- [ ] AST-103 | Laundry Shop | Buildings / Shops | B | laundry and cleaning service shop, bright and simple.
+- [ ] AST-104 | Post Office Shop | Buildings / Shops | B | retail post office branch with parcel counter vibe.
+- [ ] AST-105 | Restaurant Cottage | Buildings / Shops | B | cozy restaurant cottage with dining-house silhouette.
+- [ ] AST-106 | Convenience Shop | Buildings / Shops | B | small corner convenience store with clear accessibility.
+- [ ] AST-107 | Ice Cream Shop | Buildings / Shops | B | sweet ice-cream shop with playful roofline.
+- [ ] AST-108 | Barber Shop | Buildings / Shops | B | barber shop with classic trim silhouette.
+- [ ] AST-109 | Tea House | Buildings / Shops | B | calm tea house with inviting entry and soft roofline.
+- [ ] AST-110 | Sweet Shop | Buildings / Shops | B | candy and dessert shop with cheerful storefront.
+- [ ] AST-111 | Music Shop | Buildings / Shops | B | music shop with instrument-display character.
+- [ ] AST-112 | Pottery Workshop | Buildings / Shops | B | pottery studio and kiln workshop building.
+- [ ] AST-113 | Art Supply Shop | Buildings / Shops | B | creative art materials shop with display windows.
+- [ ] AST-114 | Watch Repair Shop | Buildings / Shops | B | tiny precision repair shop with distinctive identity.
+- [ ] AST-115 | Candle Shop | Buildings / Shops | B | candle-making boutique with warm glow personality.
+- [ ] AST-116 | Cheese Shop | Buildings / Shops | B | specialty cheese store with rustic dairy vibe.
+- [ ] AST-117 | Garden Supply Shop | Buildings / Shops | B | garden tools and plants supply store.
+- [ ] AST-118 | Outdoor Outfitters Shop | Buildings / Shops | B | hiking and outdoors gear shop.
+- [ ] AST-119 | Plant Nursery Shop | Buildings / Shops | B | small plant nursery storefront with potted plant displays.
+- [ ] AST-120 | Souvenir Shop | Buildings / Shops | B | tourist souvenir gift shop, cute and readable.
+- [ ] AST-121 | Cobblestone Road Tile | Infrastructure / Transit | M | straight modular cobblestone roadway tile.
+- [ ] AST-122 | Road Curve Tile | Infrastructure / Transit | M | curved modular road tile matching the same road kit.
+- [ ] AST-123 | Crossroad Tile | Infrastructure / Transit | M | four-way crossroad modular tile.
+- [ ] AST-124 | Sidewalk Curb Tile | Infrastructure / Transit | M | modular sidewalk curb segment with stone edging.
+- [ ] AST-125 | Railway Track Straight | Infrastructure / Transit | M | straight modular railway track piece.
+- [ ] AST-126 | Railway Track Curved | Infrastructure / Transit | M | curved modular railway track piece.
+- [ ] AST-127 | Railroad Crossing | Infrastructure / Transit | M | road-rail crossing module with clear safety pattern.
+- [ ] AST-128 | Stone Staircase Module | Infrastructure / Transit | M | modular outdoor stone staircase.
+- [ ] AST-129 | Bus Stop Shelter | Infrastructure / Transit | M | simple bus stop shelter with bench.
+- [ ] AST-130 | Train Platform Module | Infrastructure / Transit | M | small train station platform section with canopy.
+- [ ] AST-131 | EV Charging Station | Infrastructure / Urban Services | M | cute public electric vehicle charging station.
+- [ ] AST-132 | Bike Sharing Station | Infrastructure / Urban Services | M | dock station with several share bikes.
+- [ ] AST-133 | Transit Ticket Kiosk | Infrastructure / Urban Services | M | public ticket kiosk for transit purchase.
+- [ ] AST-134 | Parcel Locker Kiosk | Infrastructure / Urban Services | M | self-service parcel locker station.
+- [ ] AST-135 | Tourist Information Kiosk | Infrastructure / Urban Services | M | visitor help kiosk with map panel.
+- [ ] AST-136 | Recycling Station | Infrastructure / Urban Services | M | separated recycling bin station with neat cover.
+- [ ] AST-137 | Park Restroom Hut | Infrastructure / Urban Services | M | small outdoor public restroom hut.
+- [ ] AST-138 | Utility Cabinet | Infrastructure / Urban Services | M | street-side utility cabinet or service box.
+- [ ] AST-139 | Fire Hydrant Service Point | Infrastructure / Urban Services | M | fire hydrant paired with hose cabinet.
+- [ ] AST-140 | Public Meter Cluster | Infrastructure / Urban Services | M | compact cluster of urban utility meters or service posts.
+- [ ] AST-141 | Harbor Dock Corner | Infrastructure / Harbor & Mountain | M | corner piece of wooden harbor dock.
+- [ ] AST-142 | Harbor Crane | Infrastructure / Harbor & Mountain | M | small harbor loading crane with cozy stylization.
+- [ ] AST-143 | Navigation Buoy | Infrastructure / Harbor & Mountain | M | bright harbor navigation buoy.
+- [ ] AST-144 | Ferry Gate | Infrastructure / Harbor & Mountain | M | boarding gate for a small ferry terminal.
+- [ ] AST-145 | Harbor Gangway Ramp | Infrastructure / Harbor & Mountain | M | boarding gangway or dock ramp.
+- [ ] AST-146 | Cable Car Station | Infrastructure / Harbor & Mountain | M | mountain cable-car station module.
+- [ ] AST-147 | Cable Car Tower | Infrastructure / Harbor & Mountain | M | tower support for aerial cable-car line.
+- [ ] AST-148 | Mountain Railway Tunnel | Infrastructure / Harbor & Mountain | M | mountain tunnel portal for rail or funicular.
+- [ ] AST-149 | Mountain Lookout Platform | Infrastructure / Harbor & Mountain | M | scenic outdoor lookout platform.
+- [ ] AST-150 | Avalanche Fence | Infrastructure / Harbor & Mountain | M | alpine snow fence / avalanche protection barrier.
+- [ ] AST-151 | Garden Gazebo | Outdoor Leisure | A | octagonal garden gazebo with cozy roof.
+- [ ] AST-152 | Playground Tower | Outdoor Leisure | A | child-friendly playground tower with slide-ready structure.
+- [ ] AST-153 | Swing Set | Outdoor Leisure | A | double swing set for park play.
+- [ ] AST-154 | Picnic Pavilion | Outdoor Leisure | A | covered wooden picnic pavilion.
+- [ ] AST-155 | Garden Café Kiosk | Outdoor Leisure | A | small outdoor refreshment kiosk for parks.
+- [ ] AST-156 | Pergola Bench | Outdoor Leisure | A | bench under pergola or trellis structure.
+- [ ] AST-157 | Outdoor Chess Table | Outdoor Leisure | A | outdoor chess table set with board and seats.
+- [ ] AST-158 | Festival Stage | Outdoor Leisure | A | small open-air community festival stage.
+- [ ] AST-159 | Garden Footbridge | Outdoor Leisure | A | small arched decorative garden footbridge.
+- [ ] AST-160 | Skate Ramp | Outdoor Leisure | A | compact park skate ramp module.
+- [ ] AST-161 | Basketball Half Court | Sports & Recreation | A | stylized outdoor basketball half-court module.
+- [ ] AST-162 | Mini Soccer Goal Turf | Sports & Recreation | A | small soccer goal with turf patch.
+- [ ] AST-163 | Beach Volleyball Court | Sports & Recreation | A | compact sand volleyball court module.
+- [ ] AST-164 | Table Tennis Setup | Sports & Recreation | A | outdoor ping-pong table with two paddles.
+- [ ] AST-165 | Mini Golf Hole | Sports & Recreation | A | single whimsical mini-golf feature hole.
+- [ ] AST-166 | Tennis Practice Wall | Sports & Recreation | A | practice wall and mini court area.
+- [ ] AST-167 | Batting Cage | Sports & Recreation | A | simple batting cage practice enclosure.
+- [ ] AST-168 | Calisthenics Rig | Sports & Recreation | A | outdoor workout rig with bars.
+- [ ] AST-169 | Climbing Wall | Sports & Recreation | A | outdoor boulder-climbing wall module.
+- [ ] AST-170 | Archery Range | Sports & Recreation | A | single-lane archery practice range module.
+- [ ] AST-171 | Wooden Pier Segment | Harbor / Props | A | modular wooden pier section.
+- [ ] AST-172 | Mooring Bollard | Harbor / Props | A | dockside mooring bollard for boats.
+- [ ] AST-173 | Life Ring Stand | Harbor / Props | A | lifesaver ring mounted on a harbor stand.
+- [ ] AST-174 | Harbor Lamp Post | Harbor / Props | A | nautical harbor lamp post.
+- [ ] AST-175 | Boat Fuel Pump | Harbor / Props | A | small dockside marine fuel pump.
+- [ ] AST-176 | Dock Rope Coil | Harbor / Props | A | coiled rope pile for marina use.
+- [ ] AST-177 | Fishing Net Stack | Harbor / Props | A | stack of fishing nets with float accents.
+- [ ] AST-178 | Marina Finger Dock | Harbor / Props | A | narrow side dock finger segment.
+- [ ] AST-179 | Lobster Trap Pile | Harbor / Props | A | pile of stylized lobster or crab traps.
+- [ ] AST-180 | Fish Cleaning Table | Harbor / Props | A | harbor utility cleaning table module.
+- [ ] AST-181 | Hay Bale Stack | Farm / Props | A | stack of straw hay bales.
+- [ ] AST-182 | Chicken Coop | Farm / Props | A | small backyard chicken coop.
+- [ ] AST-183 | Raised Garden Bed | Farm / Props | A | rectangular raised garden bed with soil.
+- [ ] AST-184 | Scarecrow | Farm / Props | A | friendly field scarecrow character prop.
+- [ ] AST-185 | Water Trough | Farm / Props | A | farm water trough for animals.
+- [ ] AST-186 | Orchard Ladder | Farm / Props | A | portable orchard picking ladder.
+- [ ] AST-187 | Tool Shed | Farm / Props | A | small outdoor farm tool shed.
+- [ ] AST-188 | Greenhouse Module | Farm / Props | A | compact greenhouse module for crops.
+- [ ] AST-189 | Feed Sacks Stack | Farm / Props | A | stack of animal feed sacks.
+- [ ] AST-190 | Wheelbarrow | Farm / Props | A | garden and farm wheelbarrow.
+- [ ] AST-191 | String Lantern Arch | Festival / Event | A | decorative entry arch with hanging lanterns.
+- [ ] AST-192 | Festival Booth Stall | Festival / Event | A | modular festival booth or game stall.
+- [ ] AST-193 | Bunting Pole Set | Festival / Event | A | set of poles connected by bunting flags.
+- [ ] AST-194 | Picnic Blanket Setup | Festival / Event | A | cozy picnic blanket with basket and snacks.
+- [ ] AST-195 | Fireworks Cart | Festival / Event | A | small festival fireworks or sparkler cart.
+- [ ] AST-196 | Photo Booth Kiosk | Festival / Event | A | outdoor photo-booth prop.
+- [ ] AST-197 | Speaker Stack | Festival / Event | A | portable speaker stack for community events.
+- [ ] AST-198 | Ticket Booth | Festival / Event | A | small admission or fair ticket booth.
+- [ ] AST-199 | Balloon Cart | Festival / Event | A | push cart loaded with balloons.
+- [ ] AST-200 | Confetti Cannon Prop | Festival / Event | A | cartoon-safe celebration confetti launcher prop.
+- [ ] AST-201 | Fruit Stall Cart | Market / Props | A | rolling fruit vendor cart.
+- [ ] AST-202 | Bread Stall Cart | Market / Props | A | bread and pastry vendor cart.
+- [ ] AST-203 | Flower Stall Cart | Market / Props | A | flower-selling push cart.
+- [ ] AST-204 | Fish Stall Counter | Market / Props | A | fish-selling market counter.
+- [ ] AST-205 | Hot Drink Cart | Market / Props | A | tea or coffee drink cart.
+- [ ] AST-206 | Ice Cream Cart | Market / Props | A | small street ice-cream cart.
+- [ ] AST-207 | Newspaper Stand | Market / Props | A | street newspaper and magazine stand.
+- [ ] AST-208 | Souvenir Rack | Market / Props | A | rotating or tiered souvenir display rack.
+- [ ] AST-209 | Postcard Stand | Market / Props | A | simple rotating postcard display.
+- [ ] AST-210 | Umbrella Stand | Market / Props | A | street shade umbrella stand for vendors.
+- [ ] AST-211 | Picnic Table | Furniture / Outdoor | A | classic outdoor picnic table with benches.
+- [ ] AST-212 | Round Café Table Set | Furniture / Outdoor | A | small round table with two café chairs.
+- [ ] AST-213 | Long Park Bench | Furniture / Outdoor | A | long public park bench with backrest.
+- [ ] AST-214 | Porch Swing | Furniture / Outdoor | A | hanging porch swing seat.
+- [ ] AST-215 | Adirondack Chair | Furniture / Outdoor | A | cozy outdoor lounge chair.
+- [ ] AST-216 | Sun Lounger | Furniture / Outdoor | A | relaxing sun lounger for resort areas.
+- [ ] AST-217 | Wood Dining Table | Furniture / Outdoor | A | rectangular outdoor dining table.
+- [ ] AST-218 | Patio Chair Pair | Furniture / Outdoor | A | matching pair of patio chairs.
+- [ ] AST-219 | Outdoor Sofa Set | Furniture / Outdoor | A | compact outdoor sofa and low table set.
+- [ ] AST-220 | Hammock Stand | Furniture / Outdoor | A | freestanding hammock with fabric sling.
+- [ ] AST-221 | Directional Village Sign | UI World Props / Signage | A | clustered multi-arrow wayfinding sign.
+- [ ] AST-222 | Shop Hanging Sign Blank | UI World Props / Signage | A | blank hanging shop sign with decorative bracket.
+- [ ] AST-223 | A-Frame Chalkboard Sign | UI World Props / Signage | A | simple portable A-frame board.
+- [ ] AST-224 | Trailhead Map Board | UI World Props / Signage | A | map board for hiking or park trails.
+- [ ] AST-225 | Station Departure Board | UI World Props / Signage | A | stylized timetable board for transit station.
+- [ ] AST-226 | Harbor Warning Sign | UI World Props / Signage | A | safety warning sign for harbor edge.
+- [ ] AST-227 | Road Detour Sign | UI World Props / Signage | A | cute construction or detour sign.
+- [ ] AST-228 | Welcome Arch Sign | UI World Props / Signage | A | large welcoming archway sign.
+- [ ] AST-229 | Number Plaque Set | UI World Props / Signage | A | small door and room number plaque set.
+- [ ] AST-230 | Menu Board Stand | UI World Props / Signage | A | standing menu board for cafés or restaurants.
+- [ ] AST-231 | Streetlamp Single | Utility / Lighting | A | single-post streetlamp with warm light.
+- [ ] AST-232 | Streetlamp Twin Lantern | Utility / Lighting | A | double-lantern streetlight.
+- [ ] AST-233 | Garden Bollard Light | Utility / Lighting | A | short garden path bollard light.
+- [ ] AST-234 | String Lights Set | Utility / Lighting | A | span of festive hanging string lights.
+- [ ] AST-235 | Wall Lamp | Utility / Lighting | A | wall-mounted exterior lamp fixture.
+- [ ] AST-236 | Signal Beacon | Utility / Lighting | A | small flashing signal beacon post.
+- [ ] AST-237 | Power Pole | Utility / Lighting | A | simple local utility power pole.
+- [ ] AST-238 | Transformer Box | Utility / Lighting | A | compact transformer or electrical box.
+- [ ] AST-239 | Water Pump | Utility / Lighting | A | manual outdoor water pump or hydrant-style pump.
+- [ ] AST-240 | Mailbox Cluster | Utility / Lighting | A | grouped neighborhood mailbox unit.
+- [ ] AST-241 | Picket Fence Straight | Environment Boundaries | A | straight picket fence segment.
+- [ ] AST-242 | Picket Fence Corner | Environment Boundaries | A | corner segment for picket fence kit.
+- [ ] AST-243 | Stone Garden Wall | Environment Boundaries | A | low stone wall segment.
+- [ ] AST-244 | Ranch Fence | Environment Boundaries | A | wood ranch-style fence segment.
+- [ ] AST-245 | Iron Fence Segment | Environment Boundaries | A | ornamental iron fence segment.
+- [ ] AST-246 | Arched Garden Gate | Environment Boundaries | A | decorative arched pedestrian gate.
+- [ ] AST-247 | Farm Gate | Environment Boundaries | A | wide wooden or metal farm gate.
+- [ ] AST-248 | Harbor Railing Segment | Environment Boundaries | A | dock or harbor railing section.
+- [ ] AST-249 | Retaining Wall Segment | Environment Boundaries | A | stone retaining wall module.
+- [ ] AST-250 | Hedge Fence Segment | Environment Boundaries | A | trimmed hedge fence section.
+- [ ] AST-251 | Six-Sided Die | Board Game / Components | G | single rounded cozy die with friendly pips.
+- [ ] AST-252 | Wooden Pawn Token | Board Game / Components | G | simple wooden pawn game piece.
+- [ ] AST-253 | Leaf Emblem Token | Board Game / Components | G | flat token featuring leaf emblem.
+- [ ] AST-254 | Star Token | Board Game / Components | G | flat or chunky star scoring token.
+- [ ] AST-255 | Animal Head Token | Board Game / Components | G | cute animal-head shaped player marker.
+- [ ] AST-256 | Trophy Cup | Board Game / Components | G | small victory cup or reward trophy.
+- [ ] AST-257 | Shrine Goal Marker | Board Game / Components | G | mini shrine or pavilion goal marker.
+- [ ] AST-258 | Flower Tile Marker | Board Game / Components | G | flower-shaped tile or move marker.
+- [ ] AST-259 | Score Bowl | Board Game / Components | G | small bowl used to hold score tokens.
+- [ ] AST-260 | Turn Arrow Marker | Board Game / Components | G | arrow marker used to indicate current turn.
+- [ ] AST-261 | Small Chapel | Culture / Education | A | small community chapel or prayer hall.
+- [ ] AST-262 | Cinema Marquee | Culture / Education | A | compact art-deco cinema building.
+- [ ] AST-263 | Observatory | Culture / Education | A | small local observatory with dome.
+- [ ] AST-264 | Pottery Kiln Yard | Culture / Education | A | pottery kiln building with sheltered work area.
+- [ ] AST-265 | Outdoor Classroom Pergola | Culture / Education | A | teaching pergola with open-air educational use.
+- [ ] AST-266 | Reading Nook Kiosk | Culture / Education | A | tiny reading kiosk or little free library pavilion.
+- [ ] AST-267 | Art Pavilion | Culture / Education | A | small gallery or art pavilion structure.
+- [ ] AST-268 | Public Piano Spot | Culture / Education | A | decorative outdoor piano pavilion.
+- [ ] AST-269 | Exhibition Board Set | Culture / Education | A | curated exhibition display board set for culture areas.
+- [ ] AST-270 | Storytelling Circle Platform | Culture / Education | A | raised storytelling or performance circle platform.
+- [ ] AST-271 | Boutique Hotel | Tourism / Hospitality | A | small boutique hotel with welcoming entry canopy.
+- [ ] AST-272 | Seaside Resort | Tourism / Hospitality | A | compact coastal resort building.
+- [ ] AST-273 | Alpine Lodge | Tourism / Hospitality | A | mountain lodge for visitors.
+- [ ] AST-274 | Campsite Entrance | Tourism / Hospitality | A | formal campsite entry building or booth.
+- [ ] AST-275 | Glamping Tent Set | Tourism / Hospitality | A | premium glamping tent asset as hospitality unit.
+- [ ] AST-276 | Yacht Club Marina | Tourism / Hospitality | A | yacht club or marina clubhouse building.
+- [ ] AST-277 | Ferry Terminal | Tourism / Hospitality | A | passenger ferry terminal building.
+- [ ] AST-278 | Visitor Center | Tourism / Hospitality | A | tourist visitor center building.
+- [ ] AST-279 | Hot Spring Bathhouse | Tourism / Hospitality | A | onsen-like public bathhouse building.
+- [ ] AST-280 | Roadside Motel | Tourism / Hospitality | A | simple roadside motel with unique silhouette.
+- [ ] AST-281 | Clock Tower | Landmark / Hero Structures | A | hero landmark clock tower.
+- [ ] AST-282 | Lighthouse | Landmark / Hero Structures | A | coastal lighthouse tower landmark.
+- [ ] AST-283 | Windmill Landmark | Landmark / Hero Structures | A | decorative windmill landmark structure.
+- [ ] AST-284 | Watermill | Landmark / Hero Structures | A | waterside watermill landmark.
+- [ ] AST-285 | Grand Fountain Plaza | Landmark / Hero Structures | A | landmark fountain composition for plazas.
+- [ ] AST-286 | Stone Arch Gateway | Landmark / Hero Structures | A | grand stone arch entry landmark.
+- [ ] AST-287 | Mountain Castle Gate | Landmark / Hero Structures | A | hero castle gate module in cozy style.
+- [ ] AST-288 | Canal Lock Gate | Landmark / Hero Structures | A | navigational canal lock gate structure.
+- [ ] AST-289 | Observation Tower | Landmark / Hero Structures | A | scenic observation tower.
+- [ ] AST-290 | Grand Bridge Portal | Landmark / Hero Structures | A | hero bridge entry portal or monumental abutment.
+- [ ] AST-291 | Sand Dune Patch | Terrain / Ground Modules | M | small modular patch of soft sand dunes.
+- [ ] AST-292 | Rocky Shore Patch | Terrain / Ground Modules | M | ground patch of rocky shoreline.
+- [ ] AST-293 | Forest Floor Patch | Terrain / Ground Modules | M | forest ground patch with leaves and dirt.
+- [ ] AST-294 | Mud Road Tile | Terrain / Ground Modules | M | muddy roadway tile module with puddle accents.
+- [ ] AST-295 | Snowy Path Tile | Terrain / Ground Modules | M | snow-covered path module.
+- [ ] AST-296 | Farmland Crop Row Tile | Terrain / Ground Modules | M | crop-row farmland ground tile module.
+- [ ] GAM-297 | Cozy Coin | Game / Shared Economy | G | a thick collectible game coin with a simple embossed leaf-and-berry emblem, warm satin honey-gold painted metal, crisp manufactured rim, readable at small scale, no denomination text.
+- [ ] GAM-298 | Ludo Yard Socket | Game / Cozy Ludo | G | a shallow circular player-piece socket/base, thick low-profile rim, painted wood plus inset colored enamel ring, designed to hold one board-game pawn without hiding it, clean manufactured tabletop-game construction.
+- [ ] GAM-299 | Caro Berry Token | Game / Cozy Caro | G | a thick round tabletop token with a raised berry emblem, muted coral painted game-piece material with cream accent, crisp rim, flat stable base, visually paired with the existing leaf emblem token.
+- [ ] GAM-300 | Journey Start Arch | Game / Cozy Journey | G | a compact departure arch marking the beginning of a travel board, painted timber posts with teal roof/accent and small leaf motif, chunky stable construction, readable as a start gate from an isometric tabletop camera.
+- [ ] GAM-301 | Journey Festival Destination Pavilion | Game / Cozy Journey | G | a small celebratory destination pavilion with distinct festive roof silhouette, painted timber, teal and coral accents, warm yellow highlight details, open central passage, compact hero landmark suitable for Space 36.
+- [ ] GAM-302 | Journey Travel Suitcase Token | Game / Cozy Journey | G | a chunky miniature travel suitcase used as a player/travel marker, dusty-blue painted hard case, warm leather-like handle and corner accents, simplified sturdy handle, stable flat base.
+- [ ] GAM-303 | Cozy Chess King | Game / Cozy Chess | G | a stylized chess King piece with unmistakable tall king silhouette, broad stable circular base, elegant crown-like top formed as one thick solid shape, painted wood/resin game-piece finish, no thin fragile ornament.
+- [ ] GAM-304 | Cozy Chess Queen | Game / Cozy Chess | G | a stylized chess Queen piece with elegant but clearly distinct queen silhouette, broad stable circular base, rounded crown petals formed as thick geometry, painted wood/resin game-piece finish.
+- [ ] GAM-305 | Cozy Chess Bishop | Game / Cozy Chess | G | a stylized chess Bishop piece with clear tall bishop identity, broad stable base, simplified solid mitre-like top with no fragile slit, painted wood/resin game-piece finish.
+- [ ] GAM-306 | Cozy Chess Knight | Game / Cozy Chess | G | a stylized chess Knight piece with chunky simplified horse-head silhouette, compact neck, broad stable circular base, friendly storybook profile while remaining immediately recognizable as a chess knight.
+- [ ] GAM-307 | Cozy Chess Rook | Game / Cozy Chess | G | a stylized chess Rook piece with strong tower silhouette, chunky crenellated top, broad stable circular base, architectural but simple, painted wood/resin game-piece finish.
+- [ ] GAM-308 | Cozy Chess Pawn | Game / Cozy Chess | G | a stylized chess Pawn with classic rounded head, tapered body and broad circular base, simplest piece in the set, clean proportions matching the other Cozy Chess pieces.
+- [ ] GAM-309 | Tycoon Ownership Base Marker | Game / Cozy Tycoon | G | a low circular property ownership base/ring that can sit beneath a miniature building, neutral cream stone/painted-wood structure with an inset band intended for runtime recolor, low enough not to hide the building.
+- [ ] GAM-310 | Tycoon Development Topper | Game / Cozy Tycoon | G | a small chunky property-development topper that can be placed beside or on a miniature property, stylized roof-and-leaf emblem form, teal painted wood/metal with honey-yellow accent, clear L2 upgrade identity, no text.
+- [ ] GAM-311 | Tycoon Treasury Chest | Game / Cozy Tycoon | G | a compact friendly treasury chest for the board center or economy presentation, warm natural wood body, teal painted metal bands, honey-gold latch, thick sturdy construction, no loose chains or tiny hardware.
+
+## DONE GATE
+- [ ] 20/20 characters; 296/296 base entries; 15/15 extra game entries accepted.
+- [ ] Five-game reuse map fully covered; no checked item drifts from approved reference.
