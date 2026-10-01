@@ -1,86 +1,463 @@
-# G4 — Cozy Chess
+# G4 — Cozy Chess — Full Game Design v1.0
 
-Status: **evergreen strategy mode after Grid Strategy Engine is stable**
+Status: **DESIGN LOCK — fourth production game**
+
+Shared rules/UI: `00_SHARED_GAME_EXPERIENCE_LOCK.md`
+
+## 0. No-invention rule
+
+Implement this ruleset exactly. Do not add chess variants, engines, analysis, hints, timers, puzzles, opening books, ratings, or matchmaking unless this document is revised.
 
 ## 1. Product role
 
-Cozy Chess gives CozyUni one deeper strategy game with almost no bespoke environment requirement.
+Cozy Chess is the deep evergreen strategy game in the first CozyUni collection.
 
-The first version should be standard human-vs-human chess presented in CozyUni style. Do not turn the initial scope into a chess-engine research project.
+The v1 goal is not to create a competitive chess platform. It is a polished, correct, friendly human-vs-human chess game for shared-table and private-room play.
 
 ## 2. Players / modes
 
-- 2 players
-- One Device / Table Mode
-- Room Mode
-- standard human-vs-human first
-- optional clock presets later
-- strong bot/analysis features are separate future work
+- Exactly **2 players**
+- One Device supported
+- Room Mode supported
+- Bots not implemented
+- Public matchmaking not implemented
 
-## 3. Rules
+## 3. Game Start screen
 
-Use standard chess rules:
-- normal piece movement
-- check/checkmate
-- stalemate
-- castling
-- en passant
-- promotion
-- standard draw conditions required by the chosen implementation
+Description:
+`Classic chess with a warm CozyUni table, clear pieces, and easy local or room play.`
 
-Rules should be correct before visual polish.
+No variant selector in v1.
 
-## 4. Target sessions
+## 4. Side assignment
 
-Initial casual presets:
-- **Relaxed** — no clock
-- **Quick** — optional simple per-player timer later
+First match:
+- White/Black assigned uniformly at random
+- White moves first
 
-Do not make timed chess mandatory for family/table play.
+Rematch:
+- sides swap
+- White moves first
 
-## 5. Core loop
+Player avatar identity remains separate from chess side.
 
-1. Select own piece.
-2. Highlight legal destinations.
-3. Select destination.
-4. Resolve move/capture/promotion.
-5. Detect check/end state.
-6. Switch turn.
+## 5. Board
 
-## 6. CozyUni contribution
+- Standard 8×8 board
+- Files `a` through `h`
+- Ranks `1` through `8`
+- White starts on ranks 1–2
+- Black starts on ranks 7–8
+- White queen starts on d1; Black queen on d8
+- a1 is a dark square
 
-Chess itself does not need new gameplay twists to justify inclusion.
+Coordinates are internal game state, not derived from rendered mesh positions.
 
-Value comes from:
-- extremely readable cute 3D set
-- CozyUni avatar/player identity around the board
-- subtle capture/move VFX
-- warm board/table presentation
-- satisfying promotion/check/checkmate feedback
-- fast local or room rematch
+## 6. Standard piece movement
 
-Avoid rule-changing powerups in the standard mode.
+### King
+- one square in any direction
+- may not move into check
+- castling per Section 9
 
-## 7. Board / camera
+### Queen
+- any number of unobstructed squares horizontally, vertically, diagonally
 
-Board should be generated in engine.
+### Rook
+- any number of unobstructed squares horizontally or vertically
 
-Recommended:
-- top-down or low isometric with optional camera flip/rotate
-- square coordinates optionally hidden for casual mode, available when needed
-- strong contrast between board cells and pieces
-- legal-move indicators simple and non-intrusive
-- selected piece clearly elevated/highlighted
+### Bishop
+- any number of unobstructed squares diagonally
 
-One Device mode should offer:
-- fixed neutral orientation, or
-- optional board rotate after each turn
+### Knight
+- L-shaped move: ±2/±1
+- may jump over pieces
 
-Test which is less annoying on a tablet between two people.
+### Pawn
+White:
+- forward toward increasing rank
+Black:
+- forward toward decreasing rank
 
-## 8. AI→3D asset kit
+Pawn rules:
+- one square forward if empty
+- two squares from starting rank only if both intermediate and destination squares are empty
+- capture one square diagonally forward
+- no backward movement
+- en passant per Section 10
+- promotion per Section 11
 
-Only six unique chess archetypes are needed:
+## 7. Legal-move rule
+
+A move is legal only if:
+- piece movement pattern is valid
+- path is clear where required
+- destination is empty or occupied by opponent
+- own king is not left in check after move
+
+A player may not capture their own piece.
+
+King capture is never represented as a legal move; game ends by checkmate before king capture.
+
+## 8. Check / checkmate / stalemate
+
+### Check
+Player is in check when opponent attacks the king square.
+
+HUD must show `CHECK` status immediately after move resolution.
+
+### Checkmate
+If current player is in check and has no legal move:
+- current player loses
+- opponent wins
+- reason: `Checkmate`
+
+### Stalemate
+If current player is not in check and has no legal move:
+- draw
+- reason: `Stalemate`
+
+## 9. Castling
+
+Castling is legal only when all are true:
+- king has never moved
+- corresponding rook has never moved
+- squares between king and rook are empty
+- king is not currently in check
+- king does not pass through an attacked square
+- king does not end on an attacked square
+
+Kingside:
+- king e1->g1 / e8->g8
+- rook h1->f1 / h8->f8
+
+Queenside:
+- king e1->c1 / e8->c8
+- rook a1->d1 / a8->d8
+
+Castling rights are stored explicitly in match state.
+
+## 10. En passant
+
+En passant is available only on the immediately following opponent turn after a pawn advances two squares from its starting rank and lands adjacent to an opposing pawn.
+
+If not used immediately, the right expires.
+
+The captured pawn is removed from the square it passed over.
+
+En-passant legality must still respect self-check rules.
+
+## 11. Promotion
+
+When a pawn reaches the final rank:
+- White reaches rank 8
+- Black reaches rank 1
+
+The moving player must choose exactly one:
+- Queen
+- Rook
+- Bishop
+- Knight
+
+No auto-queen in v1.
+
+Promotion choice UI appears before turn completion.
+
+The promoted piece replaces the pawn on the promotion square.
+
+## 12. Draw rules
+
+V1 uses deterministic casual automatic draw rules.
+
+A draw occurs automatically on:
+1. stalemate
+2. threefold repetition
+3. 50-move rule
+4. insufficient mating material as explicitly defined below
+5. accepted draw offer
+
+### 12.1 Threefold repetition
+
+If the exact same position occurs for the third time, draw automatically.
+
+Position identity includes:
+- piece placement
+- side to move
+- castling rights
+- en-passant availability
+
+No player claim is required.
+
+### 12.2 50-move rule
+
+Maintain halfmove clock.
+
+If **100 consecutive halfmoves** occur without:
+- pawn move
+- capture
+
+the game draws automatically.
+
+### 12.3 Insufficient material
+
+Automatically draw only for these exact material states:
+- King vs King
+- King + Bishop vs King
+- King + Knight vs King
+- King + Bishop vs King + Bishop where both bishops are on same-colored squares
+
+Do not attempt broader heuristic dead-position detection in v1.
+
+### 12.4 Draw offer
+
+A player may choose `Offer Draw` from Pause menu during their own turn before moving.
+
+Opponent receives:
+- `Accept`
+- `Decline`
+
+If accepted: match ends draw, reason `Draw agreed`.
+
+If declined: current player's turn continues.
+
+A player may make at most one draw offer every **10 completed own moves**.
+
+This cooldown is tracked per player.
+
+## 13. Resignation
+
+`Resign` is available from Pause menu.
+
+After confirmation:
+- resigning player loses
+- opponent wins
+- reason: `Resignation`
+
+## 14. No clock in v1
+
+There is no chess clock or move timer in v1.
+
+Do not implement time loss.
+
+## 15. Turn state machine
+
+```text
+TURN_START
+ -> CHECK_CURRENT_STATUS
+ -> AWAITING_PIECE_SELECTION
+ -> SHOW_LEGAL_MOVES
+ -> AWAITING_DESTINATION
+ -> MOVE_RESOLVE
+ -> if promotion: AWAITING_PROMOTION
+ -> UPDATE_POSITION_STATE
+ -> CHECK_END_CONDITIONS
+ -> TURN_END or MATCH_END
+```
+
+If selected piece is tapped again, selection clears.
+
+Selecting another own piece transfers selection.
+
+## 16. Input / legal-move visualization
+
+Selected piece:
+- soft gold base ring
+- 4% lift
+
+Legal empty destination:
+- small centered dot
+
+Legal capture destination:
+- thin ring around opponent piece
+
+Illegal cells:
+- no marker
+
+Tapping illegal cell while a piece is selected:
+- no state change
+- muted invalid tick only
+
+Tapping legal destination commits immediately.
+
+No confirmation dialog for normal moves.
+
+## 17. Tutorial — exact scope
+
+The first-run tutorial teaches **controls**, not the entire strategy of chess.
+
+### Step 1 — Select
+Text: `Tap one of your pieces to see where it can move.`
+Required: select highlighted pawn.
+
+### Step 2 — Move
+Text: `Dots show legal empty squares.`
+Required: move pawn one square.
+
+### Step 3 — Capture
+Scripted simple board.
+Text: `A ring marks a piece you can capture.`
+Required: capture highlighted opponent piece.
+
+### Step 4 — Check
+Scripted king/rook position.
+Text: `If your king is in check, you must make a move that removes the check.`
+Required: choose the only highlighted legal response.
+
+### Step 5 — Special rules reference
+Text: `Castling, en passant, promotion, and draw rules are explained in How to Play.`
+Button: `Start Match`.
+
+Target tutorial: under 60 seconds.
+
+## 18. How to Play pages
+
+Must contain separate concise cards for:
+- Board setup
+- King
+- Queen
+- Rook
+- Bishop
+- Knight
+- Pawn
+- Check and checkmate
+- Castling
+- En passant
+- Promotion
+- Draw rules
+
+Each piece card contains a diagram generated in UI, not AI art.
+
+## 19. One Device board orientation
+
+Default:
+- White at bottom
+- Black at top
+- board does **not** rotate automatically
+
+Chess-specific presentation setting:
+- `Rotate board each turn`: Off default / On
+
+If On:
+- rotate board 180° after turn-end animation
+- HUD player labels remain screen-oriented and do not rotate
+
+## 20. Room Mode orientation
+
+Each device displays:
+- local player's side at bottom
+- opponent at top
+
+Board coordinates remain canonical internally.
+
+## 21. HUD
+
+### Top player bar
+Opponent:
+- avatar/name
+- side icon/color
+- captured-material mini row optional only as icon list
+
+### Center status chip
+Possible values:
+- `White to Move`
+- `Black to Move`
+- `CHECK`
+
+`CHECK` replaces the normal status text and uses stronger gold/red accent without flashing.
+
+### Bottom player bar
+Local/current lower-side player:
+- avatar/name
+- side
+
+One Device always shows both player bars.
+
+### Bottom-center
+No persistent primary action button during normal play.
+
+Promotion creates temporary bottom-center choice tray.
+
+### Top-right
+Settings/Pause.
+
+## 22. Promotion UI
+
+When promotion is required:
+- lock board input
+- show four large piece choices: Queen, Rook, Bishop, Knight
+- each uses current player's material/color
+- choice commits immediately
+- no Cancel button
+
+## 23. Animation
+
+Normal speed:
+- normal move slide/lift: 0.22 s
+- capture: 0.3 s
+- castling: king move then rook, total 0.45 s
+- promotion morph/replace: 0.45 s
+- check emphasis: 0.3 s
+
+Fast multiplier: 0.6.
+
+No cinematic camera movement during moves.
+
+## 24. Audio/VFX
+
+- move: soft wooden tap
+- capture: deeper soft tap
+- check: short bell accent
+- castle: two-piece wooden cadence
+- promotion: bright chime
+- checkmate: restrained victory sting
+
+No combat-style impact effects.
+
+## 25. Room disconnect
+
+2-player shared rule applies.
+
+After 60-second grace expiry:
+- disconnected player forfeits
+- opponent wins
+- result reason `Opponent disconnected`
+
+## 26. Final Results
+
+Show:
+- Winner / Loser, or Draw
+- both avatars and sides
+- end reason exactly one of:
+  - Checkmate
+  - Resignation
+  - Opponent disconnected
+  - Stalemate
+  - Threefold repetition
+  - 50-move rule
+  - Insufficient material
+  - Draw agreed
+- total moves
+
+Buttons follow shared spec.
+
+Rematch swaps White/Black.
+
+## 27. Stats stored
+
+Generic stats plus:
+- checkmates won
+- draws
+- total chess moves played
+
+Do not store:
+- ELO
+- accuracy
+- centipawn loss
+- opening names
+
+## 28. AI→3D asset kit
+
+Exactly six essential piece archetypes:
 1. King
 2. Queen
 3. Bishop
@@ -88,67 +465,50 @@ Only six unique chess archetypes are needed:
 5. Rook
 6. Pawn
 
-Two sides should use runtime materials/colors, not separate rendered meshes.
+Requirements:
+- recognizable standard silhouette first
+- Cozy animal/leaf motifs only as secondary detail
+- common base diameter
+- no thin fragile accessories
+- White/Black are runtime materials, not duplicate meshes
 
-Optional shared assets:
-- winner crown/trophy
-- chess clock later
-- simple decorative table/club prop later
+Board is generated in engine.
 
-Target: **6 essential bespoke 3D assets**.
+Optional shared trophy is reused.
 
-Piece design requirements:
-- silhouettes must remain recognizable as chess pieces
-- cute animal theming is allowed but cannot destroy standard piece readability
-- avoid tiny accessories and complex thin geometry
-- pieces should share one coherent base footprint
+## 29. Explicitly out of scope v1
 
-## 9. UI
+- bots/engine opponent
+- move hints
+- evaluation bar
+- analysis board
+- puzzles
+- clocks
+- Chess960
+- custom positions
+- PGN import/export
+- online ranking
+- spectators
+- takebacks
+- premoves
 
-Minimal HUD:
-- player names/avatars
-- side/color
-- turn indicator
-- optional timer
-- resign / draw / settings
-- rematch after result
+## 30. Acceptance tests
 
-Promotion UI must be obvious and fast.
-
-## 10. Engine scope
-
-Grid Strategy Engine should provide:
-- board state
-- selection/highlight framework
-- move submission
-- history stack
-- turn state
-- result state
-
-Chess-specific rules layer provides:
-- move generation
-- attack maps
-- check legality
-- special moves
-- draw/checkmate detection
-
-Do not hardwire Chess-only assumptions into the generic grid renderer where Caro can reuse it.
-
-## 11. First playable acceptance
-
-- all standard moves validated correctly
-- illegal self-check moves rejected
-- castling/en-passant/promotion correct
+Rules:
+- every piece move correct
+- self-check rejection correct
+- castling all legality conditions correct
+- en passant create/use/expiry correct
+- all four promotions correct
 - check/checkmate/stalemate correct
-- board remains readable on tablet
-- One Device mode can complete a full match naturally
-- Room Mode reconnect/state sync does not corrupt position
+- threefold key includes side/castling/en-passant
+- 50-move reset on pawn move/capture
+- listed insufficient-material states draw
+- draw-offer cooldown correct
 
-## 12. Main risks
-
-- underestimating rule-edge cases because chess looks simple
-- cute piece redesign makes piece types hard to recognize
-- trying to build a competitive AI too early
-- excessive camera animation slows serious players
-
-The first release should prefer correctness, readability and polish over extra features.
+UX:
+- board readable at tablet scale
+- Room local side always bottom
+- One Device rotation setting deterministic
+- promotion cannot leave match in incomplete state
+- Start -> setup -> tutorial -> full game -> Final Results complete
