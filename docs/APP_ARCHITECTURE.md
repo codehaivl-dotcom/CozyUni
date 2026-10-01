@@ -1,114 +1,189 @@
-# CozyUni — App Architecture v0.1
+# CozyUni — App Architecture v0.2
 
-## Goal
+Status: **current game-first architecture direction**
+
+## 1. Goal
 
 One app, modular internally.
 
-CozyUni should not become one monolithic game scene. The app shell and each game mode should remain independently testable and replaceable.
+The current production app is a **family board-game collection first**. The explorable life-sim world is deferred.
 
-## Suggested module boundaries
+Gameplay rules are owned by the locked GDDs under `docs/games/`; architecture must not reinterpret them.
 
-### Shared shell
+## 2. Authority rule
+
+For player-visible game behavior:
+1. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+2. selected game GDD
+3. this architecture document
+
+Architecture cannot silently override game rules, rankings, setup flow or result behavior.
+
+## 3. Shared shell modules
+
+Shared shell owns:
 - boot/update
+- game list/navigation
 - profile/save
 - localization
-- settings/accessibility
-- audio
-- analytics
-- navigation
-- friends/lobby
-- entitlements/IAP
-- cosmetics/wardrobe
+- global settings/accessibility
+- audio service
+- analytics plumbing
+- room creation/join
+- connection/reconnect state
+- avatar selection
+- common Start Game flow
+- common Final Results/rematch shell
 
-### World layer
-- canonical resident IDs
-- canonical shop IDs
-- Moonberry map data
-- shared item catalog
-- shared animation/VFX references
-- seasonal dressing hooks
+Shared shell does **not** own game-specific legal moves or scoring.
 
-### Mode interface
-Every mode exposes a small common contract, conceptually:
-- id / display metadata
-- required assets
+## 4. Shared match services
+
+Reusable services:
+- authoritative match ID/seed
+- player slots
+- turn ordering
+- room ready state
+- action idempotency
+- reconnect grace tracking
+- match result payload
+- rematch readiness
+
+Game modules consume these services but own their rules.
+
+## 5. Engine families
+
+### Path Board package
+Consumers:
+- Cozy Ludo
+- Cozy Journey
+
+Provides only generic primitives:
+- D6 service
+- ordered path/node representation
+- token movement animation hooks
+- turn lifecycle hooks
+- path hit/highlight helpers
+
+It must not hard-code Ludo safe/capture/home rules or Journey special-space effects.
+
+### Grid Strategy package
+Consumers:
+- Cozy Caro
+- Cozy Chess
+
+Provides:
+- grid coordinate representation
+- board renderer
+- cell hit testing
+- selection/highlight layer
+- move/action history container
+
+It must not hard-code chess movement or Caro line rules.
+
+### Economy Board package
+Consumer:
+- Cozy Tycoon
+
+Provides:
+- loop-node board representation
+- ownership display helpers
+- coin transaction primitives
+- generic card/event presentation
+
+Tycoon economy constants stay game-local data.
+
+## 6. Current game modules
+
+```text
+/modes
+  /cozy-ludo
+  /cozy-caro
+  /cozy-journey
+  /cozy-chess
+  /cozy-tycoon
+```
+
+Old Festival Rush / Firefly Catch / Delivery Dash / Shop Panic examples are not current production modules.
+
+## 7. Mode contract
+
+Every game mode exposes conceptually:
+- mode ID / display metadata
 - supported player counts
-- start config
-- start / pause / resume / end
-- result payload
-- analytics hooks
-- save scope
+- supported device modes
+- start configuration schema
+- tutorial completion key
+- initialize match from authoritative seed/config
+- validate/submit action
+- serialize authoritative match state
+- restore/reconnect state
+- pause-compatible presentation hooks
+- produce final result payload
+- produce rematch config
+- game-specific stats payload
 
-The shell should not know internal rules such as dice movement or firefly multipliers.
+The shell must not inspect internal board rules.
 
-## Shared vs mode-local state
+## 8. State ownership
 
-Shared:
-- account/profile
-- cosmetics
-- unlocked regions/modes
-- achievements
+Shared/persistent:
+- profile
+- avatar preferences
 - global settings
+- tutorial completion flags
+- per-game generic stats
 
-Mode-local:
-- match score
-- temporary inventory
-- board turn state
-- orders
-- fireflies carried
-- mode-specific bots
+Match-local:
+- board position
+- dice outcomes
+- turn state
+- temporary game economy
+- ownership
+- move history
+- result state
 
-Do not reuse a mode score such as Festival Stars as a global spendable currency without a separate design decision.
+No current match score is a global currency.
 
-## Assets
+## 9. Room authority
 
-Use stable asset IDs and a shared catalog.
+Room Mode requires one authoritative match state.
 
-Example categories:
-- characters/rabbit
-- characters/poppy
-- shops/bakery
-- shops/fish
-- props/festival-crate
-- items/bread
-- ui/icons/star
+Rules:
+- clients submit intent/action
+- authoritative layer validates against the selected game's rule engine
+- accepted actions advance one canonical state revision
+- clients render the accepted revision
+- reconnect restores canonical state, not a client reconstruction
 
-A mode references catalog IDs rather than copying assets into mode-specific folders when possible.
+Transport/backend implementation technology is not locked by the GDD and requires separate engineering design before production Room Mode work.
 
-## Download size strategy
+## 10. Assets
 
-One app does not mean all future content must ship in the initial binary.
+Use stable shared asset IDs.
 
-Architecture should allow later optional/remote content packs where platform and engine support them. First release should remain compact and include only production-ready content.
+Examples:
+- `characters/rabbit`
+- `characters/panda`
+- `shared/dice/cozy_d6`
+- `shared/results/trophy`
+- `games/chess/king`
+- `games/tycoon/community_star`
 
-## Testing rule
+Boards/grids/text/cards are generated in engine/UI wherever specified by the GDD.
+
+## 11. Deferred world layer
+
+Existing world assets remain in the asset catalog but no explorable world scene is required for current game milestones.
+
+Future life-sim world architecture must be designed separately and must not be created as an ad-hoc game-selection lobby.
+
+## 12. Testing rule
 
 Every shared-system change must run:
-- shell tests
-- currently released mode regression tests
-- save migration tests
+- shell navigation tests
+- settings/save tests
+- room/reconnect tests where applicable
+- regression tests for every currently integrated game
 
-Each mode keeps its own simulation/playtest gates.
-
-## Repository shape (proposal)
-
-```
-/apps
-  /cozyuni
-/packages
-  /core
-  /world
-  /ui
-  /telemetry
-  /save
-/modes
-  /festival-board
-  /festival-rush
-  /firefly-catch
-/assets
-  /characters
-  /moonberry
-/docs
-```
-
-Adapt this to the actual engine/toolchain rather than forcing the folder structure prematurely.
+Each game also runs the acceptance tests listed in its locked GDD.
