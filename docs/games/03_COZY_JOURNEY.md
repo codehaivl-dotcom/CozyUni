@@ -1,28 +1,31 @@
-# G3 — Cozy Journey — Full Game Design v1.0
+# G3 — Cozy Journey — Full Game Design v1.1
 
-Status: **DESIGN LOCK — third production game**
+Status: **DESIGN LOCK — local single-device**
 
-Shared rules/UI: `00_SHARED_GAME_EXPERIENCE_LOCK.md`
+Shared authority:
+- `00_APP_SHELL_FLOW_LOCK.md`
+- `00_SHARED_GAME_EXPERIENCE_LOCK.md`
+- `00_SHARED_UI_LAYOUT_LOCK.md`
 
 ## 0. No-invention rule
 
 Implement exactly this 36-space ruleset. Do not add random event tables, alternate routes, hidden shortcuts, skip-turn penalties, or new special spaces.
 
+Current v1 is local multiplayer on one device. Multi-device/Room Mode is deferred.
+
 ## 1. Product role
 
-Cozy Journey is the second Path Board game and must reuse the Ludo turn/dice infrastructure while feeling visually different.
+Cozy Journey is the second Path Board game and must reuse Ludo turn/dice infrastructure while feeling visually different.
 
-Mechanical family: linear Goose-style travel race.
-
-Fantasy: players travel through the CozyUni region from Moonberry Village to a final Festival Pavilion, passing countryside, town, harbor and mountain landmarks.
+Fantasy: players travel through CozyUni from Moonberry Village to a final Festival Pavilion.
 
 ## 2. Players / modes
 
-- 2–4 humans
-- One Device supported
-- Room Mode supported
-- Bots not implemented
-- Public matchmaking not implemented
+- 2–4 local human players
+- One Device: supported and required for current v1
+- Multi-device/Room Mode: not implemented
+- Bots: not implemented
+- Public matchmaking: not implemented
 
 ## 3. Session target
 
@@ -31,90 +34,83 @@ Fantasy: players travel through the CozyUni region from Moonberry Village to a f
 
 ## 4. Board topology
 
-- Exactly **36 numbered spaces**.
-- One continuous path.
-- No branches.
-- Player tokens may share the same space.
-- There is no capture, blocking, or collision rule.
+- exactly **36 numbered spaces**
+- one continuous path
+- no branches
+- player tokens may share same space
+- no capture, blocking or collision
 
-Region segmentation:
-- Spaces 1–6: Moonberry Village
-- Spaces 7–12: Countryside
-- Spaces 13–18: Town
-- Spaces 19–24: Harbor
-- Spaces 25–31: Mountain
-- Spaces 32–36: Festival / Resort destination
+Regions:
+- 1–6 Moonberry Village
+- 7–12 Countryside
+- 13–18 Town
+- 19–24 Harbor
+- 25–31 Mountain
+- 32–36 Festival / Resort
 
-The path may visually curve/loop through a diorama, but numeric order is authoritative.
+Numeric order is authoritative even if path curves visually.
 
 ## 5. Start state
 
-- Every player begins at virtual position `0`, before Space 1.
-- One D6 is used.
-- First player is selected by the shared random-start rule.
+- every player starts at virtual position 0 before Space 1
+- one D6
+- first player selected by shared local random-start rule
 
 ## 6. Normal turn
 
-1. Player taps `ROLL`.
-2. D6 resolves 1–6.
-3. Player token moves forward exactly the rolled number of spaces.
-4. If movement reaches or exceeds Space 36, clamp to 36 and end the match with that player as winner.
-5. Otherwise resolve the landed space if it is special.
-6. End turn unless the special space explicitly grants one extra roll.
+1. tap `ROLL`
+2. resolve D6 1–6
+3. token moves forward exactly result
+4. if reaches/passes 36, clamp to 36 and win immediately
+5. otherwise resolve landed special space if any
+6. end turn unless Picnic grants one extra roll
 
-The player does not choose between pieces; each player owns exactly one token.
+One token per player.
 
 ## 7. Canonical special spaces
 
-Only the following spaces are special in v1.
+Only these exist:
 
 | Space | Name | Effect |
 |---:|---|---|
-| 4 | Lucky Gift | Move forward +2, then stop. Do not resolve a second special effect. |
-| 7 | Mud Puddle | Move backward -2, minimum Space 1. Do not resolve a second special effect. |
-| 10 | Train | Jump directly to Space 15. Do not resolve Space 15 effect. |
-| 14 | Picnic Rest | Gain exactly one extra roll immediately after the current animation. |
-| 18 | Ferry | Jump directly to Space 23. Do not resolve Space 23 effect. |
-| 22 | Rain Delay | Move backward -3, minimum Space 1. Do not resolve a second special effect. |
-| 26 | Cable Car | Jump directly to Space 31. Do not resolve Space 31 effect. |
-| 30 | Wrong Turn | Move backward -2, minimum Space 1. Do not resolve a second special effect. |
-| 34 | Lucky Gift | Move forward +2 to Space 36 and win immediately. |
+| 4 | Lucky Gift | +2, stop; no destination special |
+| 7 | Mud Puddle | -2, minimum 1; no destination special |
+| 10 | Train | jump to 15; do not resolve 15 |
+| 14 | Picnic Rest | exactly one extra roll |
+| 18 | Ferry | jump to 23; do not resolve 23 |
+| 22 | Rain Delay | -3, minimum 1; no destination special |
+| 26 | Cable Car | jump to 31; do not resolve 31 |
+| 30 | Wrong Turn | -2, minimum 1; no destination special |
+| 34 | Lucky Gift | +2 to 36 and win |
 
-Important chain rule:
-- Special-space forced movement never triggers the destination's special effect.
-- The only special that creates another action is Picnic Rest at Space 14.
+Forced movement never chains into destination special effects.
+Only Picnic creates another action.
 
-## 8. Extra-roll rule
+## 8. Extra roll
 
-Picnic Rest grants exactly **one** extra D6 roll.
+Picnic grants exactly one additional D6 roll.
 
-If the extra roll later lands on Space 14 again through impossible normal forward movement, no chain rule is needed; board topology makes this impossible.
+A special landed after that extra roll resolves normally.
 
-Landing on another special after the extra roll resolves that new special normally.
+## 9. Finish
 
-## 9. Finish rule
-
-Simple finish only:
-- reaching or passing Space 36 wins
-- movement clamps to Space 36
-- exact roll is not required
-
-There is no bounce-back finish.
+- reaching or passing 36 wins
+- clamp to 36
+- exact roll not required
+- no bounce-back
 
 ## 10. Final ranking
 
-Rank 1 is the winner at Space 36.
+Rank 1 = winner.
 
-All other connected players are ranked by:
+Others sorted by:
 1. current space descending
-2. number of positive special spaces landed on descending
-3. number of negative special spaces landed on ascending
+2. positive specials landed descending
+3. negative specials landed ascending
 
-If still tied, show shared rank.
+If still tied: shared rank.
 
-A forfeited Room player ranks below every connected finisher/remaining player. Among multiple forfeits, later forfeit ranks above earlier forfeit.
-
-Final Results key stat: `Final Space`.
+Results key stat: `Final Space`.
 
 ## 11. Turn state machine
 
@@ -126,27 +122,26 @@ TURN_START
  -> if reached 36: MATCH_END
  -> CHECK_SPECIAL
  -> SPECIAL_RESOLVE
- -> if Picnic extra roll: AWAITING_EXTRA_ROLL
+ -> if Picnic: AWAITING_EXTRA_ROLL
  -> else TURN_END
 ```
 
-Input remains locked during all movement/special animations.
+Input locked during movement/special animation.
 
 ## 12. Start Game / setup
 
-Game Start Screen description:
+Start Screen description:
 `Roll, travel through CozyUni, and be the first to reach the Festival Pavilion.`
 
-### One Device
+Press PLAY -> Local Player Setup.
+
+Setup:
 - 2 / 3 / 4 players
-- Default: 4
-- each selects unique avatar
-- slot colors remain Red / Blue / Green / Yellow
+- default 4
+- unique avatars
+- fixed slot colors Red / Blue / Green / Yellow
 
-### Room
-Same player count/settings.
-
-There are no alternate board layouts or rule toggles in v1.
+No rule toggles.
 
 ## 13. Match Summary
 
@@ -158,49 +153,34 @@ Show exactly:
 - `Reach the Festival Pavilion first`
 - Expected: `6–10 min`
 
-## 14. Tutorial — exact sequence
+## 14. Tutorial
 
-Uses Rabbit Red on a small scripted path.
+Rabbit Red scripted example.
 
-### Step 1 — Roll
-Text: `Tap Roll to start your journey.`
-Forced roll: 3.
-Required: tap Roll.
+1. `Tap Roll to start your journey.`
+   - forced roll 3
+2. show 3-space move
+   - `Your traveler moves automatically.`
+3. demonstrate Train 10 -> 15
+   - `Travel spaces can jump you forward.`
+4. demonstrate Mud
+   - `Some spaces move you back, but you never lose a turn.`
+5. show Space 36
+   - `Reach or pass Space 36 first to win.`
+   - `Start Match`
 
-### Step 2 — Move
-Show token moving three spaces.
-Text: `Your traveler moves automatically.`
-Button: Continue.
-
-### Step 3 — Special travel
-Script places Rabbit before Train Space 10 and forces landing.
-Text: `Travel spaces can jump you forward.`
-Show jump 10 -> 15.
-
-### Step 4 — Setback
-Script demonstrates Mud.
-Text: `Some spaces move you back, but you never lose a turn.`
-Button: Continue.
-
-### Step 5 — Finish
-Show Festival Pavilion at Space 36.
-Text: `Reach or pass Space 36 first to win.`
-Button: `Start Match`.
-
-Target tutorial length: under 45 seconds.
+Target <45 s.
 
 ## 15. Board presentation
 
-The board is a scenic path, not a square Ludo grid.
+- scenic path, not square Ludo grid
+- numbers 1–36 always readable
+- region change shown through ground/material/decor
+- special spaces use strong icon + accent
+- decorative buildings outside hitboxes
+- existing CozyUni world assets may dress scenery
 
-Requirements:
-- Space numbers 1–36 remain readable.
-- Region changes are visible through ground/material/nearby decor.
-- Special spaces use a strong icon plus unique color accent.
-- Decorative buildings sit outside tile hitboxes.
-- Existing CozyUni world assets may be used as distant/adjacent dressing.
-
-Required special icons:
+2D/UI special icons:
 - Gift
 - Mud
 - Train
@@ -210,88 +190,74 @@ Required special icons:
 - Cable Car
 - Wrong Turn
 
-Icons are 2D/UI materials, not separate 3D props unless already available.
+Do not create unique 3D prop for each special.
 
 ## 16. Camera
 
-- Mild-isometric overview.
-- Entire route does not need to fit at once if readability suffers.
-- Default framing should show at least ~60% of the path.
-- During active movement, camera may track the current token with a gentle pan.
-- After movement resolves, camera eases back to strategic overview.
-- Player may tap `Overview` in bottom-right to return to full-board framing.
-- No manual free camera/rotation in v1.
+- mild isometric overview
+- default shows at least ~60% route
+- gentle track current token during movement
+- ease back to overview after resolution
+- bottom-right `Overview` returns to strategic framing
+- no free rotation
 
 ## 17. HUD
 
-### Top-center
+Top-center:
 `<Avatar> <Player> — Your Turn`
 
-### Bottom-left
-Current player card:
+Bottom-left:
 - avatar/name
 - `Space N / 36`
 
-### Bottom-center
-`ROLL` primary button.
+Bottom-center:
+- `ROLL`
+- hidden during forced resolution
 
-During forced special resolution, button is hidden.
+Bottom-right:
+- `Overview`
+- turn-order avatar strip
 
-### Bottom-right
-- compact `Overview` button
-- turn-order avatar strip above it
+Top-right:
+- Pause/Settings
 
-### Top-right
-Settings/Pause.
+No quest panel, inventory, travel log or cards.
 
-No quest panel, inventory, travel log, or cards in v1.
+## 18. Special feedback
 
-## 18. Special-space feedback
-
-- Lucky Gift: gold sparkle + `+2`
-- Mud: soft splash + `-2`
-- Train: whistle + quick path streak
-- Picnic: picnic chime + `Extra Roll`
+- Gift: gold sparkle `+2`
+- Mud: soft splash `-2`
+- Train: whistle + path streak
+- Picnic: chime + `Extra Roll`
 - Ferry: horn/chime + water streak
-- Rain: cloud/splash + `-3`
+- Rain: cloud/splash `-3`
 - Cable Car: bell + upward swoosh
-- Wrong Turn: sign wobble + `-2`
+- Wrong Turn: sign wobble `-2`
 
-All text popups disappear within 1.0 s.
+Popup <=1.0 s.
 
 ## 19. Animation timing
 
 Normal:
-- dice: 0.9 s
-- normal movement: 0.10 s per tile, capped at 0.8 s
-- transport jump: 0.65 s
-- setback: 0.45 s
-- extra-roll notification: 0.5 s
+- dice 0.9 s
+- move 0.10 s/tile, cap 0.8 s
+- transport jump 0.65 s
+- setback 0.45 s
+- extra-roll notice 0.5 s
 
 Fast multiplies non-essential timings by 0.6.
 
-## 20. Pause / help
+## 20. Pause / Help
 
-How to Play contains:
-- Roll and move
-- Reach/pass 36 wins
-- Special-space table with all nine special spaces
-- Explicit chain rule: forced movement does not trigger destination specials
+Help contains:
+- roll/move
+- reach/pass 36 wins
+- all nine special spaces
+- forced-movement chain suppression
 
-No hidden random event text exists.
+No hidden events.
 
-## 21. Disconnect behavior
-
-Use shared 3–4-player forfeit rules.
-
-When a player forfeits:
-- remove their token from the path
-- their occupied space becomes empty
-- game continues
-
-2-player disconnect forfeit ends match immediately.
-
-## 22. Final Results
+## 21. Final Results
 
 Rank cards show:
 - rank
@@ -300,46 +266,41 @@ Rank cards show:
 - `Boosts: X`
 - `Setbacks: Y`
 
-`Boosts` counts Lucky Gift, Train, Picnic, Ferry, Cable Car landings.
+Boosts = Gift, Train, Picnic, Ferry, Cable Car.
+Setbacks = Mud, Rain, Wrong Turn.
 
-`Setbacks` counts Mud, Rain, Wrong Turn landings.
+Winner gets shared trophy.
 
-Winner gets shared trophy presentation.
+Buttons:
+- REMATCH
+- CHANGE PLAYERS
+- GAME LIBRARY
 
-## 23. Stats stored
+## 22. Stats
 
 Generic stats plus:
-- total positive specials landed
-- total negative specials landed
-- total Journey spaces traveled
+- total positive specials
+- total negative specials
+- total spaces traveled
 
-## 24. AI→3D assets
+## 23. AI→3D assets
 
-Essential new assets:
-1. `journey_finish_pavilion` if Ludo pavilion cannot be reused visually
+Essential:
+1. `journey_finish_pavilion` if Ludo pavilion cannot visually reuse
 2. `journey_start_arch`
-3. `shared_cozy_dice` reused from Ludo
-4. `shared_winner_trophy`
+3. shared cozy D6
+4. shared winner trophy
 
-Player traveler:
-- use simplified avatar token/character already available
+Traveler uses existing simplified avatar token/character.
 
-Existing decorative reuse is strongly preferred:
-- station/train
-- ferry/dock
-- cable car
-- bridge
-- market/town buildings
-- lighthouse
-- lodge
-- trees/flowers/rocks
+Reuse existing station/train, ferry/dock, cable car, bridge, buildings, lighthouse, lodge, nature.
 
-Do not render a unique 3D object for each special space.
+## 24. Explicitly out of scope
 
-## 25. Explicitly out of scope v1
-
+- multi-device/Room Mode
+- online matchmaking
 - branching paths
-- choice of route
+- route choice
 - cards
 - hidden events
 - skip-turn penalties
@@ -350,22 +311,21 @@ Do not render a unique 3D object for each special space.
 - board randomization
 - daily board
 - bots
-- online matchmaking
 
-## 26. Acceptance tests
+## 25. Acceptance tests
 
 Rules:
-- spaces always remain within 1–36
-- normal roll movement correct
+- positions always 1–36 after entering board
+- normal roll correct
 - clamp finish correct
-- each special resolves exact locked amount/destination
-- forced-move chain suppression correct
+- every special exact
+- chain suppression correct
 - Picnic exactly one extra roll
 - ranking deterministic
 
 UX:
-- special icons readable without opening help after one example
-- board scenery never hides numbered spaces
-- Start -> setup -> tutorial -> match -> results complete
-- 2/3/4 player One Device and Room complete
-- Ludo dice/turn infrastructure is reused rather than duplicated
+- Game Library -> Start -> Local Setup -> Tutorial -> Match -> Results complete
+- 2/3/4 local player matches complete
+- scenery never hides numbered spaces
+- Ludo dice/turn infrastructure reused
+- no network/Room UI exists
