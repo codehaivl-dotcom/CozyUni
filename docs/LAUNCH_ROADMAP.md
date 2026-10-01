@@ -1,102 +1,118 @@
-# CozyUni — Launch Roadmap v0.1
+# CozyUni — Launch Roadmap v0.2
+
+Status: **CURRENT / GAME-FIRST**
 
 ## Objective
 
-Reach a public App Store/Play Store release quickly without fragmenting the brand or overbuilding an unvalidated universe.
+Reach a public release with one genuinely polished game and a reusable shell before expanding content.
 
-## Phase 0 — Foundation
+The explorable CozyUni world is not required for the initial launch path.
+
+## Phase 0 — Shared shell foundation
 
 Deliver:
-- CozyUni shell
-- Moonberry Village canon
-- shared 4-character roster
-- shared settings/localization/save
-- common UI system
-- analytics vocabulary
-- Festival Board production-ready
+- game list/start screen shell
+- profile/name/avatar selection
+- One Device setup
+- Create Room / Join Room / lobby
+- settings/accessibility/localization foundation
+- common tutorial framework
+- common pause/help
+- common Final Results/rematch
+- deterministic match seed/action plumbing
 
 Exit gate:
-- stable first-session onboarding
-- crash-free target defined and measured
-- flagship mode passes gameplay/UX gates
-- store-compliant privacy/IAP setup prepared
+- `00_SHARED_GAME_EXPERIENCE_LOCK.md` flow can be executed end to end with a test game stub
+- reconnect/forfeit behavior has automated tests where Room Mode is enabled
 
-## Phase 1 — Soft launch
+## Phase 1 — Cozy Ludo vertical slice
 
-Ship one app with:
-- Moonberry Village
-- Festival Board
-- character select
-- lobby/single-player bot flow
-- results/ranking
-- basic cosmetics or no monetization beyond a small supporter pack
+Deliver the locked G1 flow from:
+`Game Start -> Mode Select -> Setup/Lobby -> Tutorial -> Match -> Final Results -> Rematch`
 
-Measure:
-- tutorial completion
-- first-match completion
-- D1 retention
-- sessions per user
-- average session length
-- return rate to Festival Board
-- cosmetic interaction if present
+Use only the canonical Cozy Quick rules from `docs/games/01_COZY_LUDO.md`.
 
-## Phase 2 — First expansion
+Exit gate:
+- all G1 acceptance tests pass
+- 2/3/4 player One Device matches complete
+- Room Mode completes/reconnects deterministically
+- no implementation decision contradicts GDD
+- playtesters can start/finish/rematch without developer explanation
 
-Add exactly one high-reuse mode.
+## Phase 2 — Cozy Ludo polish / release candidate
 
-Preferred candidate: Festival Rush.
+Only after rules/flow are stable:
+- final board dressing
+- final AI→3D hero assets
+- audio/VFX polish
+- localization pass
+- device performance pass
+- store/privacy preparation
 
-Reason:
-- uses existing village/shops/items/characters
-- adds real-time movement and a clearly different session feel
-- tests whether multiple modes improve retention inside one app
+Do not add new Ludo rules during polish.
 
-Gate before release:
-- mode is fun independently
-- does not hurt shell performance/download size materially
-- shared progression integration is clear
+## Phase 3 — Cozy Caro
 
-## Phase 3 — Retention layer
+Add the Grid Strategy framework through the locked Tic-Tac-Toe and Five-in-a-Row presets.
 
-Only after evidence of repeat play:
-- seasonal event calendar
-- achievements / collection book
-- cosmetics catalog
-- Firefly Catch or Delivery Dash
-- lightweight live-ops tooling
+Exit gate:
+- both presets satisfy G2 acceptance tests
+- shared shell requires no duplicate implementation
 
-## Phase 4 — Monetization scale
+## Phase 4 — Cozy Journey
 
-Only after retention signal:
-- cosmetic bundles
-- seasonal packs
-- optional premium region/content packs
-- carefully tested rewarded ads if desired
+Reuse Path Board infrastructure from Ludo.
 
-Avoid a subscription until recurring content cadence exists.
+The fixed 36-space board and special-space table are authoritative; no extra event content is required.
 
-## KPI philosophy
+## Phase 5 — Cozy Chess
 
-Do not optimize revenue before proving players return.
+Add correct human-vs-human chess only.
 
-Suggested hierarchy:
-1. install -> tutorial complete
-2. tutorial -> first match complete
-3. first match -> second session
-4. D1 / D7 retention
-5. number of modes tried
-6. cosmetics engagement
-7. payer conversion / ARPDAU later
+Do not gate release on bots, ratings, clocks, analysis or puzzles.
 
-## Kill / hold rules
+## Phase 6 — Cozy Tycoon
 
-A new mode should be held back if:
-- it needs large unique art investment before proving fun
-- it duplicates an existing mode's decision structure
-- onboarding becomes confusing
-- it bloats initial download for low usage
-- it adds monetization complexity without retention value
+Build only after earlier games prove shared shell/room systems.
 
-## Standalone-app trigger
+The fixed 28-node / 12-round economy in the locked GDD is the first target. Balance changes require doc update plus simulation/playtest evidence.
 
-Reconsider a separate app only when one mode demonstrates its own audience and product identity strongly enough that separation improves discovery or product clarity more than shared-universe benefits.
+## Public launch choices
+
+The product may launch after any completed phase once quality is high enough.
+
+There is no requirement to finish all five games before public release.
+
+Preferred minimum public package:
+- shared shell
+- Cozy Ludo production quality
+- optionally Cozy Caro if equally polished
+
+## Measurement hierarchy
+
+1. game start completion
+2. tutorial completion/skip
+3. match completion
+4. rematch selection
+5. session return
+6. Room creation/join success
+7. crashes/disconnect failures
+8. later: cross-game usage
+
+Do not optimize monetization before repeat-play quality is proven.
+
+## Hold rules
+
+Hold a feature/game if:
+- GDD is incomplete
+- agent must invent rules
+- unique art requirement grows before playable validation
+- HUD obscures gameplay
+- average session exceeds its target without deliberate design approval
+- Room Mode causes divergent game logic
+
+## World trigger
+
+Do not begin explorable-world production merely because the asset library exists.
+
+World work starts only after a separate full world/life-sim GDD is approved. Its quality target is a genuinely living Animal-Crossing-like experience, not a game-selection lobby.
