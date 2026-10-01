@@ -1,19 +1,89 @@
 # CozyUni
 
-**One cozy universe, many playable experiences.**
+**A premium cozy family game table first; a larger living world later.**
 
-CozyUni is the shared world and product umbrella for a family of cozy games built from one reusable cast, village, asset library, progression system, and live-content pipeline.
+CozyUni is one consumer app with a shared visual identity, reusable characters/assets, common settings/accessibility, and multiple polished game modes.
 
-The current flagship location is **Moonberry Village**, home to Rabbit, Poppy, Milo, Lumi, and Mayor Pip.
+## Current production direction
 
-## Product direction
+Current v1 priority is **single-device local multiplayer** on one tablet/screen.
 
-- One public consumer app first, not many near-duplicate apps.
-- One shared world, identity, profile, progression, cosmetics, economy, settings, accessibility, analytics, and save system.
-- Multiple game modes are added as content inside that app only after each mode passes its own fun/retention gate.
-- New standalone apps are reserved for experiences that become meaningfully different in audience, controls, session length, monetization, or store positioning.
-- Gameplay remains fair: monetization should favor cosmetics, content access, convenience that does not create competitive advantage, and optional expansion packs.
+Active game roadmap:
+1. Cozy Ludo
+2. Cozy Caro
+3. Cozy Journey
+4. Cozy Chess
+5. Cozy Tycoon
 
-## Documentation
+Production order is sequential, not five games in parallel.
 
-See `docs/` for the world bible, product strategy, game-mode roadmap, app architecture, monetization, asset-reuse rules, App Store strategy, and canon governance.
+Current player flow:
+
+```text
+Boot
+ -> Game Library
+ -> Game Start Screen
+ -> Local Player Setup
+ -> Match Summary
+ -> Tutorial when needed
+ -> Match
+ -> Final Results
+ -> Rematch / Change Players / Game Library
+```
+
+Multi-device rooms/matchmaking are later milestones.
+
+## World direction
+
+The large CozyUni library of buildings, transport, nature, food, leisure, infrastructure, and resident characters is retained for a future genuine life-sim/world layer.
+
+The world must eventually justify itself through real interaction, NPC/world behavior, exploration, activities, progression, collection, and social presence. A shallow decorative game-launcher hub is not the target.
+
+Current world work may establish visual MVP scenes and asset references, but it does not silently define future life-sim gameplay/economy.
+
+## Economy
+
+Cozy Credits (`CC`) are the one planned global premium currency.
+
+Rules:
+- CC is separate from every match-local score/currency;
+- Tycoon Coins and Community Stars never become global money;
+- paid currency cannot buy competitive power;
+- real-money commerce is server-authoritative and feature-flagged;
+- core local board games remain playable without commerce login.
+
+## Data / AI-agent discipline
+
+Docs + matching machine-readable data are source of truth.
+
+Key data lives under:
+- `docs/data/games/`
+- `docs/data/economy_v1.json`
+- `docs/data/commerce_backend_v1.json`
+- `docs/data/game_simulation_config_v1.json`
+
+Validation tools:
+
+```bash
+python tools/validate_game_data.py
+python tools/validate_commerce_data.py
+```
+
+Implementation agents must not invent missing gameplay/economy behavior.
+
+## Documentation entry points
+
+- `docs/PRODUCT_STRATEGY.md`
+- `docs/APP_ARCHITECTURE.md`
+- `docs/CANON_AND_CONTENT_GOVERNANCE.md`
+- `docs/games/README.md`
+- `docs/world/README.md`
+- `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
+- `docs/backend/00_BACKEND_TECH_STACK_LOCK.md`
+- `docs/DATA_TELEMETRY_AND_SIMULATION.md`
+
+## Art pipeline
+
+CozyUni uses an AI-first image -> 3D asset pipeline.
+
+Current art rules and ready-generation lists live under `docs/assets/`.
