@@ -1,55 +1,64 @@
-# CozyUni — App Architecture v0.2
+# CozyUni — App Architecture v0.3
 
-Status: **current game-first architecture direction**
+Status: **current local-first architecture direction**
 
 ## 1. Goal
 
 One app, modular internally.
 
-The current production app is a **family board-game collection first**. The explorable life-sim world is deferred.
+Current production target is a family board-game collection played by multiple local users on one device.
 
-Gameplay rules are owned by the locked GDDs under `docs/games/`; architecture must not reinterpret them.
+Multi-device networking and explorable world are deferred.
 
-## 2. Authority rule
+Gameplay rules are owned by locked GDDs under `docs/games/`; architecture must not reinterpret them.
 
-For player-visible game behavior:
-1. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
-2. selected game GDD
-3. this architecture document
+## 2. Authority
 
-Architecture cannot silently override game rules, rankings, setup flow or result behavior.
+For player-visible behavior:
+1. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
+2. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+3. selected game GDD
+4. this architecture document
 
-## 3. Shared shell modules
+Architecture cannot override game rules, rankings, setup flow or result behavior.
 
-Shared shell owns:
-- boot/update
-- game list/navigation
-- profile/save
+## 3. Current shared shell modules
+
+Current shell owns:
+- boot/splash
+- Game Library
+- Game Start Screen
+- local player setup
+- avatar/name selection
+- settings/accessibility
 - localization
-- global settings/accessibility
 - audio service
-- analytics plumbing
+- common tutorial framework
+- pause/help
+- common Final Results/rematch
+- local save/stats
+- deterministic match seed service
+
+Current shell does **not** include:
 - room creation/join
-- connection/reconnect state
-- avatar selection
-- common Start Game flow
-- common Final Results/rematch shell
+- networking
+- accounts/friends
+- public matchmaking
+- world traversal
 
-Shared shell does **not** own game-specific legal moves or scoring.
-
-## 4. Shared match services
+## 4. Shared local match services
 
 Reusable services:
-- authoritative match ID/seed
-- player slots
-- turn ordering
-- room ready state
-- action idempotency
-- reconnect grace tracking
+- match ID
+- deterministic seed/RNG where needed
+- local player slots
+- starting-player ordering
+- action idempotency / double-tap protection
 - match result payload
-- rematch readiness
+- rematch configuration
+- tutorial completion flags
 
-Game modules consume these services but own their rules.
+Game modules consume these but own rules.
 
 ## 5. Engine families
 
@@ -58,14 +67,14 @@ Consumers:
 - Cozy Ludo
 - Cozy Journey
 
-Provides only generic primitives:
+Provides generic primitives only:
 - D6 service
 - ordered path/node representation
-- token movement animation hooks
+- token movement hooks
 - turn lifecycle hooks
 - path hit/highlight helpers
 
-It must not hard-code Ludo safe/capture/home rules or Journey special-space effects.
+Must not hard-code game-specific capture/safe/event rules.
 
 ### Grid Strategy package
 Consumers:
@@ -73,27 +82,27 @@ Consumers:
 - Cozy Chess
 
 Provides:
-- grid coordinate representation
+- grid coordinates
 - board renderer
 - cell hit testing
 - selection/highlight layer
-- move/action history container
+- action/move history container
 
-It must not hard-code chess movement or Caro line rules.
+Must not hard-code chess movement or Caro line rules.
 
 ### Economy Board package
 Consumer:
 - Cozy Tycoon
 
 Provides:
-- loop-node board representation
+- loop-node representation
 - ownership display helpers
 - coin transaction primitives
-- generic card/event presentation
+- generic event-card presentation
 
-Tycoon economy constants stay game-local data.
+Tycoon values stay game-local data.
 
-## 6. Current game modules
+## 6. Game modules
 
 ```text
 /modes
@@ -104,63 +113,62 @@ Tycoon economy constants stay game-local data.
   /cozy-tycoon
 ```
 
-Old Festival Rush / Firefly Catch / Delivery Dash / Shop Panic examples are not current production modules.
+Only modules actually included in current build appear in Game Library.
 
 ## 7. Mode contract
 
-Every game mode exposes conceptually:
-- mode ID / display metadata
-- supported player counts
-- supported device modes
+Every game exposes conceptually:
+- mode ID/display metadata
+- supported local player counts
 - start configuration schema
 - tutorial completion key
-- initialize match from authoritative seed/config
-- validate/submit action
-- serialize authoritative match state
-- restore/reconnect state
+- initialize match from seed/config
+- validate/submit local action
+- serialize match state for save/debug/test if needed
 - pause-compatible presentation hooks
 - produce final result payload
 - produce rematch config
 - game-specific stats payload
 
-The shell must not inspect internal board rules.
+Shell must not inspect internal legal-move logic.
 
 ## 8. State ownership
 
-Shared/persistent:
-- profile
-- avatar preferences
+Shared persistent:
 - global settings
+- language/accessibility
 - tutorial completion flags
-- per-game generic stats
+- optional last-used avatar/name preferences
+- generic per-game stats
 
 Match-local:
-- board position
+- player slots
+- board state
 - dice outcomes
 - turn state
-- temporary game economy
+- temporary economy
 - ownership
 - move history
 - result state
 
-No current match score is a global currency.
+No match score becomes a global currency.
 
-## 9. Room authority
+## 9. Local authority
 
-Room Mode requires one authoritative match state.
+Current v1 has one process/device, but match state still uses a single authoritative game-state owner.
 
 Rules:
-- clients submit intent/action
-- authoritative layer validates against the selected game's rule engine
-- accepted actions advance one canonical state revision
-- clients render the accepted revision
-- reconnect restores canonical state, not a client reconstruction
+- UI submits intent/action
+- game rules validate it
+- accepted action advances one canonical state revision
+- presentation renders that accepted state
+- double taps/stale UI cannot apply same action twice
 
-Transport/backend implementation technology is not locked by the GDD and requires separate engineering design before production Room Mode work.
+This structure is intentionally clean enough for future networking without implementing networking now.
 
 ## 10. Assets
 
-Use stable shared asset IDs.
+Use stable asset IDs.
 
 Examples:
 - `characters/rabbit`
@@ -170,20 +178,35 @@ Examples:
 - `games/chess/king`
 - `games/tycoon/community_star`
 
-Boards/grids/text/cards are generated in engine/UI wherever specified by the GDD.
+Boards/grids/text/cards generated in engine/UI wherever GDD specifies.
 
-## 11. Deferred world layer
+## 11. Deferred multi-device architecture
 
-Existing world assets remain in the asset catalog but no explorable world scene is required for current game milestones.
+Do not choose WebSocket/host/server/protocol technology during current local milestone.
 
-Future life-sim world architecture must be designed separately and must not be created as an ad-hoc game-selection lobby.
+Before network work begins, create a dedicated engineering design covering:
+- authority model
+- transport
+- room lifecycle
+- action/revision protocol
+- reconnect
+- host loss
+- security/privacy
 
-## 12. Testing rule
+No speculative networking code is required now.
 
-Every shared-system change must run:
+## 12. Deferred world layer
+
+Existing world assets remain in catalog but no explorable world scene is required.
+
+Future life-sim world architecture is a separate project milestone and must not emerge as an ad-hoc game launcher.
+
+## 13. Testing rule
+
+Every shared-system change runs:
 - shell navigation tests
+- local setup tests
 - settings/save tests
-- room/reconnect tests where applicable
-- regression tests for every currently integrated game
+- currently integrated game regression tests
 
-Each game also runs the acceptance tests listed in its locked GDD.
+Each game also runs acceptance tests listed in its locked GDD.
