@@ -1,66 +1,93 @@
-# CozyUni — Canon & Content Governance v0.1
+# CozyUni — Canon & Content Governance v0.2
 
-## Purpose
+Status: **CURRENT**
 
-Keep one coherent world while allowing many game modes and seasonal variants.
+## 1. Purpose
 
-## Canon levels
+Prevent implementation drift while CozyUni is developed as a game-first product with a future larger world.
 
-### LOCKED
-Shared identity that modes must not silently change:
-- resident names/species/core personality
-- canonical shop IDs and primary shop fantasy
-- Moonberry Village place identity
-- global asset IDs
-- shared profile/cosmetics ownership semantics
+## 2. Authority hierarchy
 
-Changes require an explicit world-level decision and migration plan.
+For current board-game implementation:
+1. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+2. selected full game GDD in `docs/games/`
+3. `docs/GAME_MODE_ROADMAP.md`
+4. product/architecture/world documents
+5. old code/comments/prototypes
+
+Higher source wins on conflict.
+
+If locked game docs are silent, implementation agents must raise a design question rather than inventing production behavior.
+
+## 3. Canon levels
+
+### LOCKED GAME DESIGN
+Cannot change without explicit GDD update:
+- game rules/constants
+- supported player counts/modes
+- Start Game flow
+- tutorials
+- HUD action hierarchy
+- match end/ranking/tiebreakers
+- disconnect/forfeit behavior
+- explicit out-of-scope features
+
+### LOCKED SHARED IDENTITY
+- resident names/species/core visual identity
+- stable global asset IDs
+- current approved art direction
 
 ### SHARED DEFAULT
-Reusable conventions that a mode may override only in its own scope:
-- default outfit
-- default daytime lighting
-- default shop dressing
-- standard NPC positions
+Reusable presentation conventions that a game may override only when its GDD says so:
+- avatar presentation
+- common UI/audio language
+- generic result/rematch components
 
-### MODE-LOCAL
-May differ freely by game mode:
-- score
-- temporary inventory
-- movement rules
-- bots
-- hazards
-- session timer
-- temporary event props
+### GAME-LOCAL
+Defined only by the selected game GDD:
+- board state
+- score/economy
+- movement
+- game-specific temporary data
 
-### SEASONAL
-Temporary presentation/content that must not rewrite base canon:
-- winter decorations
-- Halloween props
-- festival banners
-- limited-time cosmetics
+### FUTURE WORLD CANON
+The persistent world is deferred. No implementation agent should promote a board-game assumption into future world canon without a separate world GDD decision.
 
-## Rule for new content
+## 4. World status
 
-Before adding a permanent resident, shop, currency, region, or progression system, document:
-1. why it must be global rather than mode-local;
-2. which existing modes consume it;
-3. save/migration impact;
-4. monetization implications;
-5. asset and localization cost.
+Existing shops, buildings, transport, nature, food, infrastructure and leisure assets remain valuable, but they do not require a world scene now.
 
-## Character rule
+When world development resumes, its target is a real living Animal-Crossing-like life-sim layer. A decorative launcher/hub is not considered completion of that vision.
 
-The four core playable residents should remain visually recognizable across modes. Cosmetics may alter clothing/accessories, but silhouette and identity should remain readable.
+## 5. Character rule
 
-## Shop rule
+Approved CozyUni residents should remain recognizable across games.
 
-A shop should keep one strong primary identity. A mode may use the shop for different objectives, but should not casually change what the building represents.
+Avatar choice is identity/presentation unless the game GDD explicitly uses the character as a physical piece.
 
-## Economy rule
+## 6. Economy rule
 
-Do not promote temporary match scores into permanent currencies without a separate economy design. Festival Stars remain a match score unless explicitly redesigned.
+Do not turn match-local values into global currencies.
 
-## Documentation rule
+Examples:
+- Tycoon Coins exist only inside a Tycoon match.
+- Ludo progress is not persistent XP.
+- game wins/stats do not create a global spendable currency unless a later economy GDD explicitly defines one.
 
-Every mode owns a design/spec doc. Shared world changes go into world docs first, then modes consume them. Avoid copying shared canon into multiple files unless a generated snapshot is clearly marked.
+## 7. Content addition rule
+
+Before adding a permanent feature not in a locked GDD, document:
+1. why it is needed;
+2. whether it is shared or game-local;
+3. exact player-visible behavior;
+4. save/network impact;
+5. AI→3D or UI asset cost;
+6. acceptance tests.
+
+## 8. Documentation rule
+
+Docs are the source of truth for player-visible rules.
+
+Code may implement a rule but does not silently redefine it.
+
+Any approved design change must update the relevant doc before or in the same change as implementation.
