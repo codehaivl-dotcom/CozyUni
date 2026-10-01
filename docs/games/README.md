@@ -1,66 +1,106 @@
 # CozyUni — Locked Game Design Set
 
-Status: **GAME-FIRST / FULL GDD v1**
+Status: **GAME-FIRST / SINGLE-DEVICE FULL GDD v1**
 
 ## Authority order
 
 Implementation agents must read in this order:
 
-1. [`00_SHARED_GAME_EXPERIENCE_LOCK.md`](./00_SHARED_GAME_EXPERIENCE_LOCK.md) — shared Start Game flow, multiplayer setup, HUD hierarchy, tutorial behavior, Settings, disconnect, Final Results, rematch, accessibility and no-invention rule.
-2. [`00_SHARED_UI_LAYOUT_LOCK.md`](./00_SHARED_UI_LAYOUT_LOCK.md) — exact screen zones, HUD placement, modal hierarchy, touch-target and results-layout contract.
-3. The selected game's full GDD below.
-4. [`00_GDD_AUDIT_2026-10-01.md`](./00_GDD_AUDIT_2026-10-01.md) — audit record and gap-closure standard.
-5. `../GAME_MODE_ROADMAP.md` for production order only.
-6. `../assets/00_RENDER_RULES_LOCKED.md` for AI→3D art production.
+1. [`00_APP_SHELL_FLOW_LOCK.md`](./00_APP_SHELL_FLOW_LOCK.md) — exact app launch, Game Library, game selection, local setup, result navigation; **single-device only for current v1**.
+2. [`00_SHARED_GAME_EXPERIENCE_LOCK.md`](./00_SHARED_GAME_EXPERIENCE_LOCK.md) — tutorial, HUD hierarchy, pause/settings, results, rematch, accessibility, no-invention rule.
+3. [`00_SHARED_UI_LAYOUT_LOCK.md`](./00_SHARED_UI_LAYOUT_LOCK.md) — exact screen zones and layout hierarchy.
+4. Selected game's full GDD below.
+5. [`00_GDD_AUDIT_2026-10-01.md`](./00_GDD_AUDIT_2026-10-01.md) — audit record.
+6. `../GAME_MODE_ROADMAP.md` for production order only.
+7. `../assets/00_RENDER_RULES_LOCKED.md` for AI→3D production.
 
-If lower-priority docs or old code/comments conflict with a locked GDD, the locked GDD wins.
+Higher source wins on conflict.
 
-If a required behavior is not specified in the shared locks or the selected game GDD, **do not invent it; raise a design question**.
+If a lower-priority game document still mentions Room Mode / Create Room / Join Room, those sections are **FUTURE/DEFERRED and inactive for current v1**. Do not implement them until a new multi-device design lock is approved.
+
+If a required behavior is not specified by current locks/GDD: **do not invent it; raise a design question**.
+
+## Current product flow
+
+```text
+APP LAUNCH
+ -> GAME LIBRARY
+ -> select game card
+ -> GAME START SCREEN
+ -> PLAY
+ -> LOCAL PLAYER SETUP
+ -> MATCH SUMMARY
+ -> TUTORIAL if needed
+ -> COUNTDOWN
+ -> MATCH
+ -> FINAL RESULTS
+      -> REMATCH
+      -> CHANGE PLAYERS
+      -> GAME LIBRARY
+```
+
+Current v1 has no online/multi-device mode selector.
 
 ## Current five games
 
-1. [`01_COZY_LUDO.md`](./01_COZY_LUDO.md) — 2–4P race, first production game
-2. [`02_COZY_CARO.md`](./02_COZY_CARO.md) — Tic-Tac-Toe 3×3 + Freestyle Five 15×15
-3. [`03_COZY_JOURNEY.md`](./03_COZY_JOURNEY.md) — fixed 36-space Goose-family travel race
-4. [`04_COZY_CHESS.md`](./04_COZY_CHESS.md) — locked human-vs-human standard casual chess
-5. [`05_COZY_TYCOON.md`](./05_COZY_TYCOON.md) — original fixed 28-node / 12-round CozyUni economy board
+1. [`01_COZY_LUDO.md`](./01_COZY_LUDO.md) — 2–4 local players, first production game
+2. [`02_COZY_CARO.md`](./02_COZY_CARO.md) — local 2P Tic-Tac-Toe 3×3 + Freestyle Five 15×15
+3. [`03_COZY_JOURNEY.md`](./03_COZY_JOURNEY.md) — 2–4 local players, fixed 36-space travel race
+4. [`04_COZY_CHESS.md`](./04_COZY_CHESS.md) — local 2P standard casual chess
+5. [`05_COZY_TYCOON.md`](./05_COZY_TYCOON.md) — 2–4 local players, fixed 28-node / 12-round economy board
 
-Cozy Checkers is not in the active shortlist.
+Cozy Checkers is not active.
+
+## Current production rule
+
+Build one game at a time.
+
+Production order:
+
+`Cozy Ludo -> Cozy Caro -> Cozy Journey -> Cozy Chess -> Cozy Tycoon`
+
+Do not parallel-build all five systems.
 
 ## Full-GDD completeness standard
 
-Each current game spec now locks:
+Each active game must lock:
 - product role
-- supported player count/device modes
-- exact canonical rules/constants
-- Start Game/setup flow
-- lobby/match summary
+- supported local player count
+- exact rules/constants
+- Game Start / Local Setup / Match Summary flow
 - tutorial sequence
 - board/camera behavior
-- HUD contents and action priority
-- turn/input state machine
+- HUD/actions
+- input/turn state machine
 - animation/audio feedback
 - pause/help/settings behavior
-- Room disconnect/forfeit behavior
 - exact match end condition
 - Final Results/ranking/tiebreakers
+- rematch/reset behavior
 - stored stats
 - AI→3D asset requirements
 - explicit out-of-scope features
 - acceptance tests
 
-No production agent should need to invent gameplay rules to implement the current v1 designs.
+## Multi-device status
+
+Deferred.
+
+Current code should not contain speculative room/network UX simply because future product direction may support it.
+
+When multi-device work begins, it requires separate locked docs for:
+- Create/Join Room UX
+- network transport
+- authoritative host/server model
+- action/revision protocol
+- reconnect/host loss
+- failure states
+- privacy/security
 
 ## World status
 
-The explorable CozyUni world is **deferred**.
+Explorable CozyUni world is deferred.
 
-Existing building, transport, nature, food, sports and infrastructure assets are reserved for a later real life-sim/world phase. The current games may reuse them as static board/diorama dressing only.
+Existing building/transport/nature/food/sports/infrastructure assets are reserved for a later real life-sim phase.
 
-Do not build a decorative game-select hub and call it the CozyUni world. When world production restarts, it must be designed as a genuinely living Animal-Crossing-like life-sim layer under a separate full design lock.
-
-## Production order
-
-`Cozy Ludo -> Cozy Caro -> Cozy Journey -> Cozy Chess -> Cozy Tycoon`
-
-Do not parallel-build all five gameplay systems.
+Do not build a decorative game-select hub and call it the world. When world development restarts, it requires a full Animal-Crossing-like life-sim GDD.
