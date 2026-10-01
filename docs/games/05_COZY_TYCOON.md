@@ -1,65 +1,67 @@
-# G5 — Cozy Tycoon — Full Game Design v1.0
+# G5 — Cozy Tycoon — Full Game Design v1.1
 
-Status: **DESIGN LOCK — fifth production game / highest-scope game**
+Status: **DESIGN LOCK — local single-device / highest-scope game**
 
-Shared rules/UI: `00_SHARED_GAME_EXPERIENCE_LOCK.md`
+Shared authority:
+- `00_APP_SHELL_FLOW_LOCK.md`
+- `00_SHARED_GAME_EXPERIENCE_LOCK.md`
+- `00_SHARED_UI_LAYOUT_LOCK.md`
 
 ## 0. No-invention rule
 
-This is an original CozyUni economy board game. Implement exactly this economy and turn structure for v1.
+This is an original CozyUni economy board game. Implement exactly this economy and turn structure.
 
-Do not add Monopoly-specific terminology/presentation, bankruptcy, jail, mortgages, auctions, house/hotel rules, chance/community-chest clones, or any unlisted economy mechanic.
+Do not add Monopoly-specific terminology/presentation, bankruptcy, jail, mortgages, auctions, house/hotel rules, chance/community-chest clones, or unlisted mechanics.
+
+Current v1 is local multiplayer on one device. Multi-device/Room Mode is deferred.
 
 ## 1. Product role
 
-Cozy Tycoon is the most complex game in the first set. It reuses CozyUni buildings as miniature properties and turns the existing asset library into a strategic board without requiring the explorable world.
+Cozy Tycoon is the most complex game in the first set. It reuses CozyUni buildings as miniature properties and turns the asset library into a strategic family board game.
 
-Fantasy: players grow a friendly commercial/travel network across CozyUni. Competition is about building the highest **Prosperity** score, not eliminating other players.
+Fantasy: grow a friendly commercial/travel network and finish with the highest **Prosperity** score.
 
 ## 2. Players / modes
 
-- 2–4 humans
-- One Device supported
-- Room Mode supported
-- Bots not implemented
-- Public matchmaking not implemented
+- 2–4 local human players
+- One Device: supported/current v1
+- Multi-device/Room Mode: not implemented
+- Bots: not implemented
+- Public matchmaking: not implemented
 
 ## 3. Session target
 
-- Standard match: **12 rounds**
-- Expected 4-player duration: **20–35 minutes**
-- No alternate round length in v1
+- exactly 12 rounds
+- expected 4P: 20–35 min
+- no alternate round length
 
-A round ends after every currently active player has completed one turn.
+One round ends after every active local player completes one turn.
 
 ## 4. Core principles
 
-- No player bankruptcy/elimination from running out of coins.
-- Cash never goes below 0.
-- Opponents do **not** pay rent directly to property owners.
-- When a visitor lands on another player's property, the **bank pays income to the owner**.
-- All players stay relevant until the fixed final round unless they disconnect/forfeit.
-- Final winner is determined by Prosperity Points, not last-player-standing.
+- no bankruptcy/elimination
+- cash never below 0
+- visitors do not pay rent directly
+- when rival lands on owned property, **bank pays owner**
+- all players remain relevant until Round 12
+- winner = highest Prosperity, not last survivor
 
 ## 5. Starting state
 
-Each player begins with:
-- Coins: **100**
-- Properties: 0
-- Transports: 0
-- Upgrades: 0
-- Community Stars: 0
-- Coupon discount: none
+Each player:
+- Coins 100
+- Properties 0
+- Transports 0
+- Upgrades 0
+- Community Stars 0
+- Coupon none
 
-All player tokens begin on Node 0 `Festival Plaza`.
-
-Starting player follows shared random-start rule.
+All tokens start Node 0 `Festival Plaza`.
+Starting player follows shared local random-start rule.
 
 ## 6. Board topology
 
-Exactly **28 nodes** in one loop.
-
-Canonical node order:
+Exactly 28 nodes in one loop:
 
 | Node | Type | Name |
 |---:|---|---|
@@ -92,20 +94,17 @@ Canonical node order:
 | 26 | REST | Garden Rest |
 | 27 | EVENT | Event |
 
-After Node 27, movement continues to Node 0.
+27 -> 0 wraps.
 
 ## 7. Movement
 
-- One D6.
-- Player rolls once per normal turn.
-- Move forward exactly the rolled number of nodes.
-- Passing or landing on Node 0 grants **+10 Coins** exactly once per crossing.
-
-A Transport Fast Travel move may also cross Node 0 and grants the same +10 once.
+- one D6
+- roll once per normal turn
+- move exact result
+- passing or landing on Node 0 grants +10 Coins once per crossing
+- Fast Travel crossing 0 also grants +10 once
 
 ## 8. Turn structure
-
-Each turn uses exactly this phase order:
 
 ```text
 TURN_START
@@ -118,545 +117,461 @@ TURN_START
  -> END_TURN
 ```
 
-If Transport Fast Travel occurs, destination tile resolves inside `TILE_RESOLVE` before Optional Develop.
+Fast Travel destination resolves inside TILE_RESOLVE before Develop.
 
-## 9. Property districts / locked economy table
+## 9. Property districts / economy
 
-There are exactly four districts, three properties each.
-
-### Village District
-
-| Property | Buy | Income L0 | Upgrade 1 Cost | Income L1 | Upgrade 2 Cost | Income L2 |
+### Village
+| Property | Buy | L0 Income | L1 Cost | L1 Income | L2 Cost | L2 Income |
 |---|---:|---:|---:|---:|---:|---:|
 | Bakery | 20 | 4 | 10 | 6 | 15 | 9 |
 | Flower Shop | 20 | 4 | 10 | 6 | 15 | 9 |
 | General Store | 25 | 5 | 12 | 8 | 18 | 12 |
 
-### Town District
-
-| Property | Buy | Income L0 | Upgrade 1 Cost | Income L1 | Upgrade 2 Cost | Income L2 |
+### Town
+| Property | Buy | L0 Income | L1 Cost | L1 Income | L2 Cost | L2 Income |
 |---|---:|---:|---:|---:|---:|---:|
 | Café | 30 | 6 | 15 | 9 | 20 | 14 |
 | Bookshop | 30 | 6 | 15 | 9 | 20 | 14 |
 | Market Hall | 35 | 7 | 18 | 11 | 22 | 16 |
 
-### Harbor District
-
-| Property | Buy | Income L0 | Upgrade 1 Cost | Income L1 | Upgrade 2 Cost | Income L2 |
+### Harbor
+| Property | Buy | L0 Income | L1 Cost | L1 Income | L2 Cost | L2 Income |
 |---|---:|---:|---:|---:|---:|---:|
 | Fish Market | 35 | 7 | 18 | 11 | 22 | 16 |
 | Ferry Terminal | 40 | 8 | 20 | 12 | 25 | 18 |
 | Lighthouse | 40 | 8 | 20 | 12 | 25 | 18 |
 
-### Tourism District
-
-| Property | Buy | Income L0 | Upgrade 1 Cost | Income L1 | Upgrade 2 Cost | Income L2 |
+### Tourism
+| Property | Buy | L0 Income | L1 Cost | L1 Income | L2 Cost | L2 Income |
 |---|---:|---:|---:|---:|---:|---:|
 | Mountain Lodge | 45 | 9 | 22 | 14 | 28 | 21 |
 | Seaside Hotel | 50 | 10 | 25 | 15 | 30 | 23 |
 | Yacht Club | 50 | 10 | 25 | 15 | 30 | 23 |
 
-All values above are authoritative v1 constants.
+All constants authoritative.
 
-## 10. Landing on an unowned property
+## 10. Unowned property
 
-Show compact property sheet:
-- property name
+Show compact sheet:
+- name
 - district
-- purchase price
-- current/base income
+- price
+- base/current income
 - upgrade preview
 
 Actions:
-- `BUY`
-- `PASS`
+- BUY
+- PASS
 
-BUY is disabled if current Coins < purchase price after applying any valid coupon.
+BUY disabled if insufficient coins after coupon.
+Purchase assigns Level 0 immediately.
+No auction after Pass.
 
-If purchased:
-- subtract price
-- assign ownership immediately
-- property is Level 0
+## 11. Owned property landing
 
-No auction occurs after PASS.
+### Own property
+- no income
+- continue to Develop
 
-## 11. Landing on an owned property
-
-### Owned by active player
-- no income is paid
-- proceed to Optional Develop
-
-### Owned by another player
+### Rival property
 - visitor pays 0
-- bank pays owner the property's current income
-- if owner currently owns all three properties in that district, add **+2 district income bonus**
+- bank pays owner current income
+- if owner owns all 3 in district: +2 district income bonus
 
-Example: Bakery Level 1 income 6 + complete-district bonus 2 = bank pays owner 8.
-
-The visitor's cash does not change.
+Visitor coins unchanged.
 
 ## 12. District completion
 
-A district is complete when one player owns all three district properties.
+Complete = one player owns all three properties.
 
-Effects while complete:
-- +2 bank income whenever any of those properties pays income
-- Level 2 upgrades are unlocked for those three properties
-- +3 Prosperity Points at final scoring
+While complete:
+- +2 bank income when any property pays
+- L2 upgrades unlocked
+- +3 Prosperity at final scoring
 
-If a trade breaks the district:
-- district income bonus is removed immediately
-- new Level 2 upgrades cannot be purchased
-- existing Level 2 upgrades remain and continue using Level 2 base income
+If trade breaks district:
+- +2 removed immediately
+- no new L2 purchases
+- existing L2 remains and keeps L2 income
 
-## 13. Development / upgrades
+## 13. Development
 
-After tile resolution, active player may purchase at most **one upgrade total** that turn.
+After tile resolution, active player may buy at most **one upgrade total** that turn.
 
-The upgraded property may be any property the player owns; the player does not need to be standing on it.
+May upgrade any owned property.
 
-### Level 0 -> Level 1
-Allowed if:
-- player owns property
-- has required coins
+L0->L1:
+- owner
+- enough coins
 
-### Level 1 -> Level 2
-Allowed if:
-- player owns property
-- owns all three properties in that district at that moment
-- has required coins
+L1->L2:
+- owner
+- complete district currently
+- enough coins
 
-### Level 2
-Maximum. No further upgrades.
+L2 max.
 
-Actions in Develop phase:
-- `DEVELOP`
-- `END TURN`
+Actions:
+- DEVELOP
+- END TURN
 
-If no legal affordable upgrade exists, only `END TURN` is shown.
+If no affordable legal upgrade, only END TURN.
 
-`DEVELOP` opens a list of owned properties with level, cost and resulting income.
+DEVELOP opens owned-property list with level, cost, resulting income.
 
 ## 14. Transport nodes
 
-Transport assets:
-- Train Station
-- Bus Depot
-- Cable Car Station
+Train Station, Bus Depot, Cable Car Station.
 
-Purchase price: **30 Coins each**.
+Buy price: 30 each.
+No upgrades.
 
-Transports have no upgrades.
+### Income when rival lands
+Bank pays owner based on total Transports owned:
+- 1 => 4
+- 2 => 7
+- 3 => 10
 
-### 14.1 Transport income
+Visitor pays 0.
 
-When an active player lands on a Transport owned by another player, bank pays owner based on how many Transports that owner currently has:
-- owns 1 Transport: 4 Coins
-- owns 2 Transports: 7 Coins
-- owns all 3: 10 Coins
+### Fast Travel
+After purchase/ownership resolution on Transport:
+- FAST TRAVEL +4
+- STAY
 
-Visitor pays nothing.
-
-### 14.2 Fast Travel
-
-After purchase/ownership resolution on any Transport tile, the active player may choose:
-- `FAST TRAVEL +4`
-- `STAY`
-
-If Fast Travel chosen:
-- move forward exactly 4 nodes
-- passing Node 0 grants +10
-- resolve destination tile normally
-- a destination Transport does **not** offer another Fast Travel in the same turn
-
-Maximum one Fast Travel per turn.
+Fast Travel:
+- move +4
+- passing 0 grants +10
+- destination resolves normally
+- destination Transport cannot Fast Travel again same turn
+- max one Fast Travel/turn
 
 ## 15. Rest nodes
 
-Node 11 Town Park and Node 26 Garden Rest:
-- active player receives **+3 Coins from bank**
+Node 11 Town Park and 26 Garden Rest:
+- +3 Coins from bank
 - no choice
-- then Optional Develop
+- then Develop
 
-## 16. Community Project nodes
+## 16. Community Project
 
-On Nodes 5, 17, 24 the active player sees:
-- `CONTRIBUTE 10`
-- `SKIP`
+Nodes 5,17,24:
+- CONTRIBUTE 10
+- SKIP
 
-If player has at least 10 Coins and fewer than 3 Community Stars:
-- contribute exactly 10 Coins
-- gain exactly 1 Community Star
+If coins >=10 and Stars <3:
+- pay 10
+- gain 1 Community Star
 
-If player already has 3 Community Stars, contribution is disabled.
-
-Community Stars cannot be traded or spent.
-
-Each Community Star = **2 Prosperity Points** at final scoring.
+At 3 Stars contribution disabled.
+Stars cannot be traded/spent.
+Each Star = 2 Prosperity.
 
 ## 17. Event deck
 
-The Event deck contains exactly 12 cards.
+Exactly 12 cards.
 
-Deck behavior:
-- shuffle once from authoritative match seed
-- draw top card on Event node
-- discard after resolution
-- when deck empties, reshuffle the 12-card discard pile with authoritative RNG
+Behavior:
+- shuffle once from local authoritative match seed
+- draw top on Event node
+- discard after resolve
+- when empty, reshuffle discard with authoritative RNG
 
-No two-card choice UI.
+Cards:
+1. Market Day — +8 Coins
+2. Rain Repairs — pay up to 5
+3. Delivery Tip — +5
+4. Festival Visitors — choose one owned property and gain current base income + district bonus; no property => +3
+5. Free Decoration — one legal upgrade free; if none => +5
+6. Community Grant — +1 Star if below 3; else +5 Coins
+7. Local Fee — pay up to 4
+8. Shop Coupon — next property/Transport purchase before end of next own turn costs 5 less, min price 1
+9. Busy Weekend — +2 per property owned
+10. Maintenance — pay up to 2 per total upgrade level
+11. Travel Pass — owns Transport => +6; otherwise +3
+12. Lucky Parcel — +6
 
-### Event cards
+`pay up to X` = min(currentCoins, X).
 
-1. **Market Day** — gain 8 Coins.
-2. **Rain Repairs** — pay up to 5 Coins.
-3. **Delivery Tip** — gain 5 Coins.
-4. **Festival Visitors** — choose one owned property and gain its current base income plus any current district bonus immediately; if no property, gain 3 Coins.
-5. **Free Decoration** — upgrade one legally upgradeable owned property by one level for free; if no legal upgrade exists, gain 5 Coins.
-6. **Community Grant** — gain 1 Community Star if below 3; otherwise gain 5 Coins.
-7. **Local Fee** — pay up to 4 Coins.
-8. **Shop Coupon** — next property or Transport purchase made before the end of the player's next own turn costs 5 fewer Coins, minimum purchase price 1.
-9. **Busy Weekend** — gain 2 Coins for each property currently owned.
-10. **Maintenance** — pay up to 2 Coins per total upgrade level currently owned.
-11. **Travel Pass** — if player owns at least one Transport, gain 6 Coins; otherwise gain 3 Coins.
-12. **Lucky Parcel** — gain 6 Coins.
+Coupon:
+- expires end of next own turn if unused
+- only one held
+- drawing another refreshes -5, never stacks
 
-`pay up to X` means Coins reduce by `min(currentCoins, X)`; cash never becomes negative.
+## 18. Trade system — local shared screen
 
-### Coupon expiry
+Trade exists and is deliberately constrained.
 
-Shop Coupon expires at the end of the player's next own turn if unused.
+### Timing
+At TURN_START before roll, active player may tap TRADE.
+Maximum one proposal per turn.
 
-Only one coupon may be held. Drawing another while one is active resets/refreshes the same -5 discount; discounts do not stack.
-
-## 18. Trade system
-
-Trade exists in v1 but is deliberately constrained.
-
-### 18.1 Timing
-
-At `TURN_START`, before rolling, active player sees secondary action `TRADE`.
-
-Only the active player may initiate.
-
-Maximum **one trade proposal per turn**.
-
-### 18.2 Trade contents
-
-A proposal may contain:
+### Contents
+Proposal may contain:
 - 0 or 1 property/Transport from proposer
 - 0 or 1 property/Transport from recipient
-- proposer Coins amount >=0 and <= proposer cash
-- recipient Coins amount >=0 and <= recipient cash
+- proposer Coins 0..current cash
+- recipient Coins 0..current cash
 
-At least one asset or positive coin amount must change hands.
+At least one asset or positive coin amount changes hands.
+Upgrades stay attached.
+Stars/Coupon cannot trade.
 
-Upgrades stay attached to a traded property.
+### Shared-screen response
+After proposer confirms offer:
+- screen shows `Offer from <Player>`
+- exact GIVE / RECEIVE summary
+- recipient is asked to tap `ACCEPT` or `REJECT`
+- no response timer in current local v1
+- no counter-offer
 
-Community Stars cannot be traded.
-
-Coupon cannot be traded.
-
-### 18.3 Response
-
-Recipient sees:
-- exact Give / Receive summary
-- `ACCEPT`
-- `REJECT`
-- 20-second response timer
-
-No counter-offer in v1.
-
-Timeout = Reject.
-
-Accepted trade applies atomically.
-
-District completion/bonuses recompute immediately after trade.
+Accept applies atomically.
+Reject closes modal and proposer cannot propose again that turn.
+District state recomputes immediately.
 
 ## 19. Round progression
 
-- Turn order remains fixed for the match.
-- A round number increments after every active player has completed one turn.
-- Match ends after the final active player completes their turn in **Round 12**.
+- fixed turn order
+- round increments after all players complete one turn
+- match ends after last player finishes Round 12
+- all players receive equal turn count
 
-All non-forfeited players therefore receive equal turn count.
+## 20. Prosperity scoring
 
-## 20. Final Prosperity scoring
+Cash: `floor(Coins/10)`
 
-At match end compute exactly:
+Property: `2 × properties`
 
-### Cash Points
-`floor(Coins / 10)`
+Upgrade: `total upgrade levels`
 
-### Property Points
-`2 × number of owned properties`
+District: `3 × complete districts`
 
-### Upgrade Points
-`1 × total upgrade levels`
+Transport:
+- 1 each
+- +3 extra if owns all 3
 
-Example: one L2 property contributes 2 Upgrade Points.
+Community: `2 × Stars`
 
-### District Points
-`3 × number of complete districts`
+Total:
+`Prosperity = Cash + Property + Upgrade + District + Transport + Community`
 
-### Transport Points
-- 1 point per Transport owned
-- additional +3 bonus if player owns all 3 Transports
+No hidden categories.
 
-### Community Points
-`2 × Community Stars`
+## 21. Ranking
 
-### Total
-`Prosperity = Cash + Property + Upgrade + District + Transport + Community points`
-
-No hidden score categories.
-
-## 21. Final ranking / tiebreakers
-
-Sort by:
 1. Prosperity descending
 2. Coins descending
 3. complete districts descending
 4. total upgrade levels descending
 
-If still equal, display shared rank.
+Still tied => shared rank.
 
-Final Results key stat: `Prosperity`.
+Results key stat: Prosperity.
 
-## 22. Start Game / setup
+## 22. Start Game / Local Setup
 
 Description:
 `Buy CozyUni places, grow districts, make simple trades, and finish with the most Prosperity.`
 
+PLAY -> Local Player Setup.
+
 Setup:
 - 2 / 3 / 4 players
-- Default 4
+- default 4
 - unique avatars
-- fixed player colors Red / Blue / Green / Yellow
+- fixed Red / Blue / Green / Yellow
 - Standard 12 rounds only
 
-No economy sliders or house rules in v1.
+No economy sliders/house rules.
 
 ## 23. Match Summary
 
-Must show:
+Show:
 - `12 rounds`
 - `Start with 100 Coins`
 - `Buy places you land on`
 - `The bank pays you when rivals visit your places`
 - `Upgrade one place per turn`
 - `Highest Prosperity after Round 12 wins`
-- Expected: `20–35 min`
+- Expected `20–35 min`
 
-## 24. Tutorial — exact sequence
+## 24. Tutorial
 
-Tutorial uses Rabbit and Bear and a small scripted board.
+Rabbit and Bear scripted board.
 
-### Step 1 — Roll / move
-Text: `Roll the die to travel around CozyUni.`
-Forced roll moves Rabbit to Bakery.
+1. Roll/move to Bakery
+   - `Roll the die to travel around CozyUni.`
+2. BUY Bakery
+   - `Unowned places can be bought with Coins.`
+3. Bear lands on Bakery
+   - `Visitors do not pay you. The bank pays your property income.`
+   - show +4 Rabbit
+4. upgrade Bakery L1
+   - `After your turn, you may upgrade one place you own.`
+5. Community node
+   - `Contribute 10 Coins to earn Community Stars for final scoring.`
+6. local trade example
+   - Rabbit offers 10 Coins for Bear property
+   - `Before rolling, you may make one simple trade offer.`
+   - Bear taps Accept
+7. show Prosperity breakdown
+   - `After Round 12, the highest Prosperity wins.`
+   - `Start Match`
 
-### Step 2 — Buy
-Text: `Unowned places can be bought with Coins.`
-Required: tap BUY on Bakery.
-
-### Step 3 — Income
-Script Bear lands on Rabbit's Bakery.
-Text: `Visitors do not pay you. The bank pays your property income.`
-Show `+4` to Rabbit.
-
-### Step 4 — Develop
-Text: `After your turn, you may upgrade one place you own.`
-Required: upgrade Bakery to Level 1.
-
-### Step 5 — Community
-Script Community Project.
-Text: `Contribute 10 Coins to earn Community Stars for final scoring.`
-Required: Contribute.
-
-### Step 6 — Trading
-Show simple proposal: Rabbit offers 10 Coins for Bear property.
-Text: `Before rolling, you may make one simple trade offer.`
-Required: Accept scripted trade.
-
-### Step 7 — Final score
-Show Prosperity breakdown.
-Text: `After Round 12, the highest Prosperity wins.`
-Button: `Start Match`.
-
-Target tutorial: under 90 seconds.
+Target <90 s.
 
 ## 25. Board presentation
 
-- 28-node loop arranged around a stylized CozyUni region map.
-- Properties use miniature/reused building assets adjacent to or integrated with their tile.
-- Ownership is shown by a clear colored base ring/banner, never recoloring the whole building.
-- Upgrade level shown by 0/1/2 small star markers near ownership base.
-- District identity uses ground/border motif plus icon; not color alone.
-- Central map space may contain fountain/park dressing but is non-interactive.
+- 28-node loop around stylized CozyUni region map
+- reused miniature buildings adjacent/integrated with property tiles
+- ownership = colored base ring/banner, not whole-building recolor
+- upgrade level = 0/1/2 small star markers
+- district identity = motif + icon, not hue only
+- center dressing non-interactive
 
-Do not imitate Monopoly board typography, corner layout, deed cards, houses/hotels, or branded visual structure.
+Do not imitate Monopoly typography, corner layout, deeds, houses/hotels or branded structure.
 
 ## 26. HUD
 
-### Top-center
+Top-center:
 `Round X / 12 — <Player> Turn`
 
-### Bottom-left — active player card
+Bottom-left active player:
 - avatar/name
 - Coins
 - Prosperity preview
 - property count
 
-### Bottom-center — primary action
-Context-dependent:
-- `ROLL`
-- `BUY`
-- `END TURN`
-- `CONTRIBUTE 10`
-- confirmation action inside trade/property dialogs
+Bottom-center primary:
+- ROLL
+- BUY
+- END TURN
+- CONTRIBUTE 10
+- decision confirmation as context requires
 
-### Bottom-right
-Secondary actions:
-- `TRADE` only at turn start before roll
-- `DEVELOP` only after tile resolution if a legal affordable upgrade exists
-- turn-order compact strip
+Bottom-right secondary:
+- TRADE only before roll
+- DEVELOP only after tile resolution if legal affordable upgrade exists
+- turn-order strip
 
-### Top-right
-Settings/Pause.
+Top-right:
+- Pause/Settings
 
 No permanent property inventory panel.
-
-Tapping own player card opens a temporary owned-assets sheet; it closes without changing state.
+Tap own player card -> temporary owned-assets sheet; viewing does not alter state.
 
 ## 27. Property sheet
 
-When shown, must contain:
+Must contain:
 - name
 - district
 - owner
 - level 0/1/2
 - current bank income
-- district complete status
-- next upgrade cost/income if applicable
+- district-complete status
+- next upgrade cost/income where applicable
 
-No flavor text longer than one line in the decision sheet.
+Decision sheet flavor text max one line.
 
 ## 28. Animation timing
 
 Normal:
 - dice 0.9 s
-- token movement 0.10 s/node, cap 0.8 s
-- coin gain/loss count 0.35 s
-- building ownership banner appear 0.35 s
-- upgrade star appear 0.35 s
+- move 0.10 s/node, cap 0.8 s
+- coin count 0.35 s
+- ownership banner 0.35 s
+- upgrade star 0.35 s
 - Fast Travel 0.55 s
-- Event popup auto card min display 0.8 s
+- Event card minimum 0.8 s
 
-Fast multiplier 0.6 for non-essential animation.
+Fast ×0.6 non-essential.
 
-## 29. Room disconnect behavior
+## 29. Final Results
 
-Shared Tycoon rule applies.
-
-After 60-second forfeit:
-- all forfeiting player's properties become unowned
-- all upgrades on those properties are removed
-- transports become unowned
-- coins discarded
-- Community Stars discarded
-- coupon discarded
-- player removed from future turn order
-- no refund/payment to other players
-
-Remaining players continue through Round 12 using only active slots.
-
-Forfeited player ranks below all non-forfeited players in Final Results.
-
-Among forfeits, later forfeit ranks above earlier forfeit.
-
-## 30. Final Results
-
-Show ranked cards with:
+Rank cards:
 - rank
 - avatar/name
-- Prosperity total
+- Prosperity
 - Coins
 - Properties
 - Complete Districts
 - Upgrade Levels
 - Community Stars
 
-Expandable `Score Breakdown` shows exact formula categories.
+Expandable `Score Breakdown` shows exact categories.
+Winner receives trophy.
 
-Winner receives trophy presentation.
+Buttons:
+- REMATCH
+- CHANGE PLAYERS
+- GAME LIBRARY
 
-## 31. Stats stored
+## 30. Stats
 
-Generic stats plus:
-- total properties purchased
-- total trades accepted
-- highest Prosperity score
-- total Community Stars earned
+Generic plus:
+- properties purchased
+- trades accepted
+- highest Prosperity
+- Community Stars earned
 
-No ranked rating.
+No rating.
 
-## 32. AI→3D asset plan
+## 31. AI→3D assets
 
-Reuse existing assets for all 12 properties and 3 transports wherever available.
+Reuse existing models for all 12 properties and 3 transports wherever available.
 
-Essential bespoke/shared assets:
+Essential bespoke/shared:
 1. Cozy Coin / coin stack
-2. simple ownership base/banner marker
+2. ownership base/banner marker
 3. upgrade star marker
 4. Community Star token
 5. shared D6
 6. shared winner trophy
 
-Cards, money numbers, score icons, property info and event content are UI/data, not AI-rendered 3D assets.
+Cards/numbers/property info/events are UI/data.
+Do not render unique building per board tile.
 
-Do not render a unique building per board tile.
+## 32. Explicitly out of scope
 
-## 33. Explicitly out of scope v1
-
+- multi-device/Room Mode
+- online matchmaking
 - player elimination/bankruptcy
 - direct rent payments
 - loans/debt
 - mortgages
 - auctions
-- jail/detention
+- jail
 - random movement cards
 - hidden hands
 - stock market
-- variable interest
 - more than 2 upgrade levels
 - counter-offers
 - multi-property bundle trades
 - bots
-- public matchmaking
 - alternate round counts
 - custom economies
 
-## 34. Acceptance tests
+## 33. Acceptance tests
 
 Economy:
-- all property purchase/income/upgrade constants match tables
+- all table constants exact
 - cash never negative
-- district +2 income bonus correct
-- L2 upgrade lock correct
-- trade transfers property/upgrades atomically
-- coupon discount/expiry correct
+- district +2 correct
+- L2 lock correct
+- trade transfer atomic
+- coupon exact
 - event deck deterministic from seed
-- Community Star cap 3
-- Transport income 4/7/10 correct
-- max one Fast Travel/turn
-- all players receive equal round count unless forfeited
-- Prosperity formula/tiebreakers exact
+- Star cap 3
+- Transport 4/7/10 exact
+- max one Fast Travel
+- equal 12-round turn count
+- Prosperity/tiebreak exact
 
 UX:
-- every money decision shows resulting cost before confirmation
+- every money decision shows cost before confirmation
 - no permanent large side panel
-- One Device trading is usable around one tablet
-- Room trade timeout resolves deterministically
-- Final Results explains score without hidden values
-- complete Start -> setup -> tutorial -> 12 rounds -> ranking flow works
+- local trade clear for players around one tablet
+- Final Results exposes score breakdown
+- full Game Library -> Start -> Local Setup -> Tutorial -> 12 rounds -> Results works
+- no network/Room UI exists
