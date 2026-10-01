@@ -1,4 +1,4 @@
-# CozyUni — Data, Telemetry & Simulation Plan v1.0
+# CozyUni — Data, Telemetry & Simulation Plan v1.1
 
 Status: **IMPLEMENTATION SPEC / NO-INVENTION DATA CONTRACT**
 
@@ -11,17 +11,26 @@ Purpose: stop agents from hard-coding tuning values and provide measurable gates
 Use machine-readable data for numeric configuration.
 
 ```text
-docs/data/economy_v1.json     economy / IAP / catalog bands / simulation defaults
-future game data files        game-specific tuning values once implementation starts
+docs/data/economy_v1.json             economy / IAP packs / price bands / scenario defaults
+docs/data/commerce_backend_v1.json    auth / wallet / retry / rate-limit / feature-flag constants
+docs/data/game_simulation_config_v1.json  gameplay simulation run counts/gates
+future game data files                game-specific tuning values once rules engine exists
 ```
 
 Markdown explains behavior. JSON contains exact numeric values.
 
 Rules:
-- code does not duplicate constants already present in data
-- tests load the same data as runtime where practical
-- simulators load the same data
-- a changed number requires versioned data + changelog note
+- code does not duplicate constants already present in data;
+- tests load the same data as runtime where practical;
+- simulators load the same data;
+- changed numeric behavior requires versioned data + changelog note;
+- implementation agent may not silently retune a threshold because a test fails.
+
+Validation tool:
+
+```text
+python tools/validate_commerce_data.py
+```
 
 ---
 
@@ -31,15 +40,22 @@ Required commerce metrics:
 
 ### Funnel
 - `store_open`
+- `commerce_signin_started`
+- `commerce_signin_success`
+- `commerce_signin_cancelled`
+- `commerce_signin_failed`
 - `iap_product_impression`
 - `iap_purchase_started`
 - `iap_purchase_pending`
 - `iap_purchase_success`
 - `iap_purchase_failed`
 - `iap_purchase_cancelled`
+- `iap_delivery_retry`
+- `iap_delivery_success`
 - `catalog_item_view`
 - `catalog_purchase_success`
 - `catalog_purchase_insufficient_balance`
+- `catalog_purchase_refund_debt_blocked`
 
 ### Wallet
 - CC granted by IAP
@@ -48,16 +64,32 @@ Required commerce metrics:
 - ending wallet balance distribution
 - purchased CC outstanding
 - bonus CC outstanding
+- refund debt outstanding
 - refund-adjusted CC
+- debt repayment by later grant
+- wallet reconciliation mismatch count
+
+### Apple/server reliability
+- App Store notification received count by type
+- duplicate notification count
+- notification processing latency
+- transaction claim duplicate count
+- transaction claim account-mismatch count
+- transaction claim validation failure rate
+- outbox retry count
+- dead-letter count
+- consumption request time-to-response
 
 ### Business calculations
 - payer conversion = unique purchasers / eligible active users
 - ARPPU = gross purchase revenue / unique purchasers
 - ARPDAU = gross purchase revenue / DAU
 - purchase success rate = successful purchases / purchase starts
+- delivery success rate = delivered IAP grants / verified successful StoreKit purchases
 - refund rate = refunded transactions / successful transactions
 - CC burn rate = CC spent / CC granted
-- CC outstanding = total granted - total spent - refund adjustments
+- CC outstanding = purchased + bonus spendable
+- refund debt rate = accounts with debt / payer accounts
 
 Never call revenue `profit`; Apple commission, tax, refunds, hosting, marketing and business costs are separate.
 
@@ -87,7 +119,10 @@ Do not require personal names, email, precise location or chat content for these
 
 ---
 
-## 4. Game simulation gates
+## 4. Game simulation authority
+
+Detailed simulation contract:
+`docs/SIMULATION_SCHEMA_AND_GATES.md`
 
 When each rules engine becomes headless-callable, create a deterministic simulator that uses the exact production rule engine, not a rewritten approximate copy.
 
@@ -166,7 +201,7 @@ Review triggers:
 
 ---
 
-## 5. Economy simulator
+## 5. Economy scenario simulator
 
 Repository tool:
 
@@ -174,13 +209,13 @@ Repository tool:
 tools/sim_economy.py
 ```
 
-It reads:
+Reads:
 
 ```text
 docs/data/economy_v1.json
 ```
 
-It estimates:
+Estimates:
 - monthly payers
 - purchase count
 - gross revenue
@@ -190,7 +225,7 @@ It estimates:
 - average credits/payer
 - average revenue/payer
 
-Use it for scenario comparison only, not as a forecast guarantee.
+Use for scenario comparison only, not as a forecast guarantee.
 
 Required scenarios:
 - payer rate 0.5%, 1%, 2%, 3%, 5%
@@ -201,28 +236,83 @@ Commission is configurable because Apple terms/program eligibility/region may di
 
 ---
 
-## 6. Economy launch gates
+## 6. Wallet policy simulator
 
-Paid CC remains disabled until all are true:
-- StoreKit products load in Sandbox
-- transaction verification passes
-- duplicate transaction test passes
-- app-killed-mid-purchase recovery passes
-- deferred/Ask-to-Buy state passes where applicable
-- server wallet idempotency test passes
-- catalog atomic spend/entitlement test passes
-- refund adjustment path tested
-- localized price display verified
-- privacy policy / purchase terms prepared
-- parental gate added if Kids Category is selected
+Repository tool:
+
+```text
+tools/sim_wallet_policy.py
+```
+
+Purpose:
+- validate human-readable refund/debt examples;
+- test purchased/bonus spend order policy;
+- make future economy-policy changes visibly comparable.
+
+It is not the production wallet implementation.
+
+Required baseline command:
+
+```text
+python tools/sim_wallet_policy.py --matrix
+```
+
+Any change to refund debt behavior must update:
+- backend design;
+- JSON config if numeric;
+- wallet simulator cases;
+- commerce test matrix.
 
 ---
 
-## 7. Data quality rules
+## 7. Commerce launch gates
 
-- every event has `event_id` and UTC timestamp
-- commerce events include environment `sandbox|production`
-- purchase transaction IDs are never duplicated in grant ledger
-- analytics failure must never block gameplay or purchase acknowledgement
-- debug builds can log full test IDs; production telemetry minimizes raw identifiers
-- no agent may add a new tracked personal-data field without a privacy review
+Detailed integration gate:
+`docs/backend/05_COMMERCE_TEST_MATRIX.md`
+
+Paid CC remains disabled until all are true:
+- commerce data validator passes;
+- StoreKit products load in Sandbox;
+- transaction verification passes;
+- duplicate transaction test passes;
+- app-killed-mid-purchase recovery passes;
+- deferred/Ask-to-Buy state passes where applicable;
+- server wallet idempotency test passes;
+- catalog atomic spend/entitlement test passes;
+- refund/debt matrix passes;
+- App Store Server Notifications V2 tests pass;
+- localized price display verified;
+- privacy policy / purchase terms prepared;
+- parental gate added if Kids Category is selected;
+- production feature flags remain OFF until the explicit enablement gate.
+
+---
+
+## 8. Commerce operational alerts
+
+RED:
+- any wallet projection mismatch;
+- duplicate Apple transaction attached to different account;
+- invalid JWS accepted (must never happen);
+- negative credit-lot remaining balance;
+- production/sandbox environment cross-contamination.
+
+AMBER:
+- App Store notification processing failure >0 after retries;
+- purchase delivery success rate below 97%;
+- refund rate >= configured warning threshold;
+- dead-letter queue non-empty;
+- consumption request approaching response target.
+
+---
+
+## 9. Data quality rules
+
+- every event has `event_id` and UTC timestamp;
+- commerce events include environment `sandbox|production`;
+- purchase transaction IDs are never duplicated in grant ledger;
+- analytics failure must never block gameplay or purchase acknowledgement;
+- production analytics should use internal pseudonymous IDs, not raw Apple provider subject;
+- raw Apple JWS must not be sent to analytics;
+- debug builds can log full sandbox test IDs; production telemetry minimizes raw identifiers;
+- no agent may add a new tracked personal-data field without a privacy review.
