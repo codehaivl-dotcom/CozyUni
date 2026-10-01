@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "auth": {
+    "provider": "sign_in_with_apple",
+    "core_game_requires_login": false,
+    "real_money_purchase_requires_login": true,
+    "access_token_ttl_seconds": 900,
+    "refresh_token_ttl_seconds": 2592000,
+    "refresh_token_rotation": true,
+    "active_commerce_accounts_per_install": 1
+  },
+  "apple": {
+    "storekit_api": "StoreKit2",
+    "server_notifications_version": 2,
+    "require_app_account_token": true,
+    "finish_transaction_after_server_delivery": true,
+    "process_transaction_updates_on_launch": true,
+    "process_unfinished_transactions_on_launch": true,
+    "relevant_notification_types": [
+      "ONE_TIME_CHARGE",
+      "REFUND",
+      "REFUND_REVERSED",
+      "REFUND_DECLINED",
+      "CONSUMPTION_REQUEST"
+    ],
+    "consumption_request_target_hours": 12
+  },
+  "wallet": {
+    "currency_code": "CC",
+    "integer_only": true,
+    "spend_priority": [
+      "bonus_oldest_first",
+      "purchased_oldest_first"
+    ],
+    "block_spend_when_refund_debt_positive": true,
+    "positive_grants_repay_refund_debt_first": true,
+    "refund_auto_revoke_entitlements": false
+  },
+  "sessions": {
+    "token_bytes": 32,
+    "store_raw_tokens_server_side": false,
+    "hash": "SHA-256"
+  },
+  "rate_limits_per_minute": {
+    "auth_apple": 10,
+    "auth_refresh": 30,
+    "transaction_claim_per_account": 20,
+    "catalog_purchase_per_account": 30,
+    "wallet_catalog_reads_per_account": 120
+  },
+  "admin": {
+    "operator_grant_max_cc_per_action": 500,
+    "operator_grant_max_cc_per_account_per_utc_day": 1000,
+    "admin_grant_max_cc_per_action": 5000,
+    "direct_balance_set_allowed": false,
+    "historical_ledger_mutation_allowed": false
+  },
+  "worker": {
+    "outbox_initial_retry_seconds": 30,
+    "outbox_max_retry_seconds": 21600,
+    "outbox_max_attempts_before_terminal": 12,
+    "wallet_reconciliation_interval_hours": 24
+  },
+  "feature_flags_production_default": {
+    "commerce_enabled": false,
+    "iap_credit_packs_enabled": false,
+    "catalog_spend_enabled": false,
+    "sign_in_with_apple_required_for_purchase": true
+  }
+}
