@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "game_id": "cozy_chess",
+  "rules_version": "1.1",
+  "player_counts": [2],
+  "board": {
+    "files": 8,
+    "ranks": 8,
+    "a1_color": "dark",
+    "white_home_ranks": [1, 2],
+    "black_home_ranks": [7, 8],
+    "white_queen_square": "d1",
+    "black_queen_square": "d8"
+  },
+  "side_assignment": {
+    "first_match": "seeded_random",
+    "white_moves_first": true,
+    "rematch_swaps_sides": true
+  },
+  "rules": {
+    "king_self_check_illegal": true,
+    "castling": {
+      "enabled": true,
+      "king_and_rook_must_be_unmoved": true,
+      "squares_between_must_be_empty": true,
+      "king_may_not_start_in_check": true,
+      "king_may_not_cross_attacked_square": true,
+      "king_may_not_end_in_check": true,
+      "white_kingside": {"king": ["e1", "g1"], "rook": ["h1", "f1"]},
+      "white_queenside": {"king": ["e1", "c1"], "rook": ["a1", "d1"]},
+      "black_kingside": {"king": ["e8", "g8"], "rook": ["h8", "f8"]},
+      "black_queenside": {"king": ["e8", "c8"], "rook": ["a8", "d8"]}
+    },
+    "en_passant": {
+      "enabled": true,
+      "available_only_immediately_after_two_step": true,
+      "must_preserve_own_king_legality": true
+    },
+    "promotion": {
+      "mandatory": true,
+      "choices": ["queen", "rook", "bishop", "knight"],
+      "auto_queen": false
+    },
+    "draw": {
+      "stalemate": true,
+      "threefold_repetition": "automatic",
+      "fifty_move_halfmoves": 100,
+      "draw_offer": true,
+      "draw_offer_cooldown_completed_own_moves": 10,
+      "insufficient_material": [
+        "king_vs_king",
+        "king_bishop_vs_king",
+        "king_knight_vs_king",
+        "king_bishop_vs_king_bishop_same_colored_bishops"
+      ]
+    },
+    "clock": false,
+    "bots": false,
+    "takebacks": false,
+    "analysis": false,
+    "hints": false
+  },
+  "board_presentation": {
+    "one_device_white_bottom_default": true,
+    "rotate_board_each_turn_default": false,
+    "legal_empty_marker": "center_dot",
+    "legal_capture_marker": "thin_ring",
+    "selected_piece_lift_percent": 4,
+    "selected_piece_ring": "soft_gold"
+  }
+}
