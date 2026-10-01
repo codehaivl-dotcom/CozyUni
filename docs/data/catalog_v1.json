@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "catalog_version": 1,
+  "currency": "CC",
+  "default_active": false,
+  "items": [
+    {"id":"profile_frame.meadow","type":"profile_frame","price_band":"S","price_cc":80,"display_key":"catalog.profile_frame.meadow","preview_asset_id":"catalog/profile_frame/meadow","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"profile_frame.harbor","type":"profile_frame","price_band":"S","price_cc":80,"display_key":"catalog.profile_frame.harbor","preview_asset_id":"catalog/profile_frame/harbor","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"profile_frame.mountain","type":"profile_frame","price_band":"S","price_cc":80,"display_key":"catalog.profile_frame.mountain","preview_asset_id":"catalog/profile_frame/mountain","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"profile_frame.festival","type":"profile_frame","price_band":"S","price_cc":80,"display_key":"catalog.profile_frame.festival","preview_asset_id":"catalog/profile_frame/festival","game_ids":["shared"],"stackable":false,"active":false},
+
+    {"id":"dice.sage_garden","type":"dice_skin","price_band":"A","price_cc":150,"display_key":"catalog.dice.sage_garden","preview_asset_id":"catalog/dice/sage_garden","game_ids":["cozy_ludo","cozy_journey","cozy_tycoon"],"stackable":false,"active":false},
+    {"id":"dice.harbor_blue","type":"dice_skin","price_band":"A","price_cc":150,"display_key":"catalog.dice.harbor_blue","preview_asset_id":"catalog/dice/harbor_blue","game_ids":["cozy_ludo","cozy_journey","cozy_tycoon"],"stackable":false,"active":false},
+    {"id":"dice.festival_coral","type":"dice_skin","price_band":"A","price_cc":150,"display_key":"catalog.dice.festival_coral","preview_asset_id":"catalog/dice/festival_coral","game_ids":["cozy_ludo","cozy_journey","cozy_tycoon"],"stackable":false,"active":false},
+
+    {"id":"token.berry_blossom","type":"token_skin","price_band":"A","price_cc":150,"display_key":"catalog.token.berry_blossom","preview_asset_id":"catalog/token/berry_blossom","game_ids":["cozy_caro"],"stackable":false,"active":false},
+    {"id":"token.leaf_garden","type":"token_skin","price_band":"A","price_cc":150,"display_key":"catalog.token.leaf_garden","preview_asset_id":"catalog/token/leaf_garden","game_ids":["cozy_caro"],"stackable":false,"active":false},
+    {"id":"token.gold_star","type":"token_skin","price_band":"A","price_cc":150,"display_key":"catalog.token.gold_star","preview_asset_id":"catalog/token/gold_star","game_ids":["cozy_ludo","cozy_journey","cozy_tycoon"],"stackable":false,"active":false},
+
+    {"id":"character_colorway.rabbit_spring","type":"character_colorway","price_band":"A","price_cc":150,"display_key":"catalog.character_colorway.rabbit_spring","preview_asset_id":"catalog/character_colorway/rabbit_spring","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"character_colorway.bear_orchard","type":"character_colorway","price_band":"A","price_cc":150,"display_key":"catalog.character_colorway.bear_orchard","preview_asset_id":"catalog/character_colorway/bear_orchard","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"character_colorway.fox_harbor","type":"character_colorway","price_band":"A","price_cc":150,"display_key":"catalog.character_colorway.fox_harbor","preview_asset_id":"catalog/character_colorway/fox_harbor","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"character_colorway.cat_lavender","type":"character_colorway","price_band":"A","price_cc":150,"display_key":"catalog.character_colorway.cat_lavender","preview_asset_id":"catalog/character_colorway/cat_lavender","game_ids":["shared"],"stackable":false,"active":false},
+
+    {"id":"outfit.farmer_set","type":"character_outfit","price_band":"B","price_cc":250,"display_key":"catalog.outfit.farmer_set","preview_asset_id":"catalog/outfit/farmer_set","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"outfit.seaside_set","type":"character_outfit","price_band":"B","price_cc":250,"display_key":"catalog.outfit.seaside_set","preview_asset_id":"catalog/outfit/seaside_set","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"outfit.festival_set","type":"character_outfit","price_band":"B","price_cc":250,"display_key":"catalog.outfit.festival_set","preview_asset_id":"catalog/outfit/festival_set","game_ids":["shared"],"stackable":false,"active":false},
+    {"id":"outfit.mountain_set","type":"character_outfit","price_band":"B","price_cc":250,"display_key":"catalog.outfit.mountain_set","preview_asset_id":"catalog/outfit/mountain_set","game_ids":["shared"],"stackable":false,"active":false},
+
+    {"id":"board_skin.ludo_spring_garden","type":"board_skin","price_band":"C","price_cc":400,"display_key":"catalog.board_skin.ludo_spring_garden","preview_asset_id":"catalog/board_skin/ludo_spring_garden","game_ids":["cozy_ludo"],"stackable":false,"active":false},
+    {"id":"board_skin.caro_warm_garden","type":"board_skin","price_band":"C","price_cc":400,"display_key":"catalog.board_skin.caro_warm_garden","preview_asset_id":"catalog/board_skin/caro_warm_garden","game_ids":["cozy_caro"],"stackable":false,"active":false}
+  ]
+}
