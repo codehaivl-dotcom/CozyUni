@@ -1,4 +1,4 @@
-# CozyUni — App Architecture v0.4
+# CozyUni — App Architecture v0.5
 
 Status: **current local-first architecture direction**
 
@@ -8,10 +8,10 @@ One app, modular internally.
 
 Current production target is a family board-game collection played by multiple local users on one device.
 
-Multi-device networking and full explorable world remain later milestones.
+Multi-device gameplay networking and full explorable world remain later milestones.
 
 Gameplay rules are owned by locked GDDs under `docs/games/`; architecture must not reinterpret them.
-Global economy/commerce behavior is owned by `docs/ECONOMY_IAP_AND_STORE_LOCK.md`.
+Global economy/commerce behavior is owned by `docs/ECONOMY_IAP_AND_STORE_LOCK.md` and the locked backend contracts under `docs/backend/`.
 
 ## 2. Authority
 
@@ -23,9 +23,14 @@ For player-visible game behavior:
 
 For commerce:
 1. `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
-2. `docs/data/economy_v1.json`
-3. `docs/MONETIZATION_AND_APPSTORE.md`
-4. this architecture document
+2. `docs/backend/01_COMMERCE_BACKEND_DESIGN.md`
+3. `docs/backend/03_COMMERCE_API_CONTRACT.md`
+4. `docs/backend/02_COMMERCE_DATABASE_SCHEMA.md`
+5. `docs/data/economy_v1.json`
+6. `docs/data/commerce_backend_v1.json`
+7. this architecture document
+
+Implementation technology for commerce is locked by `docs/backend/00_BACKEND_TECH_STACK_LOCK.md`.
 
 Architecture cannot override game rules, rankings, setup flow, results, currency grants, catalog prices, or purchase behavior.
 
@@ -51,6 +56,7 @@ Commerce-capable shell modules behind feature flags:
 - customization/catalog screen
 - visible CC wallet balance outside matches
 - purchase status UI
+- Sign in with Apple commerce-protection step
 
 Current shell does **not** include:
 - room creation/join
@@ -58,7 +64,9 @@ Current shell does **not** include:
 - public matchmaking
 - full friends/social system
 
-A minimal commerce identity/backend is allowed before full account/social systems because paid consumable currency requires durable server reconciliation.
+A minimal Commerce Account/backend is explicitly allowed before full social/account systems because paid consumable currency requires durable reconciliation.
+
+Core local games remain playable without commerce authentication.
 
 ## 4. Shared local match services
 
@@ -155,16 +163,20 @@ Shared persistent local cache:
 - tutorial completion flags
 - optional last-used avatar/name preferences
 - generic per-game stats
-- cached global cosmetic entitlements
+- cached cosmetic entitlements
 - cached CC display balance from canonical commerce backend
-- stable `commerce_user_id` credential/token material stored securely
+- Commerce Account session material stored in platform-secure storage
 
 Server-authoritative commerce state once paid CC is enabled:
+- Commerce Account
+- Sign in with Apple identity mapping
 - wallet ledger
-- purchased/bonus CC buckets
-- IAP grant transaction IDs
+- credit lots
+- purchased/bonus CC projection
+- refund debt
+- Apple transaction IDs/JWS audit
 - permanent catalog entitlements
-- refund adjustments
+- App Store Server Notifications processing
 
 Match-local:
 - player slots
@@ -191,11 +203,11 @@ Rules:
 
 This structure is intentionally clean enough for future networking without implementing gameplay networking now.
 
-## 10. Commerce architecture
+## 10. Commerce client architecture
 
-Commerce is a separate subsystem from all game rules.
+Commerce is separate from all game rules.
 
-Conceptual modules:
+Conceptual app modules:
 
 ```text
 /commerce
@@ -206,6 +218,7 @@ Conceptual modules:
   WalletClient
   EntitlementClient
   CommerceIdentity
+  SecureSessionStore
   CommerceTelemetry
 ```
 
@@ -215,18 +228,61 @@ Hard boundaries:
 - UI cannot mutate wallet balance locally
 - StoreKit callbacks cannot grant twice
 - backend grants are idempotent by Apple transaction ID
-- catalog spend + entitlement grant is atomic
-- purchase/customer-facing feature flags may stay OFF while test adapters exist
-
-Production paid-CC flow requires:
-- verified StoreKit transaction
-- commerce backend
-- append-only wallet ledger
-- canonical balance response
+- catalog spend + entitlement grant is atomic server-side
+- paid purchase is not considered delivered until backend confirms it
+- client calls `Transaction.finish()` only after server delivery acknowledgement
+- `Transaction.updates`/unfinished transactions are processed on launch for recovery
 
 If backend is unavailable before launch, paid CC products stay disabled rather than falling back to local-only balance.
 
-## 11. Assets
+## 11. Commerce backend architecture
+
+Locked commerce v1 backend:
+
+```text
+Node.js 22 LTS + TypeScript strict + Fastify 5
+               |
+               +-- PostgreSQL 16+
+               +-- Apple official App Store Server Library
+               +-- App Store Server API
+               <-- App Store Server Notifications V2
+```
+
+No Redis/message broker/microservice split in v1.
+PostgreSQL outbox rows support retryable background work.
+
+Backend source structure should follow conceptually:
+
+```text
+/backend
+  /src
+    /auth
+    /apple
+    /wallet
+    /catalog
+    /admin
+    /worker
+    /db
+  /migrations
+```
+
+Exact DB authority begins at `backend/migrations/001_commerce_v1.sql`.
+
+## 12. Commerce identity boundary
+
+Local game profiles are not paid accounts.
+
+Commerce Account rules:
+- no login required to play board games;
+- store browsing may be signed out;
+- first real-money purchase requires Sign in with Apple;
+- server issues one stable Commerce Account and `app_account_token` UUID;
+- each StoreKit purchase passes that token;
+- paid wallet and cosmetics belong to Commerce Account, not to a local Player 1/2/3/4 slot.
+
+Do not silently promote Commerce Account into friends/social/profile account behavior.
+
+## 13. Assets
 
 Use stable asset IDs.
 
@@ -240,7 +296,7 @@ Examples:
 
 Boards/grids/text/cards generated in engine/UI wherever GDD specifies.
 
-## 12. Deferred multi-device gameplay architecture
+## 14. Deferred multi-device gameplay architecture
 
 Do not choose WebSocket/host/server/protocol technology during current local match milestone.
 
@@ -255,13 +311,13 @@ Before multi-device gameplay work begins, create a dedicated engineering design 
 
 Commerce backend existence does not imply gameplay networking is implemented.
 
-## 13. World layer
+## 15. World layer
 
-Existing world assets and current visual MVP docs may be developed independently of the board rules, but a full life-sim world architecture is still a separate project milestone.
+Existing world assets and current visual MVP docs may be developed independently of board rules, but a full life-sim world architecture is still a separate project milestone.
 
 Do not let Store/economy implementation silently define world progression, jobs, quests, housing economy, or world resource loops. Those require a future world gameplay GDD.
 
-## 14. Testing rule
+## 16. Testing rule
 
 Every shared-system change runs:
 - shell navigation tests
@@ -271,9 +327,14 @@ Every shared-system change runs:
 
 Economy/commerce changes also run:
 - `docs/data/economy_v1.json` validation
+- `docs/data/commerce_backend_v1.json` validation
 - fake StoreKit adapter tests
+- Sign in with Apple auth tests
 - duplicate transaction idempotency tests
+- duplicate notification idempotency tests
 - wallet atomic spend tests
+- refund/debt tests
+- projection reconciliation tests
 - StoreKit Test / Sandbox scenarios before enablement
 
 Each game also runs acceptance tests listed in its locked GDD.
