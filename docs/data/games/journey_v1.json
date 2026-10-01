@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "game_id": "cozy_journey",
+  "rules_version": "1.1",
+  "player_counts": [2, 3, 4],
+  "default_players": 4,
+  "session_target_minutes": {"min": 6, "max": 10, "p95_4p_hard_max": 12},
+  "board": {
+    "spaces": 36,
+    "start_virtual_position": 0,
+    "continuous_path": true,
+    "branches": false,
+    "blocking": false,
+    "capture": false,
+    "tokens_can_share_space": true,
+    "regions": [
+      {"name": "Moonberry Village", "start": 1, "end": 6},
+      {"name": "Countryside", "start": 7, "end": 12},
+      {"name": "Town", "start": 13, "end": 18},
+      {"name": "Harbor", "start": 19, "end": 24},
+      {"name": "Mountain", "start": 25, "end": 31},
+      {"name": "Festival / Resort", "start": 32, "end": 36}
+    ]
+  },
+  "dice": {"sides": 6, "uniform": true},
+  "finish": {
+    "target_space": 36,
+    "exact_roll_required": false,
+    "overshoot_clamps_to_finish": true,
+    "bounce_back": false
+  },
+  "special_spaces": [
+    {"space": 4, "id": "lucky_gift_a", "name": "Lucky Gift", "effect": "move", "delta": 2, "destination_special_chains": false},
+    {"space": 7, "id": "mud_puddle", "name": "Mud Puddle", "effect": "move", "delta": -2, "minimum_space": 1, "destination_special_chains": false},
+    {"space": 10, "id": "train", "name": "Train", "effect": "jump", "destination": 15, "destination_special_chains": false},
+    {"space": 14, "id": "picnic_rest", "name": "Picnic Rest", "effect": "extra_roll", "count": 1},
+    {"space": 18, "id": "ferry", "name": "Ferry", "effect": "jump", "destination": 23, "destination_special_chains": false},
+    {"space": 22, "id": "rain_delay", "name": "Rain Delay", "effect": "move", "delta": -3, "minimum_space": 1, "destination_special_chains": false},
+    {"space": 26, "id": "cable_car", "name": "Cable Car", "effect": "jump", "destination": 31, "destination_special_chains": false},
+    {"space": 30, "id": "wrong_turn", "name": "Wrong Turn", "effect": "move", "delta": -2, "minimum_space": 1, "destination_special_chains": false},
+    {"space": 34, "id": "lucky_gift_b", "name": "Lucky Gift", "effect": "move", "delta": 2, "destination": 36, "destination_special_chains": false}
+  ],
+  "ranking": [
+    {"field": "winner", "rank": 1},
+    {"field": "current_space", "order": "desc"},
+    {"field": "positive_specials_landed", "order": "desc"},
+    {"field": "negative_specials_landed", "order": "asc"},
+    {"field": "tie", "result": "shared_rank"}
+  ],
+  "player_colors": ["red", "blue", "green", "yellow"],
+  "animation_seconds": {
+    "dice": 0.9,
+    "move_per_tile": 0.1,
+    "move_cap": 0.8,
+    "transport_jump": 0.65,
+    "setback": 0.45,
+    "extra_roll_notice": 0.5,
+    "fast_multiplier": 0.6
+  }
+}
