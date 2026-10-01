@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "simulation": {
+    "default_seed": 12345,
+    "deterministic": true,
+    "store_raw_results": true
+  },
+  "ludo": {
+    "runs_per_configuration": 100000,
+    "player_counts": [2,3,4],
+    "duration_model": {
+      "seconds_per_turn": 8,
+      "seconds_per_animation": 2
+    },
+    "thresholds": {
+      "max_starting_slot_advantage_pp": 3,
+      "max_p95_minutes": 15
+    }
+  },
+  "journey": {
+    "runs_per_configuration": 100000,
+    "player_counts": [2,3,4]
+  },
+  "tycoon": {
+    "runs_per_configuration": 100000,
+    "bots": ["conservative", "balanced", "aggressive"],
+    "thresholds": {
+      "bankruptcy_rate_warning": 0.25,
+      "leader_gap_warning": 0.5
+    }
+  }
+}
