@@ -1,12 +1,12 @@
-# CozyUni — Product Strategy v0.2
+# CozyUni — Product Strategy v0.3
 
-Status: **CURRENT / GAME-FIRST**
+Status: **CURRENT / GAME-FIRST / SINGLE-DEVICE FIRST**
 
 ## 1. Decision
 
 Build one primary public app: **CozyUni**.
 
-Current product priority is the polished board-game collection, not the explorable world.
+Current priority is a polished collection of local board games played by multiple people on one tablet/screen.
 
 The active game set is:
 1. Cozy Ludo
@@ -20,15 +20,34 @@ Detailed gameplay authority lives in `docs/games/`.
 ## 2. Product promise
 
 CozyUni should feel like a premium cute digital family game table:
-- easy to understand
-- pleasant for children and adults
-- One Device play like a physical board game
-- Room Mode when players use separate devices
-- consistent CozyUni art/characters
-- low-friction rematch
-- no disposable mini-game presentation
+- open app and immediately see available games
+- tap one game card to inspect/start it
+- choose local players/avatars
+- play together on one screen like a physical board game
+- clear short tutorials
+- readable tablet-first presentation
+- fast results/rematch
+- cute CozyUni characters/art
+- no disposable mini-game feel
 
-## 3. Build one game at a time
+## 3. Current multiplayer scope
+
+Current v1:
+- one device
+- 2–4 local human players depending on game
+- turn-based public-information games
+
+Deferred:
+- Create Room
+- Join Room
+- QR join
+- one device per player
+- public matchmaking
+- online accounts/friends
+
+Multi-device is a later expansion, not a current implementation requirement.
+
+## 4. Build one game at a time
 
 The five-game list is a roadmap, not a parallel-development plan.
 
@@ -37,18 +56,19 @@ Production order:
 
 A later game does not enter full production until the current game reaches its design/QA gate.
 
-## 4. Current app layers
+## 5. Current app layers
 
 ### Layer A — Shared shell
-- game list
-- profile/name/avatar
-- settings/accessibility/localization
-- One Device setup
-- Create/Join Room
-- lobby/readiness
-- common tutorial hooks
-- common results/rematch
-- save/stats
+- splash/boot
+- Game Library
+- Game Start Screen
+- local player setup
+- avatar/name selection
+- Match Summary
+- shared tutorial framework
+- pause/help/settings
+- common Final Results/rematch
+- save/local stats
 
 ### Layer B — Board games
 Each game owns:
@@ -60,71 +80,78 @@ Each game owns:
 - match result/ranking
 - game-specific stats
 
-### Layer C — Future world
+### Layer C — Future multi-device
+Deferred until the local product is proven.
+
+### Layer D — Future world
 Deferred.
 
 Existing 3D buildings, transport, nature, food, leisure and infrastructure assets are reserved for a future genuine life-sim world.
 
 Do not build a shallow decorative hub merely to consume those assets.
 
-## 5. Art economics
+## 6. Art economics
 
 There is no traditional 3D art team.
 
 Therefore:
-- game boards/grids/paths are generated in engine
+- boards/grids/paths are generated in engine
 - text/cards/numbers are UI/data
-- AI→3D is used for small isolated hero assets only
-- existing assets are reused as board dressing when helpful
+- AI→3D is used for small isolated hero assets
+- existing assets may dress boards where useful
 - no large bespoke art batch before gameplay is proven
 
-## 6. What makes CozyUni different
+## 7. What makes CozyUni different
 
-The differentiation is not inventing unfamiliar board mechanics.
+Differentiation is not unfamiliar mechanics.
 
 It is the combination of:
-- familiar proven game families
+- familiar proven board-game families
 - cute CozyUni characters/art
 - polished tablet-first board presentation
-- shared-device family play
-- multi-device private room play
-- shared shell and identity
-- future world/life-sim expansion if product quality justifies it
+- shared-device family/friends play
+- coherent shell and visual identity
+- later multi-device expansion if local play proves valuable
+- later life-sim world if product quality justifies it
 
-## 7. Current success hierarchy
+## 8. Current success hierarchy
 
-1. Start Game flow is frictionless.
-2. Rules are correct and understandable.
-3. HUD prioritizes the board/action correctly.
-4. Players complete matches reliably.
-5. Results/rematch feel satisfying.
-6. Testers voluntarily ask for another match.
-7. Multiple games add value only after the first game is strong.
-8. World/life-sim development comes later.
-9. Monetization comes after repeat-play value is demonstrated.
+1. App opens directly into an understandable Game Library.
+2. User selects a game with one tap.
+3. Local setup is frictionless.
+4. Rules are correct and understandable.
+5. HUD prioritizes board/action correctly.
+6. Players complete matches reliably.
+7. Results/rematch feel satisfying.
+8. Testers voluntarily ask for another match.
+9. Second/third games add value only after the first game is strong.
+10. Multi-device comes later.
+11. World/life-sim comes later.
+12. Monetization comes after repeat-play value is demonstrated.
 
-## 8. Mode admission gate
+## 9. Mode admission gate
 
 A game does not enter production unless:
 - full locked GDD exists
-- Start -> tutorial -> match -> final result flow is specified
+- Game Library -> Start -> Setup -> Tutorial -> Match -> Final Result flow is specified
+- local player counts are explicit
 - AI→3D asset requirement is bounded
 - rules contain no unresolved agent-choice ambiguity
 - acceptance tests exist
 - shared-engine reuse is documented
 
-## 9. Monetization position
+## 10. Monetization position
 
-No gameplay design document currently requires:
+No gameplay GDD currently requires:
 - ads
 - subscriptions
 - energy
 - battle pass
 - pay-to-win
 
-Monetization requires its own later product decision and must not be invented during game implementation.
+Monetization requires a later product decision and must not be invented during implementation.
 
-## 10. World position
+## 11. World position
 
 Long-term ambition remains a real Animal-Crossing-like CozyUni life-sim/world layer.
 
