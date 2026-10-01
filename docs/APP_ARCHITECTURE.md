@@ -1,4 +1,4 @@
-# CozyUni — App Architecture v0.3
+# CozyUni — App Architecture v0.4
 
 Status: **current local-first architecture direction**
 
@@ -8,19 +8,26 @@ One app, modular internally.
 
 Current production target is a family board-game collection played by multiple local users on one device.
 
-Multi-device networking and explorable world are deferred.
+Multi-device networking and full explorable world remain later milestones.
 
 Gameplay rules are owned by locked GDDs under `docs/games/`; architecture must not reinterpret them.
+Global economy/commerce behavior is owned by `docs/ECONOMY_IAP_AND_STORE_LOCK.md`.
 
 ## 2. Authority
 
-For player-visible behavior:
+For player-visible game behavior:
 1. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
 2. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
 3. selected game GDD
 4. this architecture document
 
-Architecture cannot override game rules, rankings, setup flow or result behavior.
+For commerce:
+1. `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
+2. `docs/data/economy_v1.json`
+3. `docs/MONETIZATION_AND_APPSTORE.md`
+4. this architecture document
+
+Architecture cannot override game rules, rankings, setup flow, results, currency grants, catalog prices, or purchase behavior.
 
 ## 3. Current shared shell modules
 
@@ -39,12 +46,19 @@ Current shell owns:
 - local save/stats
 - deterministic match seed service
 
+Commerce-capable shell modules behind feature flags:
+- Store entry
+- customization/catalog screen
+- visible CC wallet balance outside matches
+- purchase status UI
+
 Current shell does **not** include:
 - room creation/join
-- networking
-- accounts/friends
+- networking for gameplay
 - public matchmaking
-- world traversal
+- full friends/social system
+
+A minimal commerce identity/backend is allowed before full account/social systems because paid consumable currency requires durable server reconciliation.
 
 ## 4. Shared local match services
 
@@ -97,10 +111,11 @@ Consumer:
 Provides:
 - loop-node representation
 - ownership display helpers
-- coin transaction primitives
+- match-local coin transaction primitives
 - generic event-card presentation
 
 Tycoon values stay game-local data.
+Tycoon Coins are never connected to Cozy Credits.
 
 ## 6. Game modules
 
@@ -134,12 +149,22 @@ Shell must not inspect internal legal-move logic.
 
 ## 8. State ownership
 
-Shared persistent:
+Shared persistent local cache:
 - global settings
 - language/accessibility
 - tutorial completion flags
 - optional last-used avatar/name preferences
 - generic per-game stats
+- cached global cosmetic entitlements
+- cached CC display balance from canonical commerce backend
+- stable `commerce_user_id` credential/token material stored securely
+
+Server-authoritative commerce state once paid CC is enabled:
+- wallet ledger
+- purchased/bonus CC buckets
+- IAP grant transaction IDs
+- permanent catalog entitlements
+- refund adjustments
 
 Match-local:
 - player slots
@@ -153,9 +178,9 @@ Match-local:
 
 No match score becomes a global currency.
 
-## 9. Local authority
+## 9. Local game authority
 
-Current v1 has one process/device, but match state still uses a single authoritative game-state owner.
+Current v1 has one game process/device, but match state still uses a single authoritative game-state owner.
 
 Rules:
 - UI submits intent/action
@@ -164,9 +189,44 @@ Rules:
 - presentation renders that accepted state
 - double taps/stale UI cannot apply same action twice
 
-This structure is intentionally clean enough for future networking without implementing networking now.
+This structure is intentionally clean enough for future networking without implementing gameplay networking now.
 
-## 10. Assets
+## 10. Commerce architecture
+
+Commerce is a separate subsystem from all game rules.
+
+Conceptual modules:
+
+```text
+/commerce
+  EconomyConfig
+  StoreCatalog
+  StoreKitAdapter
+  PurchaseCoordinator
+  WalletClient
+  EntitlementClient
+  CommerceIdentity
+  CommerceTelemetry
+```
+
+Hard boundaries:
+- game modules cannot directly call StoreKit
+- game modules cannot grant CC
+- UI cannot mutate wallet balance locally
+- StoreKit callbacks cannot grant twice
+- backend grants are idempotent by Apple transaction ID
+- catalog spend + entitlement grant is atomic
+- purchase/customer-facing feature flags may stay OFF while test adapters exist
+
+Production paid-CC flow requires:
+- verified StoreKit transaction
+- commerce backend
+- append-only wallet ledger
+- canonical balance response
+
+If backend is unavailable before launch, paid CC products stay disabled rather than falling back to local-only balance.
+
+## 11. Assets
 
 Use stable asset IDs.
 
@@ -180,11 +240,11 @@ Examples:
 
 Boards/grids/text/cards generated in engine/UI wherever GDD specifies.
 
-## 11. Deferred multi-device architecture
+## 12. Deferred multi-device gameplay architecture
 
-Do not choose WebSocket/host/server/protocol technology during current local milestone.
+Do not choose WebSocket/host/server/protocol technology during current local match milestone.
 
-Before network work begins, create a dedicated engineering design covering:
+Before multi-device gameplay work begins, create a dedicated engineering design covering:
 - authority model
 - transport
 - room lifecycle
@@ -193,20 +253,27 @@ Before network work begins, create a dedicated engineering design covering:
 - host loss
 - security/privacy
 
-No speculative networking code is required now.
+Commerce backend existence does not imply gameplay networking is implemented.
 
-## 12. Deferred world layer
+## 13. World layer
 
-Existing world assets remain in catalog but no explorable world scene is required.
+Existing world assets and current visual MVP docs may be developed independently of the board rules, but a full life-sim world architecture is still a separate project milestone.
 
-Future life-sim world architecture is a separate project milestone and must not emerge as an ad-hoc game launcher.
+Do not let Store/economy implementation silently define world progression, jobs, quests, housing economy, or world resource loops. Those require a future world gameplay GDD.
 
-## 13. Testing rule
+## 14. Testing rule
 
 Every shared-system change runs:
 - shell navigation tests
 - local setup tests
 - settings/save tests
 - currently integrated game regression tests
+
+Economy/commerce changes also run:
+- `docs/data/economy_v1.json` validation
+- fake StoreKit adapter tests
+- duplicate transaction idempotency tests
+- wallet atomic spend tests
+- StoreKit Test / Sandbox scenarios before enablement
 
 Each game also runs acceptance tests listed in its locked GDD.
