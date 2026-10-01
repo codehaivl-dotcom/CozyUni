@@ -1,57 +1,62 @@
-# CozyUni — Economy, IAP & Store Lock v1.0
+# CozyUni — Economy, IAP & Store Lock v1.1
 
-Status: **DESIGN LOCK / IMPLEMENTATION-READY / STORE UI MAY REMAIN FEATURE-FLAGGED**
+Status: **DESIGN LOCK / IMPLEMENTATION-READY / STORE UI FEATURE-FLAGGED**
 
-Purpose: define a simple monetization system that can be implemented without changing the five game rules or allowing agents to invent prices, currencies, rewards, or purchase behavior.
+Purpose: define a simple fair monetization system that can be implemented without changing the five game rules or allowing agents to invent prices, currencies, rewards, or purchase behavior.
 
 Authority for economy/commerce behavior:
 1. this file
-2. `docs/data/economy_v1.json`
-3. `docs/MONETIZATION_AND_APPSTORE.md`
-4. game GDDs remain authoritative for match rules
+2. `docs/backend/01_COMMERCE_BACKEND_DESIGN.md`
+3. `docs/backend/03_COMMERCE_API_CONTRACT.md`
+4. `docs/backend/02_COMMERCE_DATABASE_SCHEMA.md`
+5. `docs/data/economy_v1.json`
+6. `docs/data/catalog_v1.json`
+7. `docs/data/commerce_backend_v1.json`
+8. `docs/MONETIZATION_AND_APPSTORE.md`
+9. game GDDs remain authoritative for match rules
 
-If a commerce behavior is not defined here, do not invent it.
+If a commerce behavior is not defined here or in higher backend authority, do not invent it.
 
 ---
 
 ## 1. Core decision
 
-CozyUni uses exactly **one global spendable premium currency** in the first monetization version:
+CozyUni uses exactly **one global spendable premium currency** in monetization v1:
 
 - Display name: **Cozy Credits**
 - Short code: **CC**
-- Scope: app-wide / purchaser wallet
-- Persistence: persistent across sessions
+- Scope: app-wide Commerce Account wallet
+- Persistence: persistent across sessions/devices when signed into same Commerce Account
 - Purchased through Apple In-App Purchase as consumable credit packs
-- May also be granted manually/promotionally by CozyUni, but those grants are separately tagged in the ledger
+- May also be granted promotionally/support-side, separately tagged
 - Purchased CC never expires
-- CC is never awarded based on winning a board-game match
+- CC is never awarded for winning board-game matches
 - CC cannot buy competitive power
 
-There is **no second spendable soft currency in v1**. Do not add Gems, Coins, Energy, Tickets, Hearts, Tokens, or similar global currencies.
+There is **no second spendable soft currency in v1**. Do not add Gems, Energy, Tickets, Hearts, Tokens, or another global spendable currency.
 
 ---
 
-## 2. Match currencies are NOT global currency
+## 2. Match currencies are not global currency
 
-The following are match-local only:
+Match-local only:
 - Cozy Tycoon Coins
 - Cozy Tycoon Community Stars
 - scores, points, placements, captures, home counts, spaces, round points
 
 Hard rules:
-- they cannot be purchased
-- they cannot be converted to CC
-- they cannot be transferred to the global wallet
-- they cannot persist as purchasing power after the match
+- cannot be purchased
+- cannot convert to CC
+- cannot transfer to global wallet
+- cannot persist as purchasing power after match
 
-`No match score becomes a global currency` remains an architecture rule.
+`No match score becomes a global currency` remains architectural canon.
 
 ---
 
-## 3. What CC can buy
+## 3. Allowed CC sinks
 
-Allowed CC sinks in v1:
+Allowed in v1:
 - character outfits
 - character cosmetic colorways
 - victory poses / emotes
@@ -59,305 +64,315 @@ Allowed CC sinks in v1:
 - board skins / table themes
 - dice skins
 - token/pawn visual skins
-- cosmetic environment dressing for board presentation
+- cosmetic environment dressing
 - seasonal cosmetic bundles
 
-Not allowed:
+Forbidden:
 - extra dice rolls
 - rerolls
 - movement boosts
-- better event odds
+- better RNG/event odds
 - Tycoon starting Coins
 - Tycoon income bonuses
-- chess hints / engine evaluation
-- Caro hints
+- chess/Caro hints or evaluation
 - extra turns
-- immunity from capture
+- capture immunity
 - ranking advantages
-- any gameplay stat advantage
+- gameplay stat advantages
 
-Core game access remains free in the current product plan unless a later explicit product decision changes it.
+Core game access remains free in current plan unless explicit future product decision changes it.
 
 ---
 
-## 4. Apple product model
+## 4. Apple credit packs
 
-Baseline App Store build uses Apple StoreKit for digital credits and digital content.
+Baseline App Store build uses StoreKit 2.
 
-### Consumable IAP — credit packs
-
-| Product ID | Type | CC grant | Target base EUR for planning only | Visible label |
+| Product ID | Type | CC grant | Planning target EUR only | Visible label |
 |---|---|---:|---:|---|
 | `com.cozyuni.credits.100` | Consumable | 100 | 0.99 | 100 Cozy Credits |
 | `com.cozyuni.credits.550` | Consumable | 550 | 4.99 | 550 Cozy Credits |
 | `com.cozyuni.credits.1200` | Consumable | 1200 | 9.99 | 1,200 Cozy Credits |
 | `com.cozyuni.credits.2500` | Consumable | 2500 | 19.99 | 2,500 Cozy Credits |
 
-The EUR values are **planning targets only**. Runtime must display the localized price returned by StoreKit. Agents must never hard-code a customer-facing currency price string.
+Planning EUR values are not customer-facing authority. Runtime displays StoreKit localized price.
 
-Approximate bonus relative to 100 CC / €0.99 baseline:
-- 100 CC: baseline
-- 550 CC: ~9% extra
-- 1,200 CC: ~19% extra
-- 2,500 CC: ~24% extra
+No larger packs without product/economy revision.
 
-Do not add larger packs without a product decision.
-
-### Non-consumable IAP — later direct purchases
-
-Durable expansions may be sold directly as non-consumable IAP later, for example a future premium region. They are not part of the current catalog and must not be invented by the implementation agent.
+Direct non-consumable expansions are later scope and must not be invented now.
 
 ---
 
-## 5. Store catalog price bands
-
-CC cosmetic prices use these bands:
+## 5. Catalog price bands
 
 | Band | CC | Intended use |
 |---|---:|---|
 | S | 80 | profile frame / tiny cosmetic |
-| A | 150 | emote / victory pose / small token skin |
-| B | 250 | standard outfit / simple board skin |
-| C | 400 | premium outfit / premium chess or board theme |
+| A | 150 | emote / pose / small token/dice/colorway |
+| B | 250 | standard outfit |
+| C | 400 | board/table premium theme |
 | D | 650 | multi-item cosmetic bundle |
 | E | 900 | seasonal visual bundle |
 
-A single catalog item must use one of these exact prices unless the economy data file is versioned and updated.
+A catalog item uses one exact band price unless economy data is versioned/updated.
 
 No randomized paid loot boxes.
+
+Machine-readable starter catalog:
+- `docs/data/catalog_v1.json`
+
+Current starter catalog items default `active=false`; art/QA must approve an item before production activation.
 
 ---
 
 ## 6. Store placement / UX
 
 Store entry points:
-- Game Library: one `Store` entry in top-level shell
-- Customization screen: `Get CC` link if balance is insufficient
+- Game Library: one top-level Store entry
+- Customization: `Get CC` when needed
 
-Store is NOT shown:
-- during an active match
-- as an interrupting post-match modal
-- inside tutorial steps
-- as a countdown pressure prompt
+Store is not shown:
+- during active match
+- as interrupting post-match modal
+- inside tutorial
+- as countdown-pressure prompt
 
-Visible wallet balance:
+Visible CC balance:
 - Store
-- customization/catalog screens
-- optional profile panel
+- customization/catalog
+- optional account/profile panel
 
-Do not show CC in the normal board-game gameplay HUD.
-
----
-
-## 7. Shared-device ownership model
-
-Current v1 is local multi-player on one device.
-
-Commerce belongs to the **device-owner commerce profile**, not to each temporary local player slot.
-
-Therefore:
-- local Player 1/2/3/4 names are guest match identities
-- all globally unlocked cosmetics belong to the purchaser/profile library
-- any local player slot may select from globally unlocked cosmetics on that device
-- guests do not have separate wallets
-
-Do not create four wallets because four people are playing Ludo locally.
-
-Future account/multi-device work may bind the commerce profile to a user account, but current game rules do not depend on that.
+Do not show CC in normal board-game gameplay HUD.
 
 ---
 
-## 8. Commerce identity — mandatory before paid CC ships
+## 7. Commerce Account ownership
 
-Paid consumable CC must not ship as a local-save-only balance.
+Core local games remain login-free.
 
-Required commerce identity:
-- `commerce_user_id`: generated stable UUID
-- stored securely on device
-- registered with CozyUni commerce backend
-- later bindable to a full account without changing ledger IDs
+Real-money commerce requires a **Commerce Account**.
 
-Hard gate:
-> If there is no server-backed wallet ledger, paid CC packs stay disabled.
+iOS/iPadOS v1 Commerce Account uses Sign in with Apple.
 
-Direct non-consumable purchases can be restored through StoreKit, but CC is maintained by the CozyUni ledger after a verified transaction grant.
+Rules:
+- store may be browsed signed out;
+- before first real-money purchase, user completes purchase-protection/sign-in step;
+- server resolves/creates one stable Commerce Account;
+- one `app_account_token` UUID is attached to that account;
+- every StoreKit purchase passes same account token;
+- wallet + paid cosmetics belong to Commerce Account, not temporary local Player 1/2/3/4 slots;
+- on a shared device, any local match slot may equip cosmetics owned by active Commerce Account;
+- one active Commerce Account per install in v1;
+- account-switching UI is out of scope.
 
----
-
-## 9. Wallet ledger model
-
-Never store only `balance = 1234` as the source of truth.
-
-Use append-only ledger entries.
-
-Required fields:
-
-```text
-ledger_id
-commerce_user_id
-operation_type
-source_type
-product_id nullable
-apple_transaction_id nullable
-catalog_item_id nullable
-delta_cc signed integer
-balance_after integer
-idempotency_key unique
-created_at_utc
-environment sandbox|production
-metadata nullable
-```
-
-`operation_type` values:
-- `IAP_GRANT`
-- `PROMO_GRANT`
-- `STORE_SPEND`
-- `REFUND_ADJUSTMENT`
-- `SUPPORT_ADJUSTMENT`
-
-`source_type` values:
-- `APPLE_IAP`
-- `PROMO`
-- `CATALOG`
-- `APPLE_REFUND`
-- `CUSTOMER_SUPPORT`
-
-Balance constraints:
-- integer only
-- minimum visible balance = 0
-- no floating point
-- no expiration timestamp on CC
+Do not store email/name just to support commerce v1.
 
 ---
 
-## 10. Credit buckets and spending order
+## 8. Server-backed wallet hard gate
 
-Internally track:
+Paid consumable CC must never ship as local-save-only balance.
+
+Production requires:
+- locked commerce backend
+- PostgreSQL ledger/credit lots
+- Apple transaction verification
+- App Store Server Notifications V2
+- canonical wallet API
+- refund reconciliation
+
+If backend is unavailable/not production-ready, paid CC feature flags stay OFF.
+
+No fallback to PlayerPrefs/UserDefaults/local-save money.
+
+---
+
+## 9. Wallet accounting model
+
+Ledger + credit lots are source of truth.
+
+Internal positive buckets:
 - `bonus_cc`
 - `purchased_cc`
 
-UI may show one combined number.
-
 Spend order:
-1. bonus CC first
-2. purchased CC second
-3. purchased CC consumed FIFO by original grant timestamp
+1. bonus oldest first
+2. purchased oldest first
+
+UI normally shows combined spendable CC.
+
+A derived wallet projection may cache:
+- purchased CC
+- bonus CC
+- refund debt
+- revision
+
+Projection is not primary history.
+
+Detailed schema:
+- `docs/ECONOMY_LEDGER_SCHEMA.md`
+- `backend/migrations/001_commerce_v1.sql`
 
 ---
 
-## 11. Purchase transaction flow
+## 10. Apple purchase flow
 
 Exact flow:
 
 ```text
 STORE_OPEN
- -> request products from StoreKit
- -> render StoreKit-localized displayPrice
+ -> load StoreKit products/localized prices
  -> user selects pack
- -> StoreKit purchase
- -> verify transaction
- -> send verified transaction identity to CozyUni commerce backend
- -> backend idempotently validates/grants CC
- -> backend returns canonical wallet balance
- -> app updates wallet UI
- -> finish StoreKit transaction
- -> PURCHASE_SUCCESS
+ -> ensure Commerce Account authenticated
+ -> StoreKit purchase using account appAccountToken
+ -> StoreKit verified transaction
+ -> send signed transaction JWS to backend
+ -> backend verifies + idempotently grants
+ -> backend returns canonical wallet
+ -> client calls transaction.finish()
+ -> PURCHASE_COMPLETE
 ```
 
 Rules:
-- CC is granted once per unique Apple transaction ID
-- retries are safe
-- duplicate callbacks grant 0 additional CC
-- transaction is finished only after grant acknowledgement
-- failed/unverified transactions grant 0 CC
-- pending/deferred purchase grants 0 CC until verified completion
-- UI must survive app termination at any point and reconcile on next launch
+- one grant per unique Apple transaction ID
+- duplicate callback grants zero additional CC
+- failed/unverified transaction grants zero
+- pending purchase grants zero until verified completion
+- transaction is finished only after backend delivery acknowledgement
+- if backend delivery fails, leave transaction unfinished and retry/recover on next launch
+- client never decides CC grant from StoreKit product string alone
+
+Client implementation lock:
+- `docs/commerce/STOREKIT_CLIENT_IMPLEMENTATION.md`
 
 ---
 
-## 12. Refund / chargeback behavior
+## 11. Refund model
 
-When a refund/reversal is confirmed:
-1. create `REFUND_ADJUSTMENT`
-2. remove remaining unspent CC attributable to the refunded grant up to current balance
-3. never display a negative wallet balance
-4. if part/all of the refunded grant was already spent, record `refunded_spent_cc` for risk/analytics
-5. do not silently remove unrelated previously purchased cosmetics in v1
-6. repeated refund abuse may set a server-side commerce review flag; agent must not invent automatic bans
+Apple refund is applied against original purchased-credit grant.
 
-If Apple requests consumption information, backend must be able to report whether credited currency from the transaction has been consumed.
+### Unspent refunded credits
+Remove remaining CC from that source lot.
+
+### Already-spent refunded credits
+Create non-negative `refund_debt_cc` for consumed refunded amount.
+
+While debt > 0:
+- spendable CC = 0
+- catalog spending disabled
+- future positive grants repay debt first
+
+Existing cosmetic entitlements are not automatically revoked in v1 solely because a pack refund creates debt.
+
+Example:
+
+```text
+purchase +550
+spend 500
+remaining 50
+full refund
+ -> remove 50
+ -> debt 500
+ -> spendable 0
+```
+
+If refund is later reversed:
+- clear debt created by that refund first
+- restore any remaining purchased CC effect
+- process once only
+
+No negative visible wallet balance.
 
 ---
 
-## 13. Catalog purchase flow
+## 12. Catalog purchase flow
 
 ```text
 CATALOG_ITEM_OPEN
- -> verify ownership false
- -> verify item active
- -> verify wallet >= price_cc
+ -> server catalog says active + price
+ -> ownership check
  -> user confirms
- -> backend transaction begins
- -> append STORE_SPEND
- -> grant permanent entitlement
- -> commit atomically
+ -> send catalog_id + idempotency key
+ -> backend locks wallet
+ -> spend lots atomically
+ -> append ledger
+ -> grant entitlement
+ -> update projection
+ -> commit
  -> return wallet + entitlement
 ```
 
-Never deduct CC without granting entitlement in the same atomic operation.
+Client never sends authoritative price.
 
-Duplicate request uses idempotency key and must not double-spend.
-
-Permanent cosmetic entitlements do not expire.
-
----
-
-## 14. Initial economy ratios
-
-Design target only — validate by telemetry before changing prices:
-- €0.99 pack should buy at least one small cosmetic
-- €4.99 pack should buy ~2 standard outfits or one larger theme + small item
-- €9.99 pack should buy multiple meaningful cosmetics
-- no single launch cosmetic >900 CC
-- default catalog should contain both low-cost 80–150 CC items and premium 400–900 CC bundles
+Duplicate idempotency key must not double-spend.
+Permanent cosmetics do not expire.
 
 ---
 
-## 15. Apple / platform compliance lock
+## 13. Starter catalog ratios
 
-For the standard App Store build:
-- digital in-app currency/content uses Apple In-App Purchase
-- purchased in-game credits do not expire
-- runtime uses StoreKit localized prices
-- configure Paid Apps Agreement / tax / banking before sale
-- StoreKit transaction verification is mandatory
-- non-consumable purchases must support restoration
-- IAP test plan must include StoreKit Testing, Sandbox, and TestFlight before release
-- if CozyUni enters the App Store Kids Category, purchasing opportunities must be behind a parental gate
-- alternative payment / regional entitlement systems are a separate legal/product decision and must not be invented into the baseline build
+Design targets:
+- €0.99/100 CC pack buys at least one 80 CC item
+- €4.99/550 CC pack buys multiple small cosmetics or two 250 CC outfits with small remainder
+- €9.99/1200 CC supports several meaningful cosmetics
+- no launch cosmetic >900 CC
+- launch catalog contains low-cost 80–150 CC and higher 250–400 CC choices before any 650–900 bundle activation
 
-Current Apple documentation should be rechecked before release because platform rules and commissions can change.
+Tools:
 
-Reference starting points:
-- https://developer.apple.com/app-store/review/guidelines/
-- https://developer.apple.com/help/app-store-connect/reference/in-app-purchases-and-subscriptions/in-app-purchase-types
-- https://developer.apple.com/documentation/storekit
-
----
-
-## 16. Feature flags
-
-Required flags:
-
-```text
-commerce.enabled
-commerce.credit_packs_enabled
-commerce.catalog_enabled
-commerce.purchase_enabled
-commerce.kids_parental_gate_enabled
+```bash
+python tools/analyze_catalog_economy.py
+python tools/validate_catalog_data.py
 ```
 
-Development may implement commerce infrastructure while all customer-facing purchase flags remain OFF.
+Planning analysis does not replace localized StoreKit pricing.
+
+---
+
+## 14. Apple/platform compliance lock
+
+Baseline build:
+- digital in-app currency/content uses Apple IAP
+- purchased CC does not expire
+- StoreKit localized prices displayed
+- StoreKit transaction verification required
+- App Store Server Notifications V2 configured before production
+- StoreKit Test + Sandbox + TestFlight checks before release
+- if CozyUni enters Kids Category, purchasing opportunities require appropriate parental gating
+- regional/alternative-payment systems are separate legal/product decisions
+
+Recheck current Apple docs before release because platform rules can change.
+
+---
+
+## 15. Feature flags
+
+Canonical backend/client flags:
+
+```text
+commerce_enabled
+iap_credit_packs_enabled
+catalog_spend_enabled
+sign_in_with_apple_required_for_purchase
+```
+
+Production defaults are OFF except sign-in requirement.
+
+Historical unfinished StoreKit transactions must still be processed safely even when Store UI is disabled.
+
+---
+
+## 16. Telemetry / simulation
+
+Authority:
+- `docs/DATA_TELEMETRY_AND_SIMULATION.md`
+
+Tools:
+- `tools/sim_economy.py`
+- `tools/sim_wallet_policy.py`
+- `tools/analyze_catalog_economy.py`
+
+Track purchase funnel, delivery, refund debt, CC grants/spend, reconciliation errors, and payer metrics without sending raw Apple JWS/tokens to analytics.
 
 ---
 
@@ -365,14 +380,14 @@ Development may implement commerce infrastructure while all customer-facing purc
 
 - subscriptions
 - battle pass
-- energy system
+- energy
 - paid gameplay power
 - loot boxes
-- player-to-player trading of CC
-- gifting CC
+- player-to-player CC trading/gifting
 - cash-out
 - crypto/NFT
-- external web checkout in baseline build
+- external web checkout baseline
 - ad network monetization
 - dynamic personalized prices
-- limited-time countdown pressure pricing
+- pressure countdown pricing
+- multiple concurrent Commerce Accounts per install
