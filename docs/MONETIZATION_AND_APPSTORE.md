@@ -1,111 +1,111 @@
-# CozyUni — Monetization & App Store Strategy v0.1
+# CozyUni — Monetization & App Store Strategy v0.2
+
+Status: **CURRENT / ECONOMY DESIGN DEFINED / LAUNCH ENABLEMENT GATED**
+
+Detailed commerce behavior is authoritative in:
+- `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
+- `docs/data/economy_v1.json`
 
 ## Product position
 
-CozyUni should launch as a **single coherent app with multiple modes inside one shared universe**, not as many near-duplicate apps with the same assets and slightly different gameplay.
+CozyUni is one coherent app containing the five current local board games and, later, a deeper life-sim world. Do not split near-duplicate game binaries merely to reuse the same asset library.
 
-This is both a product strategy and an App Store risk-control strategy: Apple’s App Review Guidelines include a spam rule covering repeated submissions of similar apps, so one coherent product is safer than publishing a family of minimally differentiated binaries.
+Current games:
+1. Cozy Ludo
+2. Cozy Caro
+3. Cozy Journey
+4. Cozy Chess
+5. Cozy Tycoon
 
 ## Monetization principle
 
-Monetization must not damage the cozy/fair identity.
+Monetization must not alter match fairness.
 
-Prioritize:
-1. cosmetic packs
-2. seasonal cosmetic/event passes if enough recurring value exists
-3. premium content packs / regions
-4. optional ad-supported rewards only if they do not interrupt core play
-5. one-time ad-removal purchase if ads are introduced
+Current monetization architecture:
+- one premium currency: **Cozy Credits (CC)**
+- CC purchased through Apple IAP consumable packs
+- cosmetics are the primary sink
+- no paid gameplay power
+- no loot boxes
+- no energy system
+- no subscription at initial implementation
+- no forced advertising
 
-Avoid at launch:
-- pay-to-win Stars
-- paid movement advantages in competitive modes
-- forced interstitial ads between every short session
-- loot-box style monetization
-- complex multi-currency economy before retention is proven
-- subscription without sustained recurring content/value
+Store infrastructure may be implemented behind feature flags before store UI is enabled to customers.
 
-## Recommended launch monetization
+## Apple baseline
 
-### Option A — Premium-lite / fair F2P
-- app free to install
-- flagship mode accessible for free
-- cosmetic bundles as IAP
-- optional starter/supporter pack
-- seasonal visual packs after content cadence is proven
+For digital goods/currency in the standard App Store build, use Apple In-App Purchase / StoreKit.
 
-### Option B — Paid app
-Appropriate if production value is high enough and you prefer a simpler economy. This reduces monetization engineering but raises install friction.
+Important current platform rules to recheck at release:
+- digital in-app currency and premium digital content generally use IAP in the baseline App Store flow
+- credits purchased through IAP may not expire
+- IAP products include consumable and non-consumable types
+- localized customer pricing must come from StoreKit / App Store Connect
+- Paid Apps Agreement, tax, and banking setup is required to sell paid content
+- if the app is submitted to the Kids Category, purchase opportunities must be behind a parental gate
 
-### Recommended initial choice
-Start with **free download + restrained cosmetic IAP**, but do not implement a large store before the core game demonstrates retention.
+Apple offers many price points and automatically localized storefront pricing. Do not hard-code Euro strings in the product UI.
 
-## Shared monetization advantage of one app
+## Launch catalog direction
 
-A shared app makes one purchase more valuable:
-- an outfit works in Festival Board, Festival Rush, Firefly Catch, etc.
-- an emote appears across lobbies and victory screens
-- a seasonal village skin dresses multiple game modes
+Sell attachment, not power:
+- character outfits
+- colorways
+- profile cosmetics
+- victory poses / emotes
+- board/table themes
+- dice/token skins
+- seasonal visual bundles
 
-This increases perceived value without selling competitive power.
-
-## Suggested catalog
-
-Low-risk examples:
-- character outfit sets
-- backpack skins
-- hats / ribbons / lantern accessories
-- emotes / victory poses
-- village seasonal dressing
-- profile frames / badges
-- premium region expansion later
+Do not sell:
+- rerolls
+- extra turns
+- better RNG
+- Tycoon starting wealth
+- Chess/Caro hints for money
+- capture protection
+- ranking boosts
 
 ## Ads
 
-If ads are tested later:
-- no ad during active match
-- no forced ad after every 2–3 minute game
-- use optional rewarded ads for cosmetic trial, bonus noncompetitive currency, or convenience outside competitive scoring
-- measure churn carefully
+No ads in current monetization design.
+
+If ads are reconsidered later, create a separate product decision and privacy review first. Do not let an agent add an ad SDK opportunistically.
 
 ## Subscription
 
-Do **not** begin with a subscription just because the platform supports one.
+No subscription in current scope.
 
-Only consider it after CozyUni has recurring value such as:
-- reliable monthly event cadence
-- new cosmetics/content
-- persistent collection progression
-- meaningful member benefits that continue over time
+A subscription requires recurring value and content cadence; platform support alone is not justification.
 
-A subscription creates an ongoing-content obligation.
+## Store listing
 
-## Store listing strategy
+Store screenshots and metadata must reflect the actual current game-first product. Do not use stale Festival Rush / Firefly Catch copy.
 
-Use one listing to accumulate:
-- ratings/reviews
-- screenshots and videos showing different modes
-- recognizable characters
-- search identity for CozyUni / Moonberry
+Preferred screenshot themes once present in build:
+1. Choose a CozyUni game
+2. Play together on one screen
+3. Cozy Ludo
+4. Cozy Caro / Chess strategy
+5. Cozy Journey / Tycoon world-like boards
+6. Customize your CozyUni style (only if customization/store ships)
 
-Store screenshots should present the product as a coherent world, e.g.:
-1. Explore Moonberry Village
-2. Play Festival Board
-3. Race in Festival Rush
-4. Catch fireflies at night
-5. Customize your resident
+## Monetization gate
 
-## Platform economics note
+Do not enable paid CC merely because StoreKit works.
 
-Before launch, verify current Apple terms for your account and region. Apple offers a Small Business Program with a reduced commission for eligible developers; eligibility and current terms should be checked at launch rather than treated as a fixed assumption in game design.
+Minimum product signals before scaling monetization:
+- onboarding completion is healthy
+- matches complete reliably
+- repeat sessions exist
+- testers voluntarily rematch
+- players show interest in character/board customization
 
-## Monetization gates
+Implementation safety gates are listed in `docs/DATA_TELEMETRY_AND_SIMULATION.md`.
 
-Do not scale monetization until metrics show:
-- onboarding completion
-- D1 retention signal
-- repeat sessions
-- players use more than one mode or return for events
-- cosmetic interest / customization engagement
+## Platform economics
 
-Product value first; monetization should amplify attachment to the world rather than compensate for weak retention.
+Never hard-code a single Apple commission assumption into design math. Program eligibility, region and platform terms may change.
+
+The simulator supports configurable commission scenarios (including 15% and 30%) and refunds. App Store Connect financial reports remain accounting authority for real proceeds.
