@@ -109,7 +109,7 @@ func get_rematch_config() -> Dictionary:
 	return {
 		"game_id": mode_id(),
 		"player_count": _player_count,
-		"starting_player_slot": (int(_state.get("turn_index", 0)) + 1) % _player_count,
+		"starting_player_slot": (int(_state.get("starting_player_slot", 0)) + 1) % _player_count,
 	}
 
 
