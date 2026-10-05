@@ -32,6 +32,9 @@ jobs:
       - name: Validate Godot runtime data mirrors
         run: python tools/validate_runtime_data_sync.py
 
+      - name: Validate MVP execution graph
+        run: python tools/validate_mvp_execution.py
+
   godot-smoke:
     runs-on: ubuntu-latest
     needs: validate
