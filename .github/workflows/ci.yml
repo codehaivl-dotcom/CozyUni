@@ -70,7 +70,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          "${GODOT_BIN}" --headless --path . --script res://tests/ludo/ludo_rules_smoke.gd
+          "${GODOT_BIN}" --headless --path . --script res://tests/ludo/ludo_rules_acceptance.gd
 
       - name: Boot main scene smoke test
         shell: bash
