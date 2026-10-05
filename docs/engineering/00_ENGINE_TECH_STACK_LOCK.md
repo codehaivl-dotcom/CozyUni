@@ -1,4 +1,4 @@
-# CozyUni — Engine Tech Stack Lock v1.0
+# CozyUni — Engine Tech Stack Lock v1.1
 
 Status: **LOCKED FOR CLIENT IMPLEMENTATION**
 
@@ -6,10 +6,11 @@ Status: **LOCKED FOR CLIENT IMPLEMENTATION**
 
 - Engine: **Godot 4.7.2 stable**
 - Do not move to a development/RC build without an explicit architecture change.
-- Renderer for production default: **Forward+**.
-- Compatibility renderer may be used only for a documented device fallback experiment; it is not the default authority.
+- Production renderer default: **Mobile**.
+- Compatibility renderer may be used only for a documented low-end fallback experiment; it is not the default authority.
+- Forward+ may be evaluated for desktop-only comparison, but it is not the tablet production default.
 
-Reason: CozyUni is a stylized 3D tablet-first game/world project that benefits from standard Godot 4 3D lighting/material/navigation features while keeping the stack lightweight.
+Reason: CozyUni is a stylized 3D tablet-first game/world project. Godot's Mobile renderer is intended for mobile platforms and is more suitable than Forward+ for mobile GPUs.
 
 ## 2. Client language
 
