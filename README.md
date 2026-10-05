@@ -12,18 +12,63 @@ Before any implementation work, read:
 2. `docs/PRODUCTION_MASTER_PLAN.md`
 3. `docs/MVP_EXECUTION_PLAYBOOK.md`
 4. `docs/data/mvp_execution_v1.json`
-5. the authority documents for the selected milestone
-6. `docs/engineering/` for the Godot/runtime/QA contract
+5. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
+6. `docs/data/agent_roles_v1.json`
+7. `docs/data/mvp_role_assignments_v1.json`
+8. the authority documents for the selected milestone
+9. `docs/engineering/` for the Godot/runtime/QA contract
 
-For the current Quick Win, the agent must run only the machine-readable `current_step` and stop after that step's acceptance gate. It may not create its own roadmap, start future locked steps, or render assets outside the active allowlist/budget.
+For the current Quick Win, the orchestrator must run only the machine-readable `current_step`, activate only the roles assigned to that step, and stop after the acceptance gate. It may not create its own roadmap, start future locked steps, add unassigned roles, or render assets outside the active allowlist/budget.
 
-Validate the task graph before mutation:
+Validate before mutation:
 
 ```bash
+python tools/validate_agent_roles.py
 python tools/validate_mvp_execution.py
 ```
 
 Agents must not invent missing game rules, generation prompts, dependencies, deferred systems, or extra MVP work.
+
+## Multi-agent workflow
+
+CozyUni now uses bounded studio roles under `.codex/agents/`, inspired by the role-based workflow of Codex AI Game Studio but adapted to this repository's locked MVP process.
+
+Current roles include:
+- Producer
+- Game Designer
+- Lead Programmer
+- Godot Specialist
+- Gameplay Programmer
+- UX Designer
+- UI Programmer
+- Art Director
+- Level Designer
+- World Builder
+- Asset Pipeline Specialist
+- QA Lead
+- Performance Analyst
+- DevOps Engineer
+- Accessibility Specialist
+- Release Manager
+
+Each MVP step declares exactly one lead plus support/review roles in `docs/data/mvp_role_assignments_v1.json`.
+
+Workflow:
+
+```text
+INSPECT
+ -> CURRENT STEP
+ -> LOAD ASSIGNED ROLE TEAM
+ -> DECLARE FILE OWNERSHIP
+ -> IMPLEMENT
+ -> SPECIALIST REVIEW
+ -> QA / EVIDENCE GATE
+ -> UPDATE STATE
+ -> COMMIT
+ -> STOP
+```
+
+Parallel read-only analysis is allowed. Parallel writes to the same file are forbidden.
 
 ## Current Quick Win
 
@@ -144,6 +189,8 @@ Docs + matching machine-readable data are source of truth.
 
 Key data:
 - `docs/data/mvp_execution_v1.json`
+- `docs/data/agent_roles_v1.json`
+- `docs/data/mvp_role_assignments_v1.json`
 - `docs/data/games/`
 - `docs/data/economy_v1.json`
 - `docs/data/commerce_backend_v1.json`
@@ -155,6 +202,7 @@ Validation tools:
 python tools/validate_game_data.py
 python tools/validate_commerce_data.py
 python tools/validate_catalog_data.py
+python tools/validate_agent_roles.py
 python tools/validate_mvp_execution.py
 ```
 
@@ -165,6 +213,7 @@ CI additionally runs a Godot 4.7.2 headless import/start smoke test plus Ludo ru
 - `AGENTS.md`
 - `docs/PRODUCTION_MASTER_PLAN.md`
 - `docs/MVP_EXECUTION_PLAYBOOK.md`
+- `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
 - `docs/PRODUCT_STRATEGY.md`
 - `docs/APP_ARCHITECTURE.md`
 - `docs/CANON_AND_CONTENT_GOVERNANCE.md`
