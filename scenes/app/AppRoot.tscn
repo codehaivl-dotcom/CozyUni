@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/app/app_root.gd" id="1_app_root"]
+
+[node name="AppRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_app_root")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.93, 0.90, 0.82, 1)
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="VBoxContainer" parent="Center"]
+custom_minimum_size = Vector2(760, 260)
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16, 0.21, 0.20, 1)
+theme_override_font_sizes/font_size = 52
+text = "CozyUni"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.34, 0.32, 1)
+theme_override_font_sizes/font_size = 24
+text = "Game Library • Production Foundation"
+horizontal_alignment = 1
+
+[node name="DataStatusLabel" type="Label" parent="Center/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.37, 0.42, 0.39, 1)
+theme_override_font_sizes/font_size = 18
+text = "Loading canonical game data…"
+horizontal_alignment = 1
+
+[node name="Scope" type="Label" parent="Center/Panel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.37, 0.42, 0.39, 1)
+theme_override_font_sizes/font_size = 16
+text = "Next admitted milestone: Shared Shell → Cozy Ludo"
+horizontal_alignment = 1
