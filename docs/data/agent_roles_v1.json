@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "authority": "docs/agents/00_MULTI_AGENT_WORKFLOW.md",
+  "roles": [
+    {"id":"producer","group":"coordination","config_file":".codex/agents/producer.toml","may_write":false,"purpose":"Coordinate current-step scope, ownership, handoffs, risks and final status without implementing domain work."},
+    {"id":"game-designer","group":"design","config_file":".codex/agents/game-designer.toml","may_write":false,"purpose":"Interpret locked GDD/data, identify rule conflicts, and review gameplay clarity without inventing new rules."},
+    {"id":"lead-programmer","group":"engineering","config_file":".codex/agents/lead-programmer.toml","may_write":true,"purpose":"Own code architecture boundaries, review implementation structure, and prevent cross-system scope drift."},
+    {"id":"godot-specialist","group":"engineering","config_file":".codex/agents/godot-specialist.toml","may_write":true,"purpose":"Implement and review Godot 4.7.2 scenes, signals, resources, input, import and runtime patterns."},
+    {"id":"gameplay-programmer","group":"engineering","config_file":".codex/agents/gameplay-programmer.toml","may_write":true,"purpose":"Implement production gameplay mechanics through the authoritative state/rules interfaces."},
+    {"id":"ux-designer","group":"design","config_file":".codex/agents/ux-designer.toml","may_write":false,"purpose":"Review flow, tutorial comprehension, touch clarity, state communication and player friction."},
+    {"id":"ui-programmer","group":"engineering","config_file":".codex/agents/ui-programmer.toml","may_write":true,"purpose":"Implement Godot Control-based shell, HUD and interaction presentation without owning rule legality."},
+    {"id":"art-director","group":"art","config_file":".codex/agents/art-director.toml","may_write":false,"purpose":"Own visual acceptance against CozyUni Style D, composition, readability and camera-level art quality."},
+    {"id":"level-designer","group":"world","config_file":".codex/agents/level-designer.toml","may_write":false,"purpose":"Own W01 route topology, traversal pacing, sightlines, landmark placement and spatial readability."},
+    {"id":"world-builder","group":"world","config_file":".codex/agents/world-builder.toml","may_write":true,"purpose":"Implement W01 blockout/assembly, collision, navigation, modular placement and world-game connection."},
+    {"id":"asset-pipeline-specialist","group":"art-tech","config_file":".codex/agents/asset-pipeline-specialist.toml","may_write":true,"purpose":"Audit reuse, enforce render authorization/budgets, operate Tripo helper, and validate 3D import assets."},
+    {"id":"qa-lead","group":"quality","config_file":".codex/agents/qa-lead.toml","may_write":false,"purpose":"Own test strategy, regression review, defect severity and independent current-step gate verdict."},
+    {"id":"performance-analyst","group":"quality","config_file":".codex/agents/performance-analyst.toml","may_write":false,"purpose":"Measure frame time, memory, draw calls and diagnose performance regressions from evidence."},
+    {"id":"devops-engineer","group":"engineering","config_file":".codex/agents/devops-engineer.toml","may_write":true,"purpose":"Maintain CI, validators, build/export automation and reproducible tooling without gameplay scope changes."},
+    {"id":"accessibility-specialist","group":"quality","config_file":".codex/agents/accessibility-specialist.toml","may_write":false,"purpose":"Review touch targets, color-independent cues, text/readability and baseline accessibility requirements."},
+    {"id":"release-manager","group":"release","config_file":".codex/agents/release-manager.toml","may_write":true,"purpose":"Prepare exact-commit market-test/TestFlight artifacts, release checklist and tester package."}
+  ]
+}
