@@ -99,7 +99,7 @@ static func apply_piece_move(state: Dictionary, config: Dictionary, player_slot:
 	var pieces: Array = player.get("pieces", []) as Array
 	var from_progress := int(pieces[piece_index])
 	var home := int((config.get("progress_values", {}) as Dictionary).get("home", 58))
-	var to_progress := 1 if from_progress == 0 else min(from_progress + roll, home)
+	var to_progress: int = 1 if from_progress == 0 else mini(from_progress + roll, home)
 	pieces[piece_index] = to_progress
 	player["pieces"] = pieces
 	players[player_slot] = player
