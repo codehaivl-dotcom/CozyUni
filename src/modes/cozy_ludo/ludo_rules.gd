@@ -76,7 +76,7 @@ static func is_piece_move_legal(state: Dictionary, config: Dictionary, player_sl
 			return false
 		target_progress = 1
 	else:
-		target_progress = min(progress + roll, home)
+		target_progress = mini(progress + roll, home)
 
 	if target_progress == home:
 		return true
@@ -145,7 +145,10 @@ static func absolute_cell(config: Dictionary, player_slot: int, progress: int) -
 
 static func is_safe_absolute_cell(config: Dictionary, absolute_cell_index: int) -> bool:
 	var safe_cells: Array = (config.get("board", {}) as Dictionary).get("safe_cells", []) as Array
-	return absolute_cell_index in safe_cells
+	for cell_value: Variant in safe_cells:
+		if int(cell_value) == absolute_cell_index:
+			return true
+	return false
 
 
 static func all_pieces_home(state: Dictionary, config: Dictionary, player_slot: int) -> bool:
