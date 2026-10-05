@@ -1,24 +1,38 @@
-# CozyUni — App Architecture v0.5
+# CozyUni — App Architecture v0.6
 
-Status: **current local-first architecture direction**
+Status: **current local-first architecture direction / Godot implementation bound**
 
 ## 1. Goal
 
 One app, modular internally.
 
-Current production target is a family board-game collection played by multiple local users on one device.
+Current shipping target is a family board-game collection played by multiple local users on one device.
 
-Multi-device gameplay networking and full explorable world remain later milestones.
+A bounded world visual/environment R&D track is also allowed under `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`, but it is not the shipping critical path and does not authorize deep life-sim systems.
+
+Multi-device gameplay networking remains a later milestone.
 
 Gameplay rules are owned by locked GDDs under `docs/games/`; architecture must not reinterpret them.
 Global economy/commerce behavior is owned by `docs/ECONOMY_IAP_AND_STORE_LOCK.md` and the locked backend contracts under `docs/backend/`.
 
 ## 2. Authority
 
+Global production order and milestone admission:
+1. `AGENTS.md`
+2. `docs/PRODUCTION_MASTER_PLAN.md`
+
 For player-visible game behavior:
 1. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
 2. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
-3. selected game GDD
+3. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
+4. selected game GDD
+5. matching data under `docs/data/games/`
+6. this architecture document
+
+For client implementation:
+1. `docs/engineering/00_ENGINE_TECH_STACK_LOCK.md`
+2. `docs/engineering/01_GODOT_PROJECT_ARCHITECTURE.md`
+3. other applicable `docs/engineering/` locks
 4. this architecture document
 
 For commerce:
@@ -32,9 +46,45 @@ For commerce:
 
 Implementation technology for commerce is locked by `docs/backend/00_BACKEND_TECH_STACK_LOCK.md`.
 
-Architecture cannot override game rules, rankings, setup flow, results, currency grants, catalog prices, or purchase behavior.
+Architecture cannot override game rules, rankings, setup flow, results, currency grants, catalog prices, purchase behavior, or production milestone gates.
 
-## 3. Current shared shell modules
+## 3. Client technology
+
+Current client implementation:
+- Godot 4.7.2 stable;
+- Mobile renderer production baseline;
+- typed GDScript;
+- tablet landscape first;
+- iPad/iOS release-critical;
+- Windows/macOS development/test.
+
+The root Godot project is `project.godot`.
+
+Canonical source layout begins:
+
+```text
+project.godot
+src/
+  app/
+  core/
+  data/
+  modes/
+  shared_board/
+  world/
+  ui/
+  commerce/
+scenes/
+  app/
+  modes/
+  shared/
+  world/
+tests/
+assets/
+```
+
+Detailed rules live in `docs/engineering/01_GODOT_PROJECT_ARCHITECTURE.md`.
+
+## 4. Current shared shell modules
 
 Current shell owns:
 - boot/splash
@@ -68,7 +118,7 @@ A minimal Commerce Account/backend is explicitly allowed before full social/acco
 
 Core local games remain playable without commerce authentication.
 
-## 4. Shared local match services
+## 5. Shared local match services
 
 Reusable services:
 - match ID
@@ -76,13 +126,16 @@ Reusable services:
 - local player slots
 - starting-player ordering
 - action idempotency / double-tap protection
+- monotonic state revision
 - match result payload
 - rematch configuration
 - tutorial completion flags
 
 Game modules consume these but own rules.
 
-## 5. Engine families
+UI submits semantic intent. The authoritative game-state/rules owner decides legality and advances state exactly once.
+
+## 6. Engine families
 
 ### Path Board package
 Consumers:
@@ -90,9 +143,9 @@ Consumers:
 - Cozy Journey
 
 Provides generic primitives only:
-- D6 service
+- D6 presentation/service integration
 - ordered path/node representation
-- token movement hooks
+- token movement presentation hooks
 - turn lifecycle hooks
 - path hit/highlight helpers
 
@@ -108,7 +161,7 @@ Provides:
 - board renderer
 - cell hit testing
 - selection/highlight layer
-- action/move history container
+- action/move history presentation container
 
 Must not hard-code chess movement or Caro line rules.
 
@@ -119,35 +172,46 @@ Consumer:
 Provides:
 - loop-node representation
 - ownership display helpers
-- match-local coin transaction primitives
+- match-local coin transaction presentation primitives
 - generic event-card presentation
 
 Tycoon values stay game-local data.
 Tycoon Coins are never connected to Cozy Credits.
 
-## 6. Game modules
+## 7. Game modules
+
+Godot source target:
 
 ```text
-/modes
-  /cozy-ludo
-  /cozy-caro
-  /cozy-journey
-  /cozy-chess
-  /cozy-tycoon
+src/modes/
+  cozy_ludo/
+  cozy_caro/
+  cozy_journey/
+  cozy_chess/
+  cozy_tycoon/
+
+scenes/modes/
+  cozy_ludo/
+  cozy_caro/
+  cozy_journey/
+  cozy_chess/
+  cozy_tycoon/
 ```
 
-Only modules actually included in current build appear in Game Library.
+Only modes actually admitted/included in the current build appear in Game Library.
 
-## 7. Mode contract
+## 8. Mode contract
 
 Every game exposes conceptually:
 - mode ID/display metadata
 - supported local player counts
 - start configuration schema
 - tutorial completion key
-- initialize match from seed/config
-- validate/submit local action
-- serialize match state for save/debug/test if needed
+- create/initialize match from seed/config
+- get public state
+- get legal actions for relevant player
+- validate/submit local action with expected revision
+- serialize deterministic debug/test state
 - pause-compatible presentation hooks
 - produce final result payload
 - produce rematch config
@@ -155,7 +219,7 @@ Every game exposes conceptually:
 
 Shell must not inspect internal legal-move logic.
 
-## 8. State ownership
+## 9. State ownership
 
 Shared persistent local cache:
 - global settings
@@ -165,7 +229,7 @@ Shared persistent local cache:
 - generic per-game stats
 - cached cosmetic entitlements
 - cached CC display balance from canonical commerce backend
-- Commerce Account session material stored in platform-secure storage
+- Commerce Account session material stored in platform-secure storage when commerce ships
 
 Server-authoritative commerce state once paid CC is enabled:
 - Commerce Account
@@ -187,30 +251,48 @@ Match-local:
 - ownership
 - move history
 - result state
+- canonical state revision
 
 No match score becomes a global currency.
 
-## 9. Local game authority
+## 10. Local game authority
 
 Current v1 has one game process/device, but match state still uses a single authoritative game-state owner.
 
 Rules:
 - UI submits intent/action
 - game rules validate it
+- action carries/compares expected state revision
 - accepted action advances one canonical state revision
-- presentation renders that accepted state
-- double taps/stale UI cannot apply same action twice
+- presentation renders accepted state/events
+- double taps/stale UI cannot apply the same action twice
 
 This structure is intentionally clean enough for future networking without implementing gameplay networking now.
 
-## 10. Commerce client architecture
+Rules code must be runnable headlessly without rendered scenes so tests/simulation can use the production rules rather than a parallel rewrite.
+
+## 11. Data runtime
+
+Canonical design data remains under `docs/data/`.
+
+Current Godot bootstrap loads game JSON directly from:
+
+```text
+res://docs/data/games/*.json
+```
+
+This intentionally avoids manually divergent runtime copies during bootstrap.
+
+If later packaging requires generated copies under `res://data/`, add a deterministic sync/hash validation step. Never maintain two hand-edited rule datasets.
+
+## 12. Commerce client architecture
 
 Commerce is separate from all game rules.
 
 Conceptual app modules:
 
 ```text
-/commerce
+src/commerce/
   EconomyConfig
   StoreCatalog
   StoreKitAdapter
@@ -231,11 +313,11 @@ Hard boundaries:
 - catalog spend + entitlement grant is atomic server-side
 - paid purchase is not considered delivered until backend confirms it
 - client calls `Transaction.finish()` only after server delivery acknowledgement
-- `Transaction.updates`/unfinished transactions are processed on launch for recovery
+- unfinished/updated transactions are processed for recovery
 
 If backend is unavailable before launch, paid CC products stay disabled rather than falling back to local-only balance.
 
-## 11. Commerce backend architecture
+## 13. Commerce backend architecture
 
 Locked commerce v1 backend:
 
@@ -251,24 +333,26 @@ Node.js 22 LTS + TypeScript strict + Fastify 5
 No Redis/message broker/microservice split in v1.
 PostgreSQL outbox rows support retryable background work.
 
-Backend source structure should follow conceptually:
+Backend source target:
 
 ```text
-/backend
-  /src
-    /auth
-    /apple
-    /wallet
-    /catalog
-    /admin
-    /worker
-    /db
-  /migrations
+backend/
+  src/
+    auth/
+    apple/
+    wallet/
+    catalog/
+    admin/
+    worker/
+    db/
+  migrations/
 ```
 
 Exact DB authority begins at `backend/migrations/001_commerce_v1.sql`.
 
-## 12. Commerce identity boundary
+The backend implementation is not a prerequisite for local Shell/Ludo vertical-slice work; paid commerce stays feature-flagged until its own gate passes.
+
+## 14. Commerce identity boundary
 
 Local game profiles are not paid accounts.
 
@@ -282,7 +366,7 @@ Commerce Account rules:
 
 Do not silently promote Commerce Account into friends/social/profile account behavior.
 
-## 13. Assets
+## 15. Assets
 
 Use stable asset IDs.
 
@@ -294,9 +378,29 @@ Examples:
 - `games/chess/king`
 - `games/tycoon/community_star`
 
-Boards/grids/text/cards generated in engine/UI wherever GDD specifies.
+Boards/grids/text/cards are generated in engine/UI wherever the GDD specifies.
 
-## 14. Deferred multi-device gameplay architecture
+3D import/world assembly authority is `docs/engineering/02_ASSET_IMPORT_AND_WORLD_ASSEMBLY.md`.
+Generation routing is `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`.
+
+## 16. World layer
+
+Current world Visual MVP is an independent **Track B** under `docs/PRODUCTION_MASTER_PLAN.md`.
+
+Architecture target:
+- reusable world player/camera;
+- one scene per admitted world region;
+- engine terrain/water/environment;
+- GridMap/MeshLibrary only for suitable snap-friendly modules;
+- MultiMesh for suitable high-count repeated decoration;
+- individual wrapper scenes for buildings/hero/interactable assets;
+- collision/navigation proven before final art pass.
+
+Deep life-sim architecture remains deferred.
+
+Do not let Store/economy implementation silently define world progression, jobs, quests, friendship, housing economy, or world resource loops. Those require a future world gameplay GDD.
+
+## 17. Deferred multi-device gameplay architecture
 
 Do not choose WebSocket/host/server/protocol technology during current local match milestone.
 
@@ -311,30 +415,18 @@ Before multi-device gameplay work begins, create a dedicated engineering design 
 
 Commerce backend existence does not imply gameplay networking is implemented.
 
-## 15. World layer
+## 18. Testing / completion rule
 
-Existing world assets and current visual MVP docs may be developed independently of board rules, but a full life-sim world architecture is still a separate project milestone.
+Every shared-system change runs applicable gates from:
 
-Do not let Store/economy implementation silently define world progression, jobs, quests, housing economy, or world resource loops. Those require a future world gameplay GDD.
+`docs/engineering/06_QA_BUILD_RELEASE_GATES.md`
 
-## 16. Testing rule
+At minimum current CI covers:
+- canonical game data validation;
+- commerce/catalog data validation;
+- Godot import/parse smoke;
+- main-scene boot smoke.
 
-Every shared-system change runs:
-- shell navigation tests
-- local setup tests
-- settings/save tests
-- currently integrated game regression tests
+As production rules are added, deterministic rules tests become mandatory before the game enters visual polish.
 
-Economy/commerce changes also run:
-- `docs/data/economy_v1.json` validation
-- `docs/data/commerce_backend_v1.json` validation
-- fake StoreKit adapter tests
-- Sign in with Apple auth tests
-- duplicate transaction idempotency tests
-- duplicate notification idempotency tests
-- wallet atomic spend tests
-- refund/debt tests
-- projection reconciliation tests
-- StoreKit Test / Sandbox scenarios before enablement
-
-Each game also runs acceptance tests listed in its locked GDD.
+Each game additionally runs acceptance tests listed in its locked GDD.
