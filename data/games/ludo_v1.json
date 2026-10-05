@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "game_id": "cozy_ludo",
+  "rules_version": "1.1",
+  "player_counts": [2, 3, 4],
+  "default_players": 4,
+  "session_target_minutes": {"min": 8, "max": 12, "p95_4p_hard_max": 15},
+  "pieces_per_player": 3,
+  "start_state": {"active_on_start_safe": 1, "in_yard": 2},
+  "board": {"outer_loop_cells": 52, "home_lane_cells": 5, "final_home_progress": 58, "start_indices": [0, 13, 26, 39], "safe_cells": [0, 8, 13, 21, 26, 34, 39, 47], "star_safe_cells": [8, 21, 34, 47]},
+  "dice": {"sides": 6, "uniform": true, "deploy_roll": 6},
+  "movement": {"complete_outer_lap_before_home_lane": true, "own_piece_destination_illegal": true, "intermediate_pieces_block": false, "exact_finish_required": false, "overshoot_clamps_to_home": true},
+  "capture": {"enabled": true, "safe_cells_capture": false, "non_safe_exact_landing_capture": true, "captured_piece_returns_to_yard": true, "capture_bonus_roll": false, "enemy_coexist_on_safe_cell": true},
+  "bonus_roll": {"trigger_original_roll": 6, "max_bonus_rolls_per_turn": 1, "bonus_roll_can_chain": false, "requires_successful_legal_move": true},
+  "no_legal_move": {"auto_end_turn": true, "toast_seconds": 0.8},
+  "win": {"home_pieces_required": 3, "end_immediately_on_first_winner": true, "continue_for_other_ranks": false},
+  "ranking": [
+    {"field": "home_count", "order": "desc"},
+    {"field": "total_progress", "order": "desc"},
+    {"field": "captures_made", "order": "desc"},
+    {"field": "pieces_in_yard", "order": "asc"},
+    {"field": "tie", "result": "shared_rank"}
+  ],
+  "progress_values": {"yard": 0, "outer_loop_min": 1, "outer_loop_max": 52, "home_lane_min": 53, "home_lane_max": 57, "home": 58},
+  "player_colors": ["red", "blue", "green", "yellow"],
+  "animation_seconds": {"dice": 0.9, "hop_per_cell": 0.12, "hop_cap": 1.2, "capture_reaction": 0.45, "yard_return": 0.45, "home_celebration": 0.5, "fast_multiplier": 0.6}
+}
