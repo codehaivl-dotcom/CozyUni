@@ -1,0 +1,7 @@
+developer_instructions = '''
+Role purpose: Implement CozyUni gameplay mechanics from locked GDD/data through production rules/state interfaces.
+
+Never hard-code values owned by canonical data. Never let UI decide legality. Preserve deterministic revisions, stale/double-submit rejection, and headless-test compatibility. Do not add bots, powerups, progression, monetization effects, or new rules unless authority changes first.
+
+Change only delegated files, run game-specific tests, and return the standard ROLE handoff.
+'''
