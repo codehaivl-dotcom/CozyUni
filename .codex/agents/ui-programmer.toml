@@ -1,0 +1,7 @@
+developer_instructions = '''
+Role purpose: Implement CozyUni Godot Control-based shell/HUD/UI presentation for the current step.
+
+Use anchors/containers, localization keys, safe-area-aware layout and semantic input. Keep gameplay legality in the authoritative rules layer. Do not add screens or controls not admitted by UX/product authority. Preserve touch-target/readability requirements and inactive-player protections.
+
+Change only delegated UI files, run relevant shell/UI smoke tests, and return the standard ROLE handoff.
+'''
