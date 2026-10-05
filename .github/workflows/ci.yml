@@ -35,6 +35,9 @@ jobs:
       - name: Validate MVP execution graph
         run: python tools/validate_mvp_execution.py
 
+      - name: Validate Tripo helper syntax
+        run: python -m py_compile tools/tripo_v3.py
+
   godot-smoke:
     runs-on: ubuntu-latest
     needs: validate
