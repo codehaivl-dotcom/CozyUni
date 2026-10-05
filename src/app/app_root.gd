@@ -8,6 +8,7 @@ const MatchSummaryScreenScript = preload("res://src/ui/shell/match_summary_scree
 const TutorialScreenScript = preload("res://src/ui/shell/tutorial_screen.gd")
 const CountdownScreenScript = preload("res://src/ui/shell/countdown_screen.gd")
 const StubMatchScreenScript = preload("res://src/ui/shell/stub_match_screen.gd")
+const LudoMatchScreenScript = preload("res://src/ui/ludo/ludo_match_screen.gd")
 const FinalResultsScreenScript = preload("res://src/ui/shell/final_results_screen.gd")
 const SettingsScreenScript = preload("res://src/ui/shell/settings_screen.gd")
 const PauseOverlayScript = preload("res://src/ui/shell/pause_overlay.gd")
@@ -172,7 +173,7 @@ func _show_local_player_setup() -> void:
 func _change_player_count(count: int) -> void:
 	var config := GameData.get_game(_selected_game_id)
 	var allowed: Array = config.get("player_counts", []) as Array
-	if count not in allowed:
+	if not _int_array_contains(allowed, count):
 		push_error("AppRoot: invalid player count %d for %s" % [count, _selected_game_id])
 		return
 	_session["player_count"] = count
@@ -235,6 +236,7 @@ func _show_match_summary() -> void:
 
 func _start_match_flow() -> void:
 	_session["match_seed"] = MatchSeedService.create_seed()
+	_session["match_result"] = {}
 	_session["stub_result"] = {}
 	if not SettingsStore.is_tutorial_completed(_selected_game_id):
 		_tutorial_starts_match = true
@@ -298,6 +300,13 @@ func _show_countdown() -> void:
 func _show_match() -> void:
 	if not _require_selected_game():
 		return
+	if _selected_game_id == "cozy_ludo":
+		var ludo_screen = LudoMatchScreenScript.new()
+		ludo_screen.configure(_session)
+		ludo_screen.pause_requested.connect(_open_pause)
+		ludo_screen.match_finished.connect(_finish_real_match)
+		_replace_screen(ludo_screen)
+		return
 	var screen = StubMatchScreenScript.new()
 	screen.configure(_selected_game_id)
 	screen.pause_requested.connect(_open_pause)
@@ -305,8 +314,15 @@ func _show_match() -> void:
 	_replace_screen(screen)
 
 
+func _finish_real_match(result: Dictionary) -> void:
+	_session["match_result"] = result.duplicate(true)
+	_session["stub_result"] = {}
+	AppRouter.navigate(SHELL_FLOW.FINAL_RESULTS)
+
+
 func _finish_stub_match() -> void:
 	_session["stub_result"] = {"development_stub": true}
+	_session["match_result"] = {}
 	AppRouter.navigate(SHELL_FLOW.FINAL_RESULTS)
 
 
@@ -340,7 +356,7 @@ func _settings_from_pause() -> void:
 
 func _restart_from_pause() -> void:
 	_close_pause()
-	_confirm_or_run("Restart this match?", _restart_stub_match)
+	_confirm_or_run("Restart this match?", _restart_match)
 
 
 func _leave_from_pause() -> void:
@@ -355,9 +371,9 @@ func _close_pause() -> void:
 	_pause_overlay = null
 
 
-func _restart_stub_match() -> void:
-	_rotate_starting_player()
+func _restart_match() -> void:
 	_session["match_seed"] = MatchSeedService.create_seed()
+	_session["match_result"] = {}
 	_session["stub_result"] = {}
 	AppRouter.navigate(SHELL_FLOW.COUNTDOWN)
 
@@ -374,6 +390,7 @@ func _show_final_results() -> void:
 func _rematch() -> void:
 	_rotate_starting_player()
 	_session["match_seed"] = MatchSeedService.create_seed()
+	_session["match_result"] = {}
 	_session["stub_result"] = {}
 	AppRouter.navigate(SHELL_FLOW.COUNTDOWN)
 
@@ -419,7 +436,7 @@ func _create_default_session(game_id: String) -> Dictionary:
 	var config := GameData.get_game(game_id)
 	var counts: Array = config.get("player_counts", [2]) as Array
 	var default_count := int(config.get("default_players", counts[0] if not counts.is_empty() else 2))
-	if default_count not in counts and not counts.is_empty():
+	if not _int_array_contains(counts, default_count) and not counts.is_empty():
 		default_count = int(counts[0])
 	var result := {
 		"game_id": game_id,
@@ -427,6 +444,7 @@ func _create_default_session(game_id: String) -> Dictionary:
 		"players": [],
 		"starting_player_slot": 0,
 		"match_seed": 0,
+		"match_result": {},
 		"stub_result": {},
 	}
 	_session = result
@@ -474,3 +492,10 @@ func _replace_screen(screen: Control, animate: bool = true) -> void:
 	if animate:
 		var tween := create_tween()
 		tween.tween_property(screen, "modulate:a", 1.0, 0.2)
+
+
+func _int_array_contains(values: Array, expected: int) -> bool:
+	for value: Variant in values:
+		if int(value) == expected:
+			return true
+	return false
