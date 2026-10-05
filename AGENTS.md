@@ -1,0 +1,166 @@
+# CozyUni contributor / coding-agent instructions
+
+These instructions apply to the entire repository unless a deeper `AGENTS.md` explicitly narrows them.
+
+## 1. Authority order
+
+When implementing player-visible behavior, read in this order:
+
+1. `docs/PRODUCTION_MASTER_PLAN.md`
+2. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
+3. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+4. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
+5. selected game GDD under `docs/games/`
+6. matching machine-readable data under `docs/data/games/`
+7. `docs/APP_ARCHITECTURE.md`
+8. engineering locks under `docs/engineering/`
+
+World work additionally obeys:
+1. `docs/world/README.md`
+2. `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`
+3. `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`
+
+Commerce additionally obeys:
+1. `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
+2. `docs/backend/`
+3. `docs/data/economy_v1.json`
+4. `docs/data/commerce_backend_v1.json`
+
+If two authorities conflict and the hierarchy above does not resolve the conflict, **STOP and report `AUTHORITY_CONFLICT`**. Do not choose whichever behavior seems nicer.
+
+## 2. Current production scope
+
+Shipping critical path:
+
+`Godot bootstrap -> Shared Shell -> Cozy Ludo rules/headless tests -> playable Ludo -> Ludo polish/QA -> next game`
+
+World work is a separate bounded visual-R&D track. It may prove W01 and the asset/import pipeline, but must not delay the shipping track.
+
+Do not implement current-version features that are explicitly deferred:
+- online rooms / matchmaking;
+- public accounts/friends;
+- bots for product gameplay;
+- deep life-sim systems;
+- farming/crafting/housing economies;
+- world quests/friendship schedules;
+- paid competitive power.
+
+## 3. Engine lock
+
+The game client uses the version and renderer locked in `docs/engineering/00_ENGINE_TECH_STACK_LOCK.md`.
+
+Rules:
+- typed GDScript is the default game language;
+- do not introduce C#, GDExtension, a third-party Godot addon, or a second engine without an explicit architecture change;
+- `.godot/` is generated import/cache data and is never source truth;
+- do not commit editor-generated noise unless the file is intentionally source-controlled by the project.
+
+## 4. Data-driven gameplay
+
+Do not hard-code values that are owned by canonical JSON/data files.
+
+The production rules engine and simulator must read the same authoritative data.
+
+The UI may submit player intent, but it must not decide legality. One authoritative rules/state owner validates actions and advances a monotonic state revision.
+
+If required gameplay behavior is absent from GDD + data, **STOP with `MISSING_GAME_RULE`** instead of inventing it.
+
+## 5. Asset rules
+
+Do not invent generation prompts.
+
+Follow `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` exactly.
+
+For generated assets:
+- preserve source/reference files;
+- create candidates beside originals;
+- never replace a production asset before validation/approval;
+- maintain stable asset IDs and file naming;
+- validate scale, pivot, normals, materials, collision, and import before acceptance.
+
+Boards, paths, labels, numbers, cards, and grids that are specified as engine/UI-built must not be generated as monolithic 3D assets.
+
+## 6. World construction rules
+
+Blockout first. Final art later.
+
+Every world milestone must prove:
+- player scale;
+- spawn and route reachability;
+- collision;
+- navigation where required;
+- camera and sightline;
+- entrance/exit;
+- deterministic/reproducible placement for procedural content;
+- performance budget.
+
+Do not submit a whole map reference to image-to-3D as one mesh.
+
+## 7. Code boundaries
+
+Prefer small modules and explicit interfaces.
+
+Do not duplicate shared shell/rules primitives inside individual modes.
+
+Do not put game-specific rules into generic Path Board / Grid Strategy / Economy Board helpers.
+
+Do not let commerce code grant or mutate match-local currencies.
+
+Do not let UI directly mutate canonical match state or paid-wallet state.
+
+## 8. Task discipline
+
+Before changing code:
+1. state the milestone and acceptance gate;
+2. identify authoritative docs/data;
+3. identify exact files to change;
+4. preserve unrelated dirty work;
+5. prefer the smallest reversible implementation.
+
+Do not opportunistically refactor unrelated systems.
+Do not add speculative abstractions for deferred features.
+Do not silently add dependencies, plugins, network services, or hosted tools.
+
+## 9. Required validation
+
+At minimum, run all validators relevant to changed data:
+
+```bash
+python tools/validate_game_data.py
+python tools/validate_commerce_data.py
+python tools/validate_catalog_data.py
+```
+
+For Godot/client work, also run the gates defined by `docs/engineering/06_QA_BUILD_RELEASE_GATES.md`, including parse/headless smoke tests and game-specific tests.
+
+For world/visual changes, capture evidence from canonical cameras and run the performance/asset checks defined by engineering docs.
+
+A task is not complete because code was written. It is complete only when its acceptance gate passes.
+
+## 10. Evidence and failure reporting
+
+When a gate fails:
+- preserve the failing seed/log/screenshot where useful;
+- report the exact failed invariant;
+- do not hide a failure by weakening the gate unless the canonical design changes;
+- do not mark generated assets or milestones complete while known required checks fail.
+
+Use explicit stop reasons such as:
+- `AUTHORITY_CONFLICT`
+- `MISSING_GAME_RULE`
+- `MISSING_REFERENCE`
+- `ASSET_IMPORT_FAIL`
+- `PERFORMANCE_GATE_FAIL`
+- `TRIPO_DOC_MISMATCH`
+- `BUILD_GATE_FAIL`
+
+## 11. Contract changes
+
+If a public/gameplay contract changes, update together as applicable:
+- GDD / authority doc;
+- machine-readable data;
+- validation/test;
+- affected implementation;
+- changelog/roadmap only when milestone scope changes.
+
+Never change only the implementation and leave the source-of-truth docs/data inconsistent.
