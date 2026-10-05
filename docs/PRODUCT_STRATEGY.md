@@ -1,12 +1,12 @@
-# CozyUni — Product Strategy v0.4
+# CozyUni — Product Strategy v0.5
 
-Status: **CURRENT / GAME-FIRST / SINGLE-DEVICE FIRST**
+Status: **CURRENT / GAME-FIRST / SINGLE-DEVICE FIRST / VISUAL-R&D WORLD TRACK ALLOWED**
 
 ## 1. Decision
 
 Build one primary public app: **CozyUni**.
 
-Current priority is a polished collection of local board games played by multiple people on one tablet/screen.
+Current shipping priority is a polished collection of local board games played by multiple people on one tablet/screen.
 
 The active game set is:
 1. Cozy Ludo
@@ -51,7 +51,7 @@ Multi-device is a later expansion, not a current implementation requirement.
 
 The five-game list is a roadmap, not a parallel-development plan.
 
-Production order:
+Shipping production order:
 `Ludo -> Caro -> Journey -> Chess -> Tycoon`
 
 A later game does not enter full production until the current game reaches its design/QA gate.
@@ -81,7 +81,7 @@ Each game owns:
 - game-specific stats
 
 ### Layer C — Commerce infrastructure
-Design is now locked but customer-facing enablement may remain feature-flagged.
+Design is locked but customer-facing enablement may remain feature-flagged.
 
 Includes:
 - Cozy Credits wallet
@@ -94,12 +94,32 @@ Commerce rules live in `docs/ECONOMY_IAP_AND_STORE_LOCK.md`.
 ### Layer D — Future multi-device
 Deferred until the local product is proven.
 
-### Layer E — Future world
-Deferred.
+### Layer E — World Visual R&D track
+A **bounded world visual MVP is allowed now** under `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`.
 
-Existing 3D buildings, transport, nature, food, leisure and infrastructure assets are reserved for a future genuine life-sim world.
+This track exists to prove:
+- Godot 3D world assembly;
+- the modular asset kit;
+- concept -> 3D -> engine import;
+- walking/camera/collision/navigation;
+- environment composition and performance.
 
-Do not build a shallow decorative hub merely to consume those assets.
+It is **not** the shipping critical path and must not delay Shell/Ludo milestones.
+
+Allowed now:
+- W01 Moonberry Village blockout;
+- one complete concept -> 3D -> Godot import proof;
+- world references and assembly tooling;
+- later W02–W08 only after the production master plan gate permits them.
+
+Still deferred:
+- Animal-Crossing-like life simulation;
+- friendship/NPC schedules;
+- farming/crafting economy;
+- housing/interior systems;
+- persistent shared world.
+
+The world authority is `docs/world/README.md` + `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`.
 
 ## 6. Art economics
 
@@ -108,9 +128,10 @@ There is no traditional 3D art team.
 Therefore:
 - boards/grids/paths are generated in engine
 - text/cards/numbers are UI/data
-- AI→3D is used for small isolated hero assets
-- existing assets may dress boards where useful
-- no large bespoke art batch before gameplay is proven
+- AI→3D is used for isolated production assets
+- modular world pieces are grouped where safe to save generation credits
+- existing assets may dress boards/world where useful
+- no large bespoke art batch before the corresponding gameplay/world proof gate
 
 ## 7. What makes CozyUni different
 
@@ -122,6 +143,7 @@ It is the combination of:
 - polished tablet-first board presentation
 - shared-device family/friends play
 - coherent shell and visual identity
+- a reusable modular 3D world art language
 - later multi-device expansion if local play proves valuable
 - later life-sim world if product quality justifies it
 
@@ -136,10 +158,11 @@ It is the combination of:
 7. Results/rematch feel satisfying.
 8. Testers voluntarily ask for another match.
 9. Second/third games add value only after the first game is strong.
-10. Commerce infrastructure can be implemented behind feature flags.
-11. Paid monetization is enabled only after product/repeat-play gates are met.
-12. Multi-device comes later.
-13. World/life-sim comes later.
+10. World R&D proves import/assembly without delaying the shipping track.
+11. Commerce infrastructure can be implemented behind feature flags.
+12. Paid monetization is enabled only after product/repeat-play gates are met.
+13. Multi-device comes later.
+14. Deep world/life-sim systems come later.
 
 ## 9. Mode admission gate
 
@@ -154,7 +177,7 @@ A game does not enter production unless:
 
 ## 10. Monetization position
 
-The monetization architecture is now defined rather than left for agents to invent.
+The monetization architecture is defined rather than left for agents to invent.
 
 Current locked position:
 - one global spendable premium currency: Cozy Credits (CC)
@@ -172,6 +195,6 @@ The Store may remain disabled until product metrics justify enabling it. Technic
 
 Long-term ambition remains a real Animal-Crossing-like CozyUni life-sim/world layer.
 
-That future world must justify the large asset library through actual life-sim interaction, NPC/world behavior, discovery, progression and social presence.
+The current world milestone is only a **visual/environment vertical slice**. It does not authorize agents to invent world progression, quests, jobs, friendship, crafting, housing economy, resource loops, or online-world behavior.
 
-Until a full world GDD exists, world production stays deferred.
+See `docs/PRODUCTION_MASTER_PLAN.md` for the relationship between the shipping game track and the visual-R&D world track.
