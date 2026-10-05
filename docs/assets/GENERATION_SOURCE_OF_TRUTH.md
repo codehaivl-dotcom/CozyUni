@@ -1,16 +1,86 @@
-# CozyUni Asset Generation — Source of Truth
+# CozyUni Asset Generation — Source of Truth v2
 
 Status: **CANONICAL POINTER**
 
-For local AI asset generation, use only:
+## 1. Base asset generation authority
+
+For the original character/world/five-game ready-generation queue, use:
 
 `docs/assets/04_ALL_IN_ONE_READY_GEN_ASSET_MASTER.md`
 
+It remains canonical for:
+- the 20 characters;
+- the 296 base world/library assets;
+- the 15 additional unique five-game assets;
+- the exact base prompt assembly contract;
+- Style Lock/category templates;
+- game reuse map;
+- completion checkboxes.
+
+Do not use `03_WORLD_ASSET_PRODUCTION_MASTER.md` as a prompt source. It is planning/history only.
+
+## 2. Modular world generation authority
+
+For reusable snap/assembly world pieces, use:
+
+`docs/assets/05_MODULAR_WORLD_KIT_MASTER.md`
+
+This is the canonical inventory for modular ground/path/road/curb/plaza/rock/cliff/stair/fence/bridge/harbor/rail/garden/terrain-detail pieces.
+
+These modules extend the asset library; they do not replace the 04 queue.
+
+## 3. Batch-sheet optimization authority
+
+For **small modular pieces only**, the generation agent may use:
+
+`docs/assets/06_MODULAR_WORLD_KIT_BATCH_SHEETS.md`
+
+06 is a batching/credit-saving layer on top of 05.
+
 Rules:
-- `04_ALL_IN_ONE_READY_GEN_ASSET_MASTER.md` is the canonical ready-gen queue.
-- It contains the complete 20-character + 296 base world/library + 15 additional unique five-game asset list.
-- It also contains the exact prompt assembly contract, STYLE_LOCK, category templates, five-game reuse map, and checkboxes.
-- The local agent must attach the approved reference image required by that file to every generation request.
-- Do not use `03_WORLD_ASSET_PRODUCTION_MASTER.md` as a prompt source. It is retained as planning/history only.
-- Do not invent or rewrite prompts during generation.
-- Do not mark an item complete until the result is visually accepted against the approved reference image.
+- batch only approved small compatible families;
+- obey 4–8 item maximum and sheet layout rules;
+- batching does not merge independent runtime assets permanently;
+- resulting 3D pieces still require individual production QA/import acceptance where they are used separately;
+- complex/hero assets remain one image per asset.
+
+## 4. Shared render/style authority
+
+All generation routes obey:
+
+`docs/assets/00_RENDER_RULES_LOCKED.md`
+
+The local agent must attach the approved CozyUni reference image required by the relevant generation contract.
+
+If a required reference image is unavailable, STOP with:
+
+`MISSING_REFERENCE`
+
+Do not substitute text-only generation when the contract requires an attached reference.
+
+## 5. Prompt discipline
+
+- Do not invent or paraphrase canonical item prompts during base 04 generation.
+- For 05/06 modular generation, use the exact item/family names and the locked modular/style wrapper defined in those files.
+- Do not add extra scenery, props or adjectives that materially alter the requested asset family.
+- Never render a whole world/map reference as one 3D asset.
+
+## 6. 3D conversion authority
+
+When using Tripo, follow `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`:
+- current official Tripo developer documentation is the only authority for endpoint/task/request/response semantics;
+- no guessed API fields, enums, versions or retry behavior;
+- record generation log per asset/task;
+- `TRIPO_DOC_MISMATCH` => STOP.
+
+## 7. Completion rule
+
+Do not mark an asset/module complete until all applicable stages pass:
+1. concept/render visual acceptance;
+2. 3D generation acceptance;
+3. technical mesh/material/texture QA;
+4. Godot import scale/pivot/material check;
+5. collision/performance check where relevant;
+6. gameplay/world-camera visual acceptance.
+
+An accepted concept image alone is not a finished production asset.
