@@ -118,29 +118,29 @@ func _test_only_six_deploys_yard_piece() -> void:
 
 func _test_one_bonus_roll_maximum() -> void:
 	var queue := RollQueue.new([6, 6])
-	var match = LudoMatchScript.new(_config, 2, 1001, 0, Callable(queue, "next_roll"))
-	var result: Dictionary = match.submit_action({"type": "roll", "player_slot": 0}, 0)
+	var match_obj = LudoMatchScript.new(_config, 2, 1001, 0, Callable(queue, "next_roll"))
+	var result: Dictionary = match_obj.submit_action({"type": "roll", "player_slot": 0}, 0)
 	_expect(bool(result.get("accepted", false)), "original 6 accepted")
-	result = match.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": 0}, 1)
+	result = match_obj.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": 0}, 1)
 	var after_original: Dictionary = result.get("state", {}) as Dictionary
 	_expect(int(after_original.get("turn_index", -1)) == 0, "successful original 6 keeps same player")
 	_expect(str(after_original.get("phase", "")) == LudoRulesScript.PHASE_AWAITING_ROLL, "bonus roll becomes awaiting roll")
-	result = match.submit_action({"type": "roll", "player_slot": 0}, 2)
+	result = match_obj.submit_action({"type": "roll", "player_slot": 0}, 2)
 	_expect(bool(result.get("accepted", false)), "bonus 6 accepted")
 	var legal: Array = (result.get("state", {}) as Dictionary).get("legal_piece_indices", []) as Array
 	_expect(not legal.is_empty(), "bonus roll has a legal move")
-	result = match.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": int(legal[0])}, 3)
+	result = match_obj.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": int(legal[0])}, 3)
 	var after_bonus: Dictionary = result.get("state", {}) as Dictionary
 	_expect(int(after_bonus.get("turn_index", -1)) == 1, "bonus 6 cannot chain another bonus")
 
 
 func _test_no_legal_move_auto_ends_turn() -> void:
 	var queue := RollQueue.new([5])
-	var match = LudoMatchScript.new(_config, 2, 1002, 0, Callable(queue, "next_roll"))
-	var state := match.serialize_debug_state()
+	var match_obj = LudoMatchScript.new(_config, 2, 1002, 0, Callable(queue, "next_roll"))
+	var state := match_obj.serialize_debug_state()
 	_set_all_pieces(state, 0, [0, 0, 0])
-	match._state = state
-	var result: Dictionary = match.submit_action({"type": "roll", "player_slot": 0}, 0)
+	match_obj._state = state
+	var result: Dictionary = match_obj.submit_action({"type": "roll", "player_slot": 0}, 0)
 	var next_state: Dictionary = result.get("state", {}) as Dictionary
 	_expect(bool(result.get("accepted", false)), "no-move roll is an accepted action")
 	_expect(int(next_state.get("turn_index", -1)) == 1, "no legal move auto-ends turn")
@@ -150,26 +150,26 @@ func _test_no_legal_move_auto_ends_turn() -> void:
 
 func _test_overshoot_clamps_to_home_and_wins() -> void:
 	var queue := RollQueue.new([6])
-	var match = LudoMatchScript.new(_config, 2, 1003, 0, Callable(queue, "next_roll"))
-	var state := match.serialize_debug_state()
+	var match_obj = LudoMatchScript.new(_config, 2, 1003, 0, Callable(queue, "next_roll"))
+	var state := match_obj.serialize_debug_state()
 	_set_all_pieces(state, 0, [58, 58, 57])
-	match._state = state
-	var roll_result: Dictionary = match.submit_action({"type": "roll", "player_slot": 0}, 0)
+	match_obj._state = state
+	var roll_result: Dictionary = match_obj.submit_action({"type": "roll", "player_slot": 0}, 0)
 	var legal: Array = (roll_result.get("state", {}) as Dictionary).get("legal_piece_indices", []) as Array
 	_expect(2 in legal, "progress 57 may finish with overshoot")
-	var move_result: Dictionary = match.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": 2}, 1)
+	var move_result: Dictionary = match_obj.submit_action({"type": "select_piece", "player_slot": 0, "piece_index": 2}, 1)
 	var end_state: Dictionary = move_result.get("state", {}) as Dictionary
 	_expect(_piece(end_state, 0, 2) == 58, "overshoot clamps to Home 58")
-	_expect(match.is_finished(), "third home piece ends match immediately")
+	_expect(match_obj.is_finished(), "third home piece ends match immediately")
 	_expect(int(end_state.get("winner_slot", -1)) == 0, "first player with all pieces home wins")
 
 
 func _test_revision_rejects_duplicate_submission() -> void:
 	var queue := RollQueue.new([4])
-	var match = LudoMatchScript.new(_config, 2, 1004, 0, Callable(queue, "next_roll"))
-	var first: Dictionary = match.submit_action({"type": "roll", "player_slot": 0}, 0)
+	var match_obj = LudoMatchScript.new(_config, 2, 1004, 0, Callable(queue, "next_roll"))
+	var first: Dictionary = match_obj.submit_action({"type": "roll", "player_slot": 0}, 0)
 	_expect(bool(first.get("accepted", false)) and int(first.get("revision", -1)) == 1, "accepted action increments revision once")
-	var duplicate: Dictionary = match.submit_action({"type": "roll", "player_slot": 0}, 0)
+	var duplicate: Dictionary = match_obj.submit_action({"type": "roll", "player_slot": 0}, 0)
 	_expect(not bool(duplicate.get("accepted", true)), "duplicate stale action rejected")
 	_expect(str(duplicate.get("reason", "")) == "STALE_REVISION", "stale action reports structured reason")
 
@@ -212,8 +212,8 @@ func _test_ranking_is_deterministic() -> void:
 
 
 func _test_rematch_rotates_starting_slot() -> void:
-	var match = LudoMatchScript.new(_config, 4, 1005, 2)
-	var rematch := match.get_rematch_config()
+	var match_obj = LudoMatchScript.new(_config, 4, 1005, 2)
+	var rematch := match_obj.get_rematch_config()
 	_expect(int(rematch.get("starting_player_slot", -1)) == 3, "rematch rotates starting slot 2 -> 3")
 	var wrap_match = LudoMatchScript.new(_config, 4, 1006, 3)
 	var wrap := wrap_match.get_rematch_config()
