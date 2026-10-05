@@ -9,13 +9,16 @@ When implementing player-visible behavior, read in this order:
 1. `docs/PRODUCTION_MASTER_PLAN.md`
 2. `docs/MVP_EXECUTION_PLAYBOOK.md` when MVP-01 is active
 3. `docs/data/mvp_execution_v1.json` for the exact current admitted step
-4. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
-5. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
-6. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
-7. selected game GDD under `docs/games/`
-8. matching machine-readable data under `docs/data/games/`
-9. `docs/APP_ARCHITECTURE.md`
-10. engineering locks under `docs/engineering/`
+4. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
+5. `docs/data/agent_roles_v1.json`
+6. `docs/data/mvp_role_assignments_v1.json`
+7. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
+8. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+9. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
+10. selected game GDD under `docs/games/`
+11. matching machine-readable data under `docs/data/games/`
+12. `docs/APP_ARCHITECTURE.md`
+13. engineering locks under `docs/engineering/`
 
 World work additionally obeys:
 1. `docs/world/README.md`
@@ -58,11 +61,12 @@ Do not implement current-version features that are explicitly deferred:
 
 For MVP-01, every agent run follows:
 
-`INSPECT -> CURRENT STEP -> EXACT FILE SCOPE -> APPLY -> VERIFY -> EVIDENCE -> UPDATE STATE -> STOP`
+`INSPECT -> CURRENT STEP -> ASSIGN DECLARED ROLES -> EXACT FILE SCOPE -> APPLY -> VERIFY -> REVIEW -> EVIDENCE -> UPDATE STATE -> STOP`
 
 Hard rules:
-- run `python tools/validate_mvp_execution.py` before mutation;
+- run `python tools/validate_agent_roles.py` and `python tools/validate_mvp_execution.py` before mutation;
 - read `current_step` from `docs/data/mvp_execution_v1.json`;
+- read the exact team for that step from `docs/data/mvp_role_assignments_v1.json`;
 - do not execute any future `LOCKED` step;
 - do not create additional tasks because they seem useful;
 - obey the current step render budget and render allowlist;
@@ -70,6 +74,29 @@ Hard rules:
 - do not start the newly-ready step in the same run unless the user explicitly overrides the one-step rule.
 
 If unexpected work is required, use the MVP blocker codes defined by `docs/MVP_EXECUTION_PLAYBOOK.md` and stop instead of inventing scope.
+
+## 3A. Multi-agent role workflow
+
+CozyUni uses bounded specialist roles similar in structure to a small game studio.
+
+Authority:
+- `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
+- `docs/data/agent_roles_v1.json`
+- `docs/data/mvp_role_assignments_v1.json`
+- `.codex/agents/*.toml`
+
+Hard rules:
+- only the roles assigned to the current step may be activated automatically;
+- exactly one declared lead role owns the step handoff;
+- support roles stay inside delegated scope;
+- review roles independently return PASS/CONCERNS/BLOCKED;
+- parallel read-only analysis is allowed, but parallel writes to the same file are forbidden;
+- every mutable file has exactly one writer role per pass;
+- a role name never expands permissions, render budget, secrets access, current-step scope, or authority;
+- the step cannot PASS until required reviewers have completed their review;
+- if an unassigned role is required and is not in the step escalation list, STOP with `ROLE_NOT_AUTHORIZED` rather than silently adding the role.
+
+Each role must return the standard role handoff defined in `docs/agents/00_MULTI_AGENT_WORKFLOW.md`.
 
 ## 4. Engine lock
 
@@ -119,6 +146,7 @@ Boards, paths, labels, numbers, cards, and grids that are specified as engine/UI
 When using Tripo:
 - read `docs/assets/07_TRIPO_API_V3_EXECUTION.md` first;
 - use `tools/tripo_v3.py`; do not create a second ad-hoc API client;
+- by default only the assigned `asset-pipeline-specialist` may initiate Tripo dry-run/execution;
 - the secret is supplied only through local `TRIPO_API_KEY` environment state;
 - never commit, echo, log, screenshot, or paste the real API key into repository files;
 - never pass the key as a CLI argument;
@@ -164,9 +192,10 @@ Do not let UI directly mutate canonical match state or paid-wallet state.
 Before changing code:
 1. state the milestone and acceptance gate;
 2. identify authoritative docs/data;
-3. identify exact files to change;
-4. preserve unrelated dirty work;
-5. prefer the smallest reversible implementation.
+3. identify the current step's declared lead/support/review roles;
+4. identify exact files to change and one writer role per mutable file;
+5. preserve unrelated dirty work;
+6. prefer the smallest reversible implementation.
 
 Do not opportunistically refactor unrelated systems.
 Do not add speculative abstractions for deferred features.
@@ -180,6 +209,7 @@ At minimum, run all validators relevant to changed data:
 python tools/validate_game_data.py
 python tools/validate_commerce_data.py
 python tools/validate_catalog_data.py
+python tools/validate_agent_roles.py
 python tools/validate_mvp_execution.py
 python -m py_compile tools/tripo_v3.py
 ```
@@ -217,6 +247,7 @@ Use explicit stop reasons such as:
 - `MVP_BLOCKED_RENDER_BUDGET`
 - `RENDER_NOT_AUTHORIZED`
 - `RENDER_BUDGET_EXCEEDED`
+- `ROLE_NOT_AUTHORIZED`
 
 ## 13. Contract changes
 
