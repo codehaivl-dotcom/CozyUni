@@ -21,6 +21,7 @@ World work additionally obeys:
 1. `docs/world/README.md`
 2. `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`
 3. `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`
+4. `docs/assets/07_TRIPO_API_V3_EXECUTION.md` when Tripo is used
 
 Commerce additionally obeys:
 1. `docs/ECONOMY_IAP_AND_STORE_LOCK.md`
@@ -113,7 +114,24 @@ For generated assets:
 
 Boards, paths, labels, numbers, cards, and grids that are specified as engine/UI-built must not be generated as monolithic 3D assets.
 
-## 7. World construction rules
+## 7. Tripo API rules
+
+When using Tripo:
+- read `docs/assets/07_TRIPO_API_V3_EXECUTION.md` first;
+- use `tools/tripo_v3.py`; do not create a second ad-hoc API client;
+- the secret is supplied only through local `TRIPO_API_KEY` environment state;
+- never commit, echo, log, screenshot, or paste the real API key into repository files;
+- never pass the key as a CLI argument;
+- billable image-to-3D generation remains dry-run unless `--execute` is explicitly used;
+- `--execute` is allowed only when the active MVP step already authorizes the specific render and has budget remaining;
+- a user providing an API key does not waive the render budget or current-step restrictions;
+- do not silently change the pinned Tripo model/settings;
+- if official Tripo docs and repository contract differ materially, STOP with `TRIPO_DOC_MISMATCH` before spending credits;
+- task failure does not authorize an automatic paid retry.
+
+Downloaded Tripo candidates under `generated/tripo/` are local working output and are not automatically production assets.
+
+## 8. World construction rules
 
 Blockout first. Final art later.
 
@@ -129,7 +147,7 @@ Every world milestone must prove:
 
 Do not submit a whole map reference to image-to-3D as one mesh.
 
-## 8. Code boundaries
+## 9. Code boundaries
 
 Prefer small modules and explicit interfaces.
 
@@ -141,7 +159,7 @@ Do not let commerce code grant or mutate match-local currencies.
 
 Do not let UI directly mutate canonical match state or paid-wallet state.
 
-## 9. Task discipline
+## 10. Task discipline
 
 Before changing code:
 1. state the milestone and acceptance gate;
@@ -154,7 +172,7 @@ Do not opportunistically refactor unrelated systems.
 Do not add speculative abstractions for deferred features.
 Do not silently add dependencies, plugins, network services, or hosted tools.
 
-## 10. Required validation
+## 11. Required validation
 
 At minimum, run all validators relevant to changed data:
 
@@ -163,6 +181,7 @@ python tools/validate_game_data.py
 python tools/validate_commerce_data.py
 python tools/validate_catalog_data.py
 python tools/validate_mvp_execution.py
+python -m py_compile tools/tripo_v3.py
 ```
 
 For Godot/client work, also run the gates defined by `docs/engineering/06_QA_BUILD_RELEASE_GATES.md`, including parse/headless smoke tests and game-specific tests.
@@ -171,7 +190,7 @@ For world/visual changes, capture evidence from canonical cameras and run the pe
 
 A task is not complete because code was written. It is complete only when its acceptance gate passes.
 
-## 11. Evidence and failure reporting
+## 12. Evidence and failure reporting
 
 When a gate fails:
 - preserve the failing seed/log/screenshot where useful;
@@ -186,6 +205,7 @@ Use explicit stop reasons such as:
 - `ASSET_IMPORT_FAIL`
 - `PERFORMANCE_GATE_FAIL`
 - `TRIPO_DOC_MISMATCH`
+- `TRIPO_KEY_MISSING`
 - `BUILD_GATE_FAIL`
 - `MVP_EXECUTION_CONFLICT`
 - `MVP_BLOCKED_MISSING_DEPENDENCY`
@@ -196,8 +216,9 @@ Use explicit stop reasons such as:
 - `MVP_BLOCKED_BUILD`
 - `MVP_BLOCKED_RENDER_BUDGET`
 - `RENDER_NOT_AUTHORIZED`
+- `RENDER_BUDGET_EXCEEDED`
 
-## 12. Contract changes
+## 13. Contract changes
 
 If a public/gameplay contract changes, update together as applicable:
 - GDD / authority doc;
