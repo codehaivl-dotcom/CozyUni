@@ -19,7 +19,7 @@ func _init(config: Dictionary, player_count: int, seed_value: int, starting_slot
 	_rng.seed = seed_value
 
 	var allowed: Array = _config.get("player_counts", []) as Array
-	assert(player_count in allowed)
+	assert(_int_array_contains(allowed, player_count))
 	var actual_start := starting_slot
 	if actual_start < 0:
 		actual_start = _rng.randi_range(0, player_count - 1)
@@ -32,7 +32,10 @@ func mode_id() -> String:
 
 
 func supported_player_counts() -> Array:
-	return (_config.get("player_counts", []) as Array).duplicate()
+	var result: Array = []
+	for value: Variant in (_config.get("player_counts", []) as Array):
+		result.append(int(value))
+	return result
 
 
 func get_public_state() -> Dictionary:
@@ -199,3 +202,10 @@ func _reject(reason: String) -> Dictionary:
 		"reason": reason,
 		"revision": int(_state.get("revision", 0)),
 	}
+
+
+func _int_array_contains(values: Array, expected: int) -> bool:
+	for value: Variant in values:
+		if int(value) == expected:
+			return true
+	return false
