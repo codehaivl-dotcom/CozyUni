@@ -1,0 +1,30 @@
+# Godot generated/cache
+.godot/
+.import/
+
+# Local/export outputs
+build/
+dist/
+exports/
+*.tmp
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local secrets/config
+.env
+.env.*
+!.env.example
+
+# Python tooling
+__pycache__/
+*.pyc
+
+# QA local bulky captures (reports may remain tracked separately)
+qa/captures/local/
+qa/performance/local/
