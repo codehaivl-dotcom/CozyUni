@@ -11,6 +11,7 @@ config/features=PackedStringArray("4.7", "Mobile")
 
 [autoload]
 
+AppRouter="*res://src/app/app_router.gd"
 GameData="*res://src/data/game_data.gd"
 SettingsStore="*res://src/core/settings_store.gd"
 MatchSeedService="*res://src/core/match_seed_service.gd"
