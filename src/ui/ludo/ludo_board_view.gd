@@ -3,7 +3,7 @@ extends Control
 
 signal piece_selected(piece_index: int)
 
-const PLAYER_COLORS := [
+const PLAYER_COLORS: Array[Color] = [
 	Color("d95c5c"),
 	Color("547fc4"),
 	Color("5b9a68"),
