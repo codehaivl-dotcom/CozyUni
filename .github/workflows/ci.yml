@@ -32,6 +32,9 @@ jobs:
       - name: Validate Godot runtime data mirrors
         run: python tools/validate_runtime_data_sync.py
 
+      - name: Validate multi-agent roles and step assignments
+        run: python tools/validate_agent_roles.py
+
       - name: Validate MVP execution graph
         run: python tools/validate_mvp_execution.py
 
