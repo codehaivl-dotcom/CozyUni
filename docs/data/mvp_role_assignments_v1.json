@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "mvp_id": "MVP-01",
+  "authority": "docs/agents/00_MULTI_AGENT_WORKFLOW.md",
+  "assignments": [
+    {
+      "step_id": "MVP01-S00",
+      "lead_role": "producer",
+      "support_roles": ["asset-pipeline-specialist", "godot-specialist"],
+      "review_roles": ["qa-lead", "lead-programmer"],
+      "escalation_roles": ["art-director"]
+    },
+    {
+      "step_id": "MVP01-S01",
+      "lead_role": "world-builder",
+      "support_roles": ["level-designer", "godot-specialist"],
+      "review_roles": ["qa-lead", "art-director"],
+      "escalation_roles": ["performance-analyst", "ux-designer"]
+    },
+    {
+      "step_id": "MVP01-S02",
+      "lead_role": "godot-specialist",
+      "support_roles": ["ui-programmer", "gameplay-programmer"],
+      "review_roles": ["qa-lead", "lead-programmer"],
+      "escalation_roles": ["ux-designer", "game-designer"]
+    },
+    {
+      "step_id": "MVP01-S03",
+      "lead_role": "art-director",
+      "support_roles": ["world-builder", "asset-pipeline-specialist", "level-designer"],
+      "review_roles": ["producer", "performance-analyst"],
+      "escalation_roles": ["qa-lead"]
+    },
+    {
+      "step_id": "MVP01-S04",
+      "lead_role": "asset-pipeline-specialist",
+      "support_roles": ["art-director", "godot-specialist"],
+      "review_roles": ["qa-lead", "performance-analyst"],
+      "escalation_roles": ["producer", "devops-engineer"]
+    },
+    {
+      "step_id": "MVP01-S05",
+      "lead_role": "world-builder",
+      "support_roles": ["art-director", "asset-pipeline-specialist", "godot-specialist"],
+      "review_roles": ["qa-lead", "performance-analyst"],
+      "escalation_roles": ["level-designer"]
+    },
+    {
+      "step_id": "MVP01-S06",
+      "lead_role": "world-builder",
+      "support_roles": ["art-director", "asset-pipeline-specialist"],
+      "review_roles": ["qa-lead", "performance-analyst"],
+      "escalation_roles": ["level-designer", "godot-specialist"]
+    },
+    {
+      "step_id": "MVP01-S07",
+      "lead_role": "ux-designer",
+      "support_roles": ["ui-programmer", "gameplay-programmer", "game-designer"],
+      "review_roles": ["qa-lead", "accessibility-specialist"],
+      "escalation_roles": ["lead-programmer", "godot-specialist"]
+    },
+    {
+      "step_id": "MVP01-S08",
+      "lead_role": "art-director",
+      "support_roles": ["ui-programmer", "asset-pipeline-specialist", "godot-specialist"],
+      "review_roles": ["ux-designer", "qa-lead", "performance-analyst"],
+      "escalation_roles": ["accessibility-specialist"]
+    },
+    {
+      "step_id": "MVP01-S09",
+      "lead_role": "qa-lead",
+      "support_roles": ["performance-analyst", "godot-specialist", "gameplay-programmer", "ui-programmer", "accessibility-specialist"],
+      "review_roles": ["producer", "lead-programmer"],
+      "escalation_roles": ["devops-engineer", "game-designer"]
+    },
+    {
+      "step_id": "MVP01-S10",
+      "lead_role": "release-manager",
+      "support_roles": ["producer", "qa-lead", "art-director", "devops-engineer"],
+      "review_roles": ["ux-designer", "performance-analyst"],
+      "escalation_roles": ["accessibility-specialist"]
+    }
+  ]
+}
