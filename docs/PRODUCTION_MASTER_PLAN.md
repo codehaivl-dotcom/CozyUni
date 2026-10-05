@@ -1,4 +1,4 @@
-# CozyUni — Production Master Plan v1.0
+# CozyUni — Production Master Plan v1.1
 
 Status: **CURRENT / AGENT AUTHORITY / IMPLEMENTATION ORDER LOCK**
 
@@ -30,7 +30,36 @@ If resources conflict, Track A wins.
 
 ---
 
-## 2. A0 — Godot production foundation
+## 2. Current quick-win overlay — MVP-01
+
+The active practical execution package is:
+
+`MVP-01 = Moonberry Village + Cozy Ludo`
+
+Authority:
+- `docs/MVP_EXECUTION_PLAYBOOK.md`
+- `docs/data/mvp_execution_v1.json`
+- `tools/validate_mvp_execution.py`
+
+MVP-01 intentionally combines the already-developed Ludo vertical slice with only enough W01 world work to prove the player-facing loop:
+
+`Library -> Moonberry -> Ludo venue -> Ludo match -> Results -> Moonberry / Rematch`
+
+This does **not** merge Track A and Track B into an uncontrolled scope. The playbook admits exactly one small step at a time.
+
+Hard execution rules:
+- agent executes only `current_step` from the machine-readable task graph;
+- one step per agent run unless explicitly overridden by the user;
+- no future step starts automatically;
+- no mass asset generation;
+- only W01 and Cozy Ludo are admitted;
+- W02-W08 and Caro/Journey/Chess/Tycoon remain deferred until MVP-01 finishes or the user changes authority.
+
+The asset library is treated as a reuse pool, not a production queue. Rendering is controlled by per-step allowlists and cumulative budgets in the execution data.
+
+---
+
+## 3. A0 — Godot production foundation
 
 Deliver:
 - locked engine/version/renderer;
@@ -55,7 +84,7 @@ Exit gate:
 
 ---
 
-## 3. A1 — Shared Shell vertical foundation
+## 4. A1 — Shared Shell vertical foundation
 
 Authority:
 - `docs/games/00_APP_SHELL_FLOW_LOCK.md`
@@ -82,7 +111,7 @@ Exit gate:
 
 ---
 
-## 4. A2 — Cozy Ludo headless rules
+## 5. A2 — Cozy Ludo headless rules
 
 Authority:
 - `docs/games/01_COZY_LUDO.md`
@@ -106,7 +135,7 @@ Exit gate:
 
 ---
 
-## 5. A3 — Playable Cozy Ludo vertical slice
+## 6. A3 — Playable Cozy Ludo vertical slice
 
 Deliver:
 
@@ -128,9 +157,11 @@ Exit gate:
 - rematch and change-player flows reset correctly;
 - representative device performance is within preliminary budget.
 
+Current implementation has automated Ludo rules/completion/UI smoke coverage; representative-device/human usability evidence remains part of the exit gate.
+
 ---
 
-## 6. A4 — Ludo production polish / release candidate
+## 7. A4 — Ludo production polish / release candidate
 
 Only after A3 passes:
 - final board dressing;
@@ -146,9 +177,11 @@ Exit gate is defined by `docs/engineering/06_QA_BUILD_RELEASE_GATES.md`.
 
 No new Ludo gameplay rules may be introduced during polish without a design-contract change.
 
+For the current Quick Win, A4 work is admitted only through the bounded Ludo visual/UX steps in `docs/MVP_EXECUTION_PLAYBOOK.md`.
+
 ---
 
-## 7. A5–A8 — Later games
+## 8. A5–A8 — Later games
 
 ### A5 Cozy Caro
 Reuse Grid Strategy framework.
@@ -166,9 +199,11 @@ Each phase repeats:
 
 `headless rules -> automated tests -> playable vertical slice -> visual polish -> QA gate`
 
+During active MVP-01 these phases are not admitted implementation work.
+
 ---
 
-## 8. B0 — Asset/reference authority repair
+## 9. B0 — Asset/reference authority repair
 
 Before any automated world generation:
 - `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` must acknowledge modular kit and batch-sheet plan;
@@ -181,9 +216,11 @@ Exit gate:
 
 ---
 
-## 9. B1 — W01 Moonberry Village blockout
+## 10. B1 — W01 Moonberry Village blockout
 
-Authority: `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`.
+Authority:
+- `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`
+- active MVP-01 step graph when Quick Win is active.
 
 Use primitive geometry / engine modules only.
 
@@ -202,7 +239,7 @@ No large final-asset batch before this gate passes.
 
 ---
 
-## 10. B2 — one full asset pipeline proof
+## 11. B2 — one full asset pipeline proof
 
 Choose one representative production asset and prove:
 
@@ -217,9 +254,11 @@ Exit gate:
 
 Do not batch-generate the world until this proof works.
 
+Under MVP-01, the exact render allowance is controlled by the active execution step.
+
 ---
 
-## 11. B3 — W01 visual pass
+## 12. B3 — W01 visual pass
 
 Replace blockout in order:
 1. hero landmark;
@@ -243,7 +282,7 @@ After B3: **HOLD** unless the user explicitly authorizes B4 or Track A has enoug
 
 ---
 
-## 12. B4 — W02–W08
+## 13. B4 — W02–W08
 
 These maps are allowed by the world visual lock but are **not automatically admitted to production**.
 
@@ -256,9 +295,11 @@ Admission requires:
 
 Then build maps sequentially, not all at once.
 
+During MVP-01, B4 is explicitly locked.
+
 ---
 
-## 13. Backend / commerce track
+## 14. Backend / commerce track
 
 Commerce architecture may be implemented behind feature flags, but it is not a prerequisite for local board-game play.
 
@@ -272,9 +313,11 @@ Before paid Cozy Credits are enabled, require:
 
 Never block A1–A3 on commerce login.
 
+Commerce implementation is outside MVP-01 unless the user explicitly changes scope.
+
 ---
 
-## 14. Definition of done for any agent milestone
+## 15. Definition of done for any agent milestone
 
 A milestone is complete only when all applicable categories pass:
 - design authority;
@@ -290,9 +333,11 @@ A milestone is complete only when all applicable categories pass:
 
 Writing code without evidence is not completion.
 
+For MVP-01, the current step's specific gate is also mandatory.
+
 ---
 
-## 15. Hold / stop conditions
+## 16. Hold / stop conditions
 
 STOP rather than invent when:
 - source documents conflict;
@@ -302,6 +347,8 @@ STOP rather than invent when:
 - asset cannot satisfy import/quality gate;
 - performance budget is exceeded and no approved optimization route exists;
 - external API docs do not support a requested parameter/workflow;
-- task would require implementing a deferred feature.
+- task would require implementing a deferred feature;
+- work belongs to a future locked MVP step;
+- asset generation is outside the active render allowlist/budget.
 
-Use the stop codes defined in root `AGENTS.md`.
+Use the stop codes defined in root `AGENTS.md` and `docs/MVP_EXECUTION_PLAYBOOK.md`.
