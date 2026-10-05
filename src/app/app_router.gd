@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func get_route() -> String:
-	return _flow.current_route
+	return str(_flow.current_route)
 
 
 func get_payload() -> Dictionary:
@@ -24,7 +24,7 @@ func navigate(route_id: String, payload: Dictionary = {}) -> bool:
 	if not _flow.is_known_route(route_id):
 		push_error("AppRouter: unknown route '%s'" % route_id)
 		return false
-	var from_route := _flow.current_route
+	var from_route: String = str(_flow.current_route)
 	if not _flow.transition(route_id):
 		push_error("AppRouter: invalid transition %s -> %s" % [from_route, route_id])
 		return false
