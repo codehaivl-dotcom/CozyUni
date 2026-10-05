@@ -10,10 +10,39 @@ Before any implementation work, read:
 
 1. `AGENTS.md`
 2. `docs/PRODUCTION_MASTER_PLAN.md`
-3. the authority documents for the selected milestone
-4. `docs/engineering/` for the Godot/runtime/QA contract
+3. `docs/MVP_EXECUTION_PLAYBOOK.md`
+4. `docs/data/mvp_execution_v1.json`
+5. the authority documents for the selected milestone
+6. `docs/engineering/` for the Godot/runtime/QA contract
 
-Agents must not invent missing game rules, generation prompts, dependencies, or deferred systems.
+For the current Quick Win, the agent must run only the machine-readable `current_step` and stop after that step's acceptance gate. It may not create its own roadmap, start future locked steps, or render assets outside the active allowlist/budget.
+
+Validate the task graph before mutation:
+
+```bash
+python tools/validate_mvp_execution.py
+```
+
+Agents must not invent missing game rules, generation prompts, dependencies, deferred systems, or extra MVP work.
+
+## Current Quick Win
+
+`MVP-01 = Moonberry Village + Cozy Ludo`
+
+Target loop:
+
+```text
+Boot
+ -> Game Library
+ -> Moonberry Preview
+ -> Cozy Ludo venue
+ -> Game Start / Local Setup / Tutorial
+ -> Full Ludo Match
+ -> Final Results
+ -> Return to Moonberry / Rematch
+```
+
+Only W01 Moonberry Village and Cozy Ludo are admitted during MVP-01. W02-W08 and Caro/Journey/Chess/Tycoon remain locked until the execution authority advances them.
 
 ## Current production direction
 
@@ -83,6 +112,8 @@ Bounded parallel track:
 
 Track B must not delay Track A. W02–W08 require a later explicit production gate.
 
+The current MVP playbook overlays these tracks with one controlled task at a time rather than allowing broad parallel implementation.
+
 ## World direction
 
 A bounded, walkable World Visual MVP is allowed under `docs/world/00_WORLD_VISUAL_MVP_LOCK.md` to prove art direction, modular assembly, navigation, camera and performance.
@@ -112,6 +143,7 @@ Backend design is documented, but paid commerce is not required for the first lo
 Docs + matching machine-readable data are source of truth.
 
 Key data:
+- `docs/data/mvp_execution_v1.json`
 - `docs/data/games/`
 - `docs/data/economy_v1.json`
 - `docs/data/commerce_backend_v1.json`
@@ -123,14 +155,16 @@ Validation tools:
 python tools/validate_game_data.py
 python tools/validate_commerce_data.py
 python tools/validate_catalog_data.py
+python tools/validate_mvp_execution.py
 ```
 
-CI additionally runs a Godot 4.7.2 headless import/start smoke test.
+CI additionally runs a Godot 4.7.2 headless import/start smoke test plus Ludo rules/completion/UI smoke gates.
 
 ## Documentation entry points
 
 - `AGENTS.md`
 - `docs/PRODUCTION_MASTER_PLAN.md`
+- `docs/MVP_EXECUTION_PLAYBOOK.md`
 - `docs/PRODUCT_STRATEGY.md`
 - `docs/APP_ARCHITECTURE.md`
 - `docs/CANON_AND_CONTENT_GOVERNANCE.md`
@@ -147,9 +181,11 @@ CI additionally runs a Godot 4.7.2 headless import/start smoke test.
 CozyUni uses an AI-first image -> 3D asset pipeline.
 
 Authority:
-- `docs/assets/04_ALL_IN_ONE_READY_GEN_ASSET_MASTER.md` — base asset queue
+- `docs/assets/04_ALL_IN_ONE_READY_GEN_ASSET_MASTER.md` — base asset library
 - `docs/assets/05_MODULAR_WORLD_KIT_MASTER.md` — reusable world modules
 - `docs/assets/06_MODULAR_WORLD_KIT_BATCH_SHEETS.md` — safe multi-item sheet optimization
 - `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` — routing/authority
+
+The asset masters are **libraries, not automatic render queues**. MVP rendering is additionally constrained by `docs/data/mvp_execution_v1.json`.
 
 Boards/grids/path logic/text/numbers remain engine/UI-built wherever the GDD requires it.
