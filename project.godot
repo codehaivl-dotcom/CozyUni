@@ -1,0 +1,63 @@
+; CozyUni Godot project configuration.
+; Engine authority: docs/engineering/00_ENGINE_TECH_STACK_LOCK.md
+
+config_version=5
+
+[application]
+
+config/name="CozyUni"
+run/main_scene="res://scenes/app/AppRoot.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[autoload]
+
+GameData="*res://src/data/game_data.gd"
+SettingsStore="*res://src/core/settings_store.gd"
+MatchSeedService="*res://src/core/match_seed_service.gd"
+AudioService="*res://src/core/audio_service.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/handheld/orientation=5
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+
+[input]
+
+app_pause={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":4194305,"unicode":0)]
+}
+world_move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":65,"unicode":97)]
+}
+world_move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":68,"unicode":100)]
+}
+world_move_forward={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":87,"unicode":119)]
+}
+world_move_back={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"physical_keycode":83,"unicode":115)]
+}
+world_run={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":4194325,"unicode":0)]
+}
+debug_toggle={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":4194332,"unicode":0)]
+}
