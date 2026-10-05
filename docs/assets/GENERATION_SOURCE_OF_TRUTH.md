@@ -1,4 +1,4 @@
-# CozyUni Asset Generation — Source of Truth v2
+# CozyUni Asset Generation — Source of Truth v3
 
 Status: **CANONICAL POINTER**
 
@@ -65,13 +65,30 @@ Do not substitute text-only generation when the contract requires an attached re
 - Do not add extra scenery, props or adjectives that materially alter the requested asset family.
 - Never render a whole world/map reference as one 3D asset.
 
-## 6. 3D conversion authority
+## 6. 3D conversion / Tripo execution authority
 
-When using Tripo, follow `docs/world/00_WORLD_VISUAL_MVP_LOCK.md`:
-- current official Tripo developer documentation is the only authority for endpoint/task/request/response semantics;
-- no guessed API fields, enums, versions or retry behavior;
+For actual Tripo API execution, use:
+
+`docs/assets/07_TRIPO_API_V3_EXECUTION.md`
+
+Repository helper:
+
+`tools/tripo_v3.py`
+
+Hard rules:
+- official current Tripo developer docs are the external authority for endpoint/task/request/response semantics;
+- the repository pins the admitted MVP route/model/settings in 07 so an agent does not select a model ad hoc;
+- `TRIPO_API_KEY` is local environment state only and must never be committed;
+- billable `generate` is dry-run unless `--execute` is explicitly supplied;
+- a valid key does not authorize bulk rendering;
+- only assets admitted by the active MVP execution step may consume generation credits;
 - record generation log per asset/task;
 - `TRIPO_DOC_MISMATCH` => STOP.
+
+The active render budget and step admission authority remain:
+
+`docs/MVP_EXECUTION_PLAYBOOK.md`
+`docs/data/mvp_execution_v1.json`
 
 ## 7. Completion rule
 
