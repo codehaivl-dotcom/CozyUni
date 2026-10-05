@@ -8,6 +8,9 @@ dist/
 exports/
 *.tmp
 
+# Local Tripo working outputs / downloaded generated models
+generated/tripo/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
