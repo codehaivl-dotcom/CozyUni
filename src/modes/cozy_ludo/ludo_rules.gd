@@ -11,6 +11,7 @@ static func create_initial_state(config: Dictionary, player_count: int, starting
 	var active_on_start := int((config.get("start_state", {}) as Dictionary).get("active_on_start_safe", 0))
 	var yard_count := int((config.get("start_state", {}) as Dictionary).get("in_yard", 0))
 	assert(pieces_per_player == active_on_start + yard_count)
+	assert(starting_slot >= 0 and starting_slot < player_count)
 
 	var players: Array = []
 	var colors: Array = config.get("player_colors", []) as Array
@@ -27,10 +28,12 @@ static func create_initial_state(config: Dictionary, player_count: int, starting
 
 	return {
 		"revision": 0,
+		"starting_player_slot": starting_slot,
 		"turn_index": starting_slot,
 		"phase": PHASE_AWAITING_ROLL,
 		"last_roll": 0,
 		"roll_is_bonus": false,
+		"bonus_roll_pending": false,
 		"bonus_used_this_turn": false,
 		"legal_piece_indices": [],
 		"players": players,
