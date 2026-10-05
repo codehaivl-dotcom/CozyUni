@@ -75,22 +75,24 @@ func _test_touch_target_and_selection() -> void:
 	var hit_rect := hit_rects[piece_index] as Rect2
 	_expect(hit_rect.size.x >= 52.0 and hit_rect.size.y >= 52.0, "legal touch target is at least 52x52 px")
 
-	var selected := -1
-	board.piece_selected.connect(func(index: int) -> void: selected = index)
+	# GDScript lambda locals are captured by value. Use a reference container so
+	# the signal callback can update state observed by the outer test scope.
+	var selected_ref: Dictionary = {"value": -1}
+	board.piece_selected.connect(func(index: int) -> void: selected_ref["value"] = index)
 	var touch := InputEventScreenTouch.new()
 	touch.pressed = true
 	touch.index = 0
 	touch.position = hit_rect.get_center()
 	board._gui_input(touch)
-	_expect(selected == piece_index, "touch at legal-piece center emits correct selection")
+	_expect(int(selected_ref["value"]) == piece_index, "touch at legal-piece center emits correct selection")
 
 	var illegal_touch := InputEventScreenTouch.new()
 	illegal_touch.pressed = true
 	illegal_touch.index = 1
 	illegal_touch.position = Vector2(4, 4)
-	selected = -1
+	selected_ref["value"] = -1
 	board._gui_input(illegal_touch)
-	_expect(selected == -1, "touch outside legal targets does not select a piece")
+	_expect(int(selected_ref["value"]) == -1, "touch outside legal targets does not select a piece")
 
 	board.queue_free()
 	await process_frame
