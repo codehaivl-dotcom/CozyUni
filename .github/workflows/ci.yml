@@ -66,6 +66,12 @@ jobs:
           set -euo pipefail
           "${GODOT_BIN}" --headless --path . --script res://tests/shell/shell_flow_smoke.gd
 
+      - name: Run Cozy Ludo deterministic rule acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          "${GODOT_BIN}" --headless --path . --script res://tests/ludo/ludo_rules_smoke.gd
+
       - name: Boot main scene smoke test
         shell: bash
         run: |
