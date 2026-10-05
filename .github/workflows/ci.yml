@@ -73,6 +73,13 @@ jobs:
           mkdir -p evidence/ci
           "${GODOT_BIN}" --headless --path . --script res://tests/ludo/ludo_rules_acceptance.gd 2>&1 | tee evidence/ci/ludo_rules_acceptance.log
 
+      - name: Run Cozy Ludo 2P/3P/4P completion batches
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p evidence/ci
+          "${GODOT_BIN}" --headless --path . --script res://tests/ludo/ludo_match_completion_smoke.gd 2>&1 | tee evidence/ci/ludo_match_completion_smoke.log
+
       - name: Run Cozy Ludo UI/touch smoke test
         shell: bash
         run: |
@@ -87,6 +94,7 @@ jobs:
           name: ludo-ci-failure-${{ github.run_id }}
           path: |
             evidence/ci/ludo_rules_acceptance.log
+            evidence/ci/ludo_match_completion_smoke.log
             evidence/ci/ludo_ui_smoke.log
           if-no-files-found: ignore
           retention-days: 7
