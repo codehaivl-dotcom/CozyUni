@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "available_game_ids": ["cozy_ludo"],
+  "games": {
+    "cozy_ludo": {
+      "title": "Cozy Ludo",
+      "description": "Race your three CozyUni friends around the village and bring them home first.",
+      "tag": "Race",
+      "player_count_label": "2–4 Players",
+      "session_label": "8–12 min",
+      "ruleset": "Cozy Quick",
+      "win_condition": "Bring all 3 pieces home first.",
+      "summary_bullets": [
+        "3 pieces each",
+        "Roll 6 to bring a new piece out",
+        "Safe stars cannot be captured",
+        "Bring all 3 pieces home to win",
+        "A 6 can give one bonus roll"
+      ],
+      "tutorial_steps": [
+        "Tap Roll to roll the dice.",
+        "Glowing pieces can move. Tap the highlighted Rabbit.",
+        "Star spaces are safe. Pieces here cannot be captured.",
+        "Land on a rival outside a safe space to send them back to the Yard.",
+        "Roll a 6 to bring a piece out of the Yard.",
+        "Finish all three pieces first to win."
+      ]
+    }
+  },
+  "avatar_roster": [
+    {"id": "CHR-001", "name": "Miko Rabbit"},
+    {"id": "CHR-002", "name": "Poppy Bear"},
+    {"id": "CHR-003", "name": "Milo Dog"},
+    {"id": "CHR-004", "name": "Lumi Cat"},
+    {"id": "CHR-005", "name": "Finn Fox"},
+    {"id": "CHR-006", "name": "Pip Hedgehog"},
+    {"id": "CHR-007", "name": "Nori Duck"},
+    {"id": "CHR-008", "name": "Clover Lamb"},
+    {"id": "CHR-009", "name": "Toby Puppy"},
+    {"id": "CHR-010", "name": "Koko Koala"},
+    {"id": "CHR-011", "name": "Bao Panda"},
+    {"id": "CHR-012", "name": "Otti Otter"},
+    {"id": "CHR-013", "name": "Hazel Deer"},
+    {"id": "CHR-014", "name": "Remy Raccoon"},
+    {"id": "CHR-015", "name": "Sora Squirrel"},
+    {"id": "CHR-016", "name": "Bibi Frog"},
+    {"id": "CHR-017", "name": "Runa Red Panda"},
+    {"id": "CHR-018", "name": "Mochi Mouse"},
+    {"id": "CHR-019", "name": "Peaches Piglet"},
+    {"id": "CHR-020", "name": "Olive Owl"}
+  ]
+}
