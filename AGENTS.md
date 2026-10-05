@@ -7,13 +7,15 @@ These instructions apply to the entire repository unless a deeper `AGENTS.md` ex
 When implementing player-visible behavior, read in this order:
 
 1. `docs/PRODUCTION_MASTER_PLAN.md`
-2. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
-3. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
-4. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
-5. selected game GDD under `docs/games/`
-6. matching machine-readable data under `docs/data/games/`
-7. `docs/APP_ARCHITECTURE.md`
-8. engineering locks under `docs/engineering/`
+2. `docs/MVP_EXECUTION_PLAYBOOK.md` when MVP-01 is active
+3. `docs/data/mvp_execution_v1.json` for the exact current admitted step
+4. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
+5. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+6. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
+7. selected game GDD under `docs/games/`
+8. matching machine-readable data under `docs/data/games/`
+9. `docs/APP_ARCHITECTURE.md`
+10. engineering locks under `docs/engineering/`
 
 World work additionally obeys:
 1. `docs/world/README.md`
@@ -34,6 +36,12 @@ Shipping critical path:
 
 `Godot bootstrap -> Shared Shell -> Cozy Ludo rules/headless tests -> playable Ludo -> Ludo polish/QA -> next game`
 
+Current quick-win execution package:
+
+`MVP-01 = Moonberry Village + Cozy Ludo`
+
+While MVP-01 is active, the exact admitted work comes from `docs/data/mvp_execution_v1.json`. The agent may execute only its `current_step`.
+
 World work is a separate bounded visual-R&D track. It may prove W01 and the asset/import pipeline, but must not delay the shipping track.
 
 Do not implement current-version features that are explicitly deferred:
@@ -45,7 +53,24 @@ Do not implement current-version features that are explicitly deferred:
 - world quests/friendship schedules;
 - paid competitive power.
 
-## 3. Engine lock
+## 3. MVP one-step execution rule
+
+For MVP-01, every agent run follows:
+
+`INSPECT -> CURRENT STEP -> EXACT FILE SCOPE -> APPLY -> VERIFY -> EVIDENCE -> UPDATE STATE -> STOP`
+
+Hard rules:
+- run `python tools/validate_mvp_execution.py` before mutation;
+- read `current_step` from `docs/data/mvp_execution_v1.json`;
+- do not execute any future `LOCKED` step;
+- do not create additional tasks because they seem useful;
+- obey the current step render budget and render allowlist;
+- after a step passes, mark it `PASS`, set only its declared `next_step` to `READY`, update `current_step`, then stop;
+- do not start the newly-ready step in the same run unless the user explicitly overrides the one-step rule.
+
+If unexpected work is required, use the MVP blocker codes defined by `docs/MVP_EXECUTION_PLAYBOOK.md` and stop instead of inventing scope.
+
+## 4. Engine lock
 
 The game client uses the version and renderer locked in `docs/engineering/00_ENGINE_TECH_STACK_LOCK.md`.
 
@@ -55,7 +80,7 @@ Rules:
 - `.godot/` is generated import/cache data and is never source truth;
 - do not commit editor-generated noise unless the file is intentionally source-controlled by the project.
 
-## 4. Data-driven gameplay
+## 5. Data-driven gameplay
 
 Do not hard-code values that are owned by canonical JSON/data files.
 
@@ -65,11 +90,19 @@ The UI may submit player intent, but it must not decide legality. One authoritat
 
 If required gameplay behavior is absent from GDD + data, **STOP with `MISSING_GAME_RULE`** instead of inventing it.
 
-## 5. Asset rules
+## 6. Asset rules
 
 Do not invent generation prompts.
 
 Follow `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` exactly.
+
+For MVP-01, the master asset inventory is a library, not a render queue. An asset may be generated only when the active MVP step:
+- permits rendering;
+- has remaining budget;
+- explicitly allowlists the asset/family;
+- and the camera-driven audit proves there is no acceptable reusable substitute.
+
+Otherwise stop with `RENDER_NOT_AUTHORIZED`.
 
 For generated assets:
 - preserve source/reference files;
@@ -80,7 +113,7 @@ For generated assets:
 
 Boards, paths, labels, numbers, cards, and grids that are specified as engine/UI-built must not be generated as monolithic 3D assets.
 
-## 6. World construction rules
+## 7. World construction rules
 
 Blockout first. Final art later.
 
@@ -96,7 +129,7 @@ Every world milestone must prove:
 
 Do not submit a whole map reference to image-to-3D as one mesh.
 
-## 7. Code boundaries
+## 8. Code boundaries
 
 Prefer small modules and explicit interfaces.
 
@@ -108,7 +141,7 @@ Do not let commerce code grant or mutate match-local currencies.
 
 Do not let UI directly mutate canonical match state or paid-wallet state.
 
-## 8. Task discipline
+## 9. Task discipline
 
 Before changing code:
 1. state the milestone and acceptance gate;
@@ -121,7 +154,7 @@ Do not opportunistically refactor unrelated systems.
 Do not add speculative abstractions for deferred features.
 Do not silently add dependencies, plugins, network services, or hosted tools.
 
-## 9. Required validation
+## 10. Required validation
 
 At minimum, run all validators relevant to changed data:
 
@@ -129,6 +162,7 @@ At minimum, run all validators relevant to changed data:
 python tools/validate_game_data.py
 python tools/validate_commerce_data.py
 python tools/validate_catalog_data.py
+python tools/validate_mvp_execution.py
 ```
 
 For Godot/client work, also run the gates defined by `docs/engineering/06_QA_BUILD_RELEASE_GATES.md`, including parse/headless smoke tests and game-specific tests.
@@ -137,7 +171,7 @@ For world/visual changes, capture evidence from canonical cameras and run the pe
 
 A task is not complete because code was written. It is complete only when its acceptance gate passes.
 
-## 10. Evidence and failure reporting
+## 11. Evidence and failure reporting
 
 When a gate fails:
 - preserve the failing seed/log/screenshot where useful;
@@ -153,8 +187,17 @@ Use explicit stop reasons such as:
 - `PERFORMANCE_GATE_FAIL`
 - `TRIPO_DOC_MISMATCH`
 - `BUILD_GATE_FAIL`
+- `MVP_EXECUTION_CONFLICT`
+- `MVP_BLOCKED_MISSING_DEPENDENCY`
+- `MVP_BLOCKED_MISSING_ASSET`
+- `MVP_BLOCKED_MISSING_REFERENCE`
+- `MVP_BLOCKED_AUTHORITY_CONFLICT`
+- `MVP_BLOCKED_PERFORMANCE`
+- `MVP_BLOCKED_BUILD`
+- `MVP_BLOCKED_RENDER_BUDGET`
+- `RENDER_NOT_AUTHORIZED`
 
-## 11. Contract changes
+## 12. Contract changes
 
 If a public/gameplay contract changes, update together as applicable:
 - GDD / authority doc;
