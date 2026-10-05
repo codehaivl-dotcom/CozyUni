@@ -6,6 +6,15 @@ Purpose: keep exact numeric/config values out of implementation code and prevent
 
 ## Files
 
+### Shared app shell
+- `app_shell_v1.json`
+  - games admitted to the current build
+  - game-library/start-screen metadata
+  - exact Ludo summary/tutorial copy already locked by GDD
+  - approved CozyUni avatar roster IDs/names
+
+This file contains presentation/routing metadata only. It does not define game legality.
+
 ### Global economy
 - `economy_v1.json`
   - Cozy Credit packs
@@ -47,6 +56,27 @@ If Markdown and JSON disagree:
 
 Code must not silently become a third source of truth.
 
+## Godot runtime mirror rule
+
+Canonical JSON lives under `docs/data/`.
+
+The Godot client reads release/runtime copies under:
+
+```text
+data/app_shell_v1.json
+data/games/*.json
+```
+
+These runtime copies are not independently editable authority. They must remain semantically identical to their matching canonical `docs/data/` files.
+
+CI enforces this with:
+
+```bash
+python tools/validate_runtime_data_sync.py
+```
+
+If the mirror differs, CI fails. Do not hot-fix only the runtime copy.
+
 ## Runtime rule
 
 Where practical, runtime + tests + simulator must load the same machine-readable config.
@@ -70,6 +100,8 @@ Run before merge:
 ```bash
 python tools/validate_game_data.py
 python tools/validate_commerce_data.py
+python tools/validate_catalog_data.py
+python tools/validate_runtime_data_sync.py
 ```
 
 Validation success does not prove gameplay correctness; it proves structural/config invariants and catches drift early.
