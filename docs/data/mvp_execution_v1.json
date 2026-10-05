@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "mvp_id": "MVP-01",
+  "name": "Moonberry Village + Cozy Ludo Quick Win",
+  "authority": "docs/MVP_EXECUTION_PLAYBOOK.md",
+  "execution_model": "one_step_per_agent_run",
+  "current_step": "MVP01-S00",
+  "allowed_statuses": ["READY", "LOCKED", "PASS", "FAIL", "BLOCKED"],
+  "asset_statuses": [
+    "REUSE_NOW",
+    "ENGINE_BUILT",
+    "PLACEHOLDER_OK",
+    "RENDER_NOW_CANDIDATE",
+    "RENDER_NOW",
+    "DEFER",
+    "BLOCKED"
+  ],
+  "stop_codes": [
+    "MVP_EXECUTION_CONFLICT",
+    "MVP_BLOCKED_MISSING_DEPENDENCY",
+    "MVP_BLOCKED_MISSING_ASSET",
+    "MVP_BLOCKED_MISSING_REFERENCE",
+    "MVP_BLOCKED_AUTHORITY_CONFLICT",
+    "MVP_BLOCKED_PERFORMANCE",
+    "MVP_BLOCKED_BUILD",
+    "MVP_BLOCKED_RENDER_BUDGET",
+    "RENDER_NOT_AUTHORIZED"
+  ],
+  "cumulative_render_budget": {
+    "concept_images_max": 12,
+    "three_d_generations_max": 8,
+    "batch_sheets_max": 2
+  },
+  "required_product_loop": [
+    "boot",
+    "game_library",
+    "moonberry_preview",
+    "ludo_venue",
+    "game_start",
+    "local_player_setup",
+    "tutorial_if_required",
+    "match",
+    "final_results",
+    "return_to_moonberry_or_rematch"
+  ],
+  "world_scope": {
+    "allowed_maps": ["W01_Moonberry_Village"],
+    "deferred_maps": [
+      "W02_Countryside_Farm",
+      "W03_Woodland_Meadow",
+      "W04_Lake_Riverside",
+      "W05_Town_Urban",
+      "W06_Harbor_Seaside",
+      "W07_Mountain_CableCar",
+      "W08_Resort_Tourist"
+    ],
+    "required_zones": [
+      "village_entrance_bus_stop",
+      "main_street",
+      "village_square_fountain",
+      "town_hall_hero_sightline",
+      "shop_street",
+      "park_ludo_venue",
+      "four_residential_silhouettes",
+      "closed_future_exit_marker"
+    ]
+  },
+  "game_scope": {
+    "allowed_games": ["cozy_ludo"],
+    "deferred_games": ["cozy_caro", "cozy_journey", "cozy_chess", "cozy_tycoon"]
+  },
+  "candidate_reuse_assets": {
+    "hero_structures": [
+      "AST-071",
+      "AST-091",
+      "AST-094",
+      "AST-097",
+      "AST-099",
+      "AST-081",
+      "AST-082",
+      "AST-085",
+      "AST-089",
+      "AST-129",
+      "AST-285"
+    ],
+    "route_details": [
+      "AST-003",
+      "AST-008",
+      "AST-009",
+      "AST-010",
+      "AST-011",
+      "AST-012",
+      "AST-018",
+      "AST-021",
+      "AST-024",
+      "AST-025",
+      "AST-028",
+      "AST-029",
+      "AST-151",
+      "AST-155",
+      "AST-156"
+    ],
+    "ludo_components": [
+      "AST-251",
+      "AST-252",
+      "AST-256",
+      "AST-257",
+      "AST-258",
+      "AST-260",
+      "GAM-298"
+    ]
+  },
+  "engine_built": [
+    "terrain_base",
+    "grass_surface",
+    "road_path_layout",
+    "simple_plaza_floor",
+    "water_surface_if_needed",
+    "sky_fog_lighting",
+    "collision_volumes",
+    "navigation_region",
+    "route_boundaries",
+    "debug_markers",
+    "ludo_board_grid_and_path",
+    "ludo_text_labels_numbers",
+    "legal_move_highlights",
+    "shell_and_tutorial_ui"
+  ],
+  "steps": [
+    {
+      "id": "MVP01-S00",
+      "title": "Baseline and asset audit",
+      "status": "READY",
+      "next_step": "MVP01-S01",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "record current commit and CI state",
+        "audit existing Godot/Ludo implementation",
+        "discover repository and explicitly-provided local asset files",
+        "classify every MVP01 candidate asset",
+        "record W01 reference presence or absence",
+        "write baseline and asset inventory evidence"
+      ],
+      "required_outputs": [
+        "evidence/mvp01/S00_BASELINE_REPORT.md",
+        "evidence/mvp01/S00_ASSET_INVENTORY.csv"
+      ],
+      "gate": [
+        "baseline CI state recorded",
+        "all W01 candidate assets classified",
+        "all Ludo candidate assets classified",
+        "reference availability recorded",
+        "zero generation calls"
+      ]
+    },
+    {
+      "id": "MVP01-S01",
+      "title": "W01 greybox",
+      "status": "LOCKED",
+      "next_step": "MVP01-S02",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "build W01 topology with primitives and engine geometry only",
+        "add spawn movement camera collision boundaries",
+        "place placeholder Town Hall shops houses fountain bus stop and Ludo venue",
+        "measure canonical route traversal"
+      ],
+      "required_evidence": [
+        "blockout_topdown",
+        "entrance_gameplay",
+        "square_hero_sightline",
+        "park_ludo_venue",
+        "traversal_measurement"
+      ],
+      "gate": [
+        "route reachable",
+        "no maze or accidental dead end",
+        "Town Hall sightline readable",
+        "Ludo venue reachable",
+        "world traversal target validated",
+        "zero generation calls"
+      ]
+    },
+    {
+      "id": "MVP01-S02",
+      "title": "World interaction skeleton",
+      "status": "LOCKED",
+      "next_step": "MVP01-S03",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "add development-gated Moonberry preview entry",
+        "load and unload world deterministically",
+        "add pause and back-to-library path",
+        "add Ludo venue interaction zone and prompt",
+        "route venue into existing Ludo start flow",
+        "add deterministic return-to-Moonberry result path"
+      ],
+      "gate": [
+        "Library to Moonberry to Ludo flow works",
+        "world repeat entry does not duplicate player or scene",
+        "leave and back paths reset correctly",
+        "shell tests remain green"
+      ]
+    },
+    {
+      "id": "MVP01-S03",
+      "title": "Camera-driven visible asset shortlist",
+      "status": "LOCKED",
+      "next_step": "MVP01-S04",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "use greybox screenshots to rank HERO ROUTE BACKGROUND assets",
+        "choose reuse before generation",
+        "create explicit REUSE_NOW RENDER_NOW DEFER lists",
+        "prove proposed render list fits cumulative budget"
+      ],
+      "required_outputs": ["evidence/mvp01/S03_VISIBLE_ASSET_PLAN.md"],
+      "gate": [
+        "visible asset plan complete",
+        "render list justified by camera evidence",
+        "render list inside cumulative budget",
+        "zero generation calls"
+      ]
+    },
+    {
+      "id": "MVP01-S04",
+      "title": "One complete asset pipeline proof",
+      "status": "LOCKED",
+      "next_step": "MVP01-S05",
+      "render_budget": {"concept_images": 1, "three_d_generations": 1, "batch_sheets": 0},
+      "render_allowlist": [
+        "AST-071",
+        "AST-091",
+        "AST-094",
+        "AST-097",
+        "AST-099",
+        "AST-081",
+        "AST-082",
+        "AST-085",
+        "AST-089",
+        "AST-129",
+        "AST-285"
+      ],
+      "work": [
+        "reuse an approved candidate for import proof when possible",
+        "otherwise generate exactly one S03-authorized high-value missing asset",
+        "prove documented concept-to-3D-to-Godot pipeline",
+        "record technical and performance evidence"
+      ],
+      "gate": [
+        "repeatable import",
+        "gameplay-camera appearance accepted",
+        "mesh material scale pivot collision QA passed",
+        "performance impact recorded",
+        "credit use recorded"
+      ]
+    },
+    {
+      "id": "MVP01-S05",
+      "title": "W01 hero replacement pass",
+      "status": "LOCKED",
+      "next_step": "MVP01-S06",
+      "render_budget": {"concept_images": 6, "three_d_generations": 4, "batch_sheets": 0},
+      "render_allowlist": [
+        "AST-071",
+        "AST-091",
+        "AST-094",
+        "AST-097",
+        "AST-099",
+        "AST-081",
+        "AST-082",
+        "AST-085",
+        "AST-089",
+        "AST-129",
+        "AST-285"
+      ],
+      "work": [
+        "replace only Town Hall square anchor route shops Ludo anchor houses and bus stop",
+        "reuse accepted assets before any generation",
+        "generate only S03-authorized missing allowlisted assets"
+      ],
+      "gate": [
+        "hero structures scale and ground contact accepted",
+        "route remains clear",
+        "camera and collision not regressed",
+        "canonical screenshots improved over greybox",
+        "no off-route generation"
+      ]
+    },
+    {
+      "id": "MVP01-S06",
+      "title": "W01 route detail pass",
+      "status": "LOCKED",
+      "next_step": "MVP01-S07",
+      "render_budget": {"concept_images": 2, "three_d_generations": 1, "batch_sheets": 1},
+      "render_allowlist": [
+        "AST-003",
+        "AST-008",
+        "AST-009",
+        "AST-010",
+        "AST-011",
+        "AST-012",
+        "AST-018",
+        "AST-021",
+        "AST-024",
+        "AST-025",
+        "AST-028",
+        "AST-029",
+        "AST-151",
+        "AST-155",
+        "AST-156",
+        "SHEET-MOD-001",
+        "SHEET-MOD-011",
+        "SHEET-MOD-035"
+      ],
+      "work": [
+        "dress only Entrance Main Street Square Shop Street Park and Ludo venue",
+        "use a small repeated detail palette",
+        "prefer existing modular assets and engine scatter",
+        "defer missing decorative props unless truly necessary"
+      ],
+      "gate": [
+        "route intentionally dressed",
+        "no uniform scatter",
+        "walk lines remain clear",
+        "background remains cheaper than hero route",
+        "performance remains within budget"
+      ]
+    },
+    {
+      "id": "MVP01-S07",
+      "title": "Ludo UX completion inside world loop",
+      "status": "LOCKED",
+      "next_step": "MVP01-S08",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "polish world-to-Ludo prompt and transition",
+        "verify existing setup summary tutorial match and results flow",
+        "make required Ludo rules understandable",
+        "add Return to Moonberry result action",
+        "verify pause restart leave rematch change-player behavior"
+      ],
+      "gate": [
+        "two fresh testers can complete a 2P match without developer explanation",
+        "no GDD contradiction",
+        "touch and rules tests green"
+      ]
+    },
+    {
+      "id": "MVP01-S08",
+      "title": "Ludo minimum viable visual polish",
+      "status": "LOCKED",
+      "next_step": "MVP01-S09",
+      "render_budget": {"concept_images": 2, "three_d_generations": 2, "batch_sheets": 0},
+      "render_allowlist": [
+        "AST-251",
+        "AST-252",
+        "AST-256",
+        "AST-257",
+        "AST-258",
+        "AST-260",
+        "GAM-298"
+      ],
+      "work": [
+        "polish readability before decoration",
+        "retain engine-built board grid path text and legal highlights",
+        "only generate allowlisted component if procedural representation materially fails camera/readability gate"
+      ],
+      "gate": [
+        "board readable at a glance",
+        "HUD does not cover legal targets",
+        "2P 3P 4P remain playable",
+        "internal market-test screenshots acceptable"
+      ]
+    },
+    {
+      "id": "MVP01-S09",
+      "title": "Full-loop QA and performance",
+      "status": "LOCKED",
+      "next_step": "MVP01-S10",
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "run full CI",
+        "complete 2P 3P 4P Ludo matches",
+        "exercise full world-game-world loop",
+        "run rematch and world enter-exit repetition",
+        "run world input camera collision tests",
+        "capture device performance memory draw-call evidence"
+      ],
+      "gate": [
+        "no P0 or P1 defects",
+        "no stale or duplicated state across loops",
+        "representative device evidence recorded",
+        "performance within accepted budget or explicit blocker"
+      ]
+    },
+    {
+      "id": "MVP01-S10",
+      "title": "Market-test package",
+      "status": "LOCKED",
+      "next_step": null,
+      "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
+      "render_allowlist": [],
+      "work": [
+        "capture Moonberry-to-Ludo video",
+        "capture core Ludo gameplay video",
+        "capture five canonical screenshots",
+        "prepare internal/TestFlight build when tooling is available",
+        "prepare short tester feedback script"
+      ],
+      "gate": [
+        "build and captures tied to exact commit",
+        "package understandable without explaining future systems",
+        "MVP01 ready for real-user feedback"
+      ]
+    }
+  ]
+}
