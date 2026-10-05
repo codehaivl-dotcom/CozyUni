@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "game_id": "cozy_caro",
+  "rules_version": "1.1",
+  "player_counts": [2],
+  "default_preset": "tic_tac_toe_3x3",
+  "sides": {"A": {"name": "Berry", "color": "warm_coral"}, "B": {"name": "Leaf", "color": "sage_green"}},
+  "first_match_side_assignment": "seeded_random",
+  "rematch_swap_sides": true,
+  "presets": {
+    "tic_tac_toe_3x3": {"board_size": 3, "rounds_per_match": 3, "placement_commit": "immediate_on_tap", "round_starting_side": "alternate", "round1_starting_side": "A", "win_length": 3, "overline_relevant": false, "round_win_points": 1.0, "round_draw_points_each": 0.5, "sudden_death": false, "board_full_draw": true, "camera": {"zoom": false, "pan": false, "rotation": false}},
+    "five_in_a_row_15x15": {"ruleset": "Freestyle Five", "board_size": 15, "cells_total": 225, "starting_side": "A", "win_length_min": 5, "overline_counts": true, "blocked_endpoints_affect_win": false, "renju_restrictions": false, "forbidden_openings": false, "captures": false, "exact_five_required": false, "board_full_draw": true, "placement": {"select_empty_cell_shows_ghost": true, "requires_confirmation": true, "confirm_action": "PLACE", "tap_selected_cell_commits": true, "tap_other_empty_cell_moves_ghost": true}, "camera": {"default_zoom": 1.0, "max_zoom": 1.8, "pan_allowed_above_zoom": 1.0, "double_tap_reset_zoom": 1.0, "rotation": false}}
+  },
+  "feedback": {"last_move_ring": "thin_gold", "winning_line": "soft_gold", "draw_desaturate_seconds": 0.6, "invalid_cell_shake_seconds": 0.15}
+}
