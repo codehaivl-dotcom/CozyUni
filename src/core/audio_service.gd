@@ -1,6 +1,6 @@
 extends Node
 
-const BUS_NAMES: PackedStringArray = PackedStringArray(["Music", "SFX", "UI", "Ambience"])
+const BUS_NAMES := ["Music", "SFX", "UI", "Ambience"]
 
 
 func _ready() -> void:
@@ -24,7 +24,8 @@ func set_sfx_volume(linear_value: float) -> void:
 
 
 func _ensure_buses() -> void:
-	for bus_name: String in BUS_NAMES:
+	for bus_name_value: Variant in BUS_NAMES:
+		var bus_name := str(bus_name_value)
 		if AudioServer.get_bus_index(bus_name) == -1:
 			AudioServer.add_bus()
 			AudioServer.set_bus_name(AudioServer.bus_count - 1, bus_name)
@@ -41,6 +42,6 @@ func _set_bus_linear(bus_name: String, linear_value: float) -> void:
 	if bus_index == -1:
 		push_warning("AudioService: unknown bus %s" % bus_name)
 		return
-	var value := clampf(linear_value, 0.0, 1.0)
+	var value: float = clampf(linear_value, 0.0, 1.0)
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(maxf(value, 0.0001)))
 	AudioServer.set_bus_mute(bus_index, value <= 0.0001)
