@@ -11,7 +11,8 @@ Read this folder after root `AGENTS.md` and `docs/PRODUCTION_MASTER_PLAN.md`.
 5. `04_PERFORMANCE_BUDGETS.md` — preliminary measurable runtime/device budgets.
 6. `05_SAVE_LOCALIZATION_ACCESSIBILITY.md` — local persistence, en/fr/vi architecture, accessibility baseline.
 7. `06_QA_BUILD_RELEASE_GATES.md` — data/build/rules/playable/visual/performance/export acceptance gates.
-8. `HEADLESS_SIMULATION_HARNESS.md` — gameplay simulation contract once production rules engines exist.
+8. `07_A3_LUDO_VERTICAL_SLICE_GATE.md` — exact automated + native-device gate before Ludo polish.
+9. `HEADLESS_SIMULATION_HARNESS.md` — gameplay simulation contract using production rules engines.
 
 ## Current locked client baseline
 
@@ -26,22 +27,54 @@ zero third-party Godot addons required at baseline
 
 ## Current repository implementation state
 
-Bootstrap exists:
+### A0 — PASS
+Executable Godot foundation exists:
 - `/project.godot`
 - `/scenes/app/AppRoot.tscn`
-- `/src/app/app_root.gd`
+- `/src/app/`
 - `/src/data/game_data.gd`
 - `/src/core/settings_store.gd`
 - `/src/core/match_seed_service.gd`
 - `/src/core/audio_service.gd`
 - `/.github/workflows/ci.yml`
 
-The bootstrap is **not** the finished Shared Shell or any finished game. It exists so agents have an executable architecture target and automated gate instead of inventing a project structure.
+### A1 — PASS
+Shared shell implementation exists for:
+- Game Library;
+- Game Start;
+- Local Player Setup;
+- Match Summary;
+- Tutorial;
+- Countdown;
+- Match host;
+- Pause/settings;
+- Final Results;
+- Rematch / Change Players / Library.
 
-## Next admitted implementation milestone
+Shell route smoke tests are part of CI.
 
-Follow `docs/PRODUCTION_MASTER_PLAN.md`:
+### A2 — PASS
+Cozy Ludo has one authoritative production rules engine plus deterministic acceptance tests.
 
-`A0 bootstrap acceptance -> A1 Shared Shell -> A2 Ludo headless rules -> A3 playable Ludo`.
+Rule/UI code separation is enforced: UI submits actions, production rules/state decides legality.
 
-Do not jump directly to all five games, W02–W08, online networking, or deep life-sim systems.
+### A3 — IMPLEMENTED / DEVICE GATE PENDING
+Playable Cozy Ludo is connected to the shared shell with a procedural board and production rules state.
+
+Automated gates now include:
+- deterministic rule acceptance;
+- 2P/3P/4P match-completion batches;
+- touch-selection/UI smoke checks;
+- project import/main-scene smoke.
+
+A3 must **not** be marked fully complete until `07_A3_LUDO_VERTICAL_SLICE_GATE.md` passes on representative native tablet hardware, including tutorial comprehension and performance evidence.
+
+## Next admitted implementation action
+
+Do not jump to Caro or world expansion while A3 device acceptance is unknown.
+
+Current action order:
+
+`A3 automated gate green -> native tablet playtest/performance evidence -> A3 PASS -> A4 Ludo production polish`.
+
+World W01 remains a separate bounded visual-R&D track and must not block the Ludo shipping critical path.
