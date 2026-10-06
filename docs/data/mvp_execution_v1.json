@@ -4,7 +4,7 @@
   "name": "Moonberry Village + Cozy Ludo Quick Win",
   "authority": "docs/MVP_EXECUTION_PLAYBOOK.md",
   "execution_model": "one_step_per_agent_run",
-  "current_step": "MVP01-S00",
+  "current_step": "MVP01-S01",
   "allowed_statuses": ["READY", "LOCKED", "PASS", "FAIL", "BLOCKED"],
   "asset_statuses": [
     "REUSE_NOW",
@@ -130,7 +130,7 @@
     {
       "id": "MVP01-S00",
       "title": "Baseline and asset audit",
-      "status": "READY",
+      "status": "PASS",
       "next_step": "MVP01-S01",
       "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
       "render_allowlist": [],
@@ -157,7 +157,7 @@
     {
       "id": "MVP01-S01",
       "title": "W01 greybox",
-      "status": "LOCKED",
+      "status": "READY",
       "next_step": "MVP01-S02",
       "render_budget": {"concept_images": 0, "three_d_generations": 0, "batch_sheets": 0},
       "render_allowlist": [],

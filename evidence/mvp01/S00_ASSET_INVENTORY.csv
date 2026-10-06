@@ -1,0 +1,48 @@
+asset_id,name,source_path,status,quality_note,visible_in_mvp01,recommended_action
+AST-071,Town Hall,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; final art also lacks canonical style/world references",yes,BLOCKED
+AST-091,Hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-094,Hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-097,Hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-099,Hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-081,Residential/hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-082,Residential/hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-085,Residential/hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-089,Residential/hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-129,Hero structure candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-285,Hero structure/Ludo venue candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"No tracked binary/source asset; S01 uses primitive placeholder",yes,BLOCKED
+AST-003,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-008,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-009,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-010,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-011,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-012,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-018,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-021,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-024,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-025,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-028,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-029,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-151,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-155,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-156,Route detail candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Decorative source absent and not needed for greybox",yes,DEFER
+AST-251,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+AST-252,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+AST-256,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+AST-257,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+AST-258,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+AST-260,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+GAM-298,Ludo visual component candidate,NOT_TRACKED,MISSING_TRACKED_SOURCE,"Optional visual component absent; engine-built board remains authoritative",yes,DEFER
+terrain_base,Terrain base,ENGINE,ENGINE_BUILT,"Primitive/engine geometry authority",yes,ENGINE_BUILT
+grass_surface,Grass surface,ENGINE,ENGINE_BUILT,"Engine/material-built authority",yes,ENGINE_BUILT
+road_path_layout,Road/path layout,ENGINE,ENGINE_BUILT,"Engine geometry authority",yes,ENGINE_BUILT
+simple_plaza_floor,Plaza floor,ENGINE,ENGINE_BUILT,"Engine geometry authority",yes,ENGINE_BUILT
+water_surface_if_needed,Decorative water,ENGINE,ENGINE_BUILT,"Engine-built if used",yes,ENGINE_BUILT
+sky_fog_lighting,Sky fog lighting,ENGINE,ENGINE_BUILT,"Engine-built authority",yes,ENGINE_BUILT
+collision_volumes,Collision volumes,ENGINE,ENGINE_BUILT,"Engine-built authority",yes,ENGINE_BUILT
+navigation_region,Navigation region,ENGINE,ENGINE_BUILT,"Engine-built authority",yes,ENGINE_BUILT
+route_boundaries,Route boundaries,ENGINE,ENGINE_BUILT,"Engine-built authority",yes,ENGINE_BUILT
+debug_markers,Debug markers,ENGINE,ENGINE_BUILT,"Development-only engine objects",no,ENGINE_BUILT
+ludo_board_grid_and_path,Ludo board grid/path,ENGINE,ENGINE_BUILT,"Procedural/engine board remains preferred",yes,ENGINE_BUILT
+ludo_text_labels_numbers,Ludo labels/numbers,ENGINE,ENGINE_BUILT,"UI/engine-built authority",yes,ENGINE_BUILT
+legal_move_highlights,Legal move highlights,ENGINE,ENGINE_BUILT,"UI/engine-built authority",yes,ENGINE_BUILT
+shell_and_tutorial_ui,Shell/tutorial UI,ENGINE,ENGINE_BUILT,"UI-built authority",yes,ENGINE_BUILT
