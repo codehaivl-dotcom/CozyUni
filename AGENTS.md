@@ -7,18 +7,20 @@ These instructions apply to the entire repository unless a deeper `AGENTS.md` ex
 When implementing player-visible behavior, read in this order:
 
 1. `docs/PRODUCTION_MASTER_PLAN.md`
-2. `docs/MVP_EXECUTION_PLAYBOOK.md` when MVP-01 is active
-3. `docs/data/mvp_execution_v1.json` for the exact current admitted step
-4. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
-5. `docs/data/agent_roles_v1.json`
-6. `docs/data/mvp_role_assignments_v1.json`
-7. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
-8. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
-9. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
-10. selected game GDD under `docs/games/`
-11. matching machine-readable data under `docs/data/games/`
-12. `docs/APP_ARCHITECTURE.md`
-13. engineering locks under `docs/engineering/`
+2. `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` while Asset Harvest Mode is active
+3. `docs/data/world_asset_harvest_v1.json` for harvest budget/allocation policy
+4. `docs/MVP_EXECUTION_PLAYBOOK.md` when performing MVP implementation work
+5. `docs/data/mvp_execution_v1.json` for the exact current MVP implementation step
+6. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
+7. `docs/data/agent_roles_v1.json`
+8. `docs/data/mvp_role_assignments_v1.json`
+9. `docs/games/00_APP_SHELL_FLOW_LOCK.md`
+10. `docs/games/00_SHARED_GAME_EXPERIENCE_LOCK.md`
+11. `docs/games/00_SHARED_UI_LAYOUT_LOCK.md`
+12. selected game GDD under `docs/games/`
+13. matching machine-readable data under `docs/data/games/`
+14. `docs/APP_ARCHITECTURE.md`
+15. engineering locks under `docs/engineering/`
 
 World work additionally obeys:
 1. `docs/world/README.md`
@@ -40,13 +42,17 @@ Shipping critical path:
 
 `Godot bootstrap -> Shared Shell -> Cozy Ludo rules/headless tests -> playable Ludo -> Ludo polish/QA -> next game`
 
-Current quick-win execution package:
+Current temporary production priority:
 
-`MVP-01 = Moonberry Village + Cozy Ludo`
+`COZYUNI WORLD ASSET HARVEST V1 = audit + render the highest-value reusable 3D bank for W01–W08 before free credits expire`
 
-While MVP-01 is active, the exact admitted work comes from `docs/data/mvp_execution_v1.json`. The agent may execute only its `current_step`.
+Authority:
+- `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`
+- `docs/data/world_asset_harvest_v1.json`
 
-World work is a separate bounded visual-R&D track. It may prove W01 and the asset/import pipeline, but must not delay the shipping track.
+MVP-01 is preserved as the implementation track, but its W01-only generation caps do not apply to manifest-approved Harvest Mode jobs. Do not alter MVP execution state merely to authorize harvesting.
+
+During the expiry window, asset acquisition is the critical path. Normal gameplay/world implementation may continue when it does not endanger the harvest queue.
 
 Do not implement current-version features that are explicitly deferred:
 - online rooms / matchmaking;
@@ -124,11 +130,11 @@ Do not invent generation prompts.
 
 Follow `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` exactly.
 
-For MVP-01, the master asset inventory is a library, not a render queue. An asset may be generated only when the active MVP step:
-- permits rendering;
-- has remaining budget;
-- explicitly allowlists the asset/family;
-- and the camera-driven audit proves there is no acceptable reusable substitute.
+Normally, the master asset inventory is a library, not a render queue.
+
+During active World Asset Harvest Mode, billable generation is authorized by the frozen harvest manifest under `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`, not by the MVP per-step allowlist. Only manifest-approved P0/P1/P2 assets may be rendered, and the live credit ledger/reserve policy is mandatory.
+
+Outside Harvest Mode, an asset may be generated only when the active MVP step permits it, has budget, allowlists it, and evidence shows no acceptable substitute.
 
 Otherwise stop with `RENDER_NOT_AUTHORIZED`.
 
