@@ -2,6 +2,22 @@
 
 These instructions apply to the entire repository unless a deeper `AGENTS.md` explicitly narrows them.
 
+## 0. ACTIVE COZY WORLD PIVOT — HIGHEST PRECEDENCE (2026-10-11)
+
+**User decision: the shipping product is now CozyUni Living World, NOT Ludo or a five-board game library.** This Section 0 supersedes board-game-first instructions in all historical sections below. Keep the old board source, tests and GDDs as an inactive archive; do not delete or continue building them.
+
+Read active sources in order: `docs/PRODUCT_STRATEGY.md` → `docs/PRODUCTION_MASTER_PLAN.md` → `docs/world/living_world/README.md` → `docs/world/living_world/01_WORLD_GAMEPLAY_GDD.md` → `docs/world/living_world/02_W01_PLAYABLE_SLICE.md` → `docs/world/living_world/06_LAND_EXPANSION_MODULAR_BUILDING.md` + `07_W01_BUILD_PIECES_AND_PLOT_LAYOUT.md` → `docs/data/world_execution_v1.json`. W01 is the only region in the active build plan.
+
+**Only the `WORLD-xx` step graph is active.** `docs/data/mvp_execution_v1.json` is archived (its `MVP01-S01` pointer is NOT an instruction to execute) and `docs/MVP_EXECUTION_PLAYBOOK.md` is historical. Keep their validators in CI for legacy stability. Former Game Library flow is also historical; use `docs/world/living_world/08_WORLD_APP_FLOW.md` for startup, Album, pause and Build Mode.
+
+Active world loop: **free walking → NPC residents → garden/photo/decorate → Village Album → earned Village Coins → buy eligible adjacent 8×8m plots → 2m modular building → save/revisit**. No dice or numbered board movement. The canonical 20 CHR-001..CHR-020 definitions already exist; inspect the real asset source/GLB/rig/animations rather than regenerate characters because of absent Git binaries. Use approved existing AST IDs, no made-up render list.
+
+**All original H0–H6 Tripo asset rights, budget, reference, scene-anchor and import gates remain in force.** 150 slots do not authorize 150 paid calls. WORLD-00 through WORLD-05 (including WORLD-04B) have **zero paid generation budget**. The machine label `PARK_LUDO` is retained as a compatibility alias for the **social park**, not a Ludo venue.
+
+Treat the following board-first scope/step/gameplay sections as **historical only**. Reusable engineering, QA, asset-safety and security constraints remain binding where compatible with the world-first specification.
+
+---
+
 ## 1. Authority order
 
 When implementing player-visible behavior, read in this order:

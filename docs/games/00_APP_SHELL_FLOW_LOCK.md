@@ -1,5 +1,7 @@
 # CozyUni — App Shell & Game Selection Flow Lock v1.0
 
+> **ARCHIVED 2026-10-11:** The five-board Game Library is no longer CozyUni's current startup. This file is retained for legacy board code only. World-first startup: `docs/world/living_world/08_WORLD_APP_FLOW.md`.
+
 Status: **DESIGN LOCK — current production scope**
 
 This document is authoritative for what the player sees from app launch until a selected game begins.

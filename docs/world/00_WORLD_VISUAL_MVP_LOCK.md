@@ -1,5 +1,7 @@
 # CozyUni — World Visual MVP Lock v1.0
 
+> **ACTIVE WORLD-FIRST OVERRIDE 2026-10-11:** This file remains authoritative for W01–W08 **map geography, principal routes and visual composition only**. Former decorative-preview, Ludo venue and 'no quest/land' exclusions are historical; gameplay authority is `docs/world/living_world/README.md` + `docs/data/world_execution_v1.json`. Machine key `PARK_LUDO` is a compatibility alias for SOCIAL_PARK; no board game is launched there.
+
 Status: **DESIGN / PRODUCTION LOCK — BASIC WORLD MAY BE BUILT; DEEP LIFE-SIM SYSTEMS STILL DEFERRED**
 
 Authority: this document overrides older statements that the world must remain completely unbuilt. The new decision is narrower:

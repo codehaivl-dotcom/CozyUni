@@ -1,5 +1,7 @@
 # CozyUni World — Current Authority
 
+> **ACTIVE 2026-10-11:** Cozy World gameplay is now the product. Read `docs/world/living_world/README.md`, `docs/PRODUCTION_MASTER_PLAN.md` and `docs/data/world_execution_v1.json` first. This file's older visual-only/board-game priority notes are historical. H0–H6 asset safety and existing regional layouts remain in force.
+
 **2026-10-11 production clarification:** World *asset harvesting* (W01–W08 bank) is admitted under `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`; it does not mean eight world scenes, deep life-sim gameplay or release readiness is approved. Required H0–H3 evidence takes precedence over the older unconditional render/generation advice below. World gameplay construction remains evidence-gated.
 
 Current world scope is defined by:
