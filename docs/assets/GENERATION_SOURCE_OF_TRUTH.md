@@ -1,6 +1,6 @@
-# CozyUni Asset Generation — Source of Truth v3
+# CozyUni Asset Generation — Source of Truth v4
 
-Status: **CANONICAL POINTER**
+Status: **CANONICAL POINTER / WORLD ASSET HARVEST OVERRIDE AWARE**
 
 ## 1. Base asset generation authority
 
@@ -77,18 +77,29 @@ Repository helper:
 
 Hard rules:
 - official current Tripo developer docs are the external authority for endpoint/task/request/response semantics;
-- the repository pins the admitted MVP route/model/settings in 07 so an agent does not select a model ad hoc;
+- repository docs pin admitted routes/models/settings so an agent does not select a model ad hoc;
 - `TRIPO_API_KEY` is local environment state only and must never be committed;
 - billable `generate` is dry-run unless `--execute` is explicitly supplied;
-- a valid key does not authorize bulk rendering;
-- only assets admitted by the active MVP execution step may consume generation credits;
+- a valid key by itself never authorizes rendering;
 - record generation log per asset/task;
 - `TRIPO_DOC_MISMATCH` => STOP.
 
-The active render budget and step admission authority remain:
+There are two mutually explicit generation-admission modes:
 
-`docs/MVP_EXECUTION_PLAYBOOK.md`
-`docs/data/mvp_execution_v1.json`
+### Normal MVP mode
+Authority:
+- `docs/MVP_EXECUTION_PLAYBOOK.md`
+- `docs/data/mvp_execution_v1.json`
+
+Only assets admitted by the active MVP execution step may consume credits.
+
+### Expiry-sensitive World Asset Harvest Mode
+Authority:
+- `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`
+- `docs/data/world_asset_harvest_v1.json`
+- frozen `evidence/asset-harvest/WORLD_ASSET_HARVEST_MANIFEST.csv`
+
+In Harvest Mode, manifest-approved W01–W08 assets may consume credits without being on an MVP per-step render allowlist. This is controlled bulk production, not an unrestricted queue. Concept/style approval, dry-run review, ledgering, recovery, QA and reserve rules remain mandatory.
 
 ## 7. Completion rule
 
