@@ -74,11 +74,19 @@ def validate() -> None:
             assert e["placement_zone"] in ZONES, aid
         else:
             assert e["placement_zone"].endswith("_BANK"), aid
+        assert isinstance(e["target_regions"], list) and e["target_regions"], aid
+        assert len(e["target_regions"]) == len(set(e["target_regions"])), aid
+        assert all(re.fullmatch(r"W0[1-8]", x) for x in e["target_regions"]), aid
+        assert isinstance(e["production_use_case"], str) and len(e["production_use_case"]) > 15, aid
+        assert isinstance(e["planned_instance_count"], int) and e["planned_instance_count"] >= 1, aid
+        assert e["placement_rule"].startswith("Stage A:"), aid
+        if e["stage"] == "A":
+            assert e["target_regions"] == ["W01"], aid
         assert e["output_contract"].endswith(f"/{aid}.glb")
         assert e["wrapper_contract"].endswith(f"/{aid}.tscn")
 
     print("PASS: 296 master AST entries / 150 unique locked production slots")
-    print("PASS: A48 B52 C25 D15 E10 / exact source prompts / profiles / colliders")
+    print("PASS: A48 B52 C25 D15 E10 / prompts / roles / regions / profiles / colliders")
     print("NOTE: static registry validation != readiness for paid generation")
 
 
