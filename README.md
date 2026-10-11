@@ -1,6 +1,6 @@
 # CozyUni
 
-**A premium cozy family game table first; a larger living world later.**
+**A premium cozy family world with integrated games, built from a reusable stylized 3D asset bank.**
 
 CozyUni is one consumer app with a shared visual identity, reusable characters/assets, common settings/accessibility, and multiple polished game modes.
 
@@ -10,13 +10,15 @@ Before any implementation work, read:
 
 1. `AGENTS.md`
 2. `docs/PRODUCTION_MASTER_PLAN.md`
-3. `docs/MVP_EXECUTION_PLAYBOOK.md`
-4. `docs/data/mvp_execution_v1.json`
-5. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
-6. `docs/data/agent_roles_v1.json`
-7. `docs/data/mvp_role_assignments_v1.json`
-8. the authority documents for the selected milestone
-9. `docs/engineering/` for the Godot/runtime/QA contract
+3. `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` while harvest mode is active
+4. `docs/data/world_asset_harvest_v1.json`
+5. `docs/MVP_EXECUTION_PLAYBOOK.md` for preserved MVP implementation work
+6. `docs/data/mvp_execution_v1.json`
+7. `docs/agents/00_MULTI_AGENT_WORKFLOW.md`
+8. `docs/data/agent_roles_v1.json`
+9. `docs/data/mvp_role_assignments_v1.json`
+10. the authority documents for the selected milestone
+11. `docs/engineering/` for the Godot/runtime/QA contract
 
 For the current Quick Win, the orchestrator must run only the machine-readable `current_step`, activate only the roles assigned to that step, and stop after the acceptance gate. It may not create its own roadmap, start future locked steps, add unassigned roles, or render assets outside the active allowlist/budget.
 
@@ -70,7 +72,31 @@ INSPECT
 
 Parallel read-only analysis is allowed. Parallel writes to the same file are forbidden.
 
-## Current Quick Win
+## Current production priority — World Asset Harvest Mode
+
+A temporary 2026-10-11 priority override is active because a large pool of free 3D-generation credits is expiring.
+
+Current critical path:
+
+```text
+audit W01–W08 asset demand
+ -> freeze a prioritized manifest
+ -> approve Style D source concepts
+ -> harvest reusable 3D assets
+ -> recover/download/QA/ledger
+ -> assemble the world afterward
+```
+
+Planning envelope: approximately 9,000 credits, with ~8,700 targeted for production and ~300 held as an emergency/hero reserve. The real live balance and provider charges are authoritative.
+
+This mode allows controlled generation for all eight regions before their final Godot assembly. It does not authorize random bulk rendering.
+
+Authority:
+- `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`
+- `docs/data/world_asset_harvest_v1.json`
+- `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`
+
+## Preserved Quick Win
 
 `MVP-01 = Moonberry Village + Cozy Ludo`
 
@@ -235,6 +261,6 @@ Authority:
 - `docs/assets/06_MODULAR_WORLD_KIT_BATCH_SHEETS.md` — safe multi-item sheet optimization
 - `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` — routing/authority
 
-The asset masters are **libraries, not automatic render queues**. MVP rendering is additionally constrained by `docs/data/mvp_execution_v1.json`.
+The asset masters are normally libraries, not automatic render queues. During the temporary expiry-sensitive Harvest Mode, the audited subset becomes a frozen prioritized render manifest under `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`; outside Harvest Mode, MVP rendering remains constrained by `docs/data/mvp_execution_v1.json`.
 
 Boards/grids/path logic/text/numbers remain engine/UI-built wherever the GDD requires it.
