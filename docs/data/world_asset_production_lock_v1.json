@@ -111,7 +111,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-071/source/AST-071.glb",
-      "wrapper_contract": "scenes/assets/world/AST-071.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-071.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE_TOWN_HALL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 2,
@@ -141,7 +147,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-285/source/AST-285.glb",
-      "wrapper_contract": "scenes/assets/world/AST-285.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-285.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 3,
@@ -171,7 +183,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-091/source/AST-091.glb",
-      "wrapper_contract": "scenes/assets/world/AST-091.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-091.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 4,
@@ -201,7 +219,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-094/source/AST-094.glb",
-      "wrapper_contract": "scenes/assets/world/AST-094.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-094.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 5,
@@ -231,7 +255,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-099/source/AST-099.glb",
-      "wrapper_contract": "scenes/assets/world/AST-099.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-099.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 6,
@@ -261,7 +291,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-097/source/AST-097.glb",
-      "wrapper_contract": "scenes/assets/world/AST-097.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-097.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 7,
@@ -291,7 +327,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-105/source/AST-105.glb",
-      "wrapper_contract": "scenes/assets/world/AST-105.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-105.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 8,
@@ -321,7 +363,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-081/source/AST-081.glb",
-      "wrapper_contract": "scenes/assets/world/AST-081.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-081.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 9,
@@ -351,7 +399,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-082/source/AST-082.glb",
-      "wrapper_contract": "scenes/assets/world/AST-082.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-082.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 10,
@@ -381,7 +435,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-085/source/AST-085.glb",
-      "wrapper_contract": "scenes/assets/world/AST-085.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-085.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 11,
@@ -411,7 +471,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-089/source/AST-089.glb",
-      "wrapper_contract": "scenes/assets/world/AST-089.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-089.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 12,
@@ -441,7 +507,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-129/source/AST-129.glb",
-      "wrapper_contract": "scenes/assets/world/AST-129.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-129.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 ENTRANCE anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 13,
@@ -471,7 +543,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-155/source/AST-155.glb",
-      "wrapper_contract": "scenes/assets/world/AST-155.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-155.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 14,
@@ -501,7 +579,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-151/source/AST-151.glb",
-      "wrapper_contract": "scenes/assets/world/AST-151.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-151.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 15,
@@ -531,7 +615,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-159/source/AST-159.glb",
-      "wrapper_contract": "scenes/assets/world/AST-159.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-159.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 16,
@@ -561,7 +651,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-011/source/AST-011.glb",
-      "wrapper_contract": "scenes/assets/world/AST-011.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-011.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 17,
@@ -591,7 +687,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-012/source/AST-012.glb",
-      "wrapper_contract": "scenes/assets/world/AST-012.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-012.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 18,
@@ -621,7 +723,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-013/source/AST-013.glb",
-      "wrapper_contract": "scenes/assets/world/AST-013.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-013.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 19,
@@ -651,7 +759,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-018/source/AST-018.glb",
-      "wrapper_contract": "scenes/assets/world/AST-018.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-018.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 20,
@@ -681,7 +795,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-021/source/AST-021.glb",
-      "wrapper_contract": "scenes/assets/world/AST-021.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-021.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 21,
@@ -711,7 +831,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-022/source/AST-022.glb",
-      "wrapper_contract": "scenes/assets/world/AST-022.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-022.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 22,
@@ -741,7 +867,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-024/source/AST-024.glb",
-      "wrapper_contract": "scenes/assets/world/AST-024.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-024.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 23,
@@ -771,7 +903,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-025/source/AST-025.glb",
-      "wrapper_contract": "scenes/assets/world/AST-025.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-025.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 24,
@@ -801,7 +939,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-028/source/AST-028.glb",
-      "wrapper_contract": "scenes/assets/world/AST-028.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-028.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 25,
@@ -831,7 +975,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-029/source/AST-029.glb",
-      "wrapper_contract": "scenes/assets/world/AST-029.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-029.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 6,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 26,
@@ -861,7 +1011,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-003/source/AST-003.glb",
-      "wrapper_contract": "scenes/assets/world/AST-003.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-003.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 27,
@@ -891,7 +1047,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-008/source/AST-008.glb",
-      "wrapper_contract": "scenes/assets/world/AST-008.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-008.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 ENTRANCE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 28,
@@ -921,7 +1083,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-009/source/AST-009.glb",
-      "wrapper_contract": "scenes/assets/world/AST-009.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-009.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 29,
@@ -951,7 +1119,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-010/source/AST-010.glb",
-      "wrapper_contract": "scenes/assets/world/AST-010.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-010.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 MAIN_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 30,
@@ -981,7 +1155,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-001/source/AST-001.glb",
-      "wrapper_contract": "scenes/assets/world/AST-001.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-001.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 31,
@@ -1011,7 +1191,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-002/source/AST-002.glb",
-      "wrapper_contract": "scenes/assets/world/AST-002.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-002.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 32,
@@ -1041,7 +1227,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-005/source/AST-005.glb",
-      "wrapper_contract": "scenes/assets/world/AST-005.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-005.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 ENTRANCE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 33,
@@ -1071,7 +1263,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-006/source/AST-006.glb",
-      "wrapper_contract": "scenes/assets/world/AST-006.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-006.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 34,
@@ -1101,7 +1299,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-221/source/AST-221.glb",
-      "wrapper_contract": "scenes/assets/world/AST-221.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-221.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 ENTRANCE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 35,
@@ -1131,7 +1335,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-222/source/AST-222.glb",
-      "wrapper_contract": "scenes/assets/world/AST-222.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-222.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 36,
@@ -1161,7 +1371,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-223/source/AST-223.glb",
-      "wrapper_contract": "scenes/assets/world/AST-223.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-223.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 37,
@@ -1191,7 +1407,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-228/source/AST-228.glb",
-      "wrapper_contract": "scenes/assets/world/AST-228.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-228.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 ENTRANCE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 38,
@@ -1221,7 +1443,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-231/source/AST-231.glb",
-      "wrapper_contract": "scenes/assets/world/AST-231.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-231.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 39,
@@ -1251,7 +1479,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-233/source/AST-233.glb",
-      "wrapper_contract": "scenes/assets/world/AST-233.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-233.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 40,
@@ -1281,7 +1515,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-234/source/AST-234.glb",
-      "wrapper_contract": "scenes/assets/world/AST-234.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-234.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 41,
@@ -1311,7 +1551,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-240/source/AST-240.glb",
-      "wrapper_contract": "scenes/assets/world/AST-240.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-240.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 42,
@@ -1341,7 +1587,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-241/source/AST-241.glb",
-      "wrapper_contract": "scenes/assets/world/AST-241.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-241.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 43,
@@ -1371,7 +1623,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-242/source/AST-242.glb",
-      "wrapper_contract": "scenes/assets/world/AST-242.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-242.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 RESIDENTIAL anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 44,
@@ -1401,7 +1659,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-246/source/AST-246.glb",
-      "wrapper_contract": "scenes/assets/world/AST-246.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-246.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 45,
@@ -1431,7 +1695,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-192/source/AST-192.glb",
-      "wrapper_contract": "scenes/assets/world/AST-192.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-192.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 46,
@@ -1461,7 +1731,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-196/source/AST-196.glb",
-      "wrapper_contract": "scenes/assets/world/AST-196.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-196.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SQUARE anchor, accepted camera composition",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 47,
@@ -1491,7 +1767,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-211/source/AST-211.glb",
-      "wrapper_contract": "scenes/assets/world/AST-211.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-211.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 PARK_LUDO anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 48,
@@ -1521,7 +1803,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-212/source/AST-212.glb",
-      "wrapper_contract": "scenes/assets/world/AST-212.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-212.tscn",
+      "target_regions": [
+        "W01"
+      ],
+      "production_use_case": "real W01 SHOP_STREET anchor, accepted camera composition",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 49,
@@ -1551,7 +1839,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-014/source/AST-014.glb",
-      "wrapper_contract": "scenes/assets/world/AST-014.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-014.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 50,
@@ -1581,7 +1875,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-015/source/AST-015.glb",
-      "wrapper_contract": "scenes/assets/world/AST-015.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-015.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 51,
@@ -1611,7 +1911,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-016/source/AST-016.glb",
-      "wrapper_contract": "scenes/assets/world/AST-016.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-016.tscn",
+      "target_regions": [
+        "W04",
+        "W06"
+      ],
+      "production_use_case": "waterfront river/lake edge and docking visuals",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 52,
@@ -1641,7 +1948,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-017/source/AST-017.glb",
-      "wrapper_contract": "scenes/assets/world/AST-017.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-017.tscn",
+      "target_regions": [
+        "W03"
+      ],
+      "production_use_case": "woodland trail/collectible composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 53,
@@ -1671,7 +1984,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-019/source/AST-019.glb",
-      "wrapper_contract": "scenes/assets/world/AST-019.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-019.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "festival square ambience and public-event dressing",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 54,
@@ -1701,7 +2021,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-020/source/AST-020.glb",
-      "wrapper_contract": "scenes/assets/world/AST-020.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-020.tscn",
+      "target_regions": [
+        "W03"
+      ],
+      "production_use_case": "woodland trail/collectible composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 55,
@@ -1731,7 +2057,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-023/source/AST-023.glb",
-      "wrapper_contract": "scenes/assets/world/AST-023.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-023.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 56,
@@ -1761,7 +2094,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-026/source/AST-026.glb",
-      "wrapper_contract": "scenes/assets/world/AST-026.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-026.tscn",
+      "target_regions": [
+        "W03"
+      ],
+      "production_use_case": "woodland trail/collectible composition",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 57,
@@ -1791,7 +2130,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-027/source/AST-027.glb",
-      "wrapper_contract": "scenes/assets/world/AST-027.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-027.tscn",
+      "target_regions": [
+        "W04",
+        "W06"
+      ],
+      "production_use_case": "waterfront river/lake edge and docking visuals",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 58,
@@ -1821,7 +2167,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-030/source/AST-030.glb",
-      "wrapper_contract": "scenes/assets/world/AST-030.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-030.tscn",
+      "target_regions": [
+        "W04",
+        "W06"
+      ],
+      "production_use_case": "waterfront river/lake edge and docking visuals",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 59,
@@ -1851,7 +2204,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-004/source/AST-004.glb",
-      "wrapper_contract": "scenes/assets/world/AST-004.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-004.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "social/gathering/collection props",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 60,
@@ -1881,7 +2241,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-007/source/AST-007.glb",
-      "wrapper_contract": "scenes/assets/world/AST-007.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-007.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "social/gathering/collection props",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 61,
@@ -1911,7 +2278,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-128/source/AST-128.glb",
-      "wrapper_contract": "scenes/assets/world/AST-128.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-128.tscn",
+      "target_regions": [
+        "W07",
+        "W01"
+      ],
+      "production_use_case": "engine-defined elevation/snap decorative skin",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 62,
@@ -1941,7 +2315,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-137/source/AST-137.glb",
-      "wrapper_contract": "scenes/assets/world/AST-137.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-137.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "public park amenities / visitor facilities",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 63,
@@ -1971,7 +2352,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-141/source/AST-141.glb",
-      "wrapper_contract": "scenes/assets/world/AST-141.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-141.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 64,
@@ -2001,7 +2388,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-145/source/AST-145.glb",
-      "wrapper_contract": "scenes/assets/world/AST-145.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-145.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 65,
@@ -2031,7 +2424,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-171/source/AST-171.glb",
-      "wrapper_contract": "scenes/assets/world/AST-171.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-171.tscn",
+      "target_regions": [
+        "W04",
+        "W06"
+      ],
+      "production_use_case": "waterfront river/lake edge and docking visuals",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 66,
@@ -2061,7 +2461,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-172/source/AST-172.glb",
-      "wrapper_contract": "scenes/assets/world/AST-172.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-172.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 67,
@@ -2091,7 +2497,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-173/source/AST-173.glb",
-      "wrapper_contract": "scenes/assets/world/AST-173.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-173.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 68,
@@ -2121,7 +2533,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-174/source/AST-174.glb",
-      "wrapper_contract": "scenes/assets/world/AST-174.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-174.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 69,
@@ -2151,7 +2569,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-178/source/AST-178.glb",
-      "wrapper_contract": "scenes/assets/world/AST-178.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-178.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "harbor quay modules / safety props",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 70,
@@ -2181,7 +2605,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-181/source/AST-181.glb",
-      "wrapper_contract": "scenes/assets/world/AST-181.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-181.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 71,
@@ -2211,7 +2641,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-182/source/AST-182.glb",
-      "wrapper_contract": "scenes/assets/world/AST-182.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-182.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 72,
@@ -2241,7 +2677,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-183/source/AST-183.glb",
-      "wrapper_contract": "scenes/assets/world/AST-183.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-183.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 73,
@@ -2271,7 +2713,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-184/source/AST-184.glb",
-      "wrapper_contract": "scenes/assets/world/AST-184.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-184.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 74,
@@ -2301,7 +2749,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-187/source/AST-187.glb",
-      "wrapper_contract": "scenes/assets/world/AST-187.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-187.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 75,
@@ -2331,7 +2785,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-188/source/AST-188.glb",
-      "wrapper_contract": "scenes/assets/world/AST-188.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-188.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 76,
@@ -2361,7 +2821,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-190/source/AST-190.glb",
-      "wrapper_contract": "scenes/assets/world/AST-190.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-190.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 77,
@@ -2391,7 +2857,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-191/source/AST-191.glb",
-      "wrapper_contract": "scenes/assets/world/AST-191.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-191.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "festival square ambience and public-event dressing",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 78,
@@ -2421,7 +2894,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-193/source/AST-193.glb",
-      "wrapper_contract": "scenes/assets/world/AST-193.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-193.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "festival square ambience and public-event dressing",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 79,
@@ -2451,7 +2931,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-194/source/AST-194.glb",
-      "wrapper_contract": "scenes/assets/world/AST-194.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-194.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "social/gathering/collection props",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 80,
@@ -2481,7 +2968,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-198/source/AST-198.glb",
-      "wrapper_contract": "scenes/assets/world/AST-198.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-198.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "festival square ambience and public-event dressing",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 81,
@@ -2511,7 +3005,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-201/source/AST-201.glb",
-      "wrapper_contract": "scenes/assets/world/AST-201.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-201.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "market storefront and social shopping visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 82,
@@ -2541,7 +3042,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-202/source/AST-202.glb",
-      "wrapper_contract": "scenes/assets/world/AST-202.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-202.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "market storefront and social shopping visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 83,
@@ -2571,7 +3079,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-203/source/AST-203.glb",
-      "wrapper_contract": "scenes/assets/world/AST-203.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-203.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "market storefront and social shopping visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 84,
@@ -2601,7 +3116,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-205/source/AST-205.glb",
-      "wrapper_contract": "scenes/assets/world/AST-205.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-205.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "market storefront and social shopping visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 85,
@@ -2631,7 +3153,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-206/source/AST-206.glb",
-      "wrapper_contract": "scenes/assets/world/AST-206.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-206.tscn",
+      "target_regions": [
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "tourism/leisure furniture and vendor props",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 86,
@@ -2661,7 +3190,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-207/source/AST-207.glb",
-      "wrapper_contract": "scenes/assets/world/AST-207.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-207.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "market storefront and social shopping visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 87,
@@ -2691,7 +3227,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-210/source/AST-210.glb",
-      "wrapper_contract": "scenes/assets/world/AST-210.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-210.tscn",
+      "target_regions": [
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "tourism/leisure furniture and vendor props",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 88,
@@ -2721,7 +3264,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-213/source/AST-213.glb",
-      "wrapper_contract": "scenes/assets/world/AST-213.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-213.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 89,
@@ -2751,7 +3301,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-214/source/AST-214.glb",
-      "wrapper_contract": "scenes/assets/world/AST-214.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-214.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 90,
@@ -2781,7 +3338,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-215/source/AST-215.glb",
-      "wrapper_contract": "scenes/assets/world/AST-215.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-215.tscn",
+      "target_regions": [
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "tourism/leisure furniture and vendor props",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 91,
@@ -2811,7 +3375,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-218/source/AST-218.glb",
-      "wrapper_contract": "scenes/assets/world/AST-218.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-218.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "public park amenities / visitor facilities",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 92,
@@ -2841,7 +3412,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-220/source/AST-220.glb",
-      "wrapper_contract": "scenes/assets/world/AST-220.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-220.tscn",
+      "target_regions": [
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "tourism/leisure furniture and vendor props",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 93,
@@ -2871,7 +3449,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-232/source/AST-232.glb",
-      "wrapper_contract": "scenes/assets/world/AST-232.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-232.tscn",
+      "target_regions": [
+        "W05"
+      ],
+      "production_use_case": "town main street lighting variant",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 94,
@@ -2901,7 +3485,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-235/source/AST-235.glb",
-      "wrapper_contract": "scenes/assets/world/AST-235.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-235.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 95,
@@ -2931,7 +3522,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-239/source/AST-239.glb",
-      "wrapper_contract": "scenes/assets/world/AST-239.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-239.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 96,
@@ -2961,7 +3558,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-243/source/AST-243.glb",
-      "wrapper_contract": "scenes/assets/world/AST-243.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-243.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 97,
@@ -2991,7 +3595,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-244/source/AST-244.glb",
-      "wrapper_contract": "scenes/assets/world/AST-244.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-244.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 98,
@@ -3021,7 +3631,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-247/source/AST-247.glb",
-      "wrapper_contract": "scenes/assets/world/AST-247.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-247.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "farm/orchard/garden construction and interaction dressing",
+      "planned_instance_count": 3,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 99,
@@ -3051,7 +3667,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-249/source/AST-249.glb",
-      "wrapper_contract": "scenes/assets/world/AST-249.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-249.tscn",
+      "target_regions": [
+        "W07",
+        "W01"
+      ],
+      "production_use_case": "engine-defined elevation/snap decorative skin",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 100,
@@ -3081,7 +3704,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-250/source/AST-250.glb",
-      "wrapper_contract": "scenes/assets/world/AST-250.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-250.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "home frontage/public-route reuse",
+      "planned_instance_count": 4,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 101,
@@ -3111,7 +3741,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-051/source/AST-051.glb",
-      "wrapper_contract": "scenes/assets/world/AST-051.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-051.tscn",
+      "target_regions": [
+        "W01",
+        "W02"
+      ],
+      "production_use_case": "transport/farm activity affordance; static visuals unless mechanics are implemented",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 102,
@@ -3141,7 +3778,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-052/source/AST-052.glb",
-      "wrapper_contract": "scenes/assets/world/AST-052.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-052.tscn",
+      "target_regions": [
+        "W01",
+        "W02"
+      ],
+      "production_use_case": "transport/farm activity affordance; static visuals unless mechanics are implemented",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 103,
@@ -3171,7 +3815,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-060/source/AST-060.glb",
-      "wrapper_contract": "scenes/assets/world/AST-060.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-060.tscn",
+      "target_regions": [
+        "W01",
+        "W02"
+      ],
+      "production_use_case": "transport/farm activity affordance; static visuals unless mechanics are implemented",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 104,
@@ -3201,7 +3852,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-087/source/AST-087.glb",
-      "wrapper_contract": "scenes/assets/world/AST-087.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-087.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 105,
@@ -3231,7 +3889,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-092/source/AST-092.glb",
-      "wrapper_contract": "scenes/assets/world/AST-092.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-092.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 106,
@@ -3261,7 +3926,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-096/source/AST-096.glb",
-      "wrapper_contract": "scenes/assets/world/AST-096.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-096.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "distinct social/retail shop identities",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 107,
@@ -3291,7 +3963,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-101/source/AST-101.glb",
-      "wrapper_contract": "scenes/assets/world/AST-101.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-101.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "distinct social/retail shop identities",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 108,
@@ -3321,7 +4000,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-106/source/AST-106.glb",
-      "wrapper_contract": "scenes/assets/world/AST-106.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-106.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "distinct social/retail shop identities",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 109,
@@ -3351,7 +4037,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-109/source/AST-109.glb",
-      "wrapper_contract": "scenes/assets/world/AST-109.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-109.tscn",
+      "target_regions": [
+        "W01",
+        "W05"
+      ],
+      "production_use_case": "distinct social/retail shop identities",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 110,
@@ -3381,7 +4074,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-117/source/AST-117.glb",
-      "wrapper_contract": "scenes/assets/world/AST-117.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-117.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 111,
@@ -3411,7 +4111,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-119/source/AST-119.glb",
-      "wrapper_contract": "scenes/assets/world/AST-119.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-119.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 112,
@@ -3441,7 +4148,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-152/source/AST-152.glb",
-      "wrapper_contract": "scenes/assets/world/AST-152.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-152.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "park/family social activity nodes",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 113,
@@ -3471,7 +4185,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-153/source/AST-153.glb",
-      "wrapper_contract": "scenes/assets/world/AST-153.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-153.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "park/family social activity nodes",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 114,
@@ -3501,7 +4222,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-154/source/AST-154.glb",
-      "wrapper_contract": "scenes/assets/world/AST-154.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-154.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "park/family social activity nodes",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 115,
@@ -3531,7 +4259,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-157/source/AST-157.glb",
-      "wrapper_contract": "scenes/assets/world/AST-157.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-157.tscn",
+      "target_regions": [
+        "W01",
+        "W03"
+      ],
+      "production_use_case": "park/family social activity nodes",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 116,
@@ -3561,7 +4296,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-158/source/AST-158.glb",
-      "wrapper_contract": "scenes/assets/world/AST-158.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-158.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "event performance/festival configuration",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 117,
@@ -3591,7 +4333,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-180/source/AST-180.glb",
-      "wrapper_contract": "scenes/assets/world/AST-180.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-180.tscn",
+      "target_regions": [
+        "W04",
+        "W06"
+      ],
+      "production_use_case": "fishing activity workstation",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 118,
@@ -3621,7 +4370,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-185/source/AST-185.glb",
-      "wrapper_contract": "scenes/assets/world/AST-185.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-185.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 119,
@@ -3651,7 +4407,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-186/source/AST-186.glb",
-      "wrapper_contract": "scenes/assets/world/AST-186.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-186.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 120,
@@ -3681,7 +4444,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-189/source/AST-189.glb",
-      "wrapper_contract": "scenes/assets/world/AST-189.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-189.tscn",
+      "target_regions": [
+        "W02",
+        "W01"
+      ],
+      "production_use_case": "garden/farming/market activity station visuals",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 121,
@@ -3711,7 +4481,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-197/source/AST-197.glb",
-      "wrapper_contract": "scenes/assets/world/AST-197.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-197.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "event performance/festival configuration",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 122,
@@ -3741,7 +4518,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-208/source/AST-208.glb",
-      "wrapper_contract": "scenes/assets/world/AST-208.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-208.tscn",
+      "target_regions": [
+        "W05",
+        "W08"
+      ],
+      "production_use_case": "tourism/photo/collectible shopping display",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 123,
@@ -3771,7 +4555,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-209/source/AST-209.glb",
-      "wrapper_contract": "scenes/assets/world/AST-209.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-209.tscn",
+      "target_regions": [
+        "W05",
+        "W08"
+      ],
+      "production_use_case": "tourism/photo/collectible shopping display",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 124,
@@ -3801,7 +4592,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-217/source/AST-217.glb",
-      "wrapper_contract": "scenes/assets/world/AST-217.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-217.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "home or café furniture for persistent personalization",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 125,
@@ -3831,7 +4629,14 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-219/source/AST-219.glb",
-      "wrapper_contract": "scenes/assets/world/AST-219.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-219.tscn",
+      "target_regions": [
+        "W01",
+        "W08"
+      ],
+      "production_use_case": "home or café furniture for persistent personalization",
+      "planned_instance_count": 2,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 126,
@@ -3861,7 +4666,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-072/source/AST-072.glb",
-      "wrapper_contract": "scenes/assets/world/AST-072.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-072.tscn",
+      "target_regions": [
+        "W05"
+      ],
+      "production_use_case": "station/civic anchor and market/social infrastructure",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 127,
@@ -3891,7 +4702,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-073/source/AST-073.glb",
-      "wrapper_contract": "scenes/assets/world/AST-073.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-073.tscn",
+      "target_regions": [
+        "W05"
+      ],
+      "production_use_case": "station/civic anchor and market/social infrastructure",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 128,
@@ -3921,7 +4738,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-076/source/AST-076.glb",
-      "wrapper_contract": "scenes/assets/world/AST-076.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-076.tscn",
+      "target_regions": [
+        "W05"
+      ],
+      "production_use_case": "station/civic anchor and market/social infrastructure",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 129,
@@ -3951,7 +4774,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-083/source/AST-083.glb",
-      "wrapper_contract": "scenes/assets/world/AST-083.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-083.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "seaside residential landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 130,
@@ -3981,7 +4810,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-084/source/AST-084.glb",
-      "wrapper_contract": "scenes/assets/world/AST-084.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-084.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 131,
@@ -4011,7 +4846,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-088/source/AST-088.glb",
-      "wrapper_contract": "scenes/assets/world/AST-088.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-088.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 132,
@@ -4041,7 +4882,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-146/source/AST-146.glb",
-      "wrapper_contract": "scenes/assets/world/AST-146.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-146.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 133,
@@ -4071,7 +4918,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-149/source/AST-149.glb",
-      "wrapper_contract": "scenes/assets/world/AST-149.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-149.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 134,
@@ -4101,7 +4954,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-263/source/AST-263.glb",
-      "wrapper_contract": "scenes/assets/world/AST-263.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-263.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 135,
@@ -4131,7 +4990,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-271/source/AST-271.glb",
-      "wrapper_contract": "scenes/assets/world/AST-271.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-271.tscn",
+      "target_regions": [
+        "W08"
+      ],
+      "production_use_case": "resort/hotel destination identity",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 136,
@@ -4161,7 +5026,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-272/source/AST-272.glb",
-      "wrapper_contract": "scenes/assets/world/AST-272.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-272.tscn",
+      "target_regions": [
+        "W08"
+      ],
+      "production_use_case": "resort/hotel destination identity",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 137,
@@ -4191,7 +5062,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-273/source/AST-273.glb",
-      "wrapper_contract": "scenes/assets/world/AST-273.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-273.tscn",
+      "target_regions": [
+        "W07"
+      ],
+      "production_use_case": "mountain/cablecar/lookout social exploration landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 138,
@@ -4221,7 +5098,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-277/source/AST-277.glb",
-      "wrapper_contract": "scenes/assets/world/AST-277.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-277.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "ferry terminal/lighthouse transit landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 139,
@@ -4251,7 +5134,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-282/source/AST-282.glb",
-      "wrapper_contract": "scenes/assets/world/AST-282.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-282.tscn",
+      "target_regions": [
+        "W06"
+      ],
+      "production_use_case": "ferry terminal/lighthouse transit landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 140,
@@ -4281,7 +5170,13 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-283/source/AST-283.glb",
-      "wrapper_contract": "scenes/assets/world/AST-283.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-283.tscn",
+      "target_regions": [
+        "W02"
+      ],
+      "production_use_case": "windmill/farm landmark",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 141,
@@ -4311,7 +5206,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-080/source/AST-080.glb",
-      "wrapper_contract": "scenes/assets/world/AST-080.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-080.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 142,
@@ -4341,7 +5245,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-086/source/AST-086.glb",
-      "wrapper_contract": "scenes/assets/world/AST-086.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-086.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 143,
@@ -4371,7 +5284,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-098/source/AST-098.glb",
-      "wrapper_contract": "scenes/assets/world/AST-098.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-098.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 144,
@@ -4401,7 +5323,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-107/source/AST-107.glb",
-      "wrapper_contract": "scenes/assets/world/AST-107.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-107.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 145,
@@ -4431,7 +5362,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-110/source/AST-110.glb",
-      "wrapper_contract": "scenes/assets/world/AST-110.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-110.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 146,
@@ -4461,7 +5401,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-156/source/AST-156.glb",
-      "wrapper_contract": "scenes/assets/world/AST-156.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-156.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 147,
@@ -4491,7 +5440,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-164/source/AST-164.glb",
-      "wrapper_contract": "scenes/assets/world/AST-164.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-164.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 148,
@@ -4521,7 +5479,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-175/source/AST-175.glb",
-      "wrapper_contract": "scenes/assets/world/AST-175.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-175.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 149,
@@ -4551,7 +5518,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-177/source/AST-177.glb",
-      "wrapper_contract": "scenes/assets/world/AST-177.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-177.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
     {
       "queue_index": 150,
@@ -4581,7 +5557,16 @@
       "asset_state": "SPEC_LOCKED_PENDING_PREFLIGHT",
       "cost_status": "ESTIMATE_NOT_CHARGED",
       "output_contract": "assets/production/world/AST-216/source/AST-216.glb",
-      "wrapper_contract": "scenes/assets/world/AST-216.tscn"
+      "wrapper_contract": "scenes/assets/world/AST-216.tscn",
+      "target_regions": [
+        "W01",
+        "W05",
+        "W06",
+        "W08"
+      ],
+      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "planned_instance_count": 1,
+      "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     }
   ]
 }
