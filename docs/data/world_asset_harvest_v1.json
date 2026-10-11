@@ -1,9 +1,9 @@
 {
-  "schema_version": 1,
-  "strategy_id": "COZYUNI-WORLD-ASSET-HARVEST-V1",
+  "schema_version": 2,
+  "strategy_id": "COZYUNI-WORLD-ASSET-HARVEST-V1.1",
   "status": "ACTIVE_TEMPORARY_PRIORITY_OVERRIDE",
   "decision_date": "2026-10-11",
-  "purpose": "Harvest expiring free 3D credits into a reusable eight-region CozyUni production asset bank.",
+  "purpose": "Spend the expiring free 3D balance while producing Moonberry Production Pack v1 first, then reusable shared/activity kits, then future-region hero seeds.",
   "authorities": [
     "docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md",
     "docs/assets/GENERATION_SOURCE_OF_TRUTH.md",
@@ -13,24 +13,10 @@
   ],
   "planning_credit_envelope": {
     "baseline_credits": 9000,
-    "production_target_credits": 8700,
-    "reserve_target_credits": 300,
     "observed_planning_cost_per_3d_call": 60,
-    "note": "Live balance and actual provider usage are authoritative; these numbers are planning estimates only."
-  },
-  "planned_calls": {
-    "shared_world_kit": 45,
-    "W01_Moonberry_Village": 20,
-    "W02_Countryside_Farm": 12,
-    "W03_Woodland_Meadow": 12,
-    "W04_Lake_Riverside": 12,
-    "W05_Town_District": 14,
-    "W06_Harbor_Seaside": 12,
-    "W07_Mountain_Cable_Car": 12,
-    "W08_Resort_Tourist": 6,
-    "production_subtotal": 145,
-    "emergency_reserve_estimate": 5,
-    "planning_total": 150
+    "target_total_calls": 150,
+    "target_full_free_balance_use": true,
+    "note": "Live balance and actual provider usage are authoritative. Recompute the final stage as charges vary."
   },
   "asset_classes": [
     "HERO",
@@ -66,5 +52,49 @@
   "completion_levels": [
     "BANK_ACCEPTED",
     "RUNTIME_ACCEPTED"
-  ]
+  ],
+  "burn_stages": [
+    {
+      "id": "A",
+      "name": "MOONBERRY_PRODUCTION_PACK_V1",
+      "planned_calls": 48,
+      "approx_credits": 2880,
+      "priority": "FIRST",
+      "goal": "One coherent W01 exterior production pack that can be assembled immediately."
+    },
+    {
+      "id": "B",
+      "name": "SHARED_WORLD_CONSTRUCTION_KIT",
+      "planned_calls": 52,
+      "approx_credits": 3120,
+      "priority": "SECOND",
+      "goal": "High-reuse props/modules useful across 3+ regions."
+    },
+    {
+      "id": "C",
+      "name": "ACTIVITY_SOCIAL_INTERIOR_SUPPORT_KIT",
+      "planned_calls": 25,
+      "approx_credits": 1500,
+      "priority": "THIRD",
+      "goal": "Reusable assets supporting fishing, gardening, cooking, crafting, photography, social spaces and light home/interior use."
+    },
+    {
+      "id": "D",
+      "name": "FUTURE_REGION_HERO_SEED_PACK",
+      "planned_calls": 15,
+      "approx_credits": 900,
+      "priority": "FOURTH",
+      "goal": "Distinctive landmarks for W02-W08 without fully committing each map."
+    },
+    {
+      "id": "E",
+      "name": "FINAL_BURN_RECOVERY_VARIANTS",
+      "planned_calls": 10,
+      "approx_credits": 600,
+      "priority": "LAST",
+      "goal": "Hero recovery, missing high-reuse kit, or useful variants; consume remaining free balance safely before expiry."
+    }
+  ],
+  "first_required_deliverable": "MOONBERRY_PRODUCTION_PACK_V1",
+  "full_balance_use_policy": "Use essentially all free credits if approved useful assets remain; do not generate invisible micro-props merely to hit zero."
 }
