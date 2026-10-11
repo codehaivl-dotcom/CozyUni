@@ -11,10 +11,12 @@ On 2026-10-11 the user explicitly changed production priority because a large po
 Until the expiry-sensitive harvest is completed or explicitly cancelled, the immediate critical path is:
 
 ```text
-audit full eight-region asset demand
--> freeze harvest manifest
--> prepare/approve Style D sources
--> generate the highest-value 3D asset bank
+audit full asset demand
+-> freeze useful-first harvest manifest
+-> complete MOONBERRY_PRODUCTION_PACK_V1 first
+-> build shared + activity asset kits
+-> seed future-region hero landmarks
+-> consume remaining free credits through useful recovery/variants
 -> recover/download/ledger/QA
 -> resume normal world/game production
 ```
