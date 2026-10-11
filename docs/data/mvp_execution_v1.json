@@ -1,5 +1,7 @@
 {
   "schema_version": 1,
+  "archive_state": "INACTIVE_WORLD_FIRST_PIVOT",
+  "superseded_by": "docs/data/world_execution_v1.json",
   "mvp_id": "MVP-01",
   "name": "Moonberry Village + Cozy Ludo Quick Win",
   "authority": "docs/MVP_EXECUTION_PLAYBOOK.md",

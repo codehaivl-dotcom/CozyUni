@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "id": "COZYUNI_LIVING_WORLD_V1",
+  "status": "ACTIVE_WORLD_FIRST",
+  "decision_date": "2026-10-11",
+  "execution_model": "one_step_per_agent_run",
+  "current_step": "WORLD-00",
+  "previous_plan": "docs/data/mvp_execution_v1.json",
+  "billable_gate": "Existing H0–H3 mandatory. WORLD-00..WORLD-05 including WORLD-04B always zero 3D calls.",
+  "steps": [
+    {
+      "id": "WORLD-00",
+      "title": "Authority, shell and world-first routing",
+      "status": "READY",
+      "next_step": "WORLD-01",
+      "render_budget_3d": 0,
+      "work": [
+        "Align current app authority and world home/continue; keep old board code"
+      ],
+      "gate": [
+        "New active shell route and one authority chain; no board functionality presented as current"
+      ]
+    },
+    {
+      "id": "WORLD-01",
+      "title": "W01 walkable blockout",
+      "status": "LOCKED",
+      "next_step": "WORLD-02",
+      "render_budget_3d": 0,
+      "work": [
+        "Build/verify Moonberry walkable route, 7 zones, camera, player, residential plot pocket"
+      ],
+      "gate": [
+        "Entrances and social park reachable; measured route, collision and no paid render"
+      ]
+    },
+    {
+      "id": "WORLD-02",
+      "title": "Resident and garden",
+      "status": "LOCKED",
+      "next_step": "WORLD-03",
+      "render_budget_3d": 0,
+      "work": [
+        "Pip talk interaction; pick flower, plant, water and bloom"
+      ],
+      "gate": [
+        "Fresh player can talk and grow a flower; in-world change visible"
+      ]
+    },
+    {
+      "id": "WORLD-03",
+      "title": "Album photography",
+      "status": "LOCKED",
+      "next_step": "WORLD-04",
+      "render_budget_3d": 0,
+      "work": [
+        "Three view landmarks, photo interface and persistent album"
+      ],
+      "gate": [
+        "Three photo records survive save/reload; no farming repeats"
+      ]
+    },
+    {
+      "id": "WORLD-04",
+      "title": "Public decor and world save",
+      "status": "LOCKED",
+      "next_step": "WORLD-04B",
+      "render_budget_3d": 0,
+      "work": [
+        "One Square decor choice and reliable file save"
+      ],
+      "gate": [
+        "World decor and album persist after repeated scene load"
+      ]
+    },
+    {
+      "id": "WORLD-04B",
+      "title": "Earned land purchase and modular build",
+      "status": "LOCKED",
+      "next_step": "WORLD-05",
+      "render_budget_3d": 0,
+      "work": [
+        "P00 starter + P01/P02/P03 adjacent parcels, 100/150/250 VC, 2m build, preview, move/store"
+      ],
+      "gate": [
+        "M01–M03 grant 100 VC; first plot purchase once; 2 props and ground persist; no blocked path"
+      ]
+    },
+    {
+      "id": "WORLD-05",
+      "title": "NPC daily rhythm and W01 chapters",
+      "status": "LOCKED",
+      "next_step": "WORLD-06",
+      "render_budget_3d": 0,
+      "work": [
+        "Five canonical NPC assignments; M01–M07 and first evening"
+      ],
+      "gate": [
+        "In-world NPCs respond to activities and garden; chapter and ending playable"
+      ]
+    },
+    {
+      "id": "WORLD-06",
+      "title": "Character rig acceptance",
+      "status": "LOCKED",
+      "next_step": "WORLD-07",
+      "render_budget_3d": 0,
+      "work": [
+        "Audit 20 CHR source/rights and validate 1 player + 1 NPC with animations"
+      ],
+      "gate": [
+        "Real GLB/rig/wrapper and import proof; no duplicate character generation"
+      ]
+    },
+    {
+      "id": "WORLD-07",
+      "title": "W01 accepted visual assets",
+      "status": "LOCKED",
+      "next_step": "WORLD-08",
+      "render_budget_3d": 0,
+      "work": [
+        "Reuse verified AST source, swap blockout, verify color/sightline/collision"
+      ],
+      "gate": [
+        "W01 gameplay-camera QA and evidence, spend only after separate H0–H3 approval"
+      ]
+    },
+    {
+      "id": "WORLD-08",
+      "title": "Human usability and device QA",
+      "status": "LOCKED",
+      "next_step": "WORLD-09",
+      "render_budget_3d": 0,
+      "work": [
+        "Conduct W01 family-readable 20-minute playtests, saves and performance checks"
+      ],
+      "gate": [
+        "No P0/P1, activity and plot loop understood without instructions"
+      ]
+    },
+    {
+      "id": "WORLD-09",
+      "title": "Market-test W01 build",
+      "status": "LOCKED",
+      "next_step": null,
+      "render_budget_3d": 0,
+      "work": [
+        "Package W01 with saved progress, photo/Album, home build and residents"
+      ],
+      "gate": [
+        "Build reproducible with evidence; W02 remains locked until playtest gates pass"
+      ]
+    }
+  ]
+}

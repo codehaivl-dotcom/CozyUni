@@ -5,23 +5,25 @@
 **State:** `SPEC_LOCKED_PRESPEND_GATES_PENDING`. **No paid Tripo queue has been authorized by this document alone.**
 **English technical field names + Vietnamese instructions are intentional.**
 
+**ACTIVE WORLD-FIRST PIVOT (2026-10-11):** gameplay now follows `docs/world/living_world/README.md`; H0–H6 spend/import/rights gates, existing 150 AST slot IDs and Style D remain binding. Legacy `PARK_LUDO` = SOCIAL_PARK, not a game venue.
+
 ## 1. Product decision — Why this world exists
 
-CozyUni is **a cozy social world built around playing together**, not an eight-map art gallery.
+CozyUni is now **a standalone living cozy-world game with persistent player land-building**, not an eight-map art gallery or a five-board lobby.
 
 One player-facing loop must be feasible without inventing new game rules:
 
 ```text
 Spawn in Moonberry
- -> meet recognizable residents in the square
- -> perform two low-friction non-board activities
- -> gain/save one visible persistent cosmetic or decoration
- -> play Cozy Ludo directly or at a physical venue
- -> return with state intact
- -> discover a reason to revisit
+ -> meet residents / garden / photograph
+ -> earn an Album memory or visible decoration
+ -> earn Village Coins by real world activities
+ -> buy an adjacent residential land parcel
+ -> place 2 m engine-built surfaces and reusable AST decorations
+ -> save / return with world state intact
 ```
 
-**No forced walking to launch Ludo.** The five games keep independent Game Library entry.
+**No Ludo launch flow is required.** The five historic board games remain archived; W01 social park is a resident/activity location.
 
 During expiring-credit harvest, only the *asset acquisition* is accelerated. Deep life-sim features are not claimed complete. Asset classes are selected to support future interactions: venue, resident gathering, home, gardening, café, fishing, photo/festival.
 
@@ -117,7 +119,7 @@ Create `evidence/asset-harvest/H1_W01_ANCHOR_LOCK.json`. It must be **measured f
 
 The example ellipses are **schema documentation only**, never acceptable final data. Agent must populate actual measured values and validate every node path and transform.
 
-Required world-to-Ludo route, player/camera/collision flow and deterministic return must be runnable. When preserving the existing route, keep its 127 m / 84.08 s benchmark. If no existing scene or route exists, create/test a replacement **before** authorizing mass generation; report the new measured route truth rather than fabricating the old measurement.
+Required entrance → square → social park → residential plot route, player/camera/collision flow and deterministic save/return must be runnable. When preserving the existing route, keep its 127 m / 84.08 s benchmark. If no existing scene or route exists, create/test a replacement **before** authorizing mass generation; report the new measured route truth rather than fabricating the old measurement.
 
 ### H2 — One final mesh proves integration: 0 new calls if reusable
 
@@ -133,7 +135,7 @@ Do NOT spend a new call to prove the pipeline if an accepted source is available
 
 ### H3 — Freeze Stage A manifest: 0 spend
 
-The 48 A registry entries are **production slots**, not 48 automatic Tripo calls.
+The 48 A registry entries are **production slots**, not 48 automatic Tripo calls. W01 stage A now prioritizes gameplay areas (social park, garden, owned land, photo points) instead of a Ludo venue. Keep existing canonical AST IDs and record any changed dispositions.
 
 Each slot must have exactly one disposition after local inspection:
 - `REUSE_ACCEPTED`;
@@ -201,7 +203,7 @@ After Stage A approved slots are complete, assemble W01 into a coherent real sce
 - accepted buildings correctly grounded with entrance facing routes;
 - readable SQUARE → SHOP_STREET → PARK_LUDO camera vistas;
 - no collision/nav regression;
-- Library -> W01 -> Ludo -> Results -> W01 repeat test green;
+- Boot → W01 → activities/Album → earned land purchase → modular placement → save/reload repeat test green;
 - no missing source asset in the required acceptance views;
 - QA import/boot/smoke passing;
 - desktop before/after scene metrics, native iPad A14 evidence required for release certification, not to freeze source bank.

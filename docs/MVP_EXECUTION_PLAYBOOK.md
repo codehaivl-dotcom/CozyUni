@@ -1,5 +1,7 @@
 # CozyUni — MVP Execution Playbook v1.0
 
+> **ARCHIVED 2026-10-11:** Preserve former MVP01-Sxx board workflow for historical CI/code only. `MVP01-S01` is not active work. New world execution: `docs/data/world_execution_v1.json`. No Ludo-specific steps may be run without a new explicit product decision.
+
 Status: **PRESERVED / MVP IMPLEMENTATION AUTHORITY / ASSET-HARVEST PRIORITY OVERRIDE ACTIVE**
 
 > **2026-10-11 override:** `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` temporarily supersedes this playbook's W01-only generation scope, per-step render allowlists, and cumulative MVP render caps **for asset-harvest tasks only**. MVP implementation state is preserved; do not advance or rewrite it merely to authorize W02–W08 harvesting. Gameplay/world implementation still follows this playbook whenever work is performed under MVP-01.
