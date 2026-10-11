@@ -1,10 +1,10 @@
-# CozyUni — World Asset Harvest Plan v1.0
+# CozyUni — World Asset Harvest Plan v1.1
 
 Status: **CURRENT / TEMPORARY PRODUCTION PRIORITY OVERRIDE / CREDIT-EXPIRY MODE**
 
 Decision date: **2026-10-11**
 
-Purpose: convert expiring free 3D-generation credits into a coherent, reusable production asset bank for the full CozyUni world before those credits expire.
+Purpose: spend the expiring free 3D-generation balance deliberately while producing a useful, immediately buildable CozyUni asset package first, then expand that package into a reusable world asset bank before the credits expire.
 
 This document is a temporary production-priority override. It does **not** lower the quality bar, remove QA, or authorize random bulk generation.
 
@@ -69,37 +69,180 @@ Not included merely to consume credits:
 - particle/VFX systems;
 - characters unless a separate character pipeline explicitly approves them.
 
-## 3. Credit policy
+## 3. Useful-first burn strategy
 
-The planning baseline is approximately **9,000 expiring credits**.
+The harvest must produce something useful **before** spreading effort across all eight maps.
 
-The exact live balance and actual per-task charge are authoritative. Never assume every task costs exactly the same amount.
+The first concrete deliverable is:
 
-Planning model, based on the recently observed ~60-credit image-to-3D task:
+`MOONBERRY_PRODUCTION_PACK_V1`
 
-| Allocation | Planned 3D calls | Approx. credits at 60/call |
+It must be sufficient to assemble a convincing W01 exterior experience without depending on speculative W02–W08 content.
+
+This changes queue philosophy from:
+
+```text
+spread credits evenly across eight maps
+```
+
+to:
+
+```text
+finish one useful production pack
+-> build the shared world construction kit
+-> add activity/social/interior-support assets
+-> seed future-region hero landmarks
+-> consume remaining free credits through approved useful variants / backups
+```
+
+### 3.1 Credit envelope
+
+Planning baseline: approximately **9,000 expiring credits**.
+
+Observed planning cost: approximately **60 credits per image-to-3D task**.
+
+The live provider balance and actual task usage remain authoritative.
+
+| Burn stage | Planned 3D calls | Approx. credits @ 60 |
 |---|---:|---:|
-| Shared world kit | 45 | 2,700 |
-| W01 Moonberry Village | 20 | 1,200 |
-| W02 Countryside / Farm | 12 | 720 |
-| W03 Woodland Meadow | 12 | 720 |
-| W04 Lake & Riverside | 12 | 720 |
-| W05 Town District | 14 | 840 |
-| W06 Harbor & Seaside | 12 | 720 |
-| W07 Mountain & Cable Car | 12 | 720 |
-| W08 Resort / Tourist | 6 | 360 |
-| Production subtotal | **145** | **8,700** |
-| Emergency reserve | **~5** | **~300** |
-| Total planning envelope | **~150** | **~9,000** |
+| A — Moonberry Production Pack v1 | 48 | 2,880 |
+| B — Shared World Construction Kit | 52 | 3,120 |
+| C — Activities / Social / Interior Support Kit | 25 | 1,500 |
+| D — Future-region Hero Seed Pack | 15 | 900 |
+| E — Final Reserve / Useful Variants / Hero Recovery | 10 | 600 |
+| **TOTAL** | **150** | **9,000** |
 
-Rules:
+This is a burn plan, not a promise that every task costs exactly 60 credits.
 
-- **8,700 credits is a target envelope, not a mandatory spend.**
-- Keep approximately **300 credits / 3–5%** as a late-stage failure/hero reserve until the main queue is healthy.
-- If live balance differs from 9,000, scale the queue to the real balance.
-- If actual charge per call differs, recalculate immediately from the ledger.
-- Failed tasks do not automatically authorize a paid rerun.
-- Never generate outside the frozen manifest only because credits remain.
+If the live balance differs, recompute stage E first, then stage D, while protecting stages A–C.
+
+### 3.2 Stage A — Moonberry Production Pack v1
+
+Goal: after Stage A, CozyUni owns one genuinely useful, coherent exterior production kit.
+
+Target families include:
+
+- Town Hall / civic anchor;
+- fountain / square anchor;
+- bakery;
+- flower shop;
+- general store;
+- café/bookshop;
+- 4–6 residential silhouettes;
+- bus stop / arrival marker;
+- Ludo/social venue;
+- 2–3 tree silhouettes;
+- bench;
+- lamp;
+- planter;
+- signpost;
+- fence family;
+- gate;
+- stairs/railing;
+- gazebo/pergola;
+- market stall;
+- mailbox/community noticeboard;
+- picnic/social table set;
+- bridge/park connector where useful;
+- rock/moss / flower clusters;
+- one or two activity anchors.
+
+Reuse already accepted S04/S05 assets where they are good enough. Do not regenerate them merely to fill Stage A numbers.
+
+If reuse reduces Stage A paid calls, transfer saved calls into Stage B/C rather than inventing duplicate Moonberry assets.
+
+Stage A is complete when a world-builder could assemble a polished W01 exterior using this pack plus engine-built terrain/road/water/UI.
+
+### 3.3 Stage B — Shared World Construction Kit
+
+Goal: create the reusable kit that prevents W02–W08 from becoming eight independent art projects.
+
+Prioritize assets useful in 3+ regions:
+
+- trees;
+- bushes;
+- flowers;
+- rocks;
+- benches;
+- lamps;
+- planters;
+- fences;
+- gates;
+- stairs;
+- railings;
+- bridge modules;
+- awnings;
+- kiosks;
+- market modules;
+- outdoor seating;
+- crates/barrels;
+- signs;
+- dock/harbor modules where reusable;
+- generic civic/garden props.
+
+This stage should consume more credits than any one future region.
+
+### 3.4 Stage C — Activities / Social / Interior Support Kit
+
+Goal: make the future world capable of supporting gameplay instead of being scenery-only.
+
+Favor reusable objects for:
+
+- fishing;
+- gardening;
+- cooking;
+- crafting;
+- photography;
+- café/social interaction;
+- community board;
+- picnic/festival setup;
+- home exterior / small interior starter pieces;
+- board-game venue dressing.
+
+Do not build complete interior sets for every shop.
+
+### 3.5 Stage D — Future-region Hero Seed Pack
+
+Only after A–C are healthy, spend on unique landmarks that are difficult to replace later.
+
+Examples:
+
+- W02 windmill / barn hero;
+- W03 old hero tree / trail shelter;
+- W04 fishing dock / shrine marker;
+- W05 station / market hall;
+- W06 lighthouse / ferry terminal;
+- W07 cable-car station / lodge;
+- W08 resort hotel / festival landmark.
+
+This stage seeds future identity without committing to complete region production.
+
+### 3.6 Stage E — Final burn
+
+The last ~10 calls are not a permanent untouched reserve.
+
+Hold them until A–D have been reviewed, then spend them before expiry on the highest-value remaining option:
+
+1. failed HERO recovery;
+2. missing high-reuse KIT;
+3. visually distinct variant of a heavily repeated shared asset;
+4. alternate source for an important asset with weak first output;
+5. one additional activity/social asset with clear gameplay value.
+
+Do not spend Stage E on invisible micro-props or near-duplicates.
+
+The intended outcome is to use essentially the full free balance **without sacrificing asset usefulness**.
+
+### 3.7 Burn rules
+
+- Spend fast only after concept/source approval.
+- Batch source review before 3D execution.
+- Queue approved tasks in groups where the provider/tool safely supports it.
+- Recover/download outputs promptly.
+- Quick-triage each output into `BANK_ACCEPTED`, `REJECTED`, or `NEEDS_RUNTIME_QA`.
+- Detailed runtime optimization may happen after the credit-expiry window.
+- A failed non-HERO task normally yields the slot to another useful asset rather than an automatic retry.
+- A failed HERO may use Stage E recovery capacity.
 
 ## 4. Asset classes
 
@@ -222,16 +365,17 @@ No anonymous/untracked paid task is allowed.
 
 ## 7. Queue ordering
 
-Within the 145-call production envelope, prefer:
+Queue order is now explicitly **useful-first**:
 
-1. shared high-reuse KIT/PROP;
-2. irreplaceable HERO landmarks;
-3. route-defining architecture;
-4. region-specific nature/structures;
-5. activity props with clear gameplay use;
-6. optional decorative variants last.
+1. finish `MOONBERRY_PRODUCTION_PACK_V1`;
+2. finish the Shared World Construction Kit;
+3. finish the Activities / Social / Interior Support Kit;
+4. create future-region hero seeds;
+5. consume the final free-credit balance on approved recovery or high-value variants.
 
-This order intentionally differs from map-by-map assembly.
+Do not spread the first 3,000 credits across W01–W08.
+
+The first checkpoint must leave the repository with a coherent production pack that is independently useful even if later world scope changes.
 
 Credit-expiry harvesting is allowed to generate assets for W02–W08 **before those regions are assembled in Godot**.
 
@@ -418,7 +562,9 @@ Asset Harvest Mode is complete when:
 - every paid task is recoverable/accounted for;
 - useful outputs are preserved in the asset bank;
 - rejected outputs are identified rather than silently promoted;
-- approximately 3–5% reserve was held until the final review and then either used deliberately or left unused for a documented reason.
+- Stage A produced a coherent Moonberry Production Pack before broad future-region harvesting;
+- the shared and activity kits have explicit reusable value;
+- the final reserve was deliberately consumed before expiry when safe, with any unused balance documented only if provider/time/quality constraints made further generation irrational.
 
 After the expiry-sensitive harvest is secured, normal production returns to:
 
