@@ -1,6 +1,8 @@
 # CozyUni — MVP Execution Playbook v1.0
 
-Status: **CURRENT / AGENT EXECUTION AUTHORITY / QUICK-WIN LOCK**
+Status: **PRESERVED / MVP IMPLEMENTATION AUTHORITY / ASSET-HARVEST PRIORITY OVERRIDE ACTIVE**
+
+> **2026-10-11 override:** `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` temporarily supersedes this playbook's W01-only generation scope, per-step render allowlists, and cumulative MVP render caps **for asset-harvest tasks only**. MVP implementation state is preserved; do not advance or rewrite it merely to authorize W02–W08 harvesting. Gameplay/world implementation still follows this playbook whenever work is performed under MVP-01.
 
 Purpose: turn the existing design bible, Godot project, Ludo vertical slice, world plan, and asset inventories into a **small-step execution system** that an agent can follow after cloning the repository without inventing work.
 
@@ -99,9 +101,13 @@ Then stop.
 
 ---
 
-## 3. Asset strategy — do not render the library
+## 3. Asset strategy — normal MVP rule
 
-The master asset inventory is a library, **not a render queue**.
+The rules in this section remain the normal MVP-01 behavior when Asset Harvest Mode is inactive.
+
+During the explicit 2026-10-11 expiry-sensitive override, use `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` for billable asset-generation admission instead. Harvest Mode converts the audited library into a **frozen, prioritized render manifest**; it does not authorize arbitrary bulk rendering.
+
+The master asset inventory is a library, **not a render queue** during normal MVP execution.
 
 For MVP-01 every visible asset receives exactly one status:
 
