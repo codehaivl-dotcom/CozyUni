@@ -20,7 +20,7 @@ Before any implementation work, read:
 10. the authority documents for the selected milestone
 11. `docs/engineering/` for the Godot/runtime/QA contract
 
-For the current Quick Win, the orchestrator must run only the machine-readable `current_step`, activate only the roles assigned to that step, and stop after the acceptance gate. It may not create its own roadmap, start future locked steps, add unassigned roles, or render assets outside the active allowlist/budget.
+For MVP implementation work, the orchestrator must run only the machine-readable `current_step`, activate only the roles assigned to that step, and stop after the acceptance gate. **Asset Harvest Mode is the explicit exception for 3D-generation admission**: harvest jobs follow the frozen manifest, Style D gate, live-credit ledger and reserve rules instead of the MVP per-step render allowlist.
 
 Validate before mutation:
 
