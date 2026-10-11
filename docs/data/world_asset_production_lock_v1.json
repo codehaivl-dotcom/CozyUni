@@ -5209,11 +5209,9 @@
       "wrapper_contract": "scenes/assets/world/AST-080.tscn",
       "target_regions": [
         "W01",
-        "W05",
-        "W06",
-        "W08"
+        "W05"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "community center and local NPC gathering (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5247,12 +5245,10 @@
       "output_contract": "assets/production/world/AST-086/source/AST-086.glb",
       "wrapper_contract": "scenes/assets/world/AST-086.tscn",
       "target_regions": [
-        "W01",
         "W05",
-        "W06",
-        "W08"
+        "W06"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "canal/dense town residence (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5287,11 +5283,9 @@
       "wrapper_contract": "scenes/assets/world/AST-098.tscn",
       "target_regions": [
         "W01",
-        "W05",
-        "W06",
-        "W08"
+        "W05"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "apothecary shop identity (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5325,12 +5319,10 @@
       "output_contract": "assets/production/world/AST-107/source/AST-107.glb",
       "wrapper_contract": "scenes/assets/world/AST-107.tscn",
       "target_regions": [
-        "W01",
-        "W05",
         "W06",
         "W08"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "seaside ice cream social retail (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5365,11 +5357,9 @@
       "wrapper_contract": "scenes/assets/world/AST-110.tscn",
       "target_regions": [
         "W01",
-        "W05",
-        "W06",
-        "W08"
+        "W05"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "sweet shop social retail (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5404,11 +5394,9 @@
       "wrapper_contract": "scenes/assets/world/AST-156.tscn",
       "target_regions": [
         "W01",
-        "W05",
-        "W06",
         "W08"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "park pergola seating (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5443,11 +5431,9 @@
       "wrapper_contract": "scenes/assets/world/AST-164.tscn",
       "target_regions": [
         "W01",
-        "W05",
-        "W06",
         "W08"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "table tennis / family activity station (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5481,12 +5467,9 @@
       "output_contract": "assets/production/world/AST-175/source/AST-175.glb",
       "wrapper_contract": "scenes/assets/world/AST-175.tscn",
       "target_regions": [
-        "W01",
-        "W05",
-        "W06",
-        "W08"
+        "W06"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "harbor boat-service dressing (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5520,12 +5503,9 @@
       "output_contract": "assets/production/world/AST-177/source/AST-177.glb",
       "wrapper_contract": "scenes/assets/world/AST-177.tscn",
       "target_regions": [
-        "W01",
-        "W05",
-        "W06",
-        "W08"
+        "W06"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "harbor fishing props (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     },
@@ -5559,12 +5539,9 @@
       "output_contract": "assets/production/world/AST-216/source/AST-216.glb",
       "wrapper_contract": "scenes/assets/world/AST-216.tscn",
       "target_regions": [
-        "W01",
-        "W05",
-        "W06",
         "W08"
       ],
-      "production_use_case": "optional substitute/backup only after real scene gap, no automatic spend",
+      "production_use_case": "resort lounge personalization (optional; only if approved gap)",
       "planned_instance_count": 1,
       "placement_rule": "Stage A: bind measured H1 scene anchor; stages B-E: bank only until matching region topology and runtime anchor are approved. Never infer coordinates from ID."
     }
