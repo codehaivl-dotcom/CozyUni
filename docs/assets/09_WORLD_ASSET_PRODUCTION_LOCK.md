@@ -217,7 +217,9 @@ After Stage A approved slots are complete, assemble W01 into a coherent real sce
 - D: 15 future-region hero slots;
 - E: 10 optional recovery/quality variants.
 
-Every ID is grounded in the canonical 296-AST catalog. The registry includes the full canonical ITEM phrase, template code, specific per-slot stage and class, Stage A placement zone, footprint target, collision policy, P1 profile and target file names.
+Every ID is grounded in the canonical 296-AST catalog. All 150 entries also lock `target_regions`, `production_use_case`, `planned_instance_count`, category/profile, and, for W01 Stage A, the exact **semantic** zone. No actual scene coordinates are asserted until H1 measures them.
+
+A/B/C/D/E is an **acquisition order**. B–E use-case regions do not authorize speculative creation of unbuilt world maps. Actual region anchors will be locked during those region's later scene blockout/acceptance. The registry includes the full canonical ITEM phrase, template code, specific per-slot stage and class, Stage A placement zone, footprint target, collision policy, P1 profile and target file names.
 
 **Do not mechanically generate every row.** Preserve good existing AST-071/285/091/094/099 and other acceptable assets. Any released budget is used on the next approved useful row.
 
