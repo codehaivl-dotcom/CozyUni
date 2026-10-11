@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "strategy_id": "COZYUNI-WORLD-ASSET-HARVEST-V1",
+  "status": "ACTIVE_TEMPORARY_PRIORITY_OVERRIDE",
+  "decision_date": "2026-10-11",
+  "purpose": "Harvest expiring free 3D credits into a reusable eight-region CozyUni production asset bank.",
+  "authorities": [
+    "docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md",
+    "docs/assets/GENERATION_SOURCE_OF_TRUTH.md",
+    "docs/assets/00_RENDER_RULES_LOCKED.md",
+    "docs/assets/07_TRIPO_API_V3_EXECUTION.md",
+    "docs/world/00_WORLD_VISUAL_MVP_LOCK.md"
+  ],
+  "planning_credit_envelope": {
+    "baseline_credits": 9000,
+    "production_target_credits": 8700,
+    "reserve_target_credits": 300,
+    "observed_planning_cost_per_3d_call": 60,
+    "note": "Live balance and actual provider usage are authoritative; these numbers are planning estimates only."
+  },
+  "planned_calls": {
+    "shared_world_kit": 45,
+    "W01_Moonberry_Village": 20,
+    "W02_Countryside_Farm": 12,
+    "W03_Woodland_Meadow": 12,
+    "W04_Lake_Riverside": 12,
+    "W05_Town_District": 14,
+    "W06_Harbor_Seaside": 12,
+    "W07_Mountain_Cable_Car": 12,
+    "W08_Resort_Tourist": 6,
+    "production_subtotal": 145,
+    "emergency_reserve_estimate": 5,
+    "planning_total": 150
+  },
+  "asset_classes": [
+    "HERO",
+    "ROUTE",
+    "KIT",
+    "PROP"
+  ],
+  "priorities": [
+    "P0",
+    "P1",
+    "P2",
+    "DEFER"
+  ],
+  "required_manifest": "evidence/asset-harvest/WORLD_ASSET_HARVEST_MANIFEST.csv",
+  "required_ledger": "evidence/asset-harvest/TRIPO_HARVEST_LEDGER.md",
+  "concept_gate_required": true,
+  "dry_run_required_before_execute": true,
+  "automatic_paid_retry": false,
+  "mvp_render_allowlist_applies": false,
+  "engine_built_exclusions": [
+    "terrain_base",
+    "grass_surfaces",
+    "road_path_surfaces",
+    "water_surfaces",
+    "sky_cloud_fog",
+    "collision_navigation_volumes",
+    "ui",
+    "text_heavy_signs",
+    "board_grids_labels",
+    "simple_geometric_walls_floors",
+    "particle_vfx"
+  ],
+  "completion_levels": [
+    "BANK_ACCEPTED",
+    "RUNTIME_ACCEPTED"
+  ]
+}
