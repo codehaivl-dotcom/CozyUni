@@ -10,6 +10,7 @@ Before any implementation work, read:
 
 1. `AGENTS.md`
 2. `docs/PRODUCTION_MASTER_PLAN.md`
+2A. `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` and `docs/data/world_asset_production_lock_v1.json` (mandatory before any paid Harvest Mode action)
 3. `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` while harvest mode is active
 4. `docs/data/world_asset_harvest_v1.json`
 5. `docs/MVP_EXECUTION_PLAYBOOK.md` for preserved MVP implementation work
@@ -87,12 +88,13 @@ audit W01–W08 asset demand
  -> assemble the world afterward
 ```
 
-Planning envelope: approximately 9,000 credits, with ~8,700 targeted for production and ~300 held as an emergency/hero reserve. The real live balance and provider charges are authoritative.
+Planning envelope: approximately 9,000 credits, but **150 named slots are not 150 automatic paid calls**. Stage A freezes 48 actual AST IDs; H0 rights/balance/source, H1 W01 anchors, H2 import proof and H3 manifest must pass before paid batch jobs. The real live balance and provider charges are authoritative.
 
 This mode allows controlled generation for all eight regions before their final Godot assembly. It does not authorize random bulk rendering.
 
 Authority:
 - `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`
+- `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`
 - `docs/data/world_asset_harvest_v1.json`
 - `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`
 

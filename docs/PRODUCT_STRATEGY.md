@@ -1,6 +1,8 @@
 # CozyUni — Product Strategy v0.5
 
-Status: **CURRENT / GAME-FIRST / SINGLE-DEVICE FIRST / VISUAL-R&D WORLD TRACK ALLOWED**
+Status: **CURRENT / GAME-FIRST CORE RETAINED / TEMPORARY FULL-WORLD ASSET HARVEST AUTHORIZED**
+
+> 2026-10-11 production exception: audit and acquire a reusable world asset bank, starting with a buildable Moonberry pack. See `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`. The asset bank is not a claim that a full life-sim has been designed, implemented or product-validated.
 
 ## 1. Decision
 

@@ -1,8 +1,11 @@
 # CozyUni World — Current Authority
 
+**2026-10-11 production clarification:** World *asset harvesting* (W01–W08 bank) is admitted under `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`; it does not mean eight world scenes, deep life-sim gameplay or release readiness is approved. Required H0–H3 evidence takes precedence over the older unconditional render/generation advice below. World gameplay construction remains evidence-gated.
+
 Current world scope is defined by:
 
-1. `docs/world/00_WORLD_VISUAL_MVP_LOCK.md` — **highest authority for current world production**.
+1. `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` — highest authority for expiry-sensitive world asset harvest and buildability gates.
+2. `docs/world/00_WORLD_VISUAL_MVP_LOCK.md` — world route/region design authority for the visual world.
 2. `docs/COZYUNI_WORLD_BIBLE.md` — long-term world vision/background.
 3. `docs/assets/04_ALL_IN_ONE_READY_GEN_ASSET_MASTER.md` — exact asset generation source.
 4. `docs/assets/00_RENDER_RULES_LOCKED.md` — general render constraints.

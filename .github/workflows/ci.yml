@@ -38,6 +38,9 @@ jobs:
       - name: Validate MVP execution graph
         run: python tools/validate_mvp_execution.py
 
+      - name: Validate world asset production registry
+        run: python tools/validate_world_asset_production.py
+
       - name: Validate Tripo helper syntax
         run: python -m py_compile tools/tripo_v3.py
 

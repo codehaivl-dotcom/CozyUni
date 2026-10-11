@@ -1,6 +1,8 @@
-# CozyUni — World Asset Harvest Plan v1.1
+# CozyUni — World Asset Harvest Plan v1.2
 
-Status: **CURRENT / TEMPORARY PRODUCTION PRIORITY OVERRIDE / CREDIT-EXPIRY MODE**
+Status: **CURRENT STRATEGY / PRODUCTION REGISTRY LOCKED / PAID QUEUE PREFLIGHT PENDING**
+
+> HARD PRODUCTION AUTHORITY: Read `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` and `docs/data/world_asset_production_lock_v1.json` before assigning a single credit. The 48/52/25/15/10 figures in this file are slot envelopes, NOT authorization to render 150 models. Stage H0/H1/H2/H3 must pass first. Actual stage A uses 48 exact AST IDs and may reuse existing imported assets; counts reallocate after source audit.
 
 Decision date: **2026-10-11**
 
@@ -69,7 +71,7 @@ Not included merely to consume credits:
 - particle/VFX systems;
 - characters unless a separate character pipeline explicitly approves them.
 
-## 3. Useful-first burn strategy
+## 3. Useful-first burn strategy (planning envelope, not an automatic render queue)
 
 The harvest must produce something useful **before** spreading effort across all eight maps.
 

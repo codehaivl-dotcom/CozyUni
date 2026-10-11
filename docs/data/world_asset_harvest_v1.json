@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "strategy_id": "COZYUNI-WORLD-ASSET-HARVEST-V1.1",
-  "status": "ACTIVE_TEMPORARY_PRIORITY_OVERRIDE",
+  "status": "SPEC_LOCKED_PRESPEND_GATES_PENDING",
   "decision_date": "2026-10-11",
   "purpose": "Spend the expiring free 3D balance while producing Moonberry Production Pack v1 first, then reusable shared/activity kits, then future-region hero seeds.",
   "authorities": [
@@ -96,5 +96,18 @@
     }
   ],
   "first_required_deliverable": "MOONBERRY_PRODUCTION_PACK_V1",
-  "full_balance_use_policy": "Use essentially all free credits if approved useful assets remain; do not generate invisible micro-props merely to hit zero."
+  "full_balance_use_policy": "Use essentially all free credits if approved useful assets remain; do not generate invisible micro-props merely to hit zero.",
+  "production_contract": "docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md",
+  "production_registry": "docs/data/world_asset_production_lock_v1.json",
+  "static_registry_validator": "tools/validate_world_asset_production.py",
+  "billable_gate": "H0+H1+H2+H3 required; 150 slots are not 150 automatic paid calls",
+  "pending_inputs": [
+    "style_lock_sha256",
+    "live_balance_and_expiry",
+    "account_commercial_entitlement",
+    "source_GLB_inventory",
+    "W01_scene_anchor_lock",
+    "one_godot_import_roundtrip",
+    "frozen_disposition_manifest"
+  ]
 }

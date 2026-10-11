@@ -2,6 +2,10 @@
 
 Status: **IMPLEMENTATION AUTHORITY / BILLABLE EXTERNAL SERVICE / EXPLICIT EXECUTION ONLY**
 
+> 2026-10-11: For all expiry-sensitive Asset Harvest requests, follow `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` + 150-slot registry. The MVP-specific restrictions below apply only to *normal MVP mode*. No paid harvest job can be created until H0 rights/balance/style refs, H1 anchors, H2 import proof and H3 frozen manifest are evidenced.
+
+> Official Tripo P1 detailed image-to-model = 60 credits, standard = 50, no texture = 40. P1 supports <=20k faces and max 3 concurrent P-Series tasks; P2 has a different price and is NOT auto-approved. Record decimal balance/frozen/credits_consumed. Source: https://developers.tripo3d.ai/en/models/p1 and https://developers.tripo3d.ai/en/docs/changelog.
+
 Official documentation authority: `https://developers.tripo3d.ai/en/docs`
 
 This file defines the exact Tripo API path allowed for CozyUni MVP asset conversion. It exists so an agent can clone the repository, receive a user-provided API key locally, and execute image -> 3D without inventing endpoints, fields, versions, retry behavior, or secret handling.
@@ -157,16 +161,9 @@ GET /v3/account/balance
 
 The tool defaults to dry-run for billable generation. A real image-to-3D request requires explicit `--execute`.
 
-In addition, the agent must obey:
+In normal MVP mode, the agent must obey `docs/MVP_EXECUTION_PLAYBOOK.md` and `docs/data/mvp_execution_v1.json`.
 
-```text
-docs/MVP_EXECUTION_PLAYBOOK.md
-docs/data/mvp_execution_v1.json
-```
-
-A valid API key does **not** authorize bulk rendering.
-
-Only assets currently classified `RENDER_NOW` / explicitly admitted by the active MVP step may be submitted.
+In temporary expiry-sensitive Harvest Mode, the higher-priority `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` and frozen reviewed manifest authorize only named jobs. A valid API key alone does **not** authorize bulk rendering.
 
 If the requested generation exceeds the active step budget, STOP with:
 

@@ -1,10 +1,19 @@
 # CozyUni — Production Master Plan v1.2
 
-Status: **CURRENT / AGENT AUTHORITY / EXPIRING-CREDIT ASSET HARVEST OVERRIDE ACTIVE**
+Status: **CURRENT / ASSET HARVEST PRODUCTION SPEC LOCKED / PRESPEND GATES PENDING**
 
 This file resolves the production-order ambiguity between the shipping board-game product and the bounded world visual MVP.
 
 ## 0. Temporary priority override — World Asset Harvest Mode
+
+**Production-specific authority (2026-10-11):**
+- `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`
+- `docs/data/world_asset_production_lock_v1.json`
+- `tools/validate_world_asset_production.py`
+
+Do not start mass billable generation merely because strategy allocation exists: H0 account/rights/source, H1 actual W01 scene anchor lock, H2 import round-trip and H3 frozen reviewed 48-slot manifest are required first.
+
+The current GitHub remote did not contain the reported local S04/S05 binary assets; agent must verify its working copy before claiming them. Asset harvesting W02-W08 does not mean W02-W08 gameplay/maps are built.
 
 On 2026-10-11 the user explicitly changed production priority because a large pool of free 3D-generation credits is expiring.
 

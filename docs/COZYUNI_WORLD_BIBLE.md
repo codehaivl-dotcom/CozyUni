@@ -1,6 +1,8 @@
 # CozyUni — World Bible v0.3
 
-Status: **WORLD VISION LOCKED / WORLD PRODUCTION DEFERRED**
+Status: **WORLD VISION LOCKED / GAMEPLAY PRODUCTION EVIDENCE-GATED / 2026-10-11 ASSET-HARVEST OVERRIDE ACTIVE**
+
+> Only the sourcing of 3D assets for a useful Moonberry pack and later reusable region kit is temporarily accelerated. See `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`. This does not turn the eight-map visual design into a finished life-sim product; a decorative lobby remains unacceptable.
 
 ## 1. High concept
 
@@ -15,7 +17,7 @@ The world must not be built merely because many assets already exist. If/when it
 
 ## 2. Current production rule
 
-**Do not build the world now. Build the games first.**
+**Historical game-first decision:** the world may now receive carefully gated asset-production investment because free 3D credits are expiring. Deep world gameplay and multi-region expansion remain subject to their own product-proof evidence.
 
 Reasons:
 - gameplay quality is the current highest risk

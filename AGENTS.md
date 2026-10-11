@@ -7,6 +7,7 @@ These instructions apply to the entire repository unless a deeper `AGENTS.md` ex
 When implementing player-visible behavior, read in this order:
 
 1. `docs/PRODUCTION_MASTER_PLAN.md`
+1A. `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` + `docs/data/world_asset_production_lock_v1.json` for all Harvest Mode jobs
 2. `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md` while Asset Harvest Mode is active
 3. `docs/data/world_asset_harvest_v1.json` for harvest budget/allocation policy
 4. `docs/MVP_EXECUTION_PLAYBOOK.md` when performing MVP implementation work
@@ -70,7 +71,8 @@ For MVP-01, every agent run follows:
 `INSPECT -> CURRENT STEP -> ASSIGN DECLARED ROLES -> EXACT FILE SCOPE -> APPLY -> VERIFY -> REVIEW -> EVIDENCE -> UPDATE STATE -> STOP`
 
 Hard rules:
-- run `python tools/validate_agent_roles.py` and `python tools/validate_mvp_execution.py` before mutation;
+- run `python tools/validate_agent_roles.py` and `python tools/validate_mvp_execution.py
+python tools/validate_world_asset_production.py` before mutation;
 - read `current_step` from `docs/data/mvp_execution_v1.json`;
 - read the exact team for that step from `docs/data/mvp_role_assignments_v1.json`;
 - do not execute any future `LOCKED` step;
@@ -132,7 +134,7 @@ Follow `docs/assets/GENERATION_SOURCE_OF_TRUTH.md` exactly.
 
 Normally, the master asset inventory is a library, not a render queue.
 
-During active World Asset Harvest Mode, billable generation is authorized by the frozen harvest manifest under `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`, not by the MVP per-step allowlist. Only manifest-approved P0/P1/P2 assets may be rendered, and the live credit ledger/reserve policy is mandatory.
+During active World Asset Harvest Mode, **the 150-slot registry alone never authorizes a billable job**. First pass H0–H3 of `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md`. Then only the locally evidenced, frozen and reviewed manifest may authorize generation; MVP per-step allowlist does not apply. Only manifest-approved P0/P1/P2 assets may be rendered, and the live credit ledger/reserve policy is mandatory.
 
 Outside Harvest Mode, an asset may be generated only when the active MVP step permits it, has budget, allowlists it, and evidence shows no acceptable substitute.
 
@@ -209,7 +211,7 @@ Do not silently add dependencies, plugins, network services, or hosted tools.
 
 ## 11. Required validation
 
-At minimum, run all validators relevant to changed data:
+At minimum, run all validators relevant to changed data (including the asset production contract when changed):
 
 ```bash
 python tools/validate_game_data.py

@@ -1,6 +1,8 @@
 # CozyUni — Modular Worldbuilding Kit Master
 
-Status: READY FOR LOCAL GENERATION
+Status: READY FOR PLANNING / STRUCTURAL SNAP RULE OVERRIDDEN BY 09
+
+> Production safety: `docs/assets/09_WORLD_ASSET_PRODUCTION_LOCK.md` fixes the engine-built structural snap grid. Do **not** assume generated Tripo road, curb, fence, stair, bridge, rail or dock meshes meet exact joining/walking tolerances. First create Godot-dimensioned structural modules; image-to-3D assets are decorative skins unless independently measured/tested as true compatible modules. The old list of "asset-built (must be rendered)" below is a candidate inventory, not blanket paid-render admission.
 Purpose: create an **infinite modular kit** in the same CozyUni art style so the agent can assemble villages, town centers, rail areas, harbor zones, parks, mountain areas, lakefronts, and board-game-like overworld spaces without inventing missing parts.
 
 ---
