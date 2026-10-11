@@ -1,8 +1,39 @@
-# CozyUni — Production Master Plan v1.1
+# CozyUni — Production Master Plan v1.2
 
-Status: **CURRENT / AGENT AUTHORITY / IMPLEMENTATION ORDER LOCK**
+Status: **CURRENT / AGENT AUTHORITY / EXPIRING-CREDIT ASSET HARVEST OVERRIDE ACTIVE**
 
 This file resolves the production-order ambiguity between the shipping board-game product and the bounded world visual MVP.
+
+## 0. Temporary priority override — World Asset Harvest Mode
+
+On 2026-10-11 the user explicitly changed production priority because a large pool of free 3D-generation credits is expiring.
+
+Until the expiry-sensitive harvest is completed or explicitly cancelled, the immediate critical path is:
+
+```text
+audit full eight-region asset demand
+-> freeze harvest manifest
+-> prepare/approve Style D sources
+-> generate the highest-value 3D asset bank
+-> recover/download/ledger/QA
+-> resume normal world/game production
+```
+
+Authority:
+- `docs/assets/08_WORLD_ASSET_HARVEST_PLAN.md`
+- `docs/data/world_asset_harvest_v1.json`
+- `docs/assets/GENERATION_SOURCE_OF_TRUTH.md`
+
+This override changes **asset-generation admission and production priority only**.
+
+It explicitly allows W01–W08 asset harvesting before each region is assembled, because unused expiring credits have no future value. It does not authorize random rendering, removal of Style D review, secret leakage, fake QA, or shipping unoptimized generated meshes.
+
+While this override is active:
+- Harvest Mode takes priority over the normal MVP one-step render caps;
+- `docs/data/mvp_execution_v1.json` remains preserved for the MVP implementation track but is **not** the render admission authority for manifest-approved harvest tasks;
+- normal gameplay/world implementation may continue when it does not endanger the expiry-sensitive queue;
+- after the harvest window, production returns to evidence-gated world/game assembly using the preserved asset bank.
+
 
 ## 1. Two-track model
 
